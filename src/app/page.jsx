@@ -4,7 +4,26 @@ import styles from "./page.module.css";
 export default function Home() {
   return (
     <div className={styles.page}>
-      <main className={styles.main}>
+
+      <div className="container">
+        <div className="intro">
+          <div className="intro-text">
+            Hi, I’m Almaz, 
+            {/* The picture must animate somehow as you scroll, or maybe just fade out */}
+            <Image
+              className="intro-pic"
+              src="/me.jpg"
+              width={150}
+              height={150}
+              alt=""
+            />
+            <br />a Full-Stack Web Developer
+          </div>
+        </div>
+      </div>
+
+
+      {/* <main className={styles.main}>
         <Image
           className={styles.logo}
           src="/next.svg"
@@ -89,7 +108,8 @@ export default function Home() {
           />
           Go to nextjs.org →
         </a>
-      </footer>
+      </footer> */}
+
     </div>
   );
 }
