@@ -39,6 +39,83 @@ export default function Home() {
         </div>
       </div>
 
+      <div className="container">
+
+        <h2>Portfolio</h2>
+
+        <div className="cases-roll">
+
+          <div className="case">
+            <div className="case-title">
+              <a href="//silverskincoffee.ie" target="_blank">silverskincoffee.ie</a>
+            </div>
+            <div className="case-details">
+              <div>2024</div>
+              <span>/</span>
+              <div>Development</div>
+            </div>
+            <a href="//silverskincoffee.ie" className="case-link">View live</a>
+          </div>
+
+          <div className="case">
+            <div className="case-title">
+              <a href="//autosl.de" target="_blank">autosl.de</a>
+            </div>
+            <div className="case-details">
+              <div>2024</div>
+              <span>/</span>
+              <div>UX Design, Development</div>
+              <span v-if="project.client">/</span>
+              <div v-if="project.client">For <a href="//mindlind.de" target="_blank">Mindlind</a></div>
+            </div>
+            <a href="//autosl.de" className="case-link">View live</a>
+          </div>
+
+          <div className="case">
+            <div className="case-title">
+              <a href="//muafaktur.de" target="_blank">muafaktur.de</a>
+            </div>
+            <div className="case-details">
+              <div>2023</div>
+              <span>/</span>
+              <div>UX Design, Development</div>
+              <span v-if="project.client">/</span>
+              <div v-if="project.client">For <a href="//mindlind.de" target="_blank">Mindlind</a></div>
+            </div>
+            <a href="//muafaktur.de" className="case-link">View live</a>
+          </div>
+
+          <div className="case">
+            <div className="case-title">
+              <a href="//medienfaktur.com" target="_blank">medienfaktur.com</a>
+            </div>
+            <div className="case-details">
+              <div>2023</div>
+              <span>/</span>
+              <div>UX Design, Development</div>
+              <span v-if="project.client">/</span>
+              <div v-if="project.client">For <a href="//mindlind.de" target="_blank">Mindlind</a></div>
+            </div>
+            <a href="//medienfaktur.com" className="case-link">View live</a>
+          </div>
+
+          <div className="case">
+            <div className="case-title">
+              <a href="//monitask.com" target="_blank">monitask.com</a>
+            </div>
+            <div className="case-details">
+              <div>2024</div>
+              <span>/</span>
+              <div>Development</div>
+            </div>
+            <a href="//monitask.com" className="case-link">View live</a>
+          </div>
+
+        </div>
+
+      </div>
+
+
 
       {/* <main className={styles.main}>
         <Image
