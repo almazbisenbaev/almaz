@@ -1,0 +1,88 @@
+.linkcard {
+    background: #F1F2F3;
+    border-radius: 40px;
+
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+
+    position: relative;
+    min-height: 240px;
+    padding: 40px;
+    padding-right: 120px;
+}
+
+.linkcard-header {
+    flex: 1;
+}
+
+.linkcard-title {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 1.2;
+}
+
+.linkcard-details {
+    font-size: 0.875rem;
+    line-height: 1.2;
+    color: rgba(0, 0, 0, 0.6);
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 16px;
+}
+
+.linkcard-details a {
+    text-decoration: underline;
+}
+
+.linkcard-description {
+    font-size: 0.875rem;
+}
+
+.linkcard-anchor {
+    font-size: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 99px;
+
+    background: url('data:image/svg+xml, <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0032 3.69631L2.39663 12.3029L0.982422 10.8887L9.58901 2.2821H2.00324V0.282104H13.0032V11.2821H11.0032V3.69631Z" fill="black"/></svg>') no-repeat center center;
+    background-size: auto 12px;
+
+    display: block;
+    width: 80px;
+    height: 80px;
+
+    position: absolute;
+    right: 40px;
+    bottom: 40px;
+
+    transition: 0.2s;
+}
+
+.linkcard-anchor:hover,
+.linkcard-anchor:focus {
+    /* background-size: auto 9px; */
+    border-color: rgba(0, 0, 0, 0.3);
+    /* transform: scale(1.25); */
+}
+
+@media (max-width: 420px){
+
+    .linkcard {
+        padding: 24px;
+        padding-right: 80px;
+    }
+
+    .linkcard-title {
+        font-size: 18px;
+    }
+
+    .linkcard-anchor {
+        width: 60px;
+        height: 60px;
+        right: 24px;
+        bottom: 24px;
+    }
+
+}
