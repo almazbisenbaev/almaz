@@ -41,7 +41,9 @@ export default function Home() {
 
       <div className="container">
 
-        <h2>Portfolio</h2>
+        <div className="section-header">
+          <h2 className="section-header-title">Portfolio</h2>
+        </div>
 
         <div className="cases-roll">
 

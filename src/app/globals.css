@@ -42,6 +42,29 @@ a {
   padding: 0 32px;
 }
 
+.section-header {
+  padding-bottom: 24px;
+}
+
+.section-header-title {
+  font-size: 96px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  margin-left: -0.05em;
+}
+
+
+@media (max-width: 575px){
+
+  .section-header-title {
+    font-size: 36px;
+  }
+
+}
+
+
+
 .intro-wrapper {
   overflow: hidden;
 }
@@ -134,6 +157,11 @@ a {
 
 @media (max-width: 575px){
 
+  .intro {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
   .intro-text {
     font-size: 44px;
   }
@@ -170,8 +198,8 @@ a {
   flex-direction: column;
 
   position: relative;
-  padding-top: 45px;
-  padding-bottom: 45px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .case-title {
@@ -201,7 +229,8 @@ a {
   flex: 1;
 
   display: flex;
-  gap: 14px;
+  flex-wrap: wrap;
+  gap: 5px 10px;
 }
 
 .case-details a {
