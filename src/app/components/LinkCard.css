@@ -38,7 +38,11 @@
 }
 
 .linkcard-description {
-    font-size: 0.875rem;
+    font-size: 1rem;
+    line-height: 1.4;
+
+    width: 340px;
+    max-width: 100%;
 }
 
 .linkcard-anchor {

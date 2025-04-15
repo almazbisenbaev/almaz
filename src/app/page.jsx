@@ -60,7 +60,7 @@ export default function Home() {
               title="silverskincoffee.ie"
               url="//silverskincoffee.ie"
               year="2024"
-              description="Short description of the project"
+              description="E-Commerce website that sells coffee beans. WordPress, Woocommerce."
               category="Development"
             />
           </div>
@@ -70,7 +70,7 @@ export default function Home() {
               title="autosl.de"
               url="//autosl.de"
               year="2024"
-              description="Short description of the project"
+              description="A company that sells expensive cars. Wordpress, a custom plugin for API intergration."
               category="UX Design, Development"
               client="Mindlind"
               clientUrl="//mindlind.de"
