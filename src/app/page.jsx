@@ -47,75 +47,135 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="container">
+      <div className="section">
+        <div className="container">
 
-        <div className="section-header">
-          <h2 className="section-header-title">Recent works</h2>
+          <div className="section-header">
+            <h2 className="section-header-title">Recent works</h2>
+          </div>
+
+          <div className="grid grid-2x">
+
+            <div className="grid-item">
+              <LinkCard 
+                title="silverskincoffee.ie"
+                url="//silverskincoffee.ie"
+                year="2024"
+                description="E-Commerce website that sells coffee beans. WordPress, Woocommerce."
+                category="Development"
+              />
+            </div>
+
+            <div className="grid-item">
+              <LinkCard 
+                title="autosl.de"
+                url="//autosl.de"
+                year="2024"
+                description="A company that sells expensive cars. Wordpress, a custom plugin for API intergration."
+                category="UX Design, Development"
+                client="Mindlind"
+                clientUrl="//mindlind.de"
+              />
+            </div>
+
+            <div className="grid-item">
+              <LinkCard 
+                title="muafaktur.de"
+                url="//muafaktur.de"
+                year="2023"
+                description="Short description of the project"
+                category="UX Design, Development"
+                client="Mindlind"
+                clientUrl="//mindlind.de"
+              />
+            </div>
+
+            {/* <div className="grid-item">
+              <LinkCard 
+                title="medienfaktur.com"
+                url="//medienfaktur.com"
+                year="2023"
+                description="Short description of the project"
+                category="UX Design, Development"
+                client="Mindlind"
+                clientUrl="//mindlind.de"
+              />
+            </div> */}
+
+            <div className="grid-item">
+              <LinkCard 
+                title="monitask.com"
+                url="//monitask.com"
+                year="2021"
+                description="Short description of the project"
+                category="Development"
+                client="Mindlind"
+                clientUrl="//mindlind.de"
+              />
+            </div>
+            
+          </div>
+
         </div>
-
-        <div className="grid grid-2x">
-
-          <div className="grid-item">
-            <LinkCard 
-              title="silverskincoffee.ie"
-              url="//silverskincoffee.ie"
-              year="2024"
-              description="E-Commerce website that sells coffee beans. WordPress, Woocommerce."
-              category="Development"
-            />
-          </div>
-
-          <div className="grid-item">
-            <LinkCard 
-              title="autosl.de"
-              url="//autosl.de"
-              year="2024"
-              description="A company that sells expensive cars. Wordpress, a custom plugin for API intergration."
-              category="UX Design, Development"
-              client="Mindlind"
-              clientUrl="//mindlind.de"
-            />
-          </div>
-
-          <div className="grid-item">
-            <LinkCard 
-              title="muafaktur.de"
-              url="//muafaktur.de"
-              year="2023"
-              description="Short description of the project"
-              category="UX Design, Development"
-              client="Mindlind"
-              clientUrl="//mindlind.de"
-            />
-          </div>
-
-          {/* <div className="grid-item">
-            <LinkCard 
-              title="medienfaktur.com"
-              url="//medienfaktur.com"
-              year="2023"
-              description="Short description of the project"
-              category="UX Design, Development"
-              client="Mindlind"
-              clientUrl="//mindlind.de"
-            />
-          </div> */}
-
-          <div className="grid-item">
-            <LinkCard 
-              title="monitask.com"
-              url="//monitask.com"
-              year="2021"
-              description="Short description of the project"
-              category="Development"
-              client="Mindlind"
-              clientUrl="//mindlind.de"
-            />
-          </div>
-          
-        </div>
-
       </div>
+
+
+
+      <div className="section">
+        <div className="container">
+
+          <div className="section-header">
+            <h2 className="section-header-title">Client reviews</h2>
+          </div>
+
+        </div>
+      </div>
+
+
+
+      <div className="section">
+        <div className="container">
+
+          <div className="section-header">
+            <h2 className="section-header-title">Personal projects</h2>
+          </div>
+
+          <div>
+              <div>
+                <a target="_blank" href="https://mindmaker.vercel.app">Mindmaker</a>
+                <div>NextJS, Supabase</div>
+              </div>
+              <div>
+                <a target="_blank" href="https://planets-and-stars.vercel.app">Planets and Stars</a>
+                <div>ReactJS</div>
+              </div>
+              <div>
+                <a target="_blank" href="https://almazbisenbaev.gumroad.com/l/glowy-icons">Glowy Icons</a>
+                <div>Figma</div>
+              </div>
+              <div>
+                <a target="_blank" href="https://github.com/almazbisenbaev/wp-powertools">WP Power Tools</a>
+                <div>WordPress, PHP</div>
+              </div>
+              <div>
+                <a target="_blank" href="https://kartuli-abc.vercel.app">Kartuli ABC</a>
+                <div>ReactJS</div>
+              </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div className="container">
+        <a href="#">YouTube</a>
+        <a href="#">Behance</a>
+      </div>
+
+      <div className="container">
+        Telegram: <a href="//t.me/almazbisenbaev">@almazbisenbaev</a>
+      </div>
+
 
       <EmblaCarousel slides={SLIDES} options={OPTIONS} />
 
