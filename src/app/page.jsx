@@ -10,6 +10,9 @@ import IconFigma from '@/assets/images/icon-figma.svg';
 import EmblaCarousel from './components/SideProjectsCarousel';
 import LinkCard from './components/LinkCard';
 
+
+import { ChevronRight } from 'lucide-react';
+
 export default function Home() {
 
   const OPTIONS = {}
@@ -144,14 +147,42 @@ export default function Home() {
 
 
 
-      {/* <div className="section">
+      <div className="section">
         <div className="container">
 
           <div className="section-header">
             <h2 className="section-header-title">Personal projects</h2>
           </div>
 
-          <div>
+          <div className="project-card">
+
+            <div className="project-card-content">
+              <h4 className="project-card-title">Glowy Icons</h4>
+              <div className="project-card-text">Colorful and bright vector icons with slight shadows</div>
+              <div className="project-card-footer">
+                <a className="button button-secondary" 
+                   target="_blank" 
+                   href="https://www.figma.com/community/file/1452663046127877131/glowy-icons-v1-0"
+                >
+                    <span>Figma Link</span>
+                    <ChevronRight color="black" size={18} />
+                </a>
+              </div>
+            </div>
+
+            <div className="project-card-pic">
+              <Image
+                className=""
+                src="/images/project-glowy.jpg"
+                alt="Glowy Icons"
+                width={800}
+                height={800}
+              />
+            </div>
+
+          </div>
+
+          {/* <div>
               <div>
                 <a target="_blank" href="https://mindmaker.vercel.app">Mindmaker</a>
                 <div>NextJS, Supabase</div>
@@ -172,10 +203,10 @@ export default function Home() {
                 <a target="_blank" href="https://kartuli-abc.vercel.app">Kartuli ABC</a>
                 <div>ReactJS</div>
               </div>
-          </div>
+          </div> */}
 
         </div>
-      </div> */}
+      </div>
 
 
       {/* <div className="container">
