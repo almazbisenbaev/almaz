@@ -41,6 +41,29 @@ export default function Home() {
               <IconNext />
               <IconNode />
               <IconFigma />
+              {/* 
+              Express
+              MongoDB
+              JavaScript
+              Git
+              GitHub
+              PostgreSQL
+              Javascript
+              Typescript
+              Python
+              C++
+              React.js
+              Next.js
+              React Native
+              Express.js
+              MongoDB
+              Postgres
+              Prisma
+              Tailwind
+              Docker
+              AWS
+              OpenAI, Gemini, Claude, Prompt Engineering */}
+
             </div>
 
           </div>
@@ -83,31 +106,19 @@ export default function Home() {
                 title="muafaktur.de"
                 url="//muafaktur.de"
                 year="2023"
-                description="Short description of the project"
+                description="WooCommerce website for a company offering beauty products and training courses"
                 category="UX Design, Development"
                 client="Mindlind"
                 clientUrl="//mindlind.de"
               />
             </div>
 
-            {/* <div className="grid-item">
-              <LinkCard 
-                title="medienfaktur.com"
-                url="//medienfaktur.com"
-                year="2023"
-                description="Short description of the project"
-                category="UX Design, Development"
-                client="Mindlind"
-                clientUrl="//mindlind.de"
-              />
-            </div> */}
-
             <div className="grid-item">
               <LinkCard 
                 title="monitask.com"
                 url="//monitask.com"
                 year="2021"
-                description="Short description of the project"
+                description="Multilingual WordPress website with hundreds of pages all generated and updated automatically"
                 category="Development"
                 client="Mindlind"
                 clientUrl="//mindlind.de"
@@ -121,7 +132,7 @@ export default function Home() {
 
 
 
-      <div className="section">
+      {/* <div className="section">
         <div className="container">
 
           <div className="section-header">
@@ -129,11 +140,11 @@ export default function Home() {
           </div>
 
         </div>
-      </div>
+      </div> */}
 
 
 
-      <div className="section">
+      {/* <div className="section">
         <div className="container">
 
           <div className="section-header">
@@ -164,20 +175,20 @@ export default function Home() {
           </div>
 
         </div>
-      </div>
+      </div> */}
 
 
-      <div className="container">
+      {/* <div className="container">
         <a href="#">YouTube</a>
         <a href="#">Behance</a>
-      </div>
+      </div> */}
 
-      <div className="container">
+      {/* <div className="container">
         Telegram: <a href="//t.me/almazbisenbaev">@almazbisenbaev</a>
-      </div>
+      </div> */}
 
 
-      <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+      {/* <EmblaCarousel slides={SLIDES} options={OPTIONS} /> */}
 
 
       {/* <main className={styles.main}>
