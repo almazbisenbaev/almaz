@@ -1,5 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import { Space_Grotesk } from 'next/font/google';
+// import { Space_Grotesk } from 'next/font/google';
 import "./globals.css";
 
 // const spaceGrotesk = Space_Grotesk({
@@ -9,10 +9,10 @@ import "./globals.css";
 //   display: 'swap',
 // });
 
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
 
 // const geistMono = Geist_Mono({
 //   variable: "--font-geist-mono",
@@ -28,12 +28,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link
-          href="https://api.fontshare.com/v2/css?f[]=clash-display@1&f[]=clash-grotesk@1&display=swap"
-          rel="stylesheet"
-        />
+        <link href="https://api.fontshare.com/v2/css?f[]=switzer@1,2&f[]=clash-display@1&display=swap" rel="stylesheet" />
       </head>
-      <body className={``}>
+      <body className={` antialiased `}>
         {children}
       </body>
     </html>

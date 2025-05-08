@@ -2,7 +2,8 @@
   --background: #ffffff;
   --foreground: #000;
 
-  --font-text: 'Clash Grotesk', sans-serif;
+  /* --font-text: 'Clash Grotesk', sans-serif; */
+  --font-text: 'Switzer', sans-serif;
   --font-display: 'Clash Display', sans-serif;
 }
 
@@ -129,10 +130,11 @@ a {
 }
 
 .intro-text {
-  font-weight: bold;
+  font-family: var(--font-display);
+  font-weight: 600;
   font-size: 112px;
   line-height: 1.15;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
 
   width: 920px;
   max-width: 100%;
