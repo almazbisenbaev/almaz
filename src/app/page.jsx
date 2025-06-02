@@ -239,10 +239,10 @@ export default function Home() {
 
         <div className="section">
           <div className="container mx-auto px-6">
-            <div className="flex flex-col gap-6">
-                <div className="text-6xl font-display font-medium opacity-50">Telegram:</div>
+            <div className="flex flex-col gap-3 sm:gap-6">
+                <div className="text-3xl sm:text-6xl font-display font-medium opacity-50">Telegram:</div>
                 <div>
-                  <a className="text-6xl font-display font-medium" href="//t.me/almazbisenbaev">@almazbisenbaev</a>
+                  <a className="text-3xl sm:text-6xl font-display font-medium" href="//t.me/almazbisenbaev">@almazbisenbaev</a>
                 </div>
             </div>
           </div>
