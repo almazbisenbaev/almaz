@@ -4,22 +4,22 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./page.module.css";
 
-import IconWp from '@/assets/images/icon-wp.svg'; 
-import IconReact from '@/assets/images/icon-react.svg'; 
-import IconNext from '@/assets/images/icon-next.svg'; 
-import IconNode from '@/assets/images/icon-node.svg'; 
-import IconFigma from '@/assets/images/icon-figma.svg'; 
+// import IconWp from '@/assets/images/icon-wp.svg'; 
+// import IconReact from '@/assets/images/icon-react.svg'; 
+// import IconNext from '@/assets/images/icon-next.svg'; 
+// import IconNode from '@/assets/images/icon-node.svg'; 
+// import IconFigma from '@/assets/images/icon-figma.svg'; 
 
-import EmblaCarousel from './components/SideProjectsCarousel';
-import LinkCard from './components/LinkCard';
+// import EmblaCarousel from '@/components/SideProjectsCarousel';
+import LinkCard from '@/components/LinkCard';
 
 import { ChevronRight } from 'lucide-react';
 
 export default function Home() {
 
-  const OPTIONS = {}
-  const SLIDE_COUNT = 5
-  const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
+  // const OPTIONS = {}
+  // const SLIDE_COUNT = 5
+  // const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
   // Intro animation state
   const [showIntro, setShowIntro] = useState(true);
@@ -44,59 +44,60 @@ export default function Home() {
       )}
 
       <div className={`${styles.pageContent} ${!showIntro ? styles.pageContentVisible : ""}`}>
-        <div className="intro-wrapper">
-          <div className="container">
-            <div className="intro">
-              <div className="intro-text">
-                <span>Hi, I’m Almaz,</span>
-                {/* The picture must animate somehow as you scroll, or maybe just fade out */}
-                <Image
-                  className="intro-pic"
-                  src="/me.jpg"
-                  width={150}
-                  height={150}
-                  alt=""
-                />
-                <span> a&nbsp;Full-Stack Web Developer</span>
-              </div>
 
-              <div className="intro-logos">
-                <IconWp />
-                <IconReact />
-                <IconNext />
-                <IconNode />
-                <IconFigma />
-                {/* 
-                Express
-                MongoDB
-                JavaScript
-                Git
-                GitHub
-                PostgreSQL
-                Javascript
-                Typescript
-                Python
-                C++
-                React.js
-                Next.js
-                React Native
-                Express.js
-                MongoDB
-                Postgres
-                Prisma
-                Tailwind
-                Docker
-                AWS
-                OpenAI, Gemini, Claude, Prompt Engineering */}
+          <div className="intro-wrapper">
+            <div className="container mx-auto px-6">
+                <div className="intro">
+                  <div className="intro-text">
+                    <span>Hi, I’m Almaz,</span>
+                    {/* The picture must animate somehow as you scroll, or maybe just fade out */}
+                    <Image
+                      className="intro-pic"
+                      src="/me.jpg"
+                      width={150}
+                      height={150}
+                      alt=""
+                    />
+                    <span> a&nbsp;Full-Stack Web Developer</span>
+                  </div>
 
-              </div>
+                  <div className="intro-logos">
+                    {/* <IconWp />
+                    <IconReact />
+                    <IconNext />
+                    <IconNode />
+                    <IconFigma /> */}
+                    {/* 
+                    Express
+                    MongoDB
+                    JavaScript
+                    Git
+                    GitHub
+                    PostgreSQL
+                    Javascript
+                    Typescript
+                    Python
+                    C++
+                    React.js
+                    Next.js
+                    React Native
+                    Express.js
+                    MongoDB
+                    Postgres
+                    Prisma
+                    Tailwind
+                    Docker
+                    AWS
+                    OpenAI, Gemini, Claude, Prompt Engineering */}
 
+                  </div>
+
+                </div>
             </div>
           </div>
-        </div>
 
         <div className="section">
-          <div className="container">
+          <div className="container mx-auto px-6">
 
             <div className="section-header">
               <h2 className="section-header-title">Recent works</h2>
@@ -158,7 +159,7 @@ export default function Home() {
 
 
         {/* <div className="section">
-          <div className="container">
+          <div className="container mx-auto">
 
             <div className="section-header">
               <h2 className="section-header-title">Client reviews</h2>
@@ -170,7 +171,7 @@ export default function Home() {
 
 
         <div className="section">
-          <div className="container">
+          <div className="container mx-auto px-6">
 
             <div className="section-header">
               <h2 className="section-header-title">Personal projects</h2>
@@ -231,13 +232,39 @@ export default function Home() {
         </div>
 
 
-        {/* <div className="container">
+        {/* <div className="container mx-auto">
           <a href="#">YouTube</a>
           <a href="#">Behance</a>
         </div> */}
 
-        {/* <div className="container">
-          Telegram: <a href="//t.me/almazbisenbaev">@almazbisenbaev</a>
+        <div className="section">
+          <div className="container mx-auto px-6">
+            <div className="flex flex-col gap-6">
+                <div className="text-6xl font-display font-medium opacity-50">Telegram:</div>
+                <div>
+                  <a className="text-6xl font-display font-medium" href="//t.me/almazbisenbaev">@almazbisenbaev</a>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        {/* <div className="section">
+          <div className="container mx-auto">
+              <div className="flex gap-3">
+                <span>You can also find me here:</span>
+
+                <a target="_blank" href="//www.behance.net/almazbisenbaev" className="extlink">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z" fill="#000"></path></svg>
+                  Behance
+                </a>
+
+                <a target="_blank" href="//www.behance.net/almazbisenbaev" className="extlink">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z" fill="#000"></path></svg>
+                  Behance
+                </a>
+
+              </div>
+          </div>
         </div> */}
 
 

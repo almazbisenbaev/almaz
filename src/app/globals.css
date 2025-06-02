@@ -1,3 +1,35 @@
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+} */
+
+
 :root {
   --background: #ffffff;
   --foreground: #000;
@@ -7,11 +39,11 @@
   --font-display: 'Clash Display', sans-serif;
 }
 
-html,
+/* html,
 body {
   padding: 0;
   margin: 0;
-}
+} */
 
 body {
   color: var(--foreground);
@@ -23,11 +55,11 @@ body {
   letter-spacing: -0.01em;
 }
 
-* {
+/* * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-}
+} */
 
 a {
   color: inherit;
@@ -40,13 +72,9 @@ a {
   }
 }
 
-.container {
-  width: 1400px;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 32px;
+.font-display {
+  font-family: var(--font-display);
 }
-
 
 .grid {
   display: flex;
@@ -151,10 +179,11 @@ a {
 
   width: auto;
   height: 1.3em;
+  margin-left: 0.25em;
   
-  position: absolute;
+  /* position: absolute;
 
-  transform: translate(15px, -15px);
+  transform: translate(15px, -15px); */
 }
 
 .intro-logos {
@@ -572,4 +601,24 @@ a {
 
 .button:active {
   transform: scale(0.98) translateY(1px);
+}
+
+.extlink {
+  font-size: 1rem;
+  opacity: 0.7;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  transition: 0.2s;
+}
+
+.extlink:hover, .extlink:focus {
+  opacity: 1;
+}
+
+.extlink svg {
+  width: auto;
+  height: 0.75em;
+  display: block;
 }
