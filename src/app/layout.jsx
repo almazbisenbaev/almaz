@@ -1,3 +1,5 @@
+import { GoogleAnalytics } from '@next/third-parties/google';
+
 // import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -38,6 +40,7 @@ export default function RootLayout({ children }) {
       >
         {children}
       </body>
+      <GoogleAnalytics gaId="G-10DVM02K4H" />
     </html>
   );
 }
