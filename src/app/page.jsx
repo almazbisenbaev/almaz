@@ -103,9 +103,9 @@ export default function Home() {
               <h2 className="section-header-title">Recent works</h2>
             </div>
 
-            <div className="grid grid-2x">
+            <div className="grid grid-cols-1 gap-8 md:gap-12 md:grid-cols-2">
 
-              <div className="grid-item">
+              <div className="">
                 <LinkCard 
                   title="silverskincoffee.ie"
                   url="//silverskincoffee.ie"
@@ -115,7 +115,7 @@ export default function Home() {
                 />
               </div>
 
-              <div className="grid-item">
+              <div className="">
                 <LinkCard 
                   title="autosl.de"
                   url="//autosl.de"
@@ -127,7 +127,7 @@ export default function Home() {
                 />
               </div>
 
-              <div className="grid-item">
+              <div className="">
                 <LinkCard 
                   title="muafaktur.de"
                   url="//muafaktur.de"
@@ -139,7 +139,7 @@ export default function Home() {
                 />
               </div>
 
-              <div className="grid-item">
+              <div className="">
                 <LinkCard 
                   title="monitask.com"
                   url="//monitask.com"
@@ -177,23 +177,69 @@ export default function Home() {
               <h2 className="section-header-title">Personal projects</h2>
             </div>
 
-            <div className="project-card">
+            {/* <div className="projects-grid">
 
-              <div className="project-card-content">
-                <h4 className="project-card-title">Glowy Icons</h4>
-                <div className="project-card-text">Colorful and bright vector icons with slight shadows</div>
-                <div className="project-card-footer">
-                  <a className="button button-secondary" 
-                    target="_blank" 
-                    href="https://www.figma.com/community/file/1452663046127877131/glowy-icons-v1-0"
-                  >
-                      <span>Figma Link</span>
-                      <ChevronRight color="black" size={18} />
-                  </a>
+              <div className="project-card">
+
+                <div className="project-card-content">
+                  <h4 className="project-card-title">Glowy Icons</h4>
+                  <div className="project-card-text">Colorful and bright vector icons with slight shadows</div>
+                  <div className="project-card-footer">
+                    <a className="button button-secondary" 
+                      target="_blank" 
+                      href="https://www.figma.com/community/file/1452663046127877131/glowy-icons-v1-0"
+                    >
+                        <span>Figma Link</span>
+                        <ChevronRight color="black" size={18} />
+                    </a>
+                  </div>
                 </div>
+
+                <div className="project-card-pic">
+                  <Image
+                    className=""
+                    src="/images/project-glowy.jpg"
+                    alt="Glowy Icons"
+                    width={800}
+                    height={800}
+                  />
+                </div>
+
               </div>
 
-              <div className="project-card-pic">
+              <div className="project-card">
+
+                <div className="project-card-content">
+                  <h4 className="project-card-title">Watch me on YouTube</h4>
+                  <div className="project-card-text">I talk about webdev & stuff</div>
+                  <div className="project-card-footer">
+                    <a className="button button-secondary" 
+                      target="_blank" 
+                      href="https://www.youtube.com/@webdevandstuff"
+                    >
+                        <span>YouTube</span>
+                        <ChevronRight color="black" size={18} />
+                    </a>
+                  </div>
+                </div>
+
+                <div className="project-card-pic">
+                  <Image
+                    className=""
+                    src="/images/project-glowy.jpg"
+                    alt="Glowy Icons"
+                    width={800}
+                    height={800}
+                  />
+                </div>
+
+              </div>
+
+            </div> */}
+
+            <div className="grid grid-cols-1 gap-8 md:gap-12 md:grid-cols-2">
+
+              <div className="flex flex-col border border-gray-200 rounded-4xl overflow-hidden">
                 <Image
                   className=""
                   src="/images/project-glowy.jpg"
@@ -201,9 +247,50 @@ export default function Home() {
                   width={800}
                   height={800}
                 />
+                <div className="p-8 md:p-12 pt-2 w-full">
+                  <h4 className="font-semibold ff-display text-xl md:text-3xl">Glowy Icons</h4>
+                  <div className="text-md text-slate-800 mt-2">Colorful and bright vector icons with slight shadows</div>
+                  <div className="mt-8">
+                    <a className="button button-secondary" 
+                      target="_blank" 
+                      href="https://www.figma.com/community/file/1452663046127877131/glowy-icons-v1-0"
+                    >
+                        <span>Figma Link</span>
+                        <ChevronRight color="black" size={18} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col justify-between bg-[#FF163B] text-white rounded-4xl overflow-hidden">
+                <div className="p-12 flex-1 flex items-center justify-center">
+                  <div className="custom-rings relative">
+                    <Image
+                      className="rounded-full  "
+                      src="/me.jpg"
+                      width={150}
+                      height={150}
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="p-8 md:p-12 pt-2 w-full">
+                  <h4 className="font-semibold ff-display text-xl md:text-3xl">Watch me on YouTube</h4>
+                  <div className="text-md mt-2">I talk about webdev & stuff</div>
+                  <div className="mt-8">
+                    <a className="button button-outline-white" 
+                      target="_blank" 
+                      href="https://www.youtube.com/@webdevandstuff"
+                    >
+                        <span>YouTube Channel</span>
+                        <ChevronRight color="white" size={18} />
+                    </a>
+                  </div>
+                </div>
               </div>
 
             </div>
+
 
             {/* <div>
                 <div>
@@ -240,9 +327,9 @@ export default function Home() {
         <div className="section">
           <div className="container mx-auto px-6">
             <div className="flex flex-col gap-3 sm:gap-6">
-                <div className="text-3xl sm:text-6xl font-display font-medium opacity-50">Telegram:</div>
+                <div className="text-3xl sm:text-6xl ff-display font-medium opacity-50">Telegram:</div>
                 <div>
-                  <a className="text-3xl sm:text-6xl font-display font-medium" href="//t.me/almazbisenbaev">@almazbisenbaev</a>
+                  <a className="text-3xl sm:text-6xl ff-display font-medium" href="//t.me/almazbisenbaev">@almazbisenbaev</a>
                 </div>
             </div>
           </div>

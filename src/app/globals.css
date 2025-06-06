@@ -36,7 +36,7 @@ body {
 
   /* --font-text: 'Clash Grotesk', sans-serif; */
   --font-text: 'Switzer', sans-serif;
-  --font-display: 'Clash Display', sans-serif;
+  --ff-display: 'Clash Display', sans-serif;
 }
 
 /* html,
@@ -72,10 +72,10 @@ a {
   }
 }
 
-.font-display {
-  font-family: var(--font-display);
+.ff-display {
+  font-family: var(--ff-display);
 }
-
+/* 
 .grid {
   display: flex;
   flex-wrap: wrap;
@@ -91,9 +91,9 @@ a {
   max-width: 50%;
   flex-basis: 50%;
   width: 50%;
-}
+} */
 
-@media (max-width: 991px) {
+/* @media (max-width: 991px) {
 
   .grid {
     margin: -10px;
@@ -104,7 +104,6 @@ a {
   }
 
   .grid-2x {
-    /* grid-template-columns: 1fr; */
     flex-direction: column;
   }
 
@@ -112,7 +111,7 @@ a {
     width: 100%;
     max-width: 100%;
   }
-}
+} */
 
 
 .section {
@@ -125,7 +124,7 @@ a {
 }
 
 .section-header-title {
-  font-family: var(--font-display);
+  font-family: var(--ff-display);
   font-size: 36px;
   font-weight: 600;
   margin-left: -0.04em;
@@ -167,7 +166,7 @@ a {
 }
 
 .intro-text {
-  font-family: var(--font-display);
+  font-family: var(--ff-display);
   font-weight: 600;
   font-size: 112px;
   line-height: 1.15;
@@ -586,6 +585,7 @@ a {
 
 .button {
   font-weight: 500;
+  border: 1px solid transparent;
   border-radius: 99px;
   background: rgba(0,0,0,0.1);
   padding: 16px 32px;
@@ -612,6 +612,17 @@ a {
   transform: scale(0.98) translateY(1px);
 }
 
+.button-outline-white {
+  color: #fff;
+  background: transparent;
+  border-color: rgba(255,255,255,.5);
+}
+
+.button-outline-white:hover, .button-outline-white:focus {
+  border-color: #fff;
+  background: transparent;
+}
+
 .extlink {
   font-size: 1rem;
   opacity: 0.7;
@@ -630,4 +641,82 @@ a {
   width: auto;
   height: 0.75em;
   display: block;
+}
+
+
+/* .custom-rings::before {
+  content: "";
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 999px;
+
+  display: block;
+
+  position: absolute;
+  top: -25px;
+  right: -25px;
+  bottom: -25px;
+  left: -25px;
+}
+
+.custom-rings::after {
+  content: "";
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 999px;
+
+  display: block;
+
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  bottom: -50px;
+  left: -50px;
+} */
+
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8); /* Start slightly smaller */
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2); /* Enlarge */
+    opacity: 0; /* Fade out */
+  }
+}
+
+.custom-rings::before {
+  content: "";
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 999px;
+
+  display: block;
+
+  position: absolute;
+  top: -25px;
+  right: -25px;
+  bottom: -25px;
+  left: -25px;
+
+  animation: pulse-ring 2s infinite forwards; /* Apply animation */
+  animation-delay: 0.1s;
+}
+
+.custom-rings::after {
+  content: "";
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 999px;
+
+  display: block;
+
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  bottom: -50px;
+  left: -50px;
+
+  animation: pulse-ring 2s infinite forwards; /* Apply animation */
+}
+
+.custom-rings img {
+  margin: 0;
 }
