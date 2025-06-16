@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./page.module.css";
 
+// import FaceBall from "@/components/face-model"
+
 // import IconWp from '@/assets/images/icon-wp.svg'; 
 // import IconReact from '@/assets/images/icon-react.svg'; 
 // import IconNext from '@/assets/images/icon-next.svg'; 
@@ -45,56 +47,56 @@ export default function Home() {
 
       <div className={`${styles.pageContent} ${!showIntro ? styles.pageContentVisible : ""}`}>
 
-          <div className="intro-wrapper">
-            <div className="container mx-auto px-6">
-                <div className="intro">
-                  <div className="intro-text">
-                    <span>Hi, I’m Almaz,</span>
-                    {/* The picture must animate somehow as you scroll, or maybe just fade out */}
-                    <Image
-                      className="intro-pic"
-                      src="/me.jpg"
-                      width={150}
-                      height={150}
-                      alt=""
-                    />
-                    <span> a&nbsp;Full-Stack Web Developer</span>
-                  </div>
+        <div className="intro-wrapper">
+          <div className="container mx-auto px-6">
+              <div className="intro">
+                <div className="intro-text">
+                  <span>Hi, I’m Almaz,</span>
+                  {/* The picture must animate somehow as you scroll, or maybe just fade out */}
+                  <Image
+                    className="intro-pic"
+                    src="/me.jpg"
+                    width={150}
+                    height={150}
+                    alt=""
+                  />
+                  <span> a&nbsp;Full-Stack Web Developer</span>
+                </div>
 
-                  <div className="intro-logos">
-                    {/* <IconWp />
-                    <IconReact />
-                    <IconNext />
-                    <IconNode />
-                    <IconFigma /> */}
-                    {/* 
-                    Express
-                    MongoDB
-                    JavaScript
-                    Git
-                    GitHub
-                    PostgreSQL
-                    Javascript
-                    Typescript
-                    Python
-                    C++
-                    React.js
-                    Next.js
-                    React Native
-                    Express.js
-                    MongoDB
-                    Postgres
-                    Prisma
-                    Tailwind
-                    Docker
-                    AWS
-                    OpenAI, Gemini, Claude, Prompt Engineering */}
-
-                  </div>
+                <div className="intro-logos">
+                  {/* <IconWp />
+                  <IconReact />
+                  <IconNext />
+                  <IconNode />
+                  <IconFigma /> */}
+                  {/* 
+                  Express
+                  MongoDB
+                  JavaScript
+                  Git
+                  GitHub
+                  PostgreSQL
+                  Javascript
+                  Typescript
+                  Python
+                  C++
+                  React.js
+                  Next.js
+                  React Native
+                  Express.js
+                  MongoDB
+                  Postgres
+                  Prisma
+                  Tailwind
+                  Docker
+                  AWS
+                  OpenAI, Gemini, Claude, Prompt Engineering */}
 
                 </div>
-            </div>
+
+              </div>
           </div>
+        </div>
 
         <div className="section">
           <div className="container mx-auto px-6">
@@ -155,7 +157,6 @@ export default function Home() {
 
           </div>
         </div>
-
 
 
         {/* <div className="section">
@@ -325,13 +326,22 @@ export default function Home() {
         </div> */}
 
         <div className="section">
-          <div className="container mx-auto px-6">
+          <div className="container mx-auto px-6 relative">
+
             <div className="flex flex-col gap-3 sm:gap-6">
                 <div className="text-3xl sm:text-6xl ff-display font-medium opacity-50">Telegram:</div>
                 <div>
                   <a className="text-3xl sm:text-6xl ff-display font-medium" href="//t.me/almazbisenbaev">@almazbisenbaev</a>
                 </div>
             </div>
+
+            {/* <FaceBall 
+              width={250} 
+              height={250} 
+              imageUrl="/face.jpg"
+              className="absolute bottom-0 right-0" 
+            /> */}
+
           </div>
         </div>
 
@@ -444,6 +454,7 @@ export default function Home() {
             Go to nextjs.org →
           </a>
         </footer> */}
+
       </div>
     </div>
   );
