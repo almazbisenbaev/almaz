@@ -320,13 +320,31 @@ export default function Home() {
         </div>
 
 
-        {/* <div className="container mx-auto">
-          <a href="#">YouTube</a>
-          <a href="#">Behance</a>
+        {/* <div className="section">
+          <div className="container mx-auto px-6 relative">
+
+          </div>
         </div> */}
+
 
         <div className="section">
           <div className="container mx-auto px-6 relative">
+
+            <div className="text-lg flex flex-col sm:flex-row gap-3 mb-18">
+                <div>I also talk about web dev here:</div>
+
+                <div className="flex gap-3">
+                  <a target="_blank" href="https://www.threads.com/@almazbisenbaev" className="extlink">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z" fill="#000"></path></svg>
+                    Threads
+                  </a>
+                  <a target="_blank" href="https://x.com/almazbisenbaev" className="extlink">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z" fill="#000"></path></svg>
+                    Twitter
+                  </a>
+                </div>
+
+            </div>
 
             <div className="flex flex-col gap-3 sm:gap-6">
                 <div className="text-3xl sm:text-6xl ff-display font-medium opacity-50">Telegram:</div>
@@ -344,25 +362,6 @@ export default function Home() {
 
           </div>
         </div>
-
-        {/* <div className="section">
-          <div className="container mx-auto">
-              <div className="flex gap-3">
-                <span>You can also find me here:</span>
-
-                <a target="_blank" href="//www.behance.net/almazbisenbaev" className="extlink">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z" fill="#000"></path></svg>
-                  Behance
-                </a>
-
-                <a target="_blank" href="//www.behance.net/almazbisenbaev" className="extlink">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z" fill="#000"></path></svg>
-                  Behance
-                </a>
-
-              </div>
-          </div>
-        </div> */}
 
 
         {/* <EmblaCarousel slides={SLIDES} options={OPTIONS} /> */}
