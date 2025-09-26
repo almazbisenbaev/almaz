@@ -71,43 +71,20 @@ a {
 .ff-display {
   font-family: var(--ff-display);
 }
-/* 
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  margin: -20px;
+/* Reviews Masonry Layout */
+.reviews-masonry {
+  column-fill: balance;
 }
 
-.grid-item {
-  flex: 1;
-  padding: 20px;
+.review-card {
+  break-inside: avoid;
+  page-break-inside: avoid;
 }
 
-.grid-2x .grid-item {
-  max-width: 50%;
-  flex-basis: 50%;
-  width: 50%;
-} */
-
-/* @media (max-width: 991px) {
-
-  .grid {
-    margin: -10px;
-  }
-
-  .grid-item {
-    padding: 10px;
-  }
-
-  .grid-2x {
-    flex-direction: column;
-  }
-
-  .grid-2x .grid-item {
-    width: 100%;
-    max-width: 100%;
-  }
-} */
+/* Ensure proper spacing in masonry layout */
+.reviews-masonry > * {
+  margin-bottom: 1.5rem;
+}
 
 
 .section {

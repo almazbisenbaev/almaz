@@ -14,6 +14,7 @@ import styles from "./page.module.css";
 
 // import EmblaCarousel from '@/components/SideProjectsCarousel';
 import LinkCard from '@/components/LinkCard';
+import ReviewsSection from '@/components/ReviewsSection';
 
 import { ChevronRight } from 'lucide-react';
 
@@ -300,11 +301,7 @@ export default function Home() {
         </div>
 
 
-        {/* <div className="section">
-          <div className="container mx-auto px-6 relative">
-
-          </div>
-        </div> */}
+        <ReviewsSection />
 
 
         <div className="section">
