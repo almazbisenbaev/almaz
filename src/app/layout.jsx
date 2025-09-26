@@ -1,6 +1,7 @@
 import { GoogleAnalytics } from '@next/third-parties/google';
 
 // import { Geist, Geist_Mono } from "next/font/google";
+import { Funnel_Display } from "next/font/google";
 import "./globals.css";
 import Link from 'next/link';
 
@@ -8,6 +9,11 @@ import Link from 'next/link';
 //   variable: "--font-geist-sans",
 //   subsets: ["latin"],
 // });
+
+const funnelDisplay = Funnel_Display({
+  variable: "--font-funnel-display",
+  subsets: ["latin"],
+});
 
 // const geistMono = Geist_Mono({
 //   variable: "--font-geist-mono",
@@ -37,7 +43,7 @@ export default function RootLayout({ children }) {
       </head>
       <body
         // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        className={`antialiased`}
+        className={`${funnelDisplay.variable} antialiased`}
       >
 
         <header>
@@ -62,8 +68,9 @@ export default function RootLayout({ children }) {
         </header>
 
         {children}
+      
+        <GoogleAnalytics gaId="G-10DVM02K4H" />
       </body>
-      <GoogleAnalytics gaId="G-10DVM02K4H" />
     </html>
   );
 }

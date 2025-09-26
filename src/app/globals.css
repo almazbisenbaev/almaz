@@ -44,10 +44,13 @@ body {
 body {
   color: var(--foreground);
   background: linear-gradient(#fff, #edede9, #f5ebe0 );
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   font-family: var(--font-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: -0.01em;
+  min-height: 100svh;
 }
 
 /* * {
@@ -68,7 +71,7 @@ a {
 }
 
 .ff-display {
-  font-family: var(--ff-display);
+  font-family: var(--font-funnel-display);
 }
 /* Reviews Masonry Layout */
 .reviews-masonry {
@@ -96,9 +99,10 @@ a {
 }
 
 .section-header-title {
-  font-family: var(--ff-display);
+  font-family: var(--font-funnel-display);
+  letter-spacing: -0.02em;
   font-size: 36px;
-  font-weight: 600;
+  font-weight: bold;
   margin-left: -0.04em;
 }
 
@@ -138,11 +142,12 @@ a {
 }
 
 .intro-text {
-  font-family: var(--ff-display);
-  font-weight: 600;
+  /* font-family: var(--ff-display); */
+  font-family: var(--font-funnel-display);
+  font-weight: bold;
   font-size: 112px;
   line-height: 1.15;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.03em;
 
   width: 920px;
   max-width: 100%;
