@@ -10,13 +10,13 @@ export default function Template({ children }) {
     <AnimatePresence mode="wait">
       <motion.div
         key={pathname}
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
+        exit={{ opacity: 0, y: -30 }}
         transition={{
           type: "tween",
-          ease: [0.25, 0.46, 0.45, 0.94],
-          duration: 0.3
+          ease: [0.76, 0, 0.24, 1], // easeOutExpo - starts fast, ends very smoothly
+          duration: 1
         }}
       >
         {children}
