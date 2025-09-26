@@ -3,7 +3,6 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 // import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from 'next/link';
-import PageTransition from '@/components/PageTransition';
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -62,9 +61,7 @@ export default function RootLayout({ children }) {
           </div>
         </header>
 
-        <PageTransition>
-          {children}
-        </PageTransition>
+        {children}
       </body>
       <GoogleAnalytics gaId="G-10DVM02K4H" />
     </html>
