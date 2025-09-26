@@ -221,7 +221,7 @@ export default function Home() {
 
             <div className="grid grid-cols-1 gap-8 md:gap-12 md:grid-cols-2">
 
-              <div className="flex flex-col border border-gray-200 rounded-4xl overflow-hidden">
+              <div className="flex flex-col bg-white rounded-4xl overflow-hidden">
                 <Image
                   className=""
                   src="/images/project-glowy.jpg"
@@ -243,8 +243,8 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-
-              <div className="flex flex-col justify-between bg-[#FF163B] text-white rounded-4xl overflow-hidden">
+{/* bg-[#FF163B] */}
+              <div className="flex flex-col justify-between bg-gradient-to-b from-indigo-500 to-[#FF163B] text-white rounded-4xl overflow-hidden">
                 <div className="p-12 flex-1 flex items-center justify-center">
                   <div className="custom-rings relative">
                     <Image

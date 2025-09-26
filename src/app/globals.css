@@ -43,8 +43,7 @@ body {
 
 body {
   color: var(--foreground);
-  background: var(--background);
-  /* font-family: var(--font-geist-sans); */
+  background: linear-gradient(#fff, #edede9, #f5ebe0 );
   font-family: var(--font-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -659,7 +658,7 @@ a {
 
 .custom-rings::before {
   content: "";
-  border: 1px solid rgba(255,255,255,.35);
+  border: 2px solid rgba(255,255,255,.35);
   border-radius: 999px;
 
   display: block;
@@ -676,7 +675,7 @@ a {
 
 .custom-rings::after {
   content: "";
-  border: 1px solid rgba(255,255,255,.22);
+  border: 2px solid rgba(255,255,255,.22);
   border-radius: 999px;
 
   display: block;

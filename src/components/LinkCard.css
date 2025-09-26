@@ -1,5 +1,6 @@
 .linkcard {
-    background: #F1F2F3;
+    /* background: #F1F2F3; */
+    background: #fff;
     border-radius: 40px;
 
     display: flex;
