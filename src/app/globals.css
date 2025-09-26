@@ -83,6 +83,12 @@ a {
   page-break-inside: avoid;
 }
 
+.review-card-quote svg {
+  width: 36px;
+  margin-bottom: 12px;
+  margin-left: -4px;
+}
+
 /* Ensure proper spacing in masonry layout */
 .reviews-masonry > * {
   margin-bottom: 1.5rem;
@@ -130,6 +136,14 @@ a {
 }
 
 
+
+.hdr-link {
+  transition: 0.2s;
+}
+
+.hdr-link:hover, .hdr-link:focus {
+  color: #a45d0e;
+}
 
 
 .intro-wrapper {

@@ -22,7 +22,7 @@ const reviewsData = [
   {
     id: 4,
     name: "",
-    review: "Almaz was so helpful in setting up my website! He completed everything that I needed but faster than I had expected and the finished results exceeded my expectations. I will definitely be using his work in the future for any additional projects. He was so communicative and even made me a guide on maintaining what he had completed to make sure I was able to utilize all of the things he set in place. <br />Overall I highly recommend Almaz and I am so glad I found him!",
+    review: "Almaz was so helpful in setting up my website! He completed everything that I needed but faster than I had expected and the finished results exceeded my expectations. I will definitely be using his work in the future for any additional projects. He was so communicative and even made me a guide on maintaining what he had completed to make sure I was able to utilize all of the things he set in place. Overall I highly recommend Almaz and I am so glad I found him!",
     upworkLink: "https://www.upwork.com/freelancers/~01fc6ec6fb228858ff"
   },
   {
@@ -42,8 +42,8 @@ const reviewsData = [
 const ReviewCard = ({ review, name, upworkLink }) => {
   return (
     <div className="review-card bg-white rounded-3xl p-8">
-      <div className="mb-5">
-        <svg className='w-[36px] mb-2 -ml-[5px]' xmlns="http://www.w3.org/2000/svg" fill="#efd8d8" class="bi bi-quote" viewBox="0 0 16 16"> <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388q0-.527.062-1.054.093-.558.31-.992t.559-.683q.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 9 7.558V11a1 1 0 0 0 1 1zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612q0-.527.062-1.054.094-.558.31-.992.217-.434.559-.683.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 3 7.558V11a1 1 0 0 0 1 1z"></path></svg>
+      <div className="mb-5 review-card-quote">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#efd8d8" class="bi bi-quote" viewBox="0 0 16 16"> <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388q0-.527.062-1.054.093-.558.31-.992t.559-.683q.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 9 7.558V11a1 1 0 0 0 1 1zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612q0-.527.062-1.054.094-.558.31-.992.217-.434.559-.683.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 3 7.558V11a1 1 0 0 0 1 1z"></path></svg>
         <p className="text-gray-800 text-lg">{review}</p>
       </div>
       <div className="flex items-center justify-between border-t border-gray-200 pt-4">
