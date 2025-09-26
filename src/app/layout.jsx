@@ -1,7 +1,7 @@
 import { GoogleAnalytics } from '@next/third-parties/google';
 
 // import { Geist, Geist_Mono } from "next/font/google";
-import { Funnel_Display } from "next/font/google";
+import { Funnel_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Link from 'next/link';
 
@@ -12,6 +12,11 @@ import Link from 'next/link';
 
 const funnelDisplay = Funnel_Display({
   variable: "--font-funnel-display",
+  subsets: ["latin"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -30,11 +35,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
 
       <head>
-        <link href="https://api.fontshare.com/v2/css?f[]=switzer@1,2&f[]=clash-display@1&display=swap" rel="stylesheet" />
+        {/* <link href="https://api.fontshare.com/v2/css?f[]=switzer@1,2&f[]=clash-display@1&display=swap" rel="stylesheet" /> */}
       </head>
 
       <body
-        className={`${funnelDisplay.variable} antialiased`}
+        className={`${funnelDisplay.variable} ${inter.variable} antialiased`}
       >
 
         <header className='hdr'>
