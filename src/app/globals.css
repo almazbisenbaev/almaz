@@ -27,7 +27,7 @@ body {
 
 
 :root {
-  --background: #ffffff;
+  --background: #EFEBE5;
   --foreground: #000;
 
   /* --font-text: 'Clash Grotesk', sans-serif; */
@@ -43,7 +43,8 @@ body {
 
 body {
   color: var(--foreground);
-  background: linear-gradient(#fff, #edede9, #f5ebe0 );
+  /* background: linear-gradient(#fff, #edede9, #f5ebe0 ); */
+  background: #EFEBE5;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   font-family: var(--font-inter);
