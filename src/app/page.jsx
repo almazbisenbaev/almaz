@@ -2,7 +2,6 @@
 
 import React from "react";
 import Image from "next/image";
-import styles from "./page.module.css";
 
 // import FaceBall from "@/components/face-model"
 
@@ -25,7 +24,7 @@ export default function Home() {
   // const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
   return (
-    <div className={styles.page}>
+    <div className="home-page">
       <div>
 
         <div className="intro-wrapper">

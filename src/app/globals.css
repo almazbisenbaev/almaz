@@ -712,3 +712,11 @@ a {
 .custom-rings img {
   margin: 0;
 }
+
+.home-page {
+  --gray-rgb: 0, 0, 0;
+  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
+  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
+  position: relative;
+  overflow: hidden;
+}
