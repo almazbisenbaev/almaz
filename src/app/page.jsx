@@ -6,11 +6,11 @@ import styles from "./page.module.css";
 
 // import FaceBall from "@/components/face-model"
 
-// import IconWp from '@/assets/images/icon-wp.svg'; 
-// import IconReact from '@/assets/images/icon-react.svg'; 
-// import IconNext from '@/assets/images/icon-next.svg'; 
-// import IconNode from '@/assets/images/icon-node.svg'; 
-// import IconFigma from '@/assets/images/icon-figma.svg'; 
+import IconWp from '@/assets/images/icon-wp.svg'; 
+import IconReact from '@/assets/images/icon-react.svg'; 
+import IconNext from '@/assets/images/icon-next.svg'; 
+import IconNode from '@/assets/images/icon-node.svg'; 
+import IconFigma from '@/assets/images/icon-figma.svg'; 
 
 // import EmblaCarousel from '@/components/SideProjectsCarousel';
 import LinkCard from '@/components/LinkCard';
@@ -45,11 +45,11 @@ export default function Home() {
                 </div>
 
                 <div className="intro-logos">
-                  {/* <IconWp />
+                  <IconWp />
                   <IconReact />
                   <IconNext />
                   <IconNode />
-                  <IconFigma /> */}
+                  <IconFigma />
                   {/* 
                   Express
                   MongoDB
@@ -324,9 +324,9 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col gap-3 sm:gap-6">
-                <div className="text-3xl sm:text-6xl ff-display font-medium opacity-50">Telegram:</div>
+                <div className="text-3xl sm:text-6xl ff-display font-bold tracking-tight opacity-50">Telegram:</div>
                 <div>
-                  <a className="text-3xl sm:text-6xl ff-display font-medium" href="//t.me/almazbisenbaev">@almazbisenbaev</a>
+                  <a className="text-3xl sm:text-6xl ff-display font-bold tracking-tight" href="//t.me/almazbisenbaev">@almazbisenbaev</a>
                 </div>
             </div>
 
