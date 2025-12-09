@@ -3,25 +3,18 @@
 import React from "react";
 import Image from "next/image";
 
-// import FaceBall from "@/components/face-model"
-
 import IconWp from '@/assets/images/icon-wp.svg'; 
 import IconReact from '@/assets/images/icon-react.svg'; 
 import IconNext from '@/assets/images/icon-next.svg'; 
 import IconNode from '@/assets/images/icon-node.svg'; 
 import IconFigma from '@/assets/images/icon-figma.svg'; 
 
-// import EmblaCarousel from '@/components/SideProjectsCarousel';
 import LinkCard from '@/components/LinkCard';
 import ReviewsSection from '@/components/ReviewsSection';
 
 import { ChevronRight } from 'lucide-react';
 
 export default function Home() {
-
-  // const OPTIONS = {}
-  // const SLIDE_COUNT = 5
-  // const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
   return (
     <div className="home-page">
@@ -38,7 +31,7 @@ export default function Home() {
                     src="/me.jpg"
                     width={150}
                     height={150}
-                    alt=""
+                    alt="Almaz Bisenbaev"
                   />
                   <span> a&nbsp;Full-Stack Web Developer</span>
                 </div>
@@ -49,29 +42,6 @@ export default function Home() {
                   <IconNext />
                   <IconNode />
                   <IconFigma />
-                  {/* 
-                  Express
-                  MongoDB
-                  JavaScript
-                  Git
-                  GitHub
-                  PostgreSQL
-                  Javascript
-                  Typescript
-                  Python
-                  C++
-                  React.js
-                  Next.js
-                  React Native
-                  Express.js
-                  MongoDB
-                  Postgres
-                  Prisma
-                  Tailwind
-                  Docker
-                  AWS
-                  OpenAI, Gemini, Claude, Prompt Engineering */}
-
                 </div>
 
               </div>
