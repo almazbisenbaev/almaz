@@ -1,17 +1,6 @@
 import { GoogleAnalytics } from '@next/third-parties/google';
-import { Funnel_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Header from '@/components/layout/Header';
-
-const funnelDisplay = Funnel_Display({
-  variable: "--font-funnel-display",
-  subsets: ["latin"],
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
 
 export const metadata = {
   title: "Almaz Bisenbaev - Full-Stack Web Developer",
@@ -21,8 +10,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link href="https://api.fontshare.com/v2/css?f[]=general-sans@1,2&display=swap" rel="stylesheet" />
+      </head>
       <body
-        className={`${funnelDisplay.variable} ${inter.variable} antialiased`}
+        className={`antialiased`}
       >
         <Header />
 

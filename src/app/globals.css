@@ -1,31 +1,5 @@
 @import "tailwindcss";
 
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-} */
-
-
 :root {
   --background: #EFEBE5;
   --foreground: #000;
@@ -47,7 +21,7 @@ body {
   background: #EFEBE5;
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  font-family: var(--font-inter);
+  font-family: 'General Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: -0.01em;
@@ -71,9 +45,6 @@ a {
   }
 }
 
-/* .ff-display {
-  font-family: var(--font-funnel-display);
-} */
 /* Reviews Masonry Layout */
 .reviews-masonry {
   column-fill: balance;
@@ -106,7 +77,6 @@ a {
 }
 
 .section-header-title {
-  font-family: var(--font-funnel-display);
   letter-spacing: -0.02em;
   font-size: 36px;
   font-weight: bold;
@@ -136,8 +106,6 @@ a {
 
 }
 
-
-
 .hdr-link {
   transition: 0.2s;
 }
@@ -157,8 +125,6 @@ a {
 }
 
 .intro-text {
-  /* font-family: var(--ff-display); */
-  font-family: var(--font-funnel-display);
   font-weight: bold;
   font-size: 112px;
   line-height: 1.15;
