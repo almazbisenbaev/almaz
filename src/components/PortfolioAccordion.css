@@ -101,7 +101,7 @@
 }
 
 .portfolio-icon.is-open {
-    transform: rotate(45deg);
+    transform: rotate(45deg) scale(0.8);
 }
 
 .portfolio-content-wrapper {

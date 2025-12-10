@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { Plus, ExternalLink } from 'lucide-react';
+import { Plus, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import './PortfolioAccordion.css';
 
@@ -93,7 +93,7 @@ const PortfolioAccordion = () => {
                     rel="noopener noreferrer"
                     className="portfolio-link"
                 >
-                    Visit Website <ExternalLink size={16} />
+                    Visit Website <ChevronRight size={20} strokeWidth={1} />
                 </a>
             </div>
           </div>
