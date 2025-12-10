@@ -18,7 +18,8 @@ body {
 body {
   color: var(--foreground);
   /* background: linear-gradient(#fff, #edede9, #f5ebe0 ); */
-  background: #EFEBE5;
+  /* background: #EFEBE5; */
+  background: #F4F4F4;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   font-family: 'General Sans', sans-serif;

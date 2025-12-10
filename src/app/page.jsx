@@ -291,7 +291,7 @@ export default function Home() {
         <div className="section">
           <div className="container mx-auto px-6 relative">
 
-            <div className="text-lg flex flex-col sm:flex-row gap-3 mb-18">
+            <div className="font-medium text-lg flex flex-col sm:flex-row gap-3 mb-18">
                 <div>I also talk about web dev here:</div>
 
                 <div className="flex gap-3">
