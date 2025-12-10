@@ -11,6 +11,7 @@ import IconFigma from '@/assets/images/icon-figma.svg';
 
 import LinkCard from '@/components/LinkCard';
 import ReviewsSection from '@/components/ReviewsSection';
+import PortfolioAccordion from '@/components/PortfolioAccordion';
 
 import { ChevronRight } from 'lucide-react';
 
@@ -48,63 +49,69 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="section">
-          <div className="container mx-auto px-6">
+        <div className="px-2">
+          <div className="section bg-black text-white">
+            <div className="container mx-auto px-6">
 
-            <div className="section-header">
-              <h2 className="section-header-title">Recent works</h2>
+              <div className="section-header">
+                <h2 className="section-header-title">Recent works</h2>
+              </div>
+
+              {/* <div className="grid grid-cols-1 gap-8 md:gap-12 md:grid-cols-2">
+
+                <div className="">
+                  <LinkCard 
+                    title="silverskincoffee.ie"
+                    url="//silverskincoffee.ie"
+                    year="2024"
+                    description="E-Commerce website that sells coffee beans. WordPress, Woocommerce."
+                    category="Development"
+                  />
+                </div>
+
+                <div className="">
+                  <LinkCard 
+                    title="autosl.de"
+                    url="//autosl.de"
+                    year="2024"
+                    description="A company that sells expensive cars. Wordpress, a custom plugin for API intergration."
+                    category="UX Design, Development"
+                    client="Mindlind"
+                    clientUrl="//mindlind.de"
+                  />
+                </div>
+
+                <div className="">
+                  <LinkCard 
+                    title="muafaktur.de"
+                    url="//muafaktur.de"
+                    year="2023"
+                    description="WooCommerce website for a company offering beauty products and training courses"
+                    category="UX Design, Development"
+                    client="Mindlind"
+                    clientUrl="//mindlind.de"
+                  />
+                </div>
+
+                <div className="">
+                  <LinkCard 
+                    title="monitask.com"
+                    url="//monitask.com"
+                    year="2021"
+                    description="Multilingual WordPress website with hundreds of pages all generated and updated automatically"
+                    category="Development"
+                    client="Mindlind"
+                    clientUrl="//mindlind.de"
+                  />
+                </div>
+                
+              </div> */}
+
+
+              <PortfolioAccordion />
+
+
             </div>
-
-            <div className="grid grid-cols-1 gap-8 md:gap-12 md:grid-cols-2">
-
-              <div className="">
-                <LinkCard 
-                  title="silverskincoffee.ie"
-                  url="//silverskincoffee.ie"
-                  year="2024"
-                  description="E-Commerce website that sells coffee beans. WordPress, Woocommerce."
-                  category="Development"
-                />
-              </div>
-
-              <div className="">
-                <LinkCard 
-                  title="autosl.de"
-                  url="//autosl.de"
-                  year="2024"
-                  description="A company that sells expensive cars. Wordpress, a custom plugin for API intergration."
-                  category="UX Design, Development"
-                  client="Mindlind"
-                  clientUrl="//mindlind.de"
-                />
-              </div>
-
-              <div className="">
-                <LinkCard 
-                  title="muafaktur.de"
-                  url="//muafaktur.de"
-                  year="2023"
-                  description="WooCommerce website for a company offering beauty products and training courses"
-                  category="UX Design, Development"
-                  client="Mindlind"
-                  clientUrl="//mindlind.de"
-                />
-              </div>
-
-              <div className="">
-                <LinkCard 
-                  title="monitask.com"
-                  url="//monitask.com"
-                  year="2021"
-                  description="Multilingual WordPress website with hundreds of pages all generated and updated automatically"
-                  category="Development"
-                  client="Mindlind"
-                  clientUrl="//mindlind.de"
-                />
-              </div>
-              
-            </div>
-
           </div>
         </div>
 

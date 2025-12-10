@@ -68,8 +68,15 @@ a {
 
 
 .section {
+  border-radius: 24px;
   padding-top: 40px;
   padding-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  .section {
+    border-radius: 40px;
+  }
 }
 
 .section-header {
