@@ -314,13 +314,6 @@ export default function Home() {
                 </div>
             </div>
 
-            {/* <FaceBall 
-              width={250} 
-              height={250} 
-              imageUrl="/face.jpg"
-              className="absolute bottom-0 right-0" 
-            /> */}
-
           </div>
         </div>
 

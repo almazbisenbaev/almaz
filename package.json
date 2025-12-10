@@ -10,14 +10,11 @@
   },
   "dependencies": {
     "@next/third-parties": "^16.0.8",
-    "@react-three/drei": "^10.2.0",
-    "@react-three/fiber": "^9.1.2",
     "framer-motion": "^12.23.22",
     "lucide-react": "^0.556.0",
     "next": "^16.0.8",
     "react": "^19.2.1",
-    "react-dom": "^19.2.1",
-    "three": "^0.181.2"
+    "react-dom": "^19.2.1"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
