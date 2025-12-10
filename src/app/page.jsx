@@ -53,8 +53,12 @@ export default function Home() {
           <div className="section bg-black text-white">
             <div className="container mx-auto px-6">
 
-              <div className="section-header">
+              {/* <div className="section-header">
                 <h2 className="section-header-title">Recent works</h2>
+              </div> */}
+
+              <div className="testheader testheader-white">
+                <div className="testheader-title">Recent works</div>
               </div>
 
               {/* <div className="grid grid-cols-1 gap-8 md:gap-12 md:grid-cols-2">
@@ -131,8 +135,12 @@ export default function Home() {
         <div className="section">
           <div className="container mx-auto px-6">
 
-            <div className="section-header">
+            {/* <div className="section-header">
               <h2 className="section-header-title">Personal projects</h2>
+            </div> */}
+
+            <div className="testheader">
+              <div className="testheader-title">Personal projects</div>
             </div>
 
             {/* <div className="projects-grid">
@@ -321,5 +329,6 @@ export default function Home() {
 
       </div>
     </div>
-  );
+  )
+  ;
 }

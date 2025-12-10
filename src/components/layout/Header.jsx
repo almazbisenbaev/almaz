@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const Header = () => {
   return (
-    <header className='hdr'>
+    <header className='hdr uppe'>
       <div className="container mx-auto p-6">
         <div className="hdr-row flex flex-col sm:flex-row gap-3 justify-between leading-tight font-semibold">
 

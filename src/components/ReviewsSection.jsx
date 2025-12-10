@@ -31,8 +31,12 @@ const ReviewsSection = () => {
     <div className="section">
       <div className="container mx-auto px-6">
         
-        <div className="section-header">
+        {/* <div className="section-header">
           <h2 className="section-header-title">What people say</h2>
+        </div> */}
+
+        <div className="testheader">
+          <div className="testheader-title">What people say</div>
         </div>
 
         {/* Masonry layout using CSS columns */}
