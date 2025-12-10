@@ -150,3 +150,24 @@
 .portfolio-link:hover {
     color: #d1d5db; /* text-gray-300 */
 }
+.portfolio-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.portfolio-skill-chip {
+    font-size: 0.875rem;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.portfolio-content .portfolio-description {
+    margin-bottom: 2rem;
+    color: #9ca3af;
+    font-size: 1.125rem;
+    line-height: 1.6;
+}

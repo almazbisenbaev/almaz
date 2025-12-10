@@ -11,6 +11,7 @@ const works = [
     year: "2024",
     description: "E-Commerce website that sells coffee beans. WordPress, Woocommerce.",
     category: "Development",
+    skills: ["WordPress", "WooCommerce"],
     image: "/images/project-glowy.jpg" 
   },
   {
@@ -21,6 +22,7 @@ const works = [
     category: "UX Design, Development",
     client: "Mindlind",
     clientUrl: "//mindlind.de",
+    skills: ["WordPress", "Custom Plugin", "API Integration"],
     image: "/images/project-glowy.jpg" 
   },
   {
@@ -31,6 +33,7 @@ const works = [
     category: "UX Design, Development",
     client: "Mindlind",
     clientUrl: "//mindlind.de",
+    skills: ["WooCommerce", "UX Design"],
     image: "/images/project-glowy.jpg" 
   },
   {
@@ -41,6 +44,7 @@ const works = [
     category: "Development",
     client: "Mindlind",
     clientUrl: "//mindlind.de",
+    skills: ["WordPress", "Automation"],
     image: "/images/project-glowy.jpg" 
   }
 ];
@@ -62,7 +66,11 @@ const PortfolioAccordion = () => {
           >
             <div className="portfolio-text">
                 <h3 className="portfolio-title">{work.title}</h3>
-                <p className="portfolio-description">{work.description}</p>
+                <div className="portfolio-skills">
+                  {work.skills && work.skills.map((skill, i) => (
+                    <span key={i} className="portfolio-skill-chip">{skill}</span>
+                  ))}
+                </div>
             </div>
             <button 
                 className={`portfolio-toggle ${openIndex === index ? 'is-open' : ''}`}
@@ -74,11 +82,12 @@ const PortfolioAccordion = () => {
               />
             </button>
           </div>
-          
+
           <div 
             className={`portfolio-content-wrapper ${openIndex === index ? 'is-open' : ''}`}
           >
             <div className="portfolio-content">
+                <p className="portfolio-description">{work.description}</p>
                 {/* <div className="portfolio-image">
                      <Image 
                         src={work.image} 
@@ -91,9 +100,10 @@ const PortfolioAccordion = () => {
                     href={work.url} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="portfolio-link"
+                    className="button button-outline-white"
                 >
-                    Visit Website <ChevronRight size={20} strokeWidth={1} />
+                    Visit Website 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
                 </a>
             </div>
           </div>
