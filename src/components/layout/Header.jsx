@@ -2,33 +2,25 @@ import Link from 'next/link';
 
 const Header = () => {
   return (
-    <header className='hdr uppe'>
-      <div className="container mx-auto p-6">
-        <div className="hdr-row flex flex-col sm:flex-row gap-3 justify-between leading-tight font-semibold">
+    <header className='py-5'>
+      <div className="container mx-auto px-6">
+        <div className="hdr-row flex items-start flex-col sm:flex-row sm:items-end gap-3 justify-between font-medium text-sm leading-tight">
 
-          <div className='flex gap-1'>
-            <Link 
-              href="/"
-              className="hdr-link font-semibold"
-            >
-              Almaz Bissenbayev,
-            </Link>
-            <span className='opacity-50'> Web Developer</span>
+          <div className=''>
+              <Link 
+                href="/"
+                className="flex flex-col gap-1"
+              >
+                <div>Almaz Bissenbayev</div>
+                <div className='opacity-50'> Web Developer</div>
+              </Link>           
           </div>
 
           <nav className="flex gap-4">
-            <Link 
-              href="/posts/"
-              className="hdr-link font-semibold"
-            >
+            <Link href="/posts/">
               Posts
             </Link>
-            <Link 
-              href="#"
-              className="hdr-link font-semibold"
-            >
-              Resume
-            </Link>
+            <Link href="#">Resume</Link>
           </nav>
 
         </div>
