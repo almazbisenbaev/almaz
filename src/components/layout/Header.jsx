@@ -16,14 +16,20 @@ const Header = () => {
             <span className='opacity-50'> Web Developer</span>
           </div>
 
-          <div>
+          <nav className="flex gap-4">
             <Link 
               href="/posts/"
               className="hdr-link font-semibold"
             >
               Posts
             </Link>
-          </div>
+            <Link 
+              href="#"
+              className="hdr-link font-semibold"
+            >
+              Resume
+            </Link>
+          </nav>
 
         </div>
       </div>
