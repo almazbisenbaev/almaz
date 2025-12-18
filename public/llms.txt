@@ -1,0 +1,41 @@
+# Almaz Bisenbaev
+
+## Professional Summary
+Full-Stack Web Developer with expertise in modern web technologies and content management systems. Specialized in creating responsive, user-friendly websites and applications.
+
+## Technical Skills
+- **Frontend**: ReactJS, NextJS, JavaScript, HTML5, CSS3
+- **Backend**: Node.js, PHP
+- **CMS & E-commerce**: WordPress, WooCommerce
+- **Design & Prototyping**: Figma
+- **Version Control**: Git
+
+## Professional Experience
+
+### Web Development Projects
+- **silverskincoffee.ie** - E-commerce platform for coffee products (WordPress, WooCommerce)
+- **autosl.de** - Premium automotive sales platform with custom API integration (WordPress, Custom Plugin)
+- **muafaktur.de** - E-commerce site for beauty products and training courses (WooCommerce)
+- **monitask.com** - Multilingual WordPress solution with automated page generation
+
+### Open Source Contributions
+- **WP Power Tools** - WordPress utility plugin for developers
+- **Glowy Icons** - Vector icon set for designers and developers
+
+## Education & Certifications
+- [Degree/Diploma in relevant field, if applicable]
+- [Any relevant certifications or courses]
+
+## Contact Information
+- **Website**: [Your website URL]
+- **GitHub**: [Your GitHub profile]
+- **LinkedIn**: [Your LinkedIn profile]
+- **Email**: [Your professional email]
+- **Telegram**: @almazbisenbaev
+
+## Online Presence
+- **YouTube**: Webdev and Stuff (https://www.youtube.com/@webdevandstuff)
+- **Twitter**: @almazbisenbaev
+- **Threads**: @almazbisenbaev
+
+*Last updated: December 2025*
