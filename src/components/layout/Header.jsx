@@ -29,8 +29,8 @@ const Header = () => {
 
   const linkClassName = (href) =>
     isActive(href)
-      ? '!text-black transition-colors'
-      : '!text-zinc-500 hover:!text-black transition-colors';
+      ? '!text-[var(--accent)] transition-colors'
+      : '!text-zinc-500 hover:!text-[var(--accent)] transition-colors';
 
   return (
     <header className='py-5'>

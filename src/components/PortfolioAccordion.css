@@ -148,7 +148,7 @@
 }
 
 .portfolio-link:hover {
-    color: #d1d5db; /* text-gray-300 */
+    color: var(--accent);
 }
 .portfolio-skills {
     display: flex;

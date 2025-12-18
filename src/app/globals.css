@@ -3,6 +3,7 @@
 :root {
   --background: #EFEBE5;
   --foreground: #000;
+  --accent: #843DFF;
 
   /* --font-text: 'Clash Grotesk', sans-serif; */
   /* --font-text: 'Switzer', sans-serif; */
@@ -118,7 +119,7 @@ a {
 }
 
 .hdr-link:hover, .hdr-link:focus {
-  color: #6a1700;
+  color: var(--accent);
 }
 
 
@@ -601,6 +602,13 @@ a {
 
 .extlink:hover, .extlink:focus {
   opacity: 1;
+  color: var(--accent);
+}
+
+/* Special styling for Upwork links */
+.extlink[href*="upwork.com"]:hover,
+.extlink[href*="upwork.com"]:focus {
+  color: #56B53E;
 }
 
 .extlink svg {
