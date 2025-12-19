@@ -67,9 +67,7 @@ const PortfolioAccordion = () => {
             <div className="portfolio-text">
                 <h3 className="portfolio-title">{work.title}</h3>
                 <div className="portfolio-skills">
-                  {work.skills && work.skills.map((skill, i) => (
-                    <span key={i} className="portfolio-skill-chip">{skill}</span>
-                  ))}
+                  {work.skills && work.skills.join(', ')}
                 </div>
             </div>
             <button 

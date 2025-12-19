@@ -695,6 +695,19 @@ a {
   margin: 0;
 }
 
+/* YouTube banner image - smaller on mobile */
+.youtube-banner-image img {
+  width: 100px !important;
+  height: 100px !important;
+}
+
+@media (min-width: 768px) {
+  .youtube-banner-image img {
+    width: 150px !important;
+    height: 150px !important;
+  }
+}
+
 .home-page {
   --gray-rgb: 0, 0, 0;
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
@@ -706,7 +719,13 @@ a {
 
 
 .block-header {
-  margin-bottom: 75px;
+  margin-bottom: 2rem; /* Smaller on mobile */
+}
+
+@media (min-width: 768px) {
+  .block-header {
+    margin-bottom: 75px;
+  }
 }
 
 .block-header-title {

@@ -229,8 +229,8 @@ export default function Home() {
               </div>
 {/* bg-[#FF163B] */}
               <div className="flex flex-col justify-between bg-gradient-to-b from-indigo-500 to-[#FF163B] text-white rounded-4xl overflow-hidden">
-                <div className="p-12 flex-1 flex items-center justify-center">
-                  <div className="custom-rings relative">
+                <div className="px-6 md:px-12 py-12 md:py-24 flex-1 flex items-center justify-center">
+                  <div className="custom-rings relative youtube-banner-image">
                     <Image
                       className="rounded-full  "
                       src="/me.jpg"
