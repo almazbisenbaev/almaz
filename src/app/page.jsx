@@ -49,8 +49,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="px-2">
-          <div className="section bg-black text-white">
+        <div className="px-0 md:px-2">
+          <div className="section section-portfolio-mobile bg-black text-white">
             <div className="container mx-auto px-6">
 
               {/* <div className="section-header">

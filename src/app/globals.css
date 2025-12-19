@@ -80,6 +80,17 @@ a {
   }
 }
 
+/* Portfolio section specific styles - no rounding and no wrapper padding on mobile */
+.section-portfolio-mobile {
+  border-radius: 0;
+}
+
+@media (min-width: 768px) {
+  .section-portfolio-mobile {
+    border-radius: 40px;
+  }
+}
+
 .section-header {
   padding-bottom: 40px;
 }
