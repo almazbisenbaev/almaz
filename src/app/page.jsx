@@ -9,9 +9,10 @@ import IconNext from '@/assets/images/icon-next.svg';
 import IconNode from '@/assets/images/icon-node.svg'; 
 import IconFigma from '@/assets/images/icon-figma.svg'; 
 
-import LinkCard from '@/components/LinkCard';
+// import LinkCard from '@/components/LinkCard';
 import ReviewsSection from '@/components/ReviewsSection';
 import PortfolioAccordion from '@/components/PortfolioAccordion';
+// import CurvedLoop from '@/components/CurvedLoop';
 
 import { ChevronRight } from 'lucide-react';
 
@@ -48,6 +49,12 @@ export default function Home() {
               </div>
           </div>
         </div>
+
+        {/* <CurvedLoop
+          marqueeText="WordPress ✦ WooCommerce ✦ React ✦ NextJS ✦ PostgreSQL ✦ Framer ✦ Figma ✦"
+          curveAmount={320}
+          className="ff-display"
+        /> */}
 
         <div className="px-0 md:px-2">
           <div className="section section-portfolio-mobile bg-black text-white">
