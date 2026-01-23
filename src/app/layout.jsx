@@ -2,6 +2,7 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import "./globals.css";
 import Header from '@/components/layout/Header';
 import PageLoader from '@/components/PageLoader';
+import ScrollSkewWrapper from '@/components/ScrollSkewWrapper';
 import Head from 'next/head';
 
 export const metadata = {
@@ -102,12 +103,13 @@ export default function RootLayout({ children }) {
         </noscript>
       </head>
       <body
-        className={`antialiased`}
+        className={`antialiased overflow-x-hidden`}
       >
         <PageLoader>
-          <Header />
-
-          {children}
+          <ScrollSkewWrapper>
+            <Header />
+            {children}
+          </ScrollSkewWrapper>
         
           <GoogleAnalytics gaId="G-10DVM02K4H" />
         </PageLoader>
