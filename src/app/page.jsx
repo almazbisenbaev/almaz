@@ -9,8 +9,6 @@ import IconNext from '@/assets/images/icon-next.svg';
 import IconNode from '@/assets/images/icon-node.svg'; 
 import IconFigma from '@/assets/images/icon-figma.svg'; 
 
-import ScrollReveal from '@/components/ScrollReveal';
-
 // import LinkCard from '@/components/LinkCard';
 import ReviewsSection from '@/components/ReviewsSection';
 import PortfolioAccordion from '@/components/PortfolioAccordion';
@@ -58,7 +56,6 @@ export default function Home() {
           className="ff-display"
         /> */}
 
-        <ScrollReveal>
         <div className="px-0 md:px-2">
           <div className="section section-portfolio-mobile bg-black text-white">
             <div className="container mx-auto px-6">
@@ -128,7 +125,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-        </ScrollReveal>
 
 
         {/* <div className="section">
@@ -143,7 +139,6 @@ export default function Home() {
 
 
 
-        <ScrollReveal>
         <div className="section">
           <div className="container mx-auto px-6">
 
@@ -295,15 +290,11 @@ export default function Home() {
 
           </div>
         </div>
-        </ScrollReveal>
 
 
-        <ScrollReveal>
-          <ReviewsSection />
-        </ScrollReveal>
+        <ReviewsSection />
 
 
-        <ScrollReveal>
         <div className="section">
           <div className="container mx-auto px-6 relative">
 
@@ -332,7 +323,6 @@ export default function Home() {
 
           </div>
         </div>
-        </ScrollReveal>
 
 
         {/* <EmblaCarousel slides={SLIDES} options={OPTIONS} /> */}
