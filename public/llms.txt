@@ -30,20 +30,16 @@ Full-Stack Web Developer with expertise in modern web technologies and content m
 - **WP Power Tools** - WordPress utility plugin for developers
 - **Glowy Icons** - Vector icon set for designers and developers
 
-## Education & Certifications
-- [Degree/Diploma in relevant field, if applicable]
-- [Any relevant certifications or courses]
-
 ## Contact Information
-- **Website**: [Your website URL]
-- **GitHub**: [Your GitHub profile]
-- **LinkedIn**: [Your LinkedIn profile]
-- **Email**: [Your professional email]
+- **Website**: https://helloalmaz.com
+- **GitHub**: https://github.com/almazbisenbaev
+- **LinkedIn**: https://www.linkedin.com/in/almazbisenbaev
 - **Telegram**: @almazbisenbaev
 
 ## Online Presence
 - **YouTube**: Webdev and Stuff (https://www.youtube.com/@webdevandstuff)
 - **Twitter**: @almazbisenbaev
 - **Threads**: @almazbisenbaev
+- **Telegram channel:** https://t.me/webdevstories
 
-*Last updated: December 2025*
+*Last updated: January 2026*
