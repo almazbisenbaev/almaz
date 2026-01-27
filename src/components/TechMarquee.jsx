@@ -27,6 +27,7 @@ export default function TechMarquee() {
   return (
     <div className="tech-marquee-wrapper">
       <div className="tech-marquee">
+
         <div className="tech-marquee__group">
           {items.map((item, index) => (
             <div 
@@ -34,11 +35,12 @@ export default function TechMarquee() {
                 className="tech-marquee-item"
                 style={{ backgroundColor: item.color, color: item.textColor || '#000' }}
             >
-              <item.icon className="tech-icon" width={48} height={48} />
-              <span>{item.name}</span>
+              <item.icon className="tech-icon" />
+              <div className='pb-0.5'>{item.name}</div>
             </div>
           ))}
         </div>
+
         <div aria-hidden="true" className="tech-marquee__group">
           {items.map((item, index) => (
             <div 
@@ -46,11 +48,12 @@ export default function TechMarquee() {
                 className="tech-marquee-item"
                 style={{ backgroundColor: item.color, color: item.textColor || '#000' }}
             >
-              <item.icon className="tech-icon size-1" />
+              <item.icon className="tech-icon" />
               <div className='pb-0.5'>{item.name}</div>
             </div>
           ))}
         </div>
+
       </div>
     </div>
   );

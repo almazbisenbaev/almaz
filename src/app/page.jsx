@@ -40,19 +40,11 @@ export default function Home() {
                   <span> a&nbsp;Full-Stack Web Developer</span>
                 </div>
 
-                {/* <div className="intro-logos">
-                  <IconWp />
-                  <IconReact />
-                  <IconNext />
-                  <IconNode />
-                  <IconFigma />
-                </div> */}
-
               </div>
           </div>
         </div>
 
-        <div className="py-20">
+        <div className="pb-6 sm:py-20">
           <TechMarquee />
         </div>
 

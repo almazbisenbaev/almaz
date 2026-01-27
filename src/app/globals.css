@@ -171,27 +171,6 @@ a {
   transform: translate(15px, -15px); */
 }
 
-.intro-logos {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 560px;
-  max-width: 100%;
-  margin-top: 80px;
-}
-
-.intro-logos svg {
-  opacity: 0.35;
-  width: 48px;
-  height: 48px;
-  display: block;
-  transition: 0.3s;
-}
-
-.intro-logos svg:hover {
-  opacity: 1;
-}
-
 
 
 @media (max-width: 1199px){
@@ -229,16 +208,11 @@ a {
 
   .intro {
     padding-top: 80px;
-    padding-bottom: 80px;
+    padding-bottom: 40px;
   }
 
   .intro-text {
     font-size: 44px;
-  }
-  
-  .intro-logos svg {
-    width: 40px;
-    height: 40px;
   }
 
 }
@@ -247,11 +221,6 @@ a {
 
   .intro-text {
     font-size: 36px;
-  }
-
-  .intro-logos svg {
-    width: 32px;
-    height: 32px;
   }
 
 }
