@@ -9,6 +9,8 @@ import IconNext from '@/assets/images/icon-next.svg';
 import IconNode from '@/assets/images/icon-node.svg'; 
 import IconFigma from '@/assets/images/icon-figma.svg'; 
 
+import TechMarquee from '@/components/TechMarquee';
+
 // import LinkCard from '@/components/LinkCard';
 import ReviewsSection from '@/components/ReviewsSection';
 import PortfolioAccordion from '@/components/PortfolioAccordion';
@@ -38,16 +40,20 @@ export default function Home() {
                   <span> a&nbsp;Full-Stack Web Developer</span>
                 </div>
 
-                <div className="intro-logos">
+                {/* <div className="intro-logos">
                   <IconWp />
                   <IconReact />
                   <IconNext />
                   <IconNode />
                   <IconFigma />
-                </div>
+                </div> */}
 
               </div>
           </div>
+        </div>
+
+        <div className="py-20">
+          <TechMarquee />
         </div>
 
         {/* <CurvedLoop
