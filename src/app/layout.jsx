@@ -8,6 +8,7 @@ import Head from 'next/head';
 export const metadata = {
   title: "Almaz Bisenbaev | Full-Stack Web Developer (Almaz Bissenbayev | Алмаз Бисенбаев | Алмаз Бисембаев)",
   description: "Almaz Bisenbaev - Full-Stack Web Developer with UX Design expertise. Specializing in WordPress, React, and modern web development.",
+  metadataBase: new URL("https://helloalmaz.com"),
   keywords: [
     'Almaz Bisenbaev',
     'Almaz Bissenbayev',
@@ -27,30 +28,30 @@ export const metadata = {
     { name: 'Алмаз Бисенбаев' },
     { name: 'Алмаз Бисембаев' }
   ],
-  // openGraph: {
-  //   type: 'website',
-  //   locale: 'en_US',
-  //   url: 'https://yourwebsite.com',
-  //   title: 'Almaz Bisenbaev - Full-Stack Web Developer',
-  //   description: 'Professional Full-Stack Web Developer with expertise in modern web technologies',
-  //   siteName: 'Almaz Bisenbaev',
-  //   alternateLocale: ['kk_KZ'],
-  //   images: [
-  //     {
-  //       url: 'https://yourwebsite.com/images/og-image.jpg',
-  //       width: 1200,
-  //       height: 630,
-  //       alt: 'Almaz Bisenbaev - Full-Stack Web Developer',
-  //     },
-  //   ],
-  // },
-  // twitter: {
-  //   card: 'summary_large_image',
-  //   title: 'Almaz Bisenbaev - Full-Stack Web Developer',
-  //   description: 'Professional Full-Stack Web Developer with expertise in modern web technologies',
-  //   creator: '@almazbisenbaev',
-  //   images: ['https://yourwebsite.com/images/og-image.jpg'],
-  // },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://helloalmaz.com',
+    title: "Almaz Bisenbaev | Full-Stack Web Developer",
+    description: "Almaz Bisenbaev - Full-Stack Web Developer with UX Design expertise. Specializing in WordPress, React, and modern web development.",
+    siteName: 'Almaz Bisenbaev',
+    alternateLocale: ['kk_KZ'],
+    images: [
+      {
+        url: '/preview-opengraph.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Almaz Bisenbaev - Full-Stack Web Developer',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Almaz Bisenbaev | Full-Stack Web Developer",
+    description: "Almaz Bisenbaev - Full-Stack Web Developer with UX Design expertise. Specializing in WordPress, React, and modern web development.",
+    creator: '@almazbisenbaev',
+    images: ['/preview-twitter.jpg'],
+  },
 };
 
 export default function RootLayout({ children }) {
