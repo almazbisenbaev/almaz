@@ -58,10 +58,6 @@ export default function Home() {
           <div className="section section-portfolio-mobile bg-black text-white">
             <div className="container mx-auto px-6">
 
-              {/* <div className="section-header">
-                <h2 className="section-header-title">Recent works</h2>
-              </div> */}
-
               <div className="block-header block-header-white">
                 <div className="block-header-title">Recent works</div>
               </div>

@@ -12,18 +12,40 @@ const works = [
     description: "E-Commerce website that sells coffee beans. WordPress, Woocommerce.",
     category: "Development",
     skills: ["WordPress", "WooCommerce"],
-    image: "/images/project-glowy.jpg" 
+    // image: "/images/project-glowy.jpg" 
+  },
+  {
+    title: "factorysl.de",
+    url: "https://factorysl.de/",
+    year: "2025",
+    description: "An automotive workshop specializing in high-end vehicle detailing, maintenance, and performance tuning",
+    category: "Frontend, Backend Development",
+    client: "Mindlind",
+    clientUrl: "//mindlind.de",
+    skills: ["WordPress", "Frontend"],
+    // image: "/images/project-glowy.jpg" 
   },
   {
     title: "autosl.de",
     url: "//autosl.de",
     year: "2024",
-    description: "A company that sells expensive cars. Wordpress, a custom plugin for API intergration.",
-    category: "UX Design, Development",
+    description: "A company that sells expensive cars. Wordpress, a custom plugin for API integration.",
+    category: "UX Design, Frontend, Backend Development",
     client: "Mindlind",
     clientUrl: "//mindlind.de",
     skills: ["WordPress", "Custom Plugin", "API Integration"],
-    image: "/images/project-glowy.jpg" 
+    // image: "/images/project-glowy.jpg" 
+  },
+  {
+    title: "mjavedaslam.com",
+    url: "https://mjavedaslam.com",
+    year: "2025",
+    description: "A personal website for a freelance digital marketer and copywriter",
+    category: "UX Design, Frontend, Backend Development",
+    client: "Mindlind",
+    clientUrl: "//mindlind.de",
+    skills: ["UX Design", "WordPress", "Frontend", "Backend"],
+    // image: "/images/project-glowy.jpg" 
   },
   {
     title: "muafaktur.de",
@@ -34,7 +56,7 @@ const works = [
     client: "Mindlind",
     clientUrl: "//mindlind.de",
     skills: ["WooCommerce", "UX Design"],
-    image: "/images/project-glowy.jpg" 
+    // image: "/images/project-glowy.jpg" 
   },
   {
     title: "monitask.com",
@@ -45,8 +67,8 @@ const works = [
     client: "Mindlind",
     clientUrl: "//mindlind.de",
     skills: ["WordPress", "Automation"],
-    image: "/images/project-glowy.jpg" 
-  }
+    // image: "/images/project-glowy.jpg" 
+  },
 ];
 
 const PortfolioAccordion = () => {
