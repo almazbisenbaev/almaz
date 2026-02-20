@@ -81,12 +81,13 @@ a {
 }
 
 /* Portfolio section specific styles - no rounding and no wrapper padding on mobile */
-.section-portfolio-mobile {
+.section-portfolio {
   border-radius: 0;
+  background: #dfe8e8;
 }
 
 @media (min-width: 768px) {
-  .section-portfolio-mobile {
+  .section-portfolio {
     border-radius: 40px;
   }
 }
@@ -303,11 +304,11 @@ a {
 .case-link:focus {
   background-color: rgba(0,0,0, 0.1);
 } */
-
+/* 
 .section-portfolio {
   padding-top: 120px;
   padding-bottom: 120px;
-}
+} */
 
 /* @media (max-width: 1400px){
 
@@ -559,14 +560,14 @@ a {
 }
 
 .button-outline-white {
-  color: #fff;
-  background: transparent;
-  border-color: rgba(255,255,255,.5);
+  color: #1a1a1a;
+  background: rgba(255,255,255,0.3);
+  border-color: rgba(0,0,0,.2);
 }
 
 .button-outline-white:hover, .button-outline-white:focus {
-  border-color: #fff;
-  background: transparent;
+  border-color: rgba(0,0,0,.4);
+  background: rgba(255,255,255,0.5);
 }
 
 .extlink {

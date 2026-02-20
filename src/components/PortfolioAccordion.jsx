@@ -96,8 +96,8 @@ const PortfolioAccordion = () => {
                 className={`portfolio-toggle ${openIndex === index ? 'is-open' : ''}`}
             >
               <Plus 
-                size={48} 
-                strokeWidth={0.75} 
+                size={24} 
+                strokeWidth={1.5} 
                 className={`portfolio-icon ${openIndex === index ? 'is-open' : ''}`} 
               />
             </button>

@@ -55,10 +55,10 @@ export default function Home() {
         /> */}
 
         <div className="px-0 md:px-2">
-          <div className="section section-portfolio-mobile bg-black text-white">
+          <div className="section section-portfolio">
             <div className="container mx-auto px-6">
 
-              <div className="block-header block-header-white">
+              <div className="block-header">
                 <div className="block-header-title">Recent works</div>
               </div>
 
@@ -229,7 +229,7 @@ export default function Home() {
                 </div>
               </div>
 {/* bg-[#FF163B] */}
-              <div className="flex flex-col justify-between bg-gradient-to-b from-indigo-500 to-[#FF163B] text-white rounded-4xl overflow-hidden">
+              <div className="flex flex-col justify-between bg-linear-to-b from-indigo-500 to-[#FF163B] text-white rounded-4xl overflow-hidden">
                 <div className="px-6 md:px-12 py-12 md:py-24 flex-1 flex items-center justify-center">
                   <div className="custom-rings relative youtube-banner-image">
                     <Image
@@ -311,7 +311,7 @@ export default function Home() {
             <div className="flex flex-col gap-3 sm:gap-6">
                 <div className="text-3xl sm:text-6xl ff-display font-bold tracking-tight opacity-50">Telegram:</div>
                 <div>
-                  <a className="text-3xl sm:text-6xl ff-display font-bold tracking-tight hover:text-[var(--accent)] transition-colors" href="//t.me/almazbisenbaev">@almazbisenbaev</a>
+                  <a className="text-3xl sm:text-6xl ff-display font-bold tracking-tight hover:text-(--accent) transition-colors" href="//t.me/almazbisenbaev">@almazbisenbaev</a>
                 </div>
             </div>
 
