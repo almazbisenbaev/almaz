@@ -22,7 +22,6 @@ export default function Home() {
 
   return (
     <div className="home-page">
-      <div>
 
         <div className="intro-wrapper">
           <div className="container mx-auto px-6">
@@ -47,12 +46,6 @@ export default function Home() {
         <div className="pb-6 sm:py-20">
           <TechMarquee />
         </div>
-
-        {/* <CurvedLoop
-          marqueeText="WordPress ✦ WooCommerce ✦ React ✦ NextJS ✦ PostgreSQL ✦ Framer ✦ Figma ✦"
-          curveAmount={320}
-          className="ff-display"
-        /> */}
 
         <div className="px-0 md:px-2">
           <div className="section section-portfolio">
@@ -321,7 +314,6 @@ export default function Home() {
 
         {/* <EmblaCarousel slides={SLIDES} options={OPTIONS} /> */}
 
-      </div>
     </div>
   )
   ;
