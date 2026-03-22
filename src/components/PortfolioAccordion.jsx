@@ -1,17 +1,17 @@
 "use client";
 import React, { useState } from 'react';
-import { Plus, ChevronRight } from 'lucide-react';
-import Image from 'next/image';
+import { Plus } from 'lucide-react';
+// import Image from 'next/image';
 import './PortfolioAccordion.css';
 
 const works = [
   {
-    title: "silverskincoffee.ie",
-    url: "//silverskincoffee.ie",
-    year: "2024",
-    description: "E-Commerce website that sells coffee beans. WordPress, Woocommerce.",
+    title: "prince-food.de",
+    url: "https://prince-food.de",
+    year: "2025",
+    description: "B2B website that sells frozen fruits and vegetables. WordPress.",
     category: "Development",
-    skills: ["WordPress", "WooCommerce"],
+    skills: ["JavaScript", "GSAP", "WordPress"],
     // image: "/images/project-glowy.jpg" 
   },
   {
@@ -45,6 +45,15 @@ const works = [
     client: "Mindlind",
     clientUrl: "//mindlind.de",
     skills: ["UX Design", "WordPress", "Frontend", "Backend"],
+    // image: "/images/project-glowy.jpg" 
+  },
+  {
+    title: "silverskincoffee.ie",
+    url: "//silverskincoffee.ie",
+    year: "2024",
+    description: "E-Commerce website that sells coffee beans. WordPress, Woocommerce.",
+    category: "Development",
+    skills: ["WordPress", "WooCommerce"],
     // image: "/images/project-glowy.jpg" 
   },
   {
