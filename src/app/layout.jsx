@@ -2,6 +2,11 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import "./globals.css";
 import Header from '@/components/layout/Header';
 import PageLoader from '@/components/PageLoader';
+import Rays from "@/components/light-rays";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata = {
   title: {
@@ -102,7 +107,7 @@ export default function RootLayout({ children }) {
   };
 
   return (
-    <html lang="en">
+    <html lang="en" className={cn("font-sans", geist.variable)}>
       <head>
         <link href="https://api.fontshare.com/v2/css?f[]=general-sans@1,2&display=swap" rel="stylesheet" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
@@ -111,8 +116,25 @@ export default function RootLayout({ children }) {
         </noscript>
       </head>
       <body
-        className={`antialiased overflow-x-hidden`}
+        className={`antialiased overflow-x-hidden relative min-h-screen`}
       >
+
+        <Rays
+          backgroundColor="#F4F4F4"
+          style={{ 
+            zIndex: -1, 
+            position: 'absolute', 
+            top: 0, 
+            left: 0, 
+            right: 0, 
+            height: '100vh', 
+            opacity: '0.5',
+            pointerEvents: 'none'
+          }}
+          raysColor={{ mode: "multi", color1: "#2060DF", color2: "#ffffff" }}
+        />
+
+
         <PageLoader>
           <Header />
           {children}
