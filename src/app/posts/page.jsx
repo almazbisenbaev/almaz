@@ -1,4 +1,10 @@
-// import Link from 'next/link'
+export const metadata = {
+  title: 'My Publications | Almaz Bissenbayev',
+  description: 'My articles and posts across the web.',
+  alternates: {
+    canonical: '/posts'
+  }
+}
 
 export default function Posts(){
 

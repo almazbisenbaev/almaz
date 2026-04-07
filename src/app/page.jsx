@@ -3,20 +3,10 @@
 import React from "react";
 import Image from "next/image";
 
-import IconWp from '@/assets/images/icon-wp.svg'; 
-import IconReact from '@/assets/images/icon-react.svg'; 
-import IconNext from '@/assets/images/icon-next.svg'; 
-import IconNode from '@/assets/images/icon-node.svg'; 
-import IconFigma from '@/assets/images/icon-figma.svg'; 
-
 import TechMarquee from '@/components/TechMarquee';
 import Button from '@/components/button/button';
-
-// import LinkCard from '@/components/LinkCard';
 import ReviewsSection from '@/components/ReviewsSection';
 import PortfolioAccordion from '@/components/PortfolioAccordion';
-// import CurvedLoop from '@/components/CurvedLoop';
-
 import { ChevronRight } from 'lucide-react';
 
 export default function Home() {
@@ -29,7 +19,6 @@ export default function Home() {
               <div className="intro">
                 <div className="intro-text">
                   <span>Hi, I’m Almaz,</span>
-                  {/* The picture must animate somehow as you scroll, or maybe just fade out */}
                   <Image
                     className="intro-pic"
                     src="/me.jpg"
