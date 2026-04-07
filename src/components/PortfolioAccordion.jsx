@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { Plus } from 'lucide-react';
-// import Image from 'next/image';
+import Button from './button/button';
 import './PortfolioAccordion.css';
 
 const works = [
@@ -125,15 +125,13 @@ const PortfolioAccordion = () => {
                         height={800}
                      />
                 </div> */}
-                <a 
+                <Button 
                     href={work.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="button button-outline-white"
+                    variant="outline-white"
                 >
                     Visit Website 
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                </a>
+                </Button>
             </div>
           </div>
         </div>

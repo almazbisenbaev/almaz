@@ -10,6 +10,7 @@ import IconNode from '@/assets/images/icon-node.svg';
 import IconFigma from '@/assets/images/icon-figma.svg'; 
 
 import TechMarquee from '@/components/TechMarquee';
+import Button from '@/components/button/button';
 
 // import LinkCard from '@/components/LinkCard';
 import ReviewsSection from '@/components/ReviewsSection';
@@ -211,13 +212,13 @@ export default function Home() {
                   <h4 className="font-semibold ff-display text-xl md:text-3xl">Glowy Icons</h4>
                   <div className="text-md text-slate-800 mt-2">Colorful and bright vector icons with slight shadows</div>
                   <div className="mt-8">
-                    <a className="button button-secondary" 
-                      target="_blank" 
+                    <Button 
+                      variant="secondary"
                       href="https://www.figma.com/community/file/1452663046127877131/glowy-icons-v1-0"
                     >
                         <span>Figma Link</span>
                         <ChevronRight color="black" size={18} />
-                    </a>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -238,13 +239,13 @@ export default function Home() {
                   <h4 className="font-semibold ff-display text-xl md:text-3xl">Watch me on YouTube</h4>
                   <div className="text-md mt-2">I talk about webdev & stuff</div>
                   <div className="mt-8">
-                    <a className="button button-outline-white" 
-                      target="_blank" 
+                    <Button 
+                      variant="white"
                       href="https://www.youtube.com/@webdevandstuff"
                     >
                         <span>YouTube Channel</span>
-                        <ChevronRight color="white" size={18} />
-                    </a>
+                        <ChevronRight color="black" size={18} />
+                    </Button>
                   </div>
                 </div>
               </div>

@@ -1,0 +1,79 @@
+/* Button base */
+.button {
+  font-weight: 500;
+  border: 1px solid transparent;
+  border-radius: 99px;
+  background: rgba(0,0,0,0.1);
+  padding: 16px 32px;
+  font-size: 16px;
+  line-height: 1;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+}
+
+.button:hover, .button:focus {
+  background: rgba(0,0,0,0.15);
+}
+
+.button:active {
+  transform: scale(0.98) translateY(1px);
+}
+
+/* Variants */
+.button-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.button-primary:hover, .button-primary:focus {
+  background: color-mix(in srgb, var(--accent), #000 10%);
+}
+
+.button-secondary {
+  background: rgba(0,0,0,0.06);
+}
+
+.button-secondary:hover, .button-secondary:focus {
+  background: rgba(0,0,0,0.12);
+}
+
+.button-black {
+  background: #000;
+  color: #fff;
+}
+
+.button-black:hover, .button-black:focus {
+  background: #1a1a1a;
+}
+
+.button-white {
+  color: #000;
+  background: #fff;
+}
+
+.button-white:hover, .button-white:focus {
+  color: #000;
+  border-color: black;
+  background: #fff;
+}
+
+
+
+.button-outline-white {
+  color: #1a1a1a;
+  background: rgba(255,255,255,0.3);
+  border-color: rgba(0,0,0,.2);
+}
+
+.button-outline-white:hover, .button-outline-white:focus {
+  border-color: rgba(0,0,0,.4);
+  background: rgba(255,255,255,0.5);
+}
+

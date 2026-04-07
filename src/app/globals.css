@@ -530,46 +530,6 @@ a {
 
 
 
-.button {
-  font-weight: 500;
-  border: 0.5px solid transparent;
-  border-radius: 99px;
-  background: rgba(0,0,0,0.1);
-  padding: 16px 32px;
-  font-size: 16px;
-  line-height: 1;
-  text-align: center;
-  
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-
-  transition: 0.2s;
-  cursor: pointer;
-  text-decoration: none;
-  color: #000;
-}
-
-.button:hover, .button:focus {
-  background: rgba(0,0,0,0.15);
-}
-
-.button:active {
-  transform: scale(0.98) translateY(1px);
-}
-
-.button-outline-white {
-  color: #1a1a1a;
-  background: rgba(255,255,255,0.3);
-  border-color: rgba(0,0,0,.2);
-}
-
-.button-outline-white:hover, .button-outline-white:focus {
-  border-color: rgba(0,0,0,.4);
-  background: rgba(255,255,255,0.5);
-}
-
 .extlink {
   font-size: 1rem;
   font-weight: 600;
