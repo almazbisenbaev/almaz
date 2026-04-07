@@ -6,11 +6,24 @@ import './PortfolioAccordion.css';
 
 const works = [
   {
+    title: "funky-ramen.de",
+    url: "https://funky-ramen.de",
+    year: "2026",
+    description: "A WordPress website for a café for anime lovers. WordPress.",
+    category: "Development",
+    client: "Mindlind",
+    clientUrl: "//mindlind.de",
+    skills: ["JavaScript", "GSAP", "WordPress"],
+    // image: "/images/project-glowy.jpg" 
+  },
+  {
     title: "prince-food.de",
     url: "https://prince-food.de",
     year: "2025",
     description: "B2B website that sells frozen fruits and vegetables. WordPress.",
     category: "Development",
+    client: "Mindlind",
+    clientUrl: "//mindlind.de",
     skills: ["JavaScript", "GSAP", "WordPress"],
     // image: "/images/project-glowy.jpg" 
   },
@@ -42,8 +55,6 @@ const works = [
     year: "2025",
     description: "A personal website for a freelance digital marketer and copywriter",
     category: "UX Design, Frontend, Backend Development",
-    client: "Mindlind",
-    clientUrl: "//mindlind.de",
     skills: ["UX Design", "WordPress", "Frontend", "Backend"],
     // image: "/images/project-glowy.jpg" 
   },
