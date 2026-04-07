@@ -60,8 +60,7 @@
 
 .button-white:hover, .button-white:focus {
   color: #000;
-  border-color: black;
-  background: #fff;
+  background: rgba(255,255,255,.8);
 }
 
 
