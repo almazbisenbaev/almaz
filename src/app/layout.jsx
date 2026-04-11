@@ -5,6 +5,7 @@ import PageLoader from '@/components/PageLoader';
 import Rays from "@/components/light-rays";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
+import Footer from '@/components/footer/footer';
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -120,7 +121,7 @@ export default function RootLayout({ children }) {
       >
 
         <Rays
-          backgroundColor="#F4F4F4"
+          backgroundColor="#F5F8FF"
           style={{ 
             zIndex: -1, 
             position: 'absolute', 
@@ -136,8 +137,12 @@ export default function RootLayout({ children }) {
 
 
         <PageLoader>
+
           <Header />
+
           {children}
+
+          <Footer />
         
           <GoogleAnalytics gaId="G-10DVM02K4H" />
         </PageLoader>
