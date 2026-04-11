@@ -1,9 +1,13 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import BlogJsonLd from '@/components/seo/BlogJsonLd';
-import { postsData } from '@/lib/data';
 
-const post = postsData.find(p => p.link === '/posts/future-of-web-design');
+const post = {
+  title: "The Future of Web Design: Minimalist & Fast",
+  date: "April 11, 2026",
+  link: "/posts/future-of-web-design",
+  thumbnail: "/images/project-glowy.jpg",
+  description: "Exploring the trends that are shaping the next decade of digital experiences."
+};
 
 export const metadata = {
   title: 'The Future of Web Design: Minimalist & Fast | Almaz Bissenbayev',
@@ -14,8 +18,6 @@ export const metadata = {
 }
 
 export default function FutureOfWebDesign() {
-  if (!post) return null;
-
   return (
     <article className="min-h-screen py-24">
       <BlogJsonLd post={post} />

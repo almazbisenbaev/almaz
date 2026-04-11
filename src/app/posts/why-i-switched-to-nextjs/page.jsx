@@ -1,9 +1,13 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import BlogJsonLd from '@/components/seo/BlogJsonLd';
-import { postsData } from '@/lib/data';
 
-const post = postsData.find(p => p.link === '/posts/why-i-switched-to-nextjs');
+const post = {
+  title: "Why I switched to Next.js for my personal portfolio",
+  date: "April 10, 2026",
+  link: "/posts/why-i-switched-to-nextjs",
+  thumbnail: "/images/project-glowy.jpg",
+  description: "A deep dive into why Next.js is the perfect choice for modern web developers in 2026."
+};
 
 export const metadata = {
   title: 'Why I switched to Next.js for my personal portfolio | Almaz Bissenbayev',
@@ -14,8 +18,6 @@ export const metadata = {
 }
 
 export default function WhyISwitchedToNextjs() {
-  if (!post) return null;
-
   return (
     <article className="min-h-screen py-24">
       <BlogJsonLd post={post} />

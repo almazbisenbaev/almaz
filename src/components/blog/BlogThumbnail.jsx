@@ -1,9 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function BlogThumbnail({ post }) {
-  const { title, date, link, isExternal, thumbnail } = post;
-
+export default function BlogThumbnail({ title, date, link, isExternal, thumbnail }) {
   const CardContent = () => (
     <div className="group h-full flex flex-col transition-all duration-300">
       <div className="relative aspect-[16/10] overflow-hidden rounded-lg mb-4 bg-neutral-100">

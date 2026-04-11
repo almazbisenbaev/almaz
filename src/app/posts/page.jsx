@@ -1,5 +1,4 @@
 import BlogThumbnail from '@/components/blog/BlogThumbnail';
-import { postsData } from '@/lib/data';
 
 export const metadata = {
   title: 'Blog | Almaz Bissenbayev',
@@ -20,9 +19,41 @@ export default function Posts(){
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-                {postsData.map((post) => (
-                    <BlogThumbnail key={post.id} post={post} />
-                ))}
+                <BlogThumbnail 
+                  title="How to make your Elementor website win PageSpeed"
+                  date="June 21, 2025"
+                  link="https://www.threads.com/@almazbisenbaev/post/DLKwRKuRv0O"
+                  isExternal={true}
+                  thumbnail="/images/project-glowy.jpg"
+                />
+                <BlogThumbnail 
+                  title="How to Write CSS in 2025 – Modern Features You Should Be Using"
+                  date="June 5, 2025"
+                  link="https://dev.to/almazbisenbaev/how-to-write-css-in-2025-modern-features-you-should-be-using-with-examples-3g47"
+                  isExternal={true}
+                  thumbnail="/images/project-glowy.jpg"
+                />
+                <BlogThumbnail 
+                  title="Mastering Productivity as a Freelancer"
+                  date="April 17, 2025"
+                  link="https://webdevandstuff.hashnode.dev/mastering-productivity-1"
+                  isExternal={true}
+                  thumbnail="/images/project-glowy.jpg"
+                />
+                <BlogThumbnail 
+                  title="Why I switched to Next.js for my personal portfolio"
+                  date="April 10, 2026"
+                  link="/posts/why-i-switched-to-nextjs"
+                  isExternal={false}
+                  thumbnail="/images/project-glowy.jpg"
+                />
+                <BlogThumbnail 
+                  title="The Future of Web Design: Minimalist & Fast"
+                  date="April 11, 2026"
+                  link="/posts/future-of-web-design"
+                  isExternal={false}
+                  thumbnail="/images/project-glowy.jpg"
+                />
             </div>
         </div>
     )
