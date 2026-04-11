@@ -14,6 +14,8 @@ export const metadata = {
 }
 
 export default function FutureOfWebDesign() {
+  if (!post) return null;
+
   return (
     <article className="min-h-screen py-24">
       <BlogJsonLd post={post} />

@@ -65,22 +65,22 @@ export const postsData = [
     thumbnail: "/images/project-glowy.jpg",
     description: "How to manage your time, clients, and energy effectively as a solo web developer."
   },
-  // {
-  //   id: 4,
-  //   title: "Why I switched to Next.js for my personal portfolio",
-  //   date: "April 10, 2026",
-  //   link: "/posts/why-i-switched-to-nextjs",
-  //   isExternal: false,
-  //   thumbnail: "/images/project-glowy.jpg",
-  //   description: "A deep dive into why Next.js is the perfect choice for modern web developers in 2026."
-  // },
-  // {
-  //   id: 5,
-  //   title: "The Future of Web Design: Minimalist & Fast",
-  //   date: "April 11, 2026",
-  //   link: "/posts/future-of-web-design",
-  //   isExternal: false,
-  //   thumbnail: "/images/project-glowy.jpg",
-  //   description: "Exploring the trends that are shaping the next decade of digital experiences."
-  // }
+  {
+    id: 4,
+    title: "Why I switched to Next.js for my personal portfolio",
+    date: "April 10, 2026",
+    link: "/posts/why-i-switched-to-nextjs",
+    isExternal: false,
+    thumbnail: "/images/project-glowy.jpg",
+    description: "A deep dive into why Next.js is the perfect choice for modern web developers in 2026."
+  },
+  {
+    id: 5,
+    title: "The Future of Web Design: Minimalist & Fast",
+    date: "April 11, 2026",
+    link: "/posts/future-of-web-design",
+    isExternal: false,
+    thumbnail: "/images/project-glowy.jpg",
+    description: "Exploring the trends that are shaping the next decade of digital experiences."
+  }
 ];

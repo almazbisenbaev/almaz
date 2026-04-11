@@ -1,4 +1,6 @@
 export default function BlogJsonLd({ post }) {
+  if (!post) return null;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
