@@ -40,7 +40,7 @@ export default function Posts(){
                   isExternal={true}
                   thumbnail="/images/project-glowy.jpg"
                 />
-                <BlogThumbnail 
+                {/* <BlogThumbnail 
                   title="Why I switched to Next.js for my personal portfolio"
                   date="April 10, 2026"
                   link="/posts/why-i-switched-to-nextjs"
@@ -53,7 +53,7 @@ export default function Posts(){
                   link="/posts/future-of-web-design"
                   isExternal={false}
                   thumbnail="/images/project-glowy.jpg"
-                />
+                /> */}
             </div>
         </div>
     )
