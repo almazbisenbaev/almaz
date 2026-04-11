@@ -1,15 +1,13 @@
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function BlogThumbnail({ title, date, link, isExternal, thumbnail }) {
   const CardContent = () => (
     <div className="group h-full flex flex-col transition-all duration-300">
       <div className="relative aspect-[16/10] overflow-hidden rounded-lg mb-4 bg-neutral-100">
-        <Image
+        <img
           src={thumbnail}
           alt={title}
-          fill
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
         {isExternal && (
           <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">

@@ -24,21 +24,21 @@ export default function Posts(){
                   date="June 21, 2025"
                   link="https://www.threads.com/@almazbisenbaev/post/DLKwRKuRv0O"
                   isExternal={true}
-                  thumbnail="/images/project-glowy.jpg"
+                  thumbnail="/images/pagespeed-100.jpg"
                 />
                 <BlogThumbnail 
                   title="How to Write CSS in 2025 – Modern Features You Should Be Using"
                   date="June 5, 2025"
                   link="https://dev.to/almazbisenbaev/how-to-write-css-in-2025-modern-features-you-should-be-using-with-examples-3g47"
                   isExternal={true}
-                  thumbnail="/images/project-glowy.jpg"
+                  thumbnail="/images/how-to-write-modern-css.jpg"
                 />
                 <BlogThumbnail 
                   title="Mastering Productivity as a Freelancer"
                   date="April 17, 2025"
                   link="https://webdevandstuff.hashnode.dev/mastering-productivity-1"
                   isExternal={true}
-                  thumbnail="/images/project-glowy.jpg"
+                  thumbnail="/images/productivity-course.webp"
                 />
                 {/* <BlogThumbnail 
                   title="Why I switched to Next.js for my personal portfolio"
