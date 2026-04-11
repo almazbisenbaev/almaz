@@ -43,19 +43,29 @@
 
 .blog-thumb-content {
   flex: 1;
+  padding-right: 200px;
 }
 
 .blog-thumb-title {
   font-size: 2rem; /* text-lg */
   font-weight: 500; /* font-medium */
   color: #171717; /* neutral-900 */
-  line-height: 1.375; /* leading-snug */
-  letter-spacing: -0.02em;
-  transition: color 0.2s; /* transition-colors */
+  line-height: 1.5; /* leading-snug */
+  letter-spacing: -0.01em;
+  
+  /* Underline effect */
+  display: inline;
+  text-decoration: none;
+  background-image: linear-gradient(to right, #171717 0, #171717 100%);
+  background-position: 0 1.45em;
+  background-size: 0 2px;
+  background-repeat: no-repeat;
+  transition: background-size 0.5s, color 0.2s;
 }
 
 .blog-thumb:hover .blog-thumb-title {
-  color: #525252; /* neutral-600 */
+  color: #171717;
+  background-size: 100% 2px;
 }
 
 
