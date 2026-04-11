@@ -36,3 +36,51 @@ export const reviewsData = [
     upworkLink: "https://www.upwork.com/freelancers/~01fc6ec6fb228858ff"
   },
 ];
+
+export const postsData = [
+  {
+    id: 1,
+    title: "How to make your Elementor website win PageSpeed",
+    date: "June 21, 2025",
+    link: "https://www.threads.com/@almazbisenbaev/post/DLKwRKuRv0O",
+    isExternal: true,
+    thumbnail: "/images/project-glowy.jpg",
+    description: "Practical tips and tricks to optimize your Elementor-based WordPress site for maximum performance."
+  },
+  {
+    id: 2,
+    title: "How to Write CSS in 2025 – Modern Features You Should Be Using",
+    date: "June 5, 2025",
+    link: "https://dev.to/almazbisenbaev/how-to-write-css-in-2025-modern-features-you-should-be-using-with-examples-3g47",
+    isExternal: true,
+    thumbnail: "/images/project-glowy.jpg",
+    description: "Exploring the latest CSS features like Container Queries, :has() selector, and modern color functions."
+  },
+  {
+    id: 3,
+    title: "Mastering Productivity as a Freelancer",
+    date: "April 17, 2025",
+    link: "https://webdevandstuff.hashnode.dev/mastering-productivity-1",
+    isExternal: true,
+    thumbnail: "/images/project-glowy.jpg",
+    description: "How to manage your time, clients, and energy effectively as a solo web developer."
+  },
+  // {
+  //   id: 4,
+  //   title: "Why I switched to Next.js for my personal portfolio",
+  //   date: "April 10, 2026",
+  //   link: "/posts/why-i-switched-to-nextjs",
+  //   isExternal: false,
+  //   thumbnail: "/images/project-glowy.jpg",
+  //   description: "A deep dive into why Next.js is the perfect choice for modern web developers in 2026."
+  // },
+  // {
+  //   id: 5,
+  //   title: "The Future of Web Design: Minimalist & Fast",
+  //   date: "April 11, 2026",
+  //   link: "/posts/future-of-web-design",
+  //   isExternal: false,
+  //   thumbnail: "/images/project-glowy.jpg",
+  //   description: "Exploring the trends that are shaping the next decade of digital experiences."
+  // }
+];

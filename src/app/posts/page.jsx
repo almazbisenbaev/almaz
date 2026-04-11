@@ -1,58 +1,29 @@
+import BlogThumbnail from '@/components/blog/BlogThumbnail';
+import { postsData } from '@/lib/data';
+
 export const metadata = {
-  title: 'My Publications | Almaz Bissenbayev',
-  description: 'My articles and posts across the web.',
+  title: 'Blog | Almaz Bissenbayev',
+  description: 'Thoughts on code, design, and productivity.',
   alternates: {
     canonical: '/posts'
   }
 }
 
 export default function Posts(){
-
     return (
-        <div className="container mx-auto px-6">
-
-            <div className="page-header">
-                <h1 className="font-semibold text-4xl mb-8 py-6 tracking-tighter">My publications</h1>
+        <div className="container mx-auto px-6 py-16">
+            <div className="mb-16">
+                <h1 className="font-bold text-5xl mb-4 tracking-tight text-neutral-900">Blog</h1>
+                <p className="text-lg text-neutral-500 max-w-xl">
+                    Thoughts on code, design, and productivity.
+                </p>
             </div>
 
-            <div className="posts text-lg">
-
-                <div>
-                    <a
-                        className="font-medium flex flex-col sm:flex-row gap-1 sm:gap-3 mb-4"
-                        href="https://www.threads.com/@almazbisenbaev/post/DLKwRKuRv0O"
-                        target='_blank'
-                    >
-                        <div className="text-neutral-500 w-[140px]">June 21, 2025</div>
-                        <div className="text-neutral-900 flex-1">How to make your Elementor website win PageSpeed</div>
-                    </a>
-                </div>
-
-                <div>
-                    <a
-                        className="font-medium flex flex-col sm:flex-row gap-1 sm:gap-3 mb-4"
-                        href="https://dev.to/almazbisenbaev/how-to-write-css-in-2025-modern-features-you-should-be-using-with-examples-3g47"
-                        target='_blank'
-                    >
-                        <div className="text-neutral-500 w-[140px]">June 5, 2025</div>
-                        <div className="text-neutral-900 flex-1">How to Write CSS in 2025 – Modern Features You Should Be Using (with examples)</div>
-                    </a>
-                </div>
-
-                <div>
-                    <a
-                        className="font-medium flex flex-col sm:flex-row gap-1 sm:gap-3 mb-4"
-                        href="https://webdevandstuff.hashnode.dev/mastering-productivity-1"
-                        target='_blank'
-                    >
-                        <div className="text-neutral-500 w-[140px]">April 17, 2025</div>
-                        <div className="text-neutral-900 flex-1">Mastering Productivity as a Freelancer</div>
-                    </a>
-                </div>
-
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+                {postsData.map((post) => (
+                    <BlogThumbnail key={post.id} post={post} />
+                ))}
             </div>
-
         </div>
     )
-
 }

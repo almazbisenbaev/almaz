@@ -24,8 +24,7 @@ export default function PageLoader({ children }) {
     <div 
       className="page-loader"
       style={{ 
-        opacity: isLoaded ? 1 : 0, 
-        transition: 'opacity 0.5s ease-in-out' 
+        opacity: isLoaded ? 1 : 0
       }}
     >
       {children}
