@@ -7,9 +7,9 @@ const Header = () => {
   const pathname = usePathname();
 
   const navItems = [
-    { href: '/', label: 'About' },
-    { href: '/posts', label: 'Blog' },
-    { href: '#', label: 'Resume' },
+    { href: '/', label: 'About', isExternal: false },
+    { href: '/posts', label: 'Blog', isExternal: false },
+    { href: 'https://docs.google.com/document/d/1g-6Fb-hTux6UFcwS5S06QD0x88RXC-_C-a0EeOyquV4/edit?usp=sharing', label: 'Resume', isExternal: true },
   ];
 
   const normalizePath = (path) => {
@@ -50,6 +50,20 @@ const Header = () => {
           <nav className="flex gap-4">
             {navItems.map((item) => {
               const active = isActive(item.href);
+
+              if (item.isExternal) {
+                return (
+                  <a
+                    key={`${item.href}-${item.label}`}
+                    href={item.href}
+                    className={linkClassName(item.href)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {item.label}
+                  </a>
+                );
+              }
 
               return (
                 <Link
