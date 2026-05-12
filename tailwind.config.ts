@@ -6,10 +6,6 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    container: {
-      center: true,
-      padding: '1.5rem',
-    },
     extend: {
       fontFamily: {
         sans: ['General Sans', 'sans-serif'],
