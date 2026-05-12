@@ -3,7 +3,7 @@ import "./footer.css";
 export default function Footer() {
     return (
         <div className="pt-40 pb-10">
-            <div className="container mx-auto px-6 relative">
+            <div className="container relative">
 
             <div className="font-medium text-lg flex flex-col sm:flex-row gap-3 mb-18">
                 <div>I also talk about web dev here:</div>

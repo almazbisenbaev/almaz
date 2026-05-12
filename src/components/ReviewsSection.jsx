@@ -29,7 +29,7 @@ const ReviewCard = ({ review, name, upworkLink }) => {
 const ReviewsSection = () => {
   return (
     <div className="section">
-      <div className="container mx-auto px-6">
+      <div className="container">
         
         {/* <div className="section-header">
           <h2 className="section-header-title">What people say</h2>

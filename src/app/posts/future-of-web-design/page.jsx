@@ -22,7 +22,7 @@ export default function FutureOfWebDesign() {
     <article className="min-h-screen py-24">
       <BlogJsonLd post={post} />
       
-      <div className="container mx-auto px-6">
+      <div className="container">
         <div className="max-w-4xl mx-auto">
           <Link href="/posts" className="inline-flex items-center text-neutral-400 hover:text-neutral-900 mb-12 transition-colors text-sm font-medium uppercase tracking-widest">
             <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">

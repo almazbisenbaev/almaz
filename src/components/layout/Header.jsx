@@ -34,7 +34,7 @@ const Header = () => {
 
   return (
     <header className='py-5'>
-      <div className="container mx-auto px-6">
+      <div className="container">
         <div className="hdr-row flex items-start flex-col sm:flex-row sm:items-end gap-5 justify-between font-medium text-sm leading-tight">
 
           <div className=''>

@@ -15,7 +15,7 @@ export default function Home() {
     <div className="home-page">
 
         <div className="intro-wrapper">
-          <div className="container mx-auto px-6">
+          <div className="container">
               <div className="intro">
                 <div className="intro-text">
                   <span>Hi, I’m Almaz,</span>
@@ -39,7 +39,7 @@ export default function Home() {
 
         <div className="px-0 md:px-2">
           <div className="section section-portfolio">
-            <div className="container mx-auto px-6">
+            <div className="container">
 
               <div className="block-header">
                 <div className="block-header-title">Recent works</div>
@@ -117,7 +117,7 @@ export default function Home() {
 
 
         <div className="section">
-          <div className="container mx-auto px-6">
+          <div className="container">
 
             {/* <div className="section-header">
               <h2 className="section-header-title">Personal projects</h2>
