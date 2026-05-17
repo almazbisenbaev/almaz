@@ -119,73 +119,9 @@ export default function Home() {
         <div className="section">
           <div className="container">
 
-            {/* <div className="section-header">
-              <h2 className="section-header-title">Personal projects</h2>
-            </div> */}
-
             <div className="block-header">
               <div className="block-header-title">Personal projects</div>
             </div>
-
-            {/* <div className="projects-grid">
-
-              <div className="project-card">
-
-                <div className="project-card-content">
-                  <h4 className="project-card-title">Glowy Icons</h4>
-                  <div className="project-card-text">Colorful and bright vector icons with slight shadows</div>
-                  <div className="project-card-footer">
-                    <a className="button button-secondary" 
-                      target="_blank" 
-                      href="https://www.figma.com/community/file/1452663046127877131/glowy-icons-v1-0"
-                    >
-                        <span>Figma Link</span>
-                        <ChevronRight color="black" size={18} />
-                    </a>
-                  </div>
-                </div>
-
-                <div className="project-card-pic">
-                  <Image
-                    className=""
-                    src="/images/project-glowy.jpg"
-                    alt="Glowy Icons"
-                    width={800}
-                    height={800}
-                  />
-                </div>
-
-              </div>
-
-              <div className="project-card">
-
-                <div className="project-card-content">
-                  <h4 className="project-card-title">Watch me on YouTube</h4>
-                  <div className="project-card-text">I talk about webdev & stuff</div>
-                  <div className="project-card-footer">
-                    <a className="button button-secondary" 
-                      target="_blank" 
-                      href="https://www.youtube.com/@webdevandstuff"
-                    >
-                        <span>YouTube</span>
-                        <ChevronRight color="black" size={18} />
-                    </a>
-                  </div>
-                </div>
-
-                <div className="project-card-pic">
-                  <Image
-                    className=""
-                    src="/images/project-glowy.jpg"
-                    alt="Glowy Icons"
-                    width={800}
-                    height={800}
-                  />
-                </div>
-
-              </div>
-
-            </div> */}
 
             <div className="grid grid-cols-1 gap-8 md:gap-12 md:grid-cols-2">
 
@@ -195,23 +131,23 @@ export default function Home() {
                   src="/images/project-glowy.jpg"
                   alt="Glowy Icons"
                   width={800}
-                  height={800}
+                  height={600}
                 />
                 <div className="p-8 md:p-12 pt-2 w-full">
                   <h4 className="font-semibold ff-display text-xl md:text-3xl">Glowy Icons</h4>
-                  <div className="text-md text-slate-800 mt-2">Colorful and bright vector icons with slight shadows</div>
+                  <div className="text-lg font-medium text-slate-700 mt-2">Colorful and bright vector icons with slight shadows</div>
                   <div className="mt-8">
                     <Button 
-                      variant="secondary"
+                      variant="black"
                       href="https://www.figma.com/community/file/1452663046127877131/glowy-icons-v1-0"
                     >
                         <span>Figma Link</span>
-                        <ChevronRight color="black" size={18} />
+                        <ChevronRight color="white" size={18} />
                     </Button>
                   </div>
                 </div>
               </div>
-{/* bg-[#FF163B] */}
+
               <div className="flex flex-col justify-between bg-linear-to-b from-indigo-500 to-[#FF163B] text-white rounded-4xl overflow-hidden">
                 <div className="px-6 md:px-12 py-12 md:py-24 flex-1 flex items-center justify-center">
                   <div className="custom-rings relative youtube-banner-image">
@@ -226,7 +162,7 @@ export default function Home() {
                 </div>
                 <div className="p-8 md:p-12 pt-2 w-full">
                   <h4 className="font-semibold ff-display text-xl md:text-3xl">Watch me on YouTube</h4>
-                  <div className="text-md mt-2">I talk about webdev & stuff</div>
+                  <div className="font-medium text-md mt-2">I talk about webdev & stuff</div>
                   <div className="mt-8">
                     <Button 
                       variant="white"
@@ -234,6 +170,29 @@ export default function Home() {
                     >
                         <span>YouTube Channel</span>
                         <ChevronRight color="black" size={18} />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col bg-white rounded-4xl overflow-hidden">
+                <Image
+                  className=""
+                  src="/images/project-polyglossa.jpg"
+                  alt="Polyglossa"
+                  width={800}
+                  height={600}
+                />
+                <div className="p-8 md:p-12 pt-2 w-full">
+                  <h4 className="font-semibold ff-display text-xl md:text-3xl">Polyglossa<sup className="text-gray-500 font-normal">β</sup></h4>
+                  <div className="text-lg font-medium text-slate-700 mt-2">A messaging app where you talk to AI-friends to practice a language</div>
+                  <div className="mt-8">
+                    <Button 
+                      variant="black"
+                      href="https://polyglossa-beta.vercel.app"
+                    >
+                        <span>Visit website</span>
+                        <ChevronRight color="white" size={18} />
                     </Button>
                   </div>
                 </div>
