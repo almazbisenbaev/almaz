@@ -123,9 +123,9 @@ export default function Home() {
               <div className="block-header-title">Personal projects</div>
             </div>
 
-            <div className="grid grid-cols-1 gap-8 md:gap-12 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-6 md:gap-10 md:grid-cols-3">
 
-              <div className="flex flex-col bg-white rounded-4xl overflow-hidden">
+              <div className="flex flex-col justify-between bg-white rounded-4xl overflow-hidden">
                 <Image
                   className=""
                   src="/images/project-glowy.jpg"
@@ -175,7 +175,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="flex flex-col bg-white rounded-4xl overflow-hidden">
+              <div className="flex flex-col justify-between bg-white rounded-4xl overflow-hidden">
                 <Image
                   className=""
                   src="/images/project-polyglossa.jpg"
