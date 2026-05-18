@@ -9,6 +9,11 @@ import Footer from '@/components/footer/footer';
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
+
 export const metadata = {
   title: {
     default: "Almaz Bisenbaev | Full-Stack Web Developer (Almaz Bissenbayev | Алмаз Бисенбаев | Алмаз Бисембаев)",
