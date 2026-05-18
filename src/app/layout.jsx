@@ -1,12 +1,10 @@
 import { GoogleAnalytics } from '@next/third-parties/google';
 import "./globals.css";
 import Header from '@/components/layout/Header';
-import dynamic from 'next/dynamic';
+import DynamicRays from '@/components/DynamicRays';
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Footer from '@/components/footer/footer';
-
-const Rays = dynamic(() => import("@/components/light-rays"), { ssr: false });
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -123,7 +121,7 @@ export default function RootLayout({ children }) {
         className={`antialiased overflow-x-hidden relative min-h-screen`}
       >
 
-        <Rays
+        <DynamicRays
           backgroundColor="#F5F8FF"
           style={{ 
             zIndex: -1, 
