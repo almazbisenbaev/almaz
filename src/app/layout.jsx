@@ -1,11 +1,12 @@
 import { GoogleAnalytics } from '@next/third-parties/google';
 import "./globals.css";
 import Header from '@/components/layout/Header';
-import PageLoader from '@/components/PageLoader';
-import Rays from "@/components/light-rays";
+import dynamic from 'next/dynamic';
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Footer from '@/components/footer/footer';
+
+const Rays = dynamic(() => import("@/components/light-rays"), { ssr: false });
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -117,9 +118,6 @@ export default function RootLayout({ children }) {
       <head>
         <link href="https://api.fontshare.com/v2/css?f[]=general-sans@1,2&display=swap" rel="stylesheet" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-        <noscript>
-          <style>{`.page-loader { opacity: 1 !important; }`}</style>
-        </noscript>
       </head>
       <body
         className={`antialiased overflow-x-hidden relative min-h-screen`}
@@ -141,16 +139,13 @@ export default function RootLayout({ children }) {
         />
 
 
-        <PageLoader>
+        <Header />
 
-          <Header />
+        {children}
 
-          {children}
-
-          <Footer />
-        
-          <GoogleAnalytics gaId="G-10DVM02K4H" />
-        </PageLoader>
+        <Footer />
+      
+        <GoogleAnalytics gaId="G-10DVM02K4H" />
       </body>
     </html>
   );

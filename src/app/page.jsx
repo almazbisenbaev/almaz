@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
 
@@ -25,6 +23,7 @@ export default function Home() {
                     width={150}
                     height={150}
                     alt="Almaz Bisenbaev"
+                    priority
                   />
                   <span> a&nbsp;Full-Stack Web Developer</span>
                 </div>
@@ -132,6 +131,7 @@ export default function Home() {
                   alt="Glowy Icons"
                   width={800}
                   height={600}
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 <div className="p-8 md:p-12 pt-2 w-full">
                   <h4 className="font-semibold ff-display text-xl md:text-3xl">Glowy Icons</h4>
@@ -157,6 +157,7 @@ export default function Home() {
                       width={150}
                       height={150}
                       alt=""
+                      sizes="150px"
                     />
                   </div>
                 </div>
@@ -182,6 +183,7 @@ export default function Home() {
                   alt="Polyglossa"
                   width={800}
                   height={600}
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 <div className="p-8 md:p-12 pt-2 w-full">
                   <h4 className="font-semibold ff-display text-xl md:text-3xl">Polyglossa<sup className="text-gray-500 font-normal">β</sup></h4>
