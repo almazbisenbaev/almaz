@@ -1,10 +1,10 @@
 import { GoogleAnalytics } from '@next/third-parties/google';
 import "./globals.css";
-import Header from '@/components/layout/Header';
-import DynamicRays from '@/components/DynamicRays';
+import Header from '@/components/Layout/Header';
+import DynamicRays from '@/components/DynamicRays/DynamicRays';
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
-import Footer from '@/components/footer/footer';
+import Footer from '@/components/Layout/Footer';
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 

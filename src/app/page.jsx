@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
 
-import TechMarquee from '@/components/TechMarquee';
-import Button from '@/components/button/button';
-import ReviewsSection from '@/components/ReviewsSection';
-import PortfolioAccordion from '@/components/PortfolioAccordion';
+import TechMarquee from '@/components/TechMarquee/TechMarquee';
+import Button from '@/components/Button/Button';
+import ReviewsSection from '@/components/ReviewsSection/ReviewsSection';
+import PortfolioAccordion from '@/components/PortfolioAccordion/PortfolioAccordion';
 import { ChevronRight } from 'lucide-react';
 
 export default function Home() {
@@ -44,76 +44,10 @@ export default function Home() {
                 <div className="block-header-title">Recent works</div>
               </div>
 
-              {/* <div className="grid grid-cols-1 gap-8 md:gap-12 md:grid-cols-2">
-
-                <div className="">
-                  <LinkCard 
-                    title="silverskincoffee.ie"
-                    url="//silverskincoffee.ie"
-                    year="2024"
-                    description="E-Commerce website that sells coffee beans. WordPress, Woocommerce."
-                    category="Development"
-                  />
-                </div>
-
-                <div className="">
-                  <LinkCard 
-                    title="autosl.de"
-                    url="//autosl.de"
-                    year="2024"
-                    description="A company that sells expensive cars. Wordpress, a custom plugin for API intergration."
-                    category="UX Design, Development"
-                    client="Mindlind"
-                    clientUrl="//mindlind.de"
-                  />
-                </div>
-
-                <div className="">
-                  <LinkCard 
-                    title="muafaktur.de"
-                    url="//muafaktur.de"
-                    year="2023"
-                    description="WooCommerce website for a company offering beauty products and training courses"
-                    category="UX Design, Development"
-                    client="Mindlind"
-                    clientUrl="//mindlind.de"
-                  />
-                </div>
-
-                <div className="">
-                  <LinkCard 
-                    title="monitask.com"
-                    url="//monitask.com"
-                    year="2021"
-                    description="Multilingual WordPress website with hundreds of pages all generated and updated automatically"
-                    category="Development"
-                    client="Mindlind"
-                    clientUrl="//mindlind.de"
-                  />
-                </div>
-                
-              </div> */}
-
-
               <PortfolioAccordion />
-
-
             </div>
           </div>
         </div>
-
-
-        {/* <div className="section">
-          <div className="container mx-auto">
-
-            <div className="section-header">
-              <h2 className="section-header-title">Client reviews</h2>
-            </div>
-
-          </div>
-        </div> */}
-
-
 
         <div className="section">
           <div className="container">
@@ -148,6 +82,30 @@ export default function Home() {
                 </div>
               </div>
 
+              <div className="flex flex-col justify-between bg-white rounded-4xl overflow-hidden">
+                <Image
+                  className=""
+                  src="/images/project-polyglossa.jpg"
+                  alt="Polyglossa"
+                  width={800}
+                  height={600}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="p-8 md:p-12 pt-2 w-full">
+                  <h4 className="font-semibold ff-display text-xl md:text-3xl">Polyglossa<sup className="text-gray-500 font-normal">β</sup></h4>
+                  <div className="text-lg font-medium text-slate-700 mt-2">A messaging app where you talk to AI-friends to practice a language</div>
+                  <div className="mt-8">
+                    <Button 
+                      variant="black"
+                      href="https://polyglossa-beta.vercel.app"
+                    >
+                        <span>Visit website</span>
+                        <ChevronRight color="white" size={18} />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+
               <div className="flex flex-col justify-between bg-linear-to-b from-indigo-500 to-[#FF163B] text-white rounded-4xl overflow-hidden">
                 <div className="px-6 md:px-12 py-12 md:py-24 flex-1 flex items-center justify-center">
                   <div className="custom-rings relative youtube-banner-image">
@@ -176,65 +134,12 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="flex flex-col justify-between bg-white rounded-4xl overflow-hidden">
-                <Image
-                  className=""
-                  src="/images/project-polyglossa.jpg"
-                  alt="Polyglossa"
-                  width={800}
-                  height={600}
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-                <div className="p-8 md:p-12 pt-2 w-full">
-                  <h4 className="font-semibold ff-display text-xl md:text-3xl">Polyglossa<sup className="text-gray-500 font-normal">β</sup></h4>
-                  <div className="text-lg font-medium text-slate-700 mt-2">A messaging app where you talk to AI-friends to practice a language</div>
-                  <div className="mt-8">
-                    <Button 
-                      variant="black"
-                      href="https://polyglossa-beta.vercel.app"
-                    >
-                        <span>Visit website</span>
-                        <ChevronRight color="white" size={18} />
-                    </Button>
-                  </div>
-                </div>
-              </div>
-
             </div>
-
-
-            {/* <div>
-                <div>
-                  <a target="_blank" href="https://mindmaker.vercel.app">Mindmaker</a>
-                  <div>NextJS, Supabase</div>
-                </div>
-                <div>
-                  <a target="_blank" href="https://planets-and-stars.vercel.app">Planets and Stars</a>
-                  <div>ReactJS</div>
-                </div>
-                <div>
-                  <a target="_blank" href="https://almazbisenbaev.gumroad.com/l/glowy-icons">Glowy Icons</a>
-                  <div>Figma</div>
-                </div>
-                <div>
-                  <a target="_blank" href="https://github.com/almazbisenbaev/wp-powertools">WP Power Tools</a>
-                  <div>WordPress, PHP</div>
-                </div>
-                <div>
-                  <a target="_blank" href="https://kartuli-abc.vercel.app">Kartuli ABC</a>
-                  <div>ReactJS</div>
-                </div>
-            </div> */}
-
           </div>
         </div>
 
 
         <ReviewsSection />
-
-
-        {/* <EmblaCarousel slides={SLIDES} options={OPTIONS} /> */}
-
     </div>
   )
   ;

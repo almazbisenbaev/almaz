@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import BlogJsonLd from '@/components/seo/BlogJsonLd';
+import BlogJsonLd from '@/components/Seo/BlogJsonLd';
 
 const post = {
   title: "Why I switched to Next.js for my personal portfolio",

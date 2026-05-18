@@ -1,4 +1,4 @@
-import BlogThumbnail from '@/components/blog-thumb/blog-thumb';
+import BlogThumbnail from '@/components/BlogThumb/BlogThumb';
 
 export const metadata = {
   title: 'Blog | Almaz Bissenbayev',
@@ -40,20 +40,6 @@ export default function Posts(){
                   isExternal={true}
                   thumbnail="/images/productivity-course.webp"
                 />
-                {/* <BlogThumbnail 
-                  title="Why I switched to Next.js for my personal portfolio"
-                  date="April 10, 2026"
-                  link="/posts/why-i-switched-to-nextjs"
-                  isExternal={false}
-                  thumbnail="/images/project-glowy.jpg"
-                />
-                <BlogThumbnail 
-                  title="The Future of Web Design: Minimalist & Fast"
-                  date="April 11, 2026"
-                  link="/posts/future-of-web-design"
-                  isExternal={false}
-                  thumbnail="/images/project-glowy.jpg"
-                /> */}
             </div>
         </div>
     )

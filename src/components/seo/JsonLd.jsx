@@ -3,7 +3,7 @@ import { JsonLd } from 'react-schemaorg';
 
 export default function PersonJsonLd() {
   return (
-    <JsonLd<Person>
+    <JsonLd
       item={{
         "@context": "https://schema.org",
         "@type": "Person",
