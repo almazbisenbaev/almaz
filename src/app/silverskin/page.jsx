@@ -1,6 +1,6 @@
 import React from "react";
 import { ExternalLink } from "lucide-react";
-import Button from "@/components/Button/Button";
+import Button from "@/components/button/button";
 
 export default function PageSilverskin() {
   return (

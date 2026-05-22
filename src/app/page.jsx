@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
 
-import TechMarquee from '@/components/TechMarquee/TechMarquee';
-import Button from '@/components/Button/Button';
-import ReviewsSection from '@/components/ReviewsSection/ReviewsSection';
-import PortfolioAccordion from '@/components/PortfolioAccordion/PortfolioAccordion';
+import TechMarquee from '@/components/tech-marquee/tech-marquee';
+import Button from '@/components/button/button';
+import ReviewsSection from '@/components/reviews-section/reviews-section';
+import PortfolioAccordion from '@/components/portfolio-accordion/portfolio-accordion';
 import { ChevronRight } from 'lucide-react';
 
 export default function Home() {

@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import './Button.css';
+import './button.css';
 
 /**
  * Button component with multiple variants.

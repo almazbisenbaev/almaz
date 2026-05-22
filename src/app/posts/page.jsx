@@ -1,4 +1,4 @@
-import BlogThumbnail from '@/components/BlogThumb/BlogThumb';
+import BlogThumbnail from '@/components/blog-thumb/blog-thumb';
 
 export const metadata = {
   title: 'Blog | Almaz Bissenbayev',

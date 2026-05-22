@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import './TechMarquee.css';
+import './tech-marquee.css';
 
 import IconWp from '@/assets/images/icon-wp.svg';
 import IconReact from '@/assets/images/icon-react.svg';

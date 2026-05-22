@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from 'react';
 import { Plus } from 'lucide-react';
-import Button from '../Button/Button';
-import './PortfolioAccordion.css';
+import Button from '../button/button';
+import './portfolio-accordion.css';
 
 const works = [
   {
