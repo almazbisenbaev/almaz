@@ -1,5 +1,3 @@
-import "./footer.css";
-
 export default function Footer() {
     return (
         <div className="pt-40 pb-10">

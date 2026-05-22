@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import "./blog-thumb.css";
 
 export default function BlogThumbnail({ title, date, link, isExternal, thumbnail }) {
   const LinkComponent = isExternal ? 'a' : Link;

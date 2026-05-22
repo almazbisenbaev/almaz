@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { Plus } from 'lucide-react';
 import Button from '../button/button';
-import './portfolio-accordion.css';
 
 const works = [
   {
