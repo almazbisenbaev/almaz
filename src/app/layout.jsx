@@ -18,7 +18,7 @@ export const metadata = {
     default: "Almaz Bisenbaev | Full-Stack Web Developer (Almaz Bissenbayev | Алмаз Бисенбаев | Алмаз Бисембаев)",
     template: "%s | Almaz Bisenbaev"
   },
-  description: "Almaz Bisenbaev - Full-Stack Web Developer with UX Design expertise. Specializing in WordPress, React, and modern web development.",
+  description: "Freelance web developer specializing in React, WordPress, and WooCommerce. Building fast, scalable websites for startups and businesses",
   metadataBase: new URL("https://helloalmaz.com"),
   alternates: {
     canonical: "/"
@@ -30,9 +30,6 @@ export const metadata = {
       index: true,
       follow: true
     }
-  },
-  verification: {
-    google: "YOUR_GOOGLE_SEARCH_CONSOLE_CODE"
   },
   keywords: [
     'Almaz Bisenbaev',
@@ -58,7 +55,7 @@ export const metadata = {
     locale: 'en_US',
     url: 'https://helloalmaz.com',
     title: "Almaz Bisenbaev | Full-Stack Web Developer",
-    description: "Almaz Bisenbaev - Full-Stack Web Developer with UX Design expertise. Specializing in WordPress, React, and modern web development.",
+    description: "Freelance web developer specializing in React, WordPress, and WooCommerce. Building fast, scalable websites for startups and businesses",
     siteName: 'Almaz Bisenbaev',
     alternateLocale: ['kk_KZ'],
     images: [
@@ -73,7 +70,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: "Almaz Bisenbaev | Full-Stack Web Developer",
-    description: "Almaz Bisenbaev - Full-Stack Web Developer with UX Design expertise. Specializing in WordPress, React, and modern web development.",
+    description: "Freelance web developer specializing in React, WordPress, and WooCommerce. Building fast, scalable websites for startups and businesses",
     creator: '@almazbisenbaev',
     images: ['/preview-twitter.jpg'],
   },

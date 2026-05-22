@@ -14,8 +14,8 @@ export default function Home() {
 
         <div className="intro-wrapper">
           <div className="container">
-              <div className="intro">
-                <div className="intro-text">
+            <div className="intro">
+                <h1 className="intro-text">
                   <span>Hi, I’m Almaz,</span>
                   <Image
                     className="intro-pic"
@@ -26,9 +26,8 @@ export default function Home() {
                     priority
                   />
                   <span> a&nbsp;Full-Stack Web Developer</span>
-                </div>
-
-              </div>
+                </h1>
+            </div>
           </div>
         </div>
 
