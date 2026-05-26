@@ -1,9 +1,10 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function BlogThumbnail({ title, date, link, isExternal, thumbnail }) {
   const LinkComponent = isExternal ? 'a' : Link;
   const linkProps = isExternal 
-    ? { href: link, target: "_blank", rel: "" } 
+    ? { href: link, target: "_blank", rel: "noopener noreferrer" } 
     : { href: link };
 
   return (
@@ -14,9 +15,12 @@ export default function BlogThumbnail({ title, date, link, isExternal, thumbnail
       </div>
 
       <div className="blog-thumb-pic">
-        <img
+        <Image
           src={thumbnail}
           alt={title}
+          width={440}
+          height={247}
+          className="rounded-lg object-cover"
         />
       </div>
 
