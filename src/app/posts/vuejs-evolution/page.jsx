@@ -2,22 +2,22 @@ import Link from 'next/link';
 import BlogJsonLd from '@/components/seo/blog-json-ld';
 
 const post = {
-  title: "The Future of Web Design: Minimalist & Fast",
+  title: "The same button component in 3 major versions of VueJS",
   date: "April 11, 2026",
-  link: "/posts/future-of-web-design",
+  link: "/posts/vuejs-evolution",
   thumbnail: "/images/project-glowy.jpg",
-  description: "Exploring the trends that are shaping the next decade of digital experiences."
+  description: "I created the same button component in 3 major versions of VueJS to see how it changed"
 };
 
 export const metadata = {
   title: 'The Future of Web Design: Minimalist & Fast | Almaz Bissenbayev',
-  description: 'Exploring the trends that are shaping the next decade of digital experiences.',
+  description: 'I created the same button component in 3 major versions of VueJS to see how it changed',
   alternates: {
     canonical: '/posts/future-of-web-design'
   }
 }
 
-export default function FutureOfWebDesign() {
+export default function PostVuejsEvolution() {
   return (
     <article className="min-h-screen py-24">
       <BlogJsonLd post={post} />
