@@ -16,6 +16,19 @@ export default function SmoothScroll() {
     let frameId = 0;
     let lenisInstance = null;
 
+    const syncLenisLockState = () => {
+      if (!lenisInstance) {
+        return;
+      }
+
+      if (document.documentElement.dataset.scrollLocked === 'true') {
+        lenisInstance.stop();
+        return;
+      }
+
+      lenisInstance.start();
+    };
+
     const destroyLenis = () => {
       if (frameId) {
         window.cancelAnimationFrame(frameId);
@@ -49,6 +62,11 @@ export default function SmoothScroll() {
       };
 
       frameId = window.requestAnimationFrame(raf);
+      syncLenisLockState();
+    };
+
+    const handleScrollLockChange = () => {
+      syncLenisLockState();
     };
 
     const handlePreferenceChange = (event) => {
@@ -61,9 +79,11 @@ export default function SmoothScroll() {
     };
 
     startLenis();
+    window.addEventListener('app-scroll-lock-change', handleScrollLockChange);
     reducedMotionQuery.addEventListener('change', handlePreferenceChange);
 
     return () => {
+      window.removeEventListener('app-scroll-lock-change', handleScrollLockChange);
       reducedMotionQuery.removeEventListener('change', handlePreferenceChange);
       destroyLenis();
     };
