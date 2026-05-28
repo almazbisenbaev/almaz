@@ -5,6 +5,7 @@ import DynamicRays from '@/components/dynamic-rays/dynamic-rays';
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Footer from '@/components/layout/footer';
+import SmoothScroll from '@/components/layout/smooth-scroll';
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -120,6 +121,7 @@ export default function RootLayout({ children }) {
       <body
         className={`antialiased overflow-x-hidden relative min-h-screen`}
       >
+        <SmoothScroll />
 
         <DynamicRays
           backgroundColor="#F5F8FF"
