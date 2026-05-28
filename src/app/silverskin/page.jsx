@@ -44,6 +44,30 @@ export default function PageSilverskin() {
         </div>
       </div>
 
+      <div className="container">
+        <img 
+          src="/images/silverskin-1.png"
+        />
+        <img 
+          src="/images/silverskin-2.png"
+        />
+        <img 
+          src="/images/silverskin-3.png"
+        />
+        <img 
+          src="/images/silverskin-4.png"
+        />
+        <img 
+          src="/images/silverskin-5.png"
+        />
+        <img 
+          src="/images/silverskin-6.png"
+        />
+        <img 
+          src="/images/silverskin-7.png"
+        />
+      </div>
+
       {/* <div>Main screenshot or video</div>
       <div>Tech stack</div>
       <div>Screenshots (or carousel)</div>
