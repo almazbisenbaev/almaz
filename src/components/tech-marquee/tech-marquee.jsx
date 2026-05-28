@@ -10,6 +10,7 @@ import IconFigma from '@/assets/images/icon-figma.svg';
 import IconJs from '@/assets/images/icon-js.svg';
 import IconPhp from '@/assets/images/icon-php.svg';
 import IconSupabase from '@/assets/images/icon-supabase.svg';
+import useScrollSkew from '@/lib/use-scroll-skew';
 
 const items = [
   { name: 'WordPress', icon: IconWp, color: '#0671BE22', textColor: '#207196' },
@@ -23,8 +24,10 @@ const items = [
 ];
 
 export default function TechMarquee() {
+  const skewRef = useScrollSkew({ maxSkew: 5.5, velocityDivisor: 340 });
+
   return (
-    <div className="tech-marquee-wrapper">
+    <div ref={skewRef} className="tech-marquee-wrapper tech-marquee-skew">
       <div className="tech-marquee">
 
         <div className="tech-marquee__group">

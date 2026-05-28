@@ -180,6 +180,14 @@ a {
   padding-bottom: 120px;
 }
 
+.intro-scroll-skew {
+  --scroll-skew: 0deg;
+  transform: translateZ(0) skewY(var(--scroll-skew));
+  transform-origin: center top;
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
 .intro-text {
   font-weight: bold;
   font-size: 112px;
@@ -258,6 +266,13 @@ a {
     font-size: 36px;
   }
 
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-scroll-skew {
+    transform: none;
+    transition: none;
+  }
 }
 
 .case {
@@ -1114,6 +1129,14 @@ a {
   padding-bottom: 3rem;
 }
 
+.tech-marquee-skew {
+  --scroll-skew: 0deg;
+  transform: translateZ(0) skewY(var(--scroll-skew));
+  transform-origin: center top;
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
 .tech-marquee {
   --gap: 10px;
   --duration: 18s;
@@ -1166,4 +1189,11 @@ a {
 @media (max-width: 768px) {
   .tech-marquee { --duration: 15s; }
   .tech-marquee-item { font-size: 1.25rem; padding: 10px 18px; border-radius: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-marquee-skew {
+    transform: none;
+    transition: none;
+  }
 }

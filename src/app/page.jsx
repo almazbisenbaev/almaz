@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 import TechMarquee from '@/components/tech-marquee/tech-marquee';
+import HeroIntro from '@/components/hero-intro/hero-intro';
 import Button from '@/components/button/button';
 import ReviewsSection from '@/components/reviews-section/reviews-section';
 import PortfolioAccordion from '@/components/portfolio-accordion/portfolio-accordion';
@@ -12,24 +13,7 @@ export default function Home() {
   return (
     <div className="home-page">
 
-        <div className="intro-wrapper">
-          <div className="container">
-            <div className="intro">
-                <h1 className="intro-text">
-                  <span>Hi, I’m Almaz,</span>
-                  <Image
-                    className="intro-pic"
-                    src="/me.jpg"
-                    width={150}
-                    height={150}
-                    alt="Almaz Bisenbaev"
-                    priority
-                  />
-                  <span> a&nbsp;Full-Stack Web Developer</span>
-                </h1>
-            </div>
-          </div>
-        </div>
+        <HeroIntro />
 
         <div className="pb-6 sm:py-20">
           <TechMarquee />
