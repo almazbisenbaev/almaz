@@ -24,7 +24,7 @@ const items = [
 ];
 
 export default function TechMarquee() {
-  const skewRef = useScrollSkew({ maxSkew: 3, velocityDivisor: 460 });
+  const skewRef = useScrollSkew({ maxSkew: 2.25, velocityDivisor: 540 });
 
   return (
     <div ref={skewRef} className="tech-marquee-wrapper tech-marquee-skew">

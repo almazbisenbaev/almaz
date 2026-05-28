@@ -5,7 +5,7 @@ import Image from 'next/image';
 import useScrollSkew from '@/lib/use-scroll-skew';
 
 export default function HeroIntro() {
-  const skewRef = useScrollSkew({ maxSkew: 4, velocityDivisor: 420 });
+  const skewRef = useScrollSkew({ maxSkew: 3, velocityDivisor: 500 });
 
   return (
     <div className="intro-wrapper">
