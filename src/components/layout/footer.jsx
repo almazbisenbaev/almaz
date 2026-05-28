@@ -22,7 +22,7 @@ export default function Footer() {
             <div className="flex flex-col gap-3 sm:gap-6">
                 <div className="text-3xl sm:text-6xl ff-display font-bold tracking-tight opacity-50">Telegram:</div>
                 <div>
-                    <a className="text-3xl sm:text-6xl ff-display font-bold tracking-tight hover:text-(--accent) transition-colors" href="//t.me/almazbisenbaev">@almazbisenbaev</a>
+                    <a className="text-3xl sm:text-6xl ff-display font-bold tracking-tight hover:text-blue-500 transition-colors" href="//t.me/almazbisenbaev">@almazbisenbaev</a>
                 </div>
             </div>
 

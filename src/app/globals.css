@@ -593,7 +593,7 @@ a {
 
 .extlink:hover, .extlink:focus {
   opacity: 1;
-  color: var(--accent);
+  color: blue;
 }
 
 /* Special styling for Upwork links */
