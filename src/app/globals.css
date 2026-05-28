@@ -75,6 +75,79 @@ body {
   min-height: 100svh;
 }
 
+.site-preloader {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100svh;
+  overflow: hidden;
+  background: #fff;
+  animation: site-preloader-collapse 900ms cubic-bezier(0.76, 0, 0.24, 1) 1.8s forwards;
+  will-change: height, visibility;
+}
+
+.site-preloader__hello {
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: clamp(3rem, 10vw, 7rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.08em;
+  color: #111;
+  animation: site-preloader-hello 1s cubic-bezier(0.22, 1, 0.36, 1) 120ms both;
+  will-change: transform, opacity, filter, letter-spacing;
+}
+
+@keyframes site-preloader-hello {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+    filter: blur(10px);
+    letter-spacing: 0.08em;
+  }
+
+  65% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+    letter-spacing: -0.08em;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+    letter-spacing: -0.08em;
+  }
+}
+
+@keyframes site-preloader-collapse {
+  0%,
+  35% {
+    height: 100svh;
+    visibility: visible;
+  }
+
+  100% {
+    height: 0;
+    visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-preloader {
+    animation-duration: 300ms;
+    animation-delay: 1200ms;
+  }
+
+  .site-preloader__hello {
+    animation-duration: 300ms;
+  }
+}
+
 html.lenis,
 html.lenis body {
   height: auto;

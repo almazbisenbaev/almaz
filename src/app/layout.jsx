@@ -121,6 +121,10 @@ export default function RootLayout({ children }) {
       <body
         className={`antialiased overflow-x-hidden relative min-h-screen`}
       >
+        <div className="site-preloader" aria-hidden="true">
+          <span className="site-preloader__hello">Hello</span>
+        </div>
+
         <SmoothScroll />
 
         <DynamicRays
