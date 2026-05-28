@@ -15,12 +15,14 @@ export default function Rays({
   animation = { animate: true, speed: 10 },
   raysColor = { mode: "single", color: "#639AFF" },
   style,
-  className
+  className,
+  onReady,
 }) {
   const containerRef = useRef(null);
   const meshRef = useRef(null);
   const frameIdRef = useRef(undefined);
   const animationRef = useRef(animation);
+  const onReadyRef = useRef(onReady);
 
   const [isMounted, setIsMounted] = useState(false);
 
@@ -32,6 +34,10 @@ export default function Rays({
   useEffect(() => {
     animationRef.current = animation;
   }, [animation]);
+
+  useEffect(() => {
+    onReadyRef.current = onReady;
+  }, [onReady]);
 
   const [randomColor1RGB, randomColor2RGB] = useMemo(() => {
     if (raysColor.mode === "random") {
@@ -123,6 +129,9 @@ export default function Rays({
     scene.add(mesh);
 
     meshRef.current = mesh;
+
+    renderer.render(scene, camera);
+    onReadyRef.current?.();
 
     let lastTime = 0;
     const animate = (time) => {
