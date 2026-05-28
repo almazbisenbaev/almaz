@@ -1,6 +1,39 @@
 import React from "react";
 import { ExternalLink } from "lucide-react";
 import Button from "@/components/button/button";
+import ImageCarousel from "@/components/image-carousel/image-carousel";
+import ImageMasonryGallery from "@/components/image-masonry-gallery/image-masonry-gallery";
+
+const screenshots = [
+  {
+    src: "/images/silverskin-1.png",
+    alt: "Silverskin Coffee Roasters homepage screenshot",
+  },
+  {
+    src: "/images/silverskin-2.png",
+    alt: "Silverskin Coffee Roasters coffee product page screenshot",
+  },
+  {
+    src: "/images/silverskin-3.png",
+    alt: "Silverskin Coffee Roasters shop listing screenshot",
+  },
+  {
+    src: "/images/silverskin-4.png",
+    alt: "Silverskin Coffee Roasters product detail screenshot",
+  },
+  {
+    src: "/images/silverskin-5.png",
+    alt: "Silverskin Coffee Roasters content section screenshot",
+  },
+  {
+    src: "/images/silverskin-6.png",
+    alt: "Silverskin Coffee Roasters mobile layout screenshot",
+  },
+  {
+    src: "/images/silverskin-7.png",
+    alt: "Silverskin Coffee Roasters checkout flow screenshot",
+  },
+];
 
 export default function PageSilverskin() {
   return (
@@ -44,29 +77,22 @@ export default function PageSilverskin() {
         </div>
       </div>
 
-      <div className="container">
-        <img 
-          src="/images/silverskin-1.png"
-        />
-        <img 
-          src="/images/silverskin-2.png"
-        />
-        <img 
-          src="/images/silverskin-3.png"
-        />
-        <img 
-          src="/images/silverskin-4.png"
-        />
-        <img 
-          src="/images/silverskin-5.png"
-        />
-        <img 
-          src="/images/silverskin-6.png"
-        />
-        <img 
-          src="/images/silverskin-7.png"
-        />
+      <div className="container pb-24">
+        <ImageCarousel images={screenshots} />
       </div>
+
+      <section className="container pb-24">
+        <div className="mb-10 max-w-3xl">
+          <h2 className="text-3xl font-bold tracking-tight text-neutral-900 md:text-5xl">
+            Masonry layout
+          </h2>
+          <p className="mt-4 text-lg leading-relaxed text-neutral-600">
+            The same screenshots in a masonry layout with a lightbox, so you can compare it directly against the drag carousel above.
+          </p>
+        </div>
+
+        <ImageMasonryGallery images={screenshots} />
+      </section>
 
       {/* <div>Main screenshot or video</div>
       <div>Tech stack</div>
