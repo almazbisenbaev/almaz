@@ -7,6 +7,7 @@ const works = [
   {
     title: "funky-ramen.de",
     url: "https://funky-ramen.de",
+    buttonText: "Visit Website",
     year: "2026",
     description: "A WordPress website for a café for anime lovers. WordPress.",
     category: "Development",
@@ -18,6 +19,7 @@ const works = [
   {
     title: "prince-food.de",
     url: "https://prince-food.de",
+    buttonText: "Visit Website",
     year: "2025",
     description: "B2B website that sells frozen fruits and vegetables. WordPress.",
     category: "Development",
@@ -29,6 +31,7 @@ const works = [
   {
     title: "factorysl.de",
     url: "https://factorysl.de/",
+    buttonText: "Visit Website",
     year: "2025",
     description: "An automotive workshop specializing in high-end vehicle detailing, maintenance, and performance tuning",
     category: "Frontend, Backend Development",
@@ -40,6 +43,7 @@ const works = [
   {
     title: "autosl.de",
     url: "//autosl.de",
+    buttonText: "Visit Website",
     year: "2024",
     description: "A company that sells expensive cars. Wordpress, a custom plugin for API integration.",
     category: "UX Design, Frontend, Backend Development",
@@ -51,6 +55,7 @@ const works = [
   {
     title: "mjavedaslam.com",
     url: "https://mjavedaslam.com",
+    buttonText: "Visit Website",
     year: "2025",
     description: "A personal website for a freelance digital marketer and copywriter",
     category: "UX Design, Frontend, Backend Development",
@@ -59,7 +64,8 @@ const works = [
   },
   {
     title: "silverskincoffee.ie",
-    url: "//silverskincoffee.ie",
+    url: "/silverskin",
+    buttonText: "View Details",
     year: "2024",
     description: "E-Commerce website that sells coffee beans. WordPress, Woocommerce.",
     category: "Development",
@@ -69,6 +75,7 @@ const works = [
   {
     title: "muafaktur.de",
     url: "//muafaktur.de",
+    buttonText: "Visit Website",
     year: "2023",
     description: "WooCommerce website for a company offering beauty products and training courses",
     category: "UX Design, Development",
@@ -80,6 +87,7 @@ const works = [
   {
     title: "monitask.com",
     url: "//monitask.com",
+    buttonText: "Visit Website",
     year: "2021",
     description: "Multilingual WordPress website with hundreds of pages all generated and updated automatically",
     category: "Development",
@@ -139,7 +147,7 @@ const PortfolioAccordion = () => {
                     href={work.url} 
                     variant="outline-white"
                 >
-                    Visit Website 
+                  {work.buttonText || "Visit Website"}
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
                 </Button>
             </div>
