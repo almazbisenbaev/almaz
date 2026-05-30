@@ -1,7 +1,11 @@
+import { Separator } from "../ui/separator";
+
 export default function Footer() {
     return (
         <div className="pt-40 pb-10">
             <div className="container relative">
+
+            <Separator className="mb-10 bg-blue-700/10" />
 
             <div className="font-medium text-lg flex flex-col sm:flex-row gap-3 mb-18">
                 <div>I also talk about web dev here:</div>
@@ -22,7 +26,7 @@ export default function Footer() {
             <div className="flex flex-col gap-3 sm:gap-6">
                 <div className="text-3xl sm:text-6xl ff-display font-bold tracking-tight opacity-50">Telegram:</div>
                 <div>
-                    <a className="text-3xl sm:text-6xl ff-display font-bold tracking-tight hover:text-blue-500 transition-colors" href="//t.me/almazbisenbaev">@almazbisenbaev</a>
+                    <a className="text-3xl sm:text-6xl ff-display font-bold tracking-tight hover:text-[#00f] transition-colors" href="//t.me/almazbisenbaev">@almazbisenbaev</a>
                 </div>
             </div>
 

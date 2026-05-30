@@ -6,32 +6,28 @@ import ImageMasonryGallery from "@/components/image-masonry-gallery/image-masonr
 
 const screenshots = [
   {
-    src: "/images/silverskin-1.png",
-    alt: "Silverskin Coffee Roasters homepage screenshot",
+    src: "/images/silverskin-1.webp",
+    alt: "Screenshot",
   },
   {
-    src: "/images/silverskin-2.png",
-    alt: "Silverskin Coffee Roasters coffee product page screenshot",
+    src: "/images/silverskin-2.webp",
+    alt: "Screenshot",
   },
   {
-    src: "/images/silverskin-3.png",
-    alt: "Silverskin Coffee Roasters shop listing screenshot",
+    src: "/images/silverskin-3.webp",
+    alt: "Screenshot",
   },
   {
-    src: "/images/silverskin-4.png",
-    alt: "Silverskin Coffee Roasters product detail screenshot",
+    src: "/images/silverskin-4.webp",
+    alt: "Screenshot",
   },
   {
-    src: "/images/silverskin-5.png",
-    alt: "Silverskin Coffee Roasters content section screenshot",
+    src: "/images/silverskin-5.webp",
+    alt: "Screenshot",
   },
   {
-    src: "/images/silverskin-6.png",
-    alt: "Silverskin Coffee Roasters mobile layout screenshot",
-  },
-  {
-    src: "/images/silverskin-7.png",
-    alt: "Silverskin Coffee Roasters checkout flow screenshot",
+    src: "/images/silverskin-6.webp",
+    alt: "Screenshot",
   },
 ];
 
@@ -43,9 +39,7 @@ export default function PageSilverskin() {
 
         <h1 className="text-5xl md:text-7xl font-bold mb-10 tracking-tight text-neutral-900">Silverskin Coffee Roasters</h1>
 
-        <div className="text-2xl md:text-3xl text-neutral-600 mb-6 leading-tight">
-          WordPress website development for Silverskin Coffee Roasters
-        </div>
+        <div className="text-2xl md:text-3xl text-neutral-600 mb-6 leading-tight">WordPress website development for Silverskin Coffee Roasters</div>
         
         <div className="text-lg text-neutral-500">
           <span className="font-semibold text-neutral-800">Skills:</span> HTML, CSS, JavaScript, PHP, WordPress, WooCommerce
@@ -77,28 +71,20 @@ export default function PageSilverskin() {
         </div>
       </div>
 
-      <div className="container pb-24">
+      {/* <div className="container pb-24">
         <ImageCarousel images={screenshots} />
-      </div>
+      </div> */}
 
       <section className="container pb-24">
-        <div className="mb-10 max-w-3xl">
-          <h2 className="text-3xl font-bold tracking-tight text-neutral-900 md:text-5xl">
-            Masonry layout
-          </h2>
-          <p className="mt-4 text-lg leading-relaxed text-neutral-600">
-            The same screenshots in a masonry layout with a lightbox, so you can compare it directly against the drag carousel above.
-          </p>
-        </div>
-
         <ImageMasonryGallery images={screenshots} />
       </section>
 
-      {/* <div>Main screenshot or video</div>
-      <div>Tech stack</div>
-      <div>Screenshots (or carousel)</div>
+      {/* 
+        <div>Main screenshot or video</div>
+        <div>Tech stack</div>
+        <div>Offer (work with me if you want this and htis)</div> 
+      */}
 
-      <div>Offer (work with me if you want this and htis)</div> */}
     </>
   );
 }

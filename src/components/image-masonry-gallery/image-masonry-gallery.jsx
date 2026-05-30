@@ -34,7 +34,7 @@ function MasonryImageTile({ image, index, onOpen, onHoverChange }) {
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
       onPointerCancel={handlePointerLeave}
-      className="mb-4 block w-full break-inside-avoid overflow-hidden rounded-sm border border-black/10 bg-white text-left cursor-none"
+      className="mb-12 block w-full break-inside-avoid overflow-hidden rounded-sm border border-black/10 bg-white text-left cursor-none"
       aria-label={`Open ${image.alt}`}
     >
       <img
@@ -102,7 +102,7 @@ export default function ImageMasonryGallery({ images }) {
 
   return (
     <>
-      <div className="columns-1 gap-4 sm:columns-2 xl:columns-3">
+      <div className="columns-1 gap-12 sm:columns-2 xl:columns-3">
         {images.map((image, index) => (
           <MasonryImageTile
             key={image.src ?? index}
