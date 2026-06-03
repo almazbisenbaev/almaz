@@ -28,6 +28,7 @@ export default function Home() {
               </div>
 
               <PortfolioAccordion />
+
             </div>
           </div>
         </div>

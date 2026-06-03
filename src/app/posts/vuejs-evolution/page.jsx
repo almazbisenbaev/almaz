@@ -1,29 +1,59 @@
 import Link from 'next/link';
 import BlogJsonLd from '@/components/seo/blog-json-ld';
+import CodeBlock from '@/components/code-block/code-block';
 
 const post = {
   title: "The same button component in 3 major versions of VueJS",
   date: "April 11, 2026",
   link: "/posts/vuejs-evolution",
-  thumbnail: "/images/project-glowy.jpg",
   description: "I created the same button component in 3 major versions of VueJS to see how it changed"
 };
 
 export const metadata = {
-  title: 'The Future of Web Design: Minimalist & Fast | Almaz Bissenbayev',
+  title: 'The same button component in 3 major versions of VueJS',
   description: 'I created the same button component in 3 major versions of VueJS to see how it changed',
   alternates: {
-    canonical: '/posts/future-of-web-design'
+    canonical: '/posts/vuejs-evolution'
   }
 }
 
-export default function PostVuejsEvolution() {
+const vue1Code = `<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/vue@1.0.28/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <alert-button></alert-button>
+    </div>
+
+    <script>
+      var AlertButton = Vue.extend({
+        template: '<button v-on:click="showAlert">Click me (Vue 1)</button>',
+        methods: {
+          showAlert: function() {
+            alert('Hello from Vue 1.x!');
+          }
+        }
+      });
+
+      Vue.component('alert-button', AlertButton);
+
+      new Vue({
+        el: '#app'
+      });
+    </script>
+  </body>
+</html>`;
+
+export default async function PostVuejsEvolution() {
   return (
     <article className="min-h-screen py-24">
       <BlogJsonLd post={post} />
       
       <div className="container">
         <div className="max-w-4xl mx-auto">
+
           <Link href="/posts" className="inline-flex items-center text-neutral-400 hover:text-neutral-900 mb-12 transition-colors text-sm font-medium uppercase tracking-widest">
             <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -35,47 +65,36 @@ export default function PostVuejsEvolution() {
             <div className="flex items-center space-x-3 mb-4">
               <span className="text-neutral-400 text-sm font-medium uppercase tracking-widest">{post.date}</span>
               <span className="text-neutral-200">•</span>
-              <span className="text-neutral-400 text-sm font-medium uppercase tracking-widest">Design</span>
+              <span className="text-neutral-400 text-sm font-medium uppercase tracking-widest">Frontend</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-neutral-900 mb-8 tracking-tight leading-tight">
-              The Future of Web Design: Minimalist & Fast
-            </h1>
+            <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight">The same button component in 3 major versions of VueJS</h1>
           </header>
 
-          <div className="text-neutral-900">
-            <p className="text-3xl md:text-4xl text-neutral-500 mb-20 leading-tight italic font-light tracking-tight">
-              In a world of constant noise, simplicity is the ultimate sophistication. We're moving towards an era of functional minimalism and hyper-performance.
+          <div className="article">
+
+            <p className="text-xl md:text-2xl">
+              Vue.js has come a long way since its initial release. From its humble beginnings as a lightweight library inspired by Angular and React, it has grown into one of the most beloved frontend frameworks. In this post, I'll look at three major milestones: <b>Vue 1.x</b> (the original), <b>Vue 2.x</b> (the Options API era that powered massive adoption), and <b>Vue 3.x</b> (the modern Composition API default). I'll implement the same simple feature: a button that shows an alert when clicked.
             </p>
 
-            <h2 className="text-4xl md:text-5xl font-bold mb-10 tracking-tighter">Functional Minimalism</h2>
-            <p className="text-2xl md:text-3xl text-neutral-600 leading-relaxed mb-12">
-              Minimalism isn't just about removing elements; it's about making every element work twice as hard. In 2026, we're seeing a shift from decoration to information-first design.
+            <h2 className="text-4xl md:text-5xl">Vue 1.x: The Dawn of Reactive Components (circa 2015)</h2>
+            <p>
+              Vue 1 introduced the core concepts that made it stand out: reactive data binding, a simple template syntax, and component-based architecture using <code>Vue.extend()</code> and global registration.
             </p>
 
-            <h2 className="text-4xl md:text-5xl font-bold mb-10 tracking-tighter mt-24">Hyper-Performance</h2>
-            <p className="text-2xl md:text-3xl text-neutral-600 leading-relaxed mb-12">
-              Wait times are the death of conversions. The future is about instant gratification through server-side optimizations and edge delivery networks.
-            </p>
+            <p><b>Key characteristics of this era:</b></p>
+            <ul>
+              <li><div>Heavy use of <code>Vue.extend()</code> for component definitions.</div></li>
+              <li><div>Templates were often strings or in the DOM.</div></li>
+              <li><div>Event handling with <code>v-on</code> (shorthand <code>@</code> came later but was similar).</div></li>
+              <li><div>Data was defined directly, with caveats around sharing objects.</div></li>
+            </ul>
 
-            <blockquote className="my-20 border-l-4 border-neutral-900 pl-10 py-4 italic text-3xl md:text-4xl font-light text-neutral-800 leading-tight">
-              "Good design is as little design as possible." — Dieter Rams
-            </blockquote>
+            <h3>Example: AlertButton.vue (Vue 1 style)</h3>
 
-            <p className="text-2xl md:text-3xl text-neutral-600 leading-relaxed mb-12">
-              The digital landscape is becoming increasingly saturated. To stand out, brands are moving away from complex animations and heavy assets in favor of clean typography, ample whitespace, and blazing fast load times.
-            </p>
+            <CodeBlock code={vue1Code} lang="html" />
 
-            <h3 className="text-3xl md:text-4xl font-bold text-neutral-900 mt-24 mb-12 tracking-tight">What's Next?</h3>
-            <div className="space-y-16 mt-12">
-              <div>
-                <h4 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-4 tracking-tight">Adaptive UI</h4>
-                <p className="text-xl md:text-2xl text-neutral-600 leading-relaxed">Interfaces that change based on user context, device, and even emotional state.</p>
-              </div>
-              <div>
-                <h4 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-4 tracking-tight">Micro-Interactions</h4>
-                <p className="text-xl md:text-2xl text-neutral-600 leading-relaxed">Small, subtle animations that provide feedback and delight without being distracting.</p>
-              </div>
-            </div>
+            <div className="bg-red-500 h-3 mt-24"></div>
+
           </div>
         </div>
       </div>

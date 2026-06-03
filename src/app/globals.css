@@ -913,9 +913,11 @@ a {
   }
   body {
     @apply bg-background text-foreground;
+    font-size: 18px;  
   }
   html {
     @apply font-sans;
+    font-size: 18px; 
   }
 }
 
@@ -1286,4 +1288,58 @@ a {
     transform: none;
     transition: none;
   }
+}
+
+
+
+/* Blog post */
+
+.article {
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.article h1, .article h2, .article h3, .article h4, .article h5, .article h6 {
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  letter-spacing: 0.01em;
+}
+
+.article code {
+  font-size: 0.86em;
+  font-family: monospace;
+  color: red;
+  background: rgba(0,0,0,0.1);
+  border-radius: 4px;
+  padding: 0.14em 0.25em;
+}
+
+.article p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+.article ul {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.article ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 0.5em;
+}
+
+.article ul li::before {
+  content: "";
+  background: blue;
+  /* border: 1px solid black; */
+  border-radius: 50%;
+  
+  display: block;
+  width: 0.65em;
+  height: 0.65em;
+  transform: translateY(0.45em);
 }
