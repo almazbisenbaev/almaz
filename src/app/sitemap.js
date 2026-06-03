@@ -2,8 +2,8 @@ export default function sitemap() {
   const baseUrl = 'https://helloalmaz.com';
 
   const internalPosts = [
+    '/posts/vuejs-evolution',
     '/posts/why-i-switched-to-nextjs',
-    '/posts/future-of-web-design',
   ];
 
   const posts = internalPosts.map((link) => ({

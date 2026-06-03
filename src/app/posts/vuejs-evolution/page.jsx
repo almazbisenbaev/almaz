@@ -4,7 +4,7 @@ import CodeBlock from '@/components/code-block/code-block';
 
 const post = {
   title: "The same button component in 3 major versions of VueJS",
-  date: "April 11, 2026",
+  date: "June 10, 2026",
   link: "/posts/vuejs-evolution",
   description: "I created the same button component in 3 major versions of VueJS to see how it changed"
 };
