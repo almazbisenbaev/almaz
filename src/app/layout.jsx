@@ -2,12 +2,12 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import "./globals.css";
 import Header from '@/components/layout/header';
 import DynamicRays from '@/components/dynamic-rays/dynamic-rays';
-import { Geist } from "next/font/google";
+import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Footer from '@/components/layout/footer';
 import SmoothScroll from '@/components/layout/smooth-scroll';
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 export const viewport = {
   width: 'device-width',
@@ -110,12 +110,10 @@ export default function RootLayout({ children }) {
   };
 
   return (
-    <html lang="en" className={cn("font-sans", geist.variable)}>
+    <html lang="en" className={cn("font-sans", inter.variable)}>
       <head>
-        <link rel="preconnect" href="https://api.fontshare.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
-        <link href="https://api.fontshare.com/v2/css?f[]=general-sans@1,2&display=swap" rel="stylesheet" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body
