@@ -1300,10 +1300,18 @@ a {
 }
 
 .article h1, .article h2, .article h3, .article h4, .article h5, .article h6 {
-  font-weight: bold;
-  margin-top: 1em;
+  font-weight: 600;
+  margin-top: 1.5em;
   margin-bottom: 0.5em;
-  letter-spacing: 0.01em;
+  letter-spacing: -0.01em;
+}
+
+.article h2 {
+  font-size: 32px;
+}
+
+.article h3 {
+  font-size: 28px;
 }
 
 .article code {
@@ -1334,12 +1342,14 @@ a {
 
 .article ul li::before {
   content: "";
-  background: blue;
-  /* border: 1px solid black; */
-  border-radius: 50%;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v12"/><path d="M17.196 9 6.804 15"/><path d="m6.804 9 10.392 6"/></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   
   display: block;
-  width: 0.65em;
-  height: 0.65em;
-  transform: translateY(0.45em);
+  width: 1em;
+  height: 1em;
+  transform: translateY(0.3em);
+  flex-shrink: 0;
 }
