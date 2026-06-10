@@ -77,6 +77,18 @@ export default {
 }
 </script>`;
 
+const vue3Code = `<script setup>
+const showAlert = () => {
+  alert('Hello from Vue 3.x Composition API!');
+}
+</script>
+
+<template>
+  <button @click="showAlert">
+    Click me (Vue 3)
+  </button>
+</template>`;
+
 
 export default async function PostVuejsEvolution() {
   return (
@@ -141,10 +153,30 @@ export default async function PostVuejsEvolution() {
             <CodeBlock code={vue2Code2} lang="html" />
             <p>This syntax feels very organized and explicit. The separation of concerns (template, script, style) in Single-File Components made large apps much more maintainable.</p>
 
-            
+
+            <h2>Vue 3.x: Composition API &amp; <code>&lt;script setup&gt;</code> (2020–present)</h2>
+
+            <p>Vue 3 brought a complete rewrite with better performance, TypeScript support, and the Composition API. While the Options API is still fully supported for backward compatibility, the new <code>&lt;script setup&gt;</code> syntax has become the recommended default for its conciseness and better logical composition.</p>
+            <p><b>Key differences in Vue 3:</b></p>
+            <ul>
+              <li>Composition API allows grouping logic by feature rather than option type.</li>
+              <li><code>&lt;script setup&gt;</code> is syntactic sugar that compiles to highly optimized code.</li>
+              <li>Better tree-shaking and smaller bundle sizes.</li>
+              <li><code>defineProps</code> / <code>defineEmits</code> macros for better ergonomics.</li>
+            </ul>
+            <p><b>Example: AlertButton.vue (Vue 3 with <code>&lt;script setup&gt;</code>)</b></p>
+            <CodeBlock code={vue3Code} lang="html" />
 
 
-            <div className="bg-red-500 h-3 mt-24"></div>
+            <h2>Evolution Summary</h2>
+
+            <ul>
+              <li><span><b>Vue 1</b>: Focused on simplicity and getting started quickly with minimal ceremony.</span></li>
+              <li><span><b>Vue 2</b>: Emphasized structure and scalability through the Options API.</span></li>
+              <li><span><b>Vue 3</b>: Prioritizes flexibility, performance, and composability. Logic can now be extracted into reusable composables (<code>useAlert.js</code>, etc.), making code more modular.</span></li>
+            </ul>
+            <p>The button itself didn't change much in functionality, but how we author and organize that functionality evolved dramatically for the better.</p>
+            <p>Whether you're maintaining a legacy Vue 2 app, exploring Vue 1 history, or building new projects with Vue 3, it's impressive how the framework has stayed true to its roots: approachable, performant, and developer-friendly.</p>
 
           </div>
         </div>
