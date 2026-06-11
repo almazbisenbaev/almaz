@@ -3,7 +3,7 @@ import { Separator } from "../ui/separator";
 export default function Footer() {
     return (
         <div className="pt-40 pb-10">
-            <div className="container relative">
+            <div className="container px-5 relative">
 
             <Separator className="mb-10 bg-blue-700/10" />
 

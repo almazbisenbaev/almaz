@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import BlogJsonLd from '@/components/seo/blog-json-ld';
 import CodeBlock from '@/components/code-block/code-block';
 
@@ -28,7 +29,7 @@ const vue1Code = `<html>
 
     <script>
       var AlertButton = Vue.extend({
-        template: '<button v-on:click="showAlert">Click me (Vue 1)</button>',
+        template: '<button v-on:click="showAlert">Click me</button>',
         methods: {
           showAlert: function() {
             alert('Hello from Vue 1.x!');
@@ -47,7 +48,7 @@ const vue1Code = `<html>
 
 const vue2Code = `<template>
   <button @click="showAlert">
-    Click me (Vue 2)
+    Click me
   </button>
 </template>
 
@@ -85,34 +86,48 @@ const showAlert = () => {
 
 <template>
   <button @click="showAlert">
-    Click me (Vue 3)
+    Click me
   </button>
 </template>`;
 
 
 export default async function PostVuejsEvolution() {
   return (
-    <article className="min-h-screen py-24">
+    <article className="min-h-screen py-12 sm:py-24">
       <BlogJsonLd post={post} />
-      
-      <div className="container">
-        <div className="max-w-4xl mx-auto">
 
-          <Link href="/posts" className="inline-flex items-center text-neutral-400 hover:text-neutral-900 mb-12 transition-colors text-sm font-medium uppercase tracking-widest">
-            <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
+      <div className="container px-5">
+        <div className="max-w-3xl mx-auto">
+
+          <Link href="/posts" className="inline-flex items-center text-neutral-400 hover:text-neutral-900 mb-12 transition-colors text-xs font-medium uppercase tracking-widest">
+            <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
             Back
           </Link>
 
-          <header className="mb-16">
-            <div className="flex items-center space-x-3 mb-4">
-              <span className="text-neutral-400 text-sm font-medium uppercase tracking-widest">{post.date}</span>
-              <span className="text-neutral-200">•</span>
-              <span className="text-neutral-400 text-sm font-medium uppercase tracking-widest">Frontend</span>
+          <header className="mb-10 sm:mb-16">
+            <div className="text-neutral-400 font-medium uppercase text-xs sm:text-sm flex items-center space-x-2 mb-4">
+              <span>{post.date}</span>
+              <span>•</span>
+              <span>Frontend</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight">The same button component in 3 major versions of VueJS</h1>
+            <h1 className="text-3xl sm:text-7xl font-bold mb-8 tracking-tight">The same button component in 3 major versions of VueJS</h1>
           </header>
+
+        </div>
+      </div>
+
+      <div className="container px-0 max-w-[1400px] mb-10 sm:mb-16">
+        <Image 
+          src="/images/article-vuejs-cover.jpg"
+          width="1600"
+          height="1200"
+          alt=""
+          className="w-full sm:rounded-xl"
+        />
+      </div>
+      
+      <div className="container px-5">
+        <div className="max-w-3xl mx-auto">
 
           <div className="article">
 
@@ -142,10 +157,10 @@ export default async function PostVuejsEvolution() {
             <p>Vue 2 refined the developer experience significantly. It popularized the Options API — organizing code into clear sections like <code>data</code>, <code>methods</code>, <code>computed</code>, and lifecycle hooks. This became the standard way most developers learned and used Vue for years. Global <code>Vue.component</code> was still common, but Single-File Components (.vue files) with webpack/Vue CLI became the norm.</p>
             <p><b>Key improvements:</b></p>
             <ul>
-              <li>More structured component options.</li>
-              <li>Better reactivity system.</li>
-              <li>Official CLI and excellent documentation.</li>
-              <li><code>v-on:click</code> shorthand <code>@click</code> widely used.</li>
+              <li><span>More structured component options.</span></li>
+              <li><span>Better reactivity system.</span></li>
+              <li><span>Official CLI and excellent documentation.</span></li>
+              <li><span><code>v-on:click</code> shorthand <code>@click</code> widely used.</span></li>
             </ul>
             <p><b>Example: AlertButton.vue (Vue 2 Options API)</b></p>
             <CodeBlock code={vue2Code} lang="html" />

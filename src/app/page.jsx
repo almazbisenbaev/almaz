@@ -21,7 +21,7 @@ export default function Home() {
 
         <div className="px-0 md:px-2">
           <div className="section section-portfolio">
-            <div className="container">
+            <div className="container px-5">
 
               <div className="block-header">
                 <div className="block-header-title">Recent works</div>
@@ -34,7 +34,7 @@ export default function Home() {
         </div>
 
         <div className="section">
-          <div className="container">
+          <div className="container px-5">
 
             <div className="block-header">
               <div className="block-header-title">Personal projects</div>
