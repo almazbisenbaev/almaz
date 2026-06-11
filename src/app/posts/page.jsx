@@ -21,6 +21,13 @@ export default function Posts(){
 
             <div className="flex flex-col">
                 <BlogThumbnail 
+                  title="I created the same button component in 3 major versions of VueJS"
+                  date="June 11, 2026"
+                  link="/posts/vuejs-evolution"
+                  isExternal={true}
+                  thumbnail="/images/article-vuejs-cover.jpg"
+                />
+                <BlogThumbnail 
                   title="How to make your Elementor website win PageSpeed"
                   date="June 21, 2025"
                   link="https://www.threads.com/@almazbisenbaev/post/DLKwRKuRv0O"
