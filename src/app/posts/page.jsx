@@ -24,7 +24,7 @@ export default function Posts(){
                   title="I created the same button component in 3 major versions of VueJS"
                   date="June 11, 2026"
                   link="/posts/vuejs-evolution"
-                  isExternal={true}
+                  isExternal={false}
                   thumbnail="/images/article-vuejs-cover.jpg"
                 />
                 <BlogThumbnail 
