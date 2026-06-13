@@ -32,7 +32,7 @@ const vue1Code = `<html>
         template: '<button v-on:click="showAlert">Click me</button>',
         methods: {
           showAlert: function() {
-            alert('Hello from Vue 1.x!');
+            alert('Hello!');
           }
         }
       });
@@ -132,14 +132,12 @@ export default async function PostVuejsEvolution() {
           <div className="article">
 
             <p className="text-xl md:text-2xl">
-              Vue.js has come a long way since its initial release. From its humble beginnings as a lightweight library inspired by Angular and React, it has grown into one of the most beloved frontend frameworks. In this post, I'll look at three major milestones: <b>Vue 1.x</b> (the original), <b>Vue 2.x</b> (the Options API era that powered massive adoption), and <b>Vue 3.x</b> (the modern Composition API default). I'll implement the same simple feature: a button that shows an alert when clicked.
+              Vue.js has come a long way since its initial release. From its humble beginnings as a lightweight library inspired by Angular and React, it has grown into one of the most beloved frontend frameworks. In this post, I'll look at three major milestones: <b>Vue 1</b>, <b>Vue 2</b> (the Options API era that powered massive adoption), and <b>Vue 3</b> (the modern Composition API default). I'll implement the same simple feature: a button that shows an alert when clicked.
             </p>
 
 
-            <h2>Vue 1.x: The Dawn of Reactive Components (circa 2015)</h2>
-            <p>
-              Vue 1 introduced the core concepts that made it stand out: reactive data binding, a simple template syntax, and component-based architecture using <code>Vue.extend()</code> and global registration.
-            </p>
+            <h2>Vue 1 (2015)</h2>
+            <p>Vue 1 introduced the core concepts that made it stand out: reactive data binding, a simple template syntax, and component-based architecture using <code>Vue.extend()</code> and global registration.</p>
             <p><b>Key characteristics of this era:</b></p>
             <ul>
               <li><div>Heavy use of <code>Vue.extend()</code> for component definitions.</div></li>
@@ -147,14 +145,14 @@ export default async function PostVuejsEvolution() {
               <li><div>Event handling with <code>v-on</code> (shorthand <code>@</code> came later but was similar).</div></li>
               <li><div>Data was defined directly, with caveats around sharing objects.</div></li>
             </ul>
-            <p><b>Example: AlertButton.vue (Vue 1 style)</b></p>
+            <p><b>Example with Vue 1</b></p>
             <CodeBlock code={vue1Code} lang="html" />
             <p><b>What's notable:</b> Everything was quite imperative and constructor-based. Components felt like enhanced custom elements. This version was lightweight and easy to pick up, focusing on progressive enhancement. No build tools were strictly required.</p>
 
 
-            <h2>Vue 2.x: The Options API Golden Age (2016–2020+)</h2>
+            <h2>Vue 2: The Options API (2016–2020)</h2>
 
-            <p>Vue 2 refined the developer experience significantly. It popularized the Options API — organizing code into clear sections like <code>data</code>, <code>methods</code>, <code>computed</code>, and lifecycle hooks. This became the standard way most developers learned and used Vue for years. Global <code>Vue.component</code> was still common, but Single-File Components (.vue files) with webpack/Vue CLI became the norm.</p>
+            <p>Vue 2 refined the developer experience significantly. It popularized the Options API: organizing code into clear sections like <code>data</code>, <code>methods</code>, <code>computed</code>, and lifecycle hooks. This became the standard way most developers learned and used Vue for years. Global <code>Vue.component</code> was still common, but Single-File Components (.vue files) with webpack/Vue CLI became the norm.</p>
             <p><b>Key improvements:</b></p>
             <ul>
               <li><span>More structured component options.</span></li>
@@ -162,14 +160,14 @@ export default async function PostVuejsEvolution() {
               <li><span>Official CLI and excellent documentation.</span></li>
               <li><span><code>v-on:click</code> shorthand <code>@click</code> widely used.</span></li>
             </ul>
-            <p><b>Example: AlertButton.vue (Vue 2 Options API)</b></p>
+            <p><b>Example with Vue 2</b></p>
             <CodeBlock code={vue2Code} lang="html" />
             <p><b>Usage in parent:</b></p>
             <CodeBlock code={vue2Code2} lang="html" />
             <p>This syntax feels very organized and explicit. The separation of concerns (template, script, style) in Single-File Components made large apps much more maintainable.</p>
 
 
-            <h2>Vue 3.x: Composition API &amp; <code>&lt;script setup&gt;</code> (2020–present)</h2>
+            <h2>Vue 3: Composition API &amp; <code>&lt;script setup&gt;</code> (2020+)</h2>
 
             <p>Vue 3 brought a complete rewrite with better performance, TypeScript support, and the Composition API. While the Options API is still fully supported for backward compatibility, the new <code>&lt;script setup&gt;</code> syntax has become the recommended default for its conciseness and better logical composition.</p>
             <p><b>Key differences in Vue 3:</b></p>
@@ -179,7 +177,7 @@ export default async function PostVuejsEvolution() {
               <li>Better tree-shaking and smaller bundle sizes.</li>
               <li><code>defineProps</code> / <code>defineEmits</code> macros for better ergonomics.</li>
             </ul>
-            <p><b>Example: AlertButton.vue (Vue 3 with <code>&lt;script setup&gt;</code>)</b></p>
+            <p><b>Example with <code>&lt;script setup&gt;</code></b></p>
             <CodeBlock code={vue3Code} lang="html" />
 
 
@@ -190,8 +188,8 @@ export default async function PostVuejsEvolution() {
               <li><span><b>Vue 2</b>: Emphasized structure and scalability through the Options API.</span></li>
               <li><span><b>Vue 3</b>: Prioritizes flexibility, performance, and composability. Logic can now be extracted into reusable composables (<code>useAlert.js</code>, etc.), making code more modular.</span></li>
             </ul>
-            <p>The button itself didn't change much in functionality, but how we author and organize that functionality evolved dramatically for the better.</p>
-            <p>Whether you're maintaining a legacy Vue 2 app, exploring Vue 1 history, or building new projects with Vue 3, it's impressive how the framework has stayed true to its roots: approachable, performant, and developer-friendly.</p>
+            <p>The button itself didn't change much, what changed is how we organize that functionality, and it evolved dramatically for the better.</p>
+            <p>In any case, it's impressive how the framework has stayed true to its roots: approachable, performant, and friendly to not-so-bright people like me.</p>
 
           </div>
         </div>
