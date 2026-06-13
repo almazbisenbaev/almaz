@@ -1328,7 +1328,7 @@ a {
 .article code {
   font-size: 0.86em;
   font-family: monospace;
-  color: #0f0;
+  color: rgb(0, 138, 28);
   background: rgba(0,50,0,0.07);
   border-radius: 4px;
   padding: 0.14em 0.25em;
