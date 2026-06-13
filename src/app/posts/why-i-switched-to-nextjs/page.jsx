@@ -14,7 +14,31 @@ export const metadata = {
   description: 'A deep dive into why Next.js is the perfect choice for modern web developers in 2026.',
   alternates: {
     canonical: '/posts/why-i-switched-to-nextjs'
-  }
+  },
+  openGraph: {
+    type: 'article',
+    locale: 'en_US',
+    url: 'https://helloalmaz.com/posts/why-i-switched-to-nextjs',
+    title: 'Why I switched to Next.js for my personal portfolio',
+    description: 'A deep dive into why Next.js is the perfect choice for modern web developers in 2026.',
+    siteName: 'Almaz Bisenbaev',
+    publishedTime: '2026-04-10T00:00:00Z',
+    images: [
+      {
+        url: '/images/project-glowy.jpg',
+        width: 1600,
+        height: 840,
+        alt: 'Why I switched to Next.js for my personal portfolio',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Why I switched to Next.js for my personal portfolio',
+    description: 'A deep dive into why Next.js is the perfect choice for modern web developers in 2026.',
+    creator: '@almazbisenbaev',
+    images: ['/images/project-glowy.jpg'],
+  },
 }
 
 export default function WhyISwitchedToNextjs() {

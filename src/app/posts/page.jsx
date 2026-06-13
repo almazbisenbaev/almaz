@@ -5,7 +5,30 @@ export const metadata = {
   description: 'Thoughts on code, design, and tech.',
   alternates: {
     canonical: '/posts'
-  }
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://helloalmaz.com/posts',
+    title: 'Blog | Almaz Bissenbayev',
+    description: 'Thoughts on code, design, and tech.',
+    siteName: 'Almaz Bisenbaev',
+    images: [
+      {
+        url: '/preview-opengraph.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Almaz Bisenbaev - Blog',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Blog | Almaz Bissenbayev',
+    description: 'Thoughts on code, design, and tech.',
+    creator: '@almazbisenbaev',
+    images: ['/preview-twitter.jpg'],
+  },
 }
 
 export default function Posts(){

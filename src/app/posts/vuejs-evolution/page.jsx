@@ -15,7 +15,31 @@ export const metadata = {
   description: 'I created the same button component in 3 major versions of VueJS to see how it changed',
   alternates: {
     canonical: '/posts/vuejs-evolution'
-  }
+  },
+  openGraph: {
+    type: 'article',
+    locale: 'en_US',
+    url: 'https://helloalmaz.com/posts/vuejs-evolution',
+    title: 'The same button component in 3 major versions of VueJS',
+    description: 'I created the same button component in 3 major versions of VueJS to see how it changed',
+    siteName: 'Almaz Bisenbaev',
+    publishedTime: '2026-06-11T00:00:00Z',
+    images: [
+      {
+        url: '/images/article-vuejs-cover.jpg',
+        width: 1600,
+        height: 1200,
+        alt: 'The same button component in 3 major versions of VueJS',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'The same button component in 3 major versions of VueJS',
+    description: 'I created the same button component in 3 major versions of VueJS to see how it changed',
+    creator: '@almazbisenbaev',
+    images: ['/images/article-vuejs-cover.jpg'],
+  },
 }
 
 const vue1Code = `<html>
