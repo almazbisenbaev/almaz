@@ -102,7 +102,7 @@ export default function ImageMasonryGallery({ images }) {
 
   return (
     <>
-      <div className="columns-1 gap-12 sm:columns-2 xl:columns-3">
+      <div className="columns-1 gap-12 md:columns-2">
         {images.map((image, index) => (
           <MasonryImageTile
             key={image.src ?? index}
