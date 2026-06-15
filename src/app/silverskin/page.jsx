@@ -70,6 +70,17 @@ export default function PageSilverskin() {
 
           <div>
 
+            <div className="overflow-hidden border border-black/10 rounded-sm mb-24">
+              <video 
+                src="/videos/silverskin-hamburger.webm" 
+                autoPlay 
+                muted 
+                loop 
+                playsInline 
+                className="w-full h-auto block"
+              />
+            </div>
+
             {/* <div className="container pb-24">
               <ImageCarousel images={screenshots} />
             </div> */}
