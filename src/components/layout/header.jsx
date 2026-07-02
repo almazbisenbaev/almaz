@@ -9,7 +9,7 @@ const Header = () => {
   const navItems = [
     { href: '/', label: 'About', isExternal: false },
     { href: '/posts', label: 'Blog', isExternal: false },
-    { href: 'https://docs.google.com/document/d/1g-6Fb-hTux6UFcwS5S06QD0x88RXC-_C-a0EeOyquV4/edit?usp=sharing', label: 'Resume', isExternal: true },
+    { href: 'https://docs.google.com/document/d/1ykZuyNLrrTx62nWshYpj2i4OUJUxrdfdQd9-yiiNKpM/edit?usp=sharing', label: 'Resume', isExternal: true },
   ];
 
   const normalizePath = (path) => {
