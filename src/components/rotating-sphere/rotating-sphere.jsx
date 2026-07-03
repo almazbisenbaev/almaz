@@ -32,7 +32,7 @@ export default function RotatingSphere({ width, height, className = '' }) {
     container.appendChild(renderer.domElement);
 
     const textureLoader = new THREE.TextureLoader();
-    const texture = textureLoader.load('/images/texture.png');
+    const texture = textureLoader.load('/images/texture.jpg');
     texture.colorSpace = THREE.SRGBColorSpace;
 
     const geometry = new THREE.SphereGeometry(horizontalRadius, 64, 64);
