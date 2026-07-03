@@ -80,7 +80,7 @@ export default function HeroIntro() {
             <span>Hi, I'm Almaz,</span>
             <div
               ref={containerRef}
-              className="relative inline-block cursor-pointer"
+              className="relative inline-block cursor-pointer intro-me"
               style={{
                 transform: isPressed ? 'scale(0.94)' : 'scale(1)',
                 transition: 'transform 170ms cubic-bezier(0.22, 1, 0.36, 1)',
@@ -93,7 +93,7 @@ export default function HeroIntro() {
               }}
             >
               <Image
-                className="intro-pic"
+                className="intro-me-picture"
                 src="/me.jpg"
                 width={150}
                 height={150}
