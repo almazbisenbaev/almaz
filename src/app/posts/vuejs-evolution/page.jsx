@@ -125,16 +125,14 @@ export default async function PostVuejsEvolution() {
 
           <Link href="/posts" className="inline-flex items-center text-neutral-400 hover:text-neutral-900 mb-12 transition-colors text-xs font-medium uppercase tracking-widest">
             <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-            Back
+            Back to Blog
           </Link>
 
           <header className="mb-10 sm:mb-16">
-            <div className="text-neutral-400 font-medium uppercase text-xs sm:text-sm flex items-center space-x-2 mb-4">
-              <span>{post.date}</span>
-              <span>•</span>
-              <span>Frontend</span>
-            </div>
             <h1 className="text-3xl sm:text-7xl font-bold mb-8 tracking-tight">The same button component in 3 major versions of VueJS</h1>
+            <div className="text-neutral-400 font-medium text-xs flex items-center space-x-1 mt-4">
+              <span>{post.date}</span>
+            </div>
           </header>
 
         </div>
@@ -155,10 +153,7 @@ export default async function PostVuejsEvolution() {
 
           <div className="article">
 
-            <p className="text-xl md:text-2xl">
-              Vue.js has come a long way since its initial release. From its humble beginnings as a lightweight library inspired by Angular and React, it has grown into one of the most beloved frontend frameworks. In this post, I'll look at three major milestones: <b>Vue 1</b>, <b>Vue 2</b> (the Options API era that powered massive adoption), and <b>Vue 3</b> (the modern Composition API default). I'll implement the same simple feature: a button that shows an alert when clicked.
-            </p>
-
+            <p>Vue.js has come a long way since its initial release. From its humble beginnings as a lightweight library inspired by Angular and React, it has grown into one of the most beloved frontend frameworks. In this post, I'll look at three major milestones: <b>Vue 1</b>, <b>Vue 2</b> (the Options API era that powered massive adoption), and <b>Vue 3</b> (the modern Composition API default). I'll implement the same simple feature: a button that shows an alert when clicked.</p>
 
             <h2>Vue 1 (2015)</h2>
             <p>Vue 1 introduced the core concepts that made it stand out: reactive data binding, a simple template syntax, and component-based architecture using <code>Vue.extend()</code> and global registration.</p>

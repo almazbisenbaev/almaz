@@ -125,7 +125,7 @@ export default function RootLayout({ children }) {
 
         <SmoothScroll />
 
-        <DynamicRays
+        {/* <DynamicRays
           backgroundColor="#F5F8FF"
           style={{ 
             zIndex: -1, 
@@ -138,7 +138,7 @@ export default function RootLayout({ children }) {
             pointerEvents: 'none'
           }}
           raysColor={{ mode: "multi", color1: "#2060DF", color2: "#ffffff" }}
-        />
+        /> */}
 
 
         <Header />
