@@ -102,13 +102,15 @@ export default function HeroIntro() {
                 onLoad={updateSphereBounds}
               />
               <div
-                className="absolute z-10 transition-opacity duration-200"
+                className="absolute z-10"
                 style={{
                   width: `${sphereBounds.width}px`,
                   height: `${sphereBounds.height}px`,
                   left: `${sphereBounds.left}px`,
                   top: `${sphereBounds.top}px`,
                   opacity: isSphereVisible ? 1 : 0,
+                  transform: isSphereVisible ? 'scale(1)' : 'scale(0.5)',
+                  transition: 'opacity 300ms ease-out, transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1)',
                   pointerEvents: isSphereVisible ? 'auto' : 'none',
                 }}
                 onClick={(event) => {
