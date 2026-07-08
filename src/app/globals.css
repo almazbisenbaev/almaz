@@ -21,7 +21,7 @@
   /* --font-text: 'Clash Grotesk', sans-serif; */
   /* --font-text: 'Switzer', sans-serif; */
   /* --ff-display: 'Clash Display', sans-serif; */
-  --background: oklch(1 0 0);
+  --background: #FFFAF5;
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -63,7 +63,7 @@ body {
 body {
   /* background: linear-gradient(#fff, #edede9, #f5ebe0 ); */
   /* background: #EFEBE5; */
-  background: #F5F8FF;
+  background: #FFFAF5;
   /* background-size: 100% 100%; */
   /* background-repeat: no-repeat; */
   -webkit-font-smoothing: antialiased;
@@ -913,7 +913,7 @@ a {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    /* @apply bg-background text-foreground; */
     font-size: 18px;  
   }
   html {
