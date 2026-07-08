@@ -110,7 +110,7 @@ export default function HeroIntro() {
                   top: `${sphereBounds.top}px`,
                   opacity: isSphereVisible ? 1 : 0,
                   transform: isSphereVisible ? 'scale(1)' : 'scale(0.5)',
-                  transition: 'opacity 300ms ease-out, transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1)',
+                  transition: 'opacity 300ms ease-out, transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.5)',
                   pointerEvents: isSphereVisible ? 'auto' : 'none',
                 }}
                 onClick={(event) => {

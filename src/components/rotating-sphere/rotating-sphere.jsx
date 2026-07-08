@@ -87,8 +87,8 @@ export default function RotatingSphere({ width, height, className = '' }) {
     const animate = () => {
       requestAnimationFrame(animate);
 
-      sphere.rotation.x += (targetRotationX - sphere.rotation.x) * 0.05;
-      sphere.rotation.y += (targetRotationY - sphere.rotation.y) * 0.05;
+      sphere.rotation.x += (targetRotationX - sphere.rotation.x) * 0.12;
+      sphere.rotation.y += (targetRotationY - sphere.rotation.y) * 0.12;
 
       renderer.render(scene, camera);
     };
