@@ -23,11 +23,17 @@ export default function Home() {
         </div>
 
 
-        <div className="container py-20">
+        <div className="container px-5 py-20">
 
-          <Carousel />
+          <div className="block-header">
+            <div className="block-header-title">Recent works</div>
+          </div>
 
-          <div className="grid grid-cols-3 mt-8">
+          <Separator className="my-10" />
+
+          {/* <Carousel /> */}
+
+          <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
             <div>
               <h3 className="text-2xl font-bold mb-2">Funky Ramen</h3>
               <div className="flex gap-2">
@@ -36,7 +42,7 @@ export default function Home() {
                 <div className="text-xs">For <a target="_blank" href="//mindlind.de">Mindlind</a></div>
               </div>
             </div>
-            <div className="col-span-2 pt-2">
+            <div className="col-span-1 md:col-span-2 pt-2">
               <div className="text-sm mb-3">A WordPress website for a café for anime lovers. WordPress.</div>
               <div className="flex gap-2 mb-2">
                 <div className="text-xs font-medium">JavaScripy</div>
@@ -54,14 +60,12 @@ export default function Home() {
           </div>
           
           <Separator className="my-10" />
-          
-          
 
 
         </div>
 
 
-        <div className="px-0 md:px-2">
+        {/* <div className="px-0 md:px-2">
           <div className="section section-portfolio">
             <div className="container px-5">
 
@@ -73,7 +77,9 @@ export default function Home() {
 
             </div>
           </div>
-        </div>
+        </div> */}
+
+
 
         <div className="section">
           <div className="container px-5">
