@@ -500,14 +500,16 @@ a {
 } */
 
 .embla {
-  max-width: 48rem;
-  margin: auto;
+  /* max-width: 48rem; */
+  /* margin: auto; */
   --slide-height: 19rem;
   --slide-spacing: 2rem;
   --slide-size: 100%;
+
 }
+
 .embla__viewport {
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .embla__container {
   display: flex;
@@ -516,7 +518,7 @@ a {
 }
 .embla__slide {
   transform: translate3d(0, 0, 0);
-  flex: 0 0 var(--slide-size);
+  flex: 0 0 auto;
   min-width: 0;
   padding-left: var(--slide-spacing);
 }

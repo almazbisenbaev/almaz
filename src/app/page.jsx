@@ -7,6 +7,9 @@ import Button from '@/components/button/button';
 import ReviewsSection from '@/components/reviews-section/reviews-section';
 import PortfolioAccordion from '@/components/portfolio-accordion/portfolio-accordion';
 import { ChevronRight } from 'lucide-react';
+import Carousel from '@/components/carousel/carousel';
+import Link from 'next/link';
+import { Separator } from "@/components/ui/separator";
 
 export default function Home() {
 
@@ -18,6 +21,45 @@ export default function Home() {
         <div className="pb-6 sm:py-20">
           <TechMarquee />
         </div>
+
+
+        <div className="container py-20">
+
+          <Carousel />
+
+          <div className="grid grid-cols-3 mt-8">
+            <div>
+              <h3 className="text-2xl font-bold mb-2">Funky Ramen</h3>
+              <div className="flex gap-2">
+                <div className="text-xs">2026</div>
+                <div className="text-xs">•</div>
+                <div className="text-xs">For <a target="_blank" href="//mindlind.de">Mindlind</a></div>
+              </div>
+            </div>
+            <div className="col-span-2 pt-2">
+              <div className="text-sm mb-3">A WordPress website for a café for anime lovers. WordPress.</div>
+              <div className="flex gap-2 mb-2">
+                <div className="text-xs font-medium">JavaScripy</div>
+                <div className="text-xs font-medium">GSAP</div>
+                <div className="text-xs font-medium">WordPress</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="-ml-1 mt-10">
+            <Button href="https://funky-ramen.de">
+              Visit Website
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </Button>
+          </div>
+          
+          <Separator className="my-10" />
+          
+          
+
+
+        </div>
+
 
         <div className="px-0 md:px-2">
           <div className="section section-portfolio">
