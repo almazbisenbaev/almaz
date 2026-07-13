@@ -1,9 +1,14 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useSyncExternalStore } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Eye, X } from "lucide-react";
 import { createPortal } from "react-dom";
+
+// Hydration guard: false during SSR/hydration, true once mounted on the client
+const subscribeNoop = () => () => {};
+const useIsMounted = () =>
+  useSyncExternalStore(subscribeNoop, () => true, () => false);
 
 function MasonryImageTile({ image, index, onOpen, onHoverChange }) {
   const handlePointerEnter = (event) => {
@@ -51,7 +56,7 @@ function MasonryImageTile({ image, index, onOpen, onHoverChange }) {
 export default function ImageMasonryGallery({ images }) {
   const prefersReducedMotion = useReducedMotion();
   const [activeIndex, setActiveIndex] = useState(null);
-  const [isMounted, setIsMounted] = useState(false);
+  const isMounted = useIsMounted();
   const [hoverCursor, setHoverCursor] = useState({ isVisible: false, x: 0, y: 0 });
   const activeImage = activeIndex === null ? null : images[activeIndex];
 
@@ -59,10 +64,6 @@ export default function ImageMasonryGallery({ images }) {
     setHoverCursor((previousState) => ({ ...previousState, isVisible: false }));
     setActiveIndex(index);
   };
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   useEffect(() => {
     if (!activeImage) {

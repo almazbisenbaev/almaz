@@ -1,10 +1,10 @@
 "use client";
 
-import { m, LazyMotion, domMax } from "framer-motion";
+import { m, LazyMotion, domAnimation } from "framer-motion";
 
 export default function Template({ children }) {
   return (
-    <LazyMotion features={domMax}>
+    <LazyMotion features={domAnimation}>
       <m.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}

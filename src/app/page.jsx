@@ -5,10 +5,7 @@ import TechMarquee from '@/components/tech-marquee/tech-marquee';
 import HeroIntro from '@/components/hero-intro/hero-intro';
 import Button from '@/components/button/button';
 import ReviewsSection from '@/components/reviews-section/reviews-section';
-import PortfolioAccordion from '@/components/portfolio-accordion/portfolio-accordion';
 import { ChevronRight } from 'lucide-react';
-import Carousel from '@/components/carousel/carousel';
-import Link from 'next/link';
 import { Separator } from "@/components/ui/separator";
 
 export default function Home() {
@@ -30,8 +27,6 @@ export default function Home() {
           </div>
 
           <Separator className="my-10" />
-
-          {/* <Carousel /> */}
 
           <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
             <div>
@@ -63,22 +58,6 @@ export default function Home() {
 
 
         </div>
-
-
-        {/* <div className="px-0 md:px-2">
-          <div className="section section-portfolio">
-            <div className="container px-5">
-
-              <div className="block-header">
-                <div className="block-header-title">Recent works</div>
-              </div>
-
-              <PortfolioAccordion />
-
-            </div>
-          </div>
-        </div> */}
-
 
 
         <div className="section">

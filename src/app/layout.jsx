@@ -1,7 +1,6 @@
 import { GoogleAnalytics } from '@next/third-parties/google';
 import "./globals.css";
 import Header from '@/components/layout/header';
-import DynamicRays from '@/components/dynamic-rays/dynamic-rays';
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Footer from '@/components/layout/footer';
@@ -124,22 +123,6 @@ export default function RootLayout({ children }) {
         </div>
 
         <SmoothScroll />
-
-        {/* <DynamicRays
-          backgroundColor="#F5F8FF"
-          style={{ 
-            zIndex: -1, 
-            position: 'absolute', 
-            top: 0, 
-            left: 0, 
-            right: 0, 
-            height: '100vh', 
-            opacity: '0.5',
-            pointerEvents: 'none'
-          }}
-          raysColor={{ mode: "multi", color1: "#2060DF", color2: "#ffffff" }}
-        /> */}
-
 
         <Header />
 

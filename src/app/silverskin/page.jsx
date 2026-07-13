@@ -1,8 +1,8 @@
 import React from "react";
 import { ExternalLink } from "lucide-react";
 import Button from "@/components/button/button";
-import ImageCarousel from "@/components/image-carousel/image-carousel";
 import ImageMasonryGallery from "@/components/image-masonry-gallery/image-masonry-gallery";
+import LazyVideo from "@/components/lazy-video/lazy-video";
 
 const screenshots = [
   {
@@ -71,29 +71,15 @@ export default function PageSilverskin() {
           <div>
 
             <div className="overflow-hidden border border-black/10 rounded-sm mb-24">
-              <video 
-                src="/videos/silverskin-hamburger.webm" 
-                autoPlay 
-                muted 
-                loop 
-                playsInline 
+              <LazyVideo
+                src="/videos/silverskin-hamburger.webm"
                 className="w-full h-auto block"
               />
             </div>
 
-            {/* <div className="container pb-24">
-              <ImageCarousel images={screenshots} />
-            </div> */}
-
             <section className="">
               <ImageMasonryGallery images={screenshots} />
             </section>
-
-            {/* 
-              <div>Main screenshot or video</div>
-              <div>Tech stack</div>
-              <div>Offer (work with me if you want this and htis)</div> 
-            */}
 
           </div>
 

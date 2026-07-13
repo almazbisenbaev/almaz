@@ -30,10 +30,6 @@ const ReviewsSection = () => {
   return (
     <div className="section">
       <div className="container px-5">
-        
-        {/* <div className="section-header">
-          <h2 className="section-header-title">What people say</h2>
-        </div> */}
 
         <div className="block-header">
           <div className="block-header-title">What people say</div>

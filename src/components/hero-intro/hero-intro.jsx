@@ -2,9 +2,14 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 
 import useScrollSkew from '@/lib/use-scroll-skew';
-import RotatingSphere from '@/components/rotating-sphere/rotating-sphere';
+
+const RotatingSphere = dynamic(
+  () => import('@/components/rotating-sphere/rotating-sphere'),
+  { ssr: false }
+);
 
 export default function HeroIntro() {
   const sphereOverscan = 12;
@@ -86,6 +91,9 @@ export default function HeroIntro() {
                 transform: isPressed ? 'scale(0.94)' : 'scale(1)',
                 transition: 'transform 170ms cubic-bezier(0.22, 1, 0.36, 1)',
                 transformOrigin: 'center center',
+              }}
+              onMouseEnter={() => {
+                import('@/components/rotating-sphere/rotating-sphere');
               }}
               onClick={() => {
                 if (!isSphereVisible) {
