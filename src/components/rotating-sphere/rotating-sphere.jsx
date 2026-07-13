@@ -3,8 +3,9 @@
 import { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 
-export default function RotatingSphere({ width, height, className = '' }) {
+export default function RotatingSphere({ width, height, active = true, className = '' }) {
   const containerRef = useRef(null);
+  const loopRef = useRef({ start: () => {}, stop: () => {} });
 
   useEffect(() => {
     const container = containerRef.current;
@@ -84,17 +85,36 @@ export default function RotatingSphere({ width, height, className = '' }) {
 
     window.addEventListener('mousemove', handleMouseMove);
 
+    let rafId = 0;
+    let running = false;
+
     const animate = () => {
-      requestAnimationFrame(animate);
+      if (!running) return;
 
       sphere.rotation.x += (targetRotationX - sphere.rotation.x) * 0.12;
       sphere.rotation.y += (targetRotationY - sphere.rotation.y) * 0.12;
 
       renderer.render(scene, camera);
+      rafId = requestAnimationFrame(animate);
     };
-    animate();
+
+    const start = () => {
+      if (running) return;
+      running = true;
+      rafId = requestAnimationFrame(animate);
+    };
+
+    const stop = () => {
+      running = false;
+      cancelAnimationFrame(rafId);
+      rafId = 0;
+    };
+
+    loopRef.current = { start, stop };
 
     return () => {
+      stop();
+      loopRef.current = { start: () => {}, stop: () => {} };
       window.removeEventListener('mousemove', handleMouseMove);
       container.removeChild(renderer.domElement);
       renderer.dispose();
@@ -103,6 +123,19 @@ export default function RotatingSphere({ width, height, className = '' }) {
       texture.dispose();
     };
   }, [width, height]);
+
+  useEffect(() => {
+    if (!width || !height) return undefined;
+
+    if (active) {
+      loopRef.current.start();
+      return undefined;
+    }
+
+    // Keep rendering until the hide transition (500ms) finishes before pausing
+    const stopTimeout = window.setTimeout(() => loopRef.current.stop(), 600);
+    return () => window.clearTimeout(stopTimeout);
+  }, [active, width, height]);
 
   return (
     <div 

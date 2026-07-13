@@ -13,6 +13,7 @@ export default function HeroIntro() {
   const pressTimeoutRef = useRef(null);
   const toggleTimeoutRef = useRef(null);
   const [isSphereVisible, setIsSphereVisible] = useState(false);
+  const [isSphereMounted, setIsSphereMounted] = useState(false);
   const [isPressed, setIsPressed] = useState(false);
   const [sphereBounds, setSphereBounds] = useState({
     width: 150,
@@ -88,6 +89,7 @@ export default function HeroIntro() {
               }}
               onClick={() => {
                 if (!isSphereVisible) {
+                  setIsSphereMounted(true);
                   runPressAction(() => setIsSphereVisible(true));
                 }
               }}
@@ -118,7 +120,13 @@ export default function HeroIntro() {
                   runPressAction(() => setIsSphereVisible(false));
                 }}
               >
-                <RotatingSphere width={sphereBounds.width} height={sphereBounds.height} />
+                {isSphereMounted && (
+                  <RotatingSphere
+                    width={sphereBounds.width}
+                    height={sphereBounds.height}
+                    active={isSphereVisible}
+                  />
+                )}
               </div>
             </div>
             <span> a&nbsp;Full-Stack Web Developer</span>
