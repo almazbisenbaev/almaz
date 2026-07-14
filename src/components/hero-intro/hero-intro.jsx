@@ -57,6 +57,20 @@ export default function HeroIntro() {
     }, 170);
   };
 
+  // Mount the sphere (and its three.js chunk) once the browser is idle after
+  // page load, so it is already rendered and textured before the first click.
+  useEffect(() => {
+    const mountSphere = () => setIsSphereMounted(true);
+
+    if ('requestIdleCallback' in window) {
+      const idleId = window.requestIdleCallback(mountSphere, { timeout: 3000 });
+      return () => window.cancelIdleCallback(idleId);
+    }
+
+    const timeoutId = window.setTimeout(mountSphere, 1500);
+    return () => window.clearTimeout(timeoutId);
+  }, []);
+
   useEffect(() => {
     updateSphereBounds();
     window.addEventListener('resize', updateSphereBounds);
@@ -92,12 +106,8 @@ export default function HeroIntro() {
                 transition: 'transform 170ms cubic-bezier(0.22, 1, 0.36, 1)',
                 transformOrigin: 'center center',
               }}
-              onMouseEnter={() => {
-                import('@/components/rotating-sphere/rotating-sphere');
-              }}
               onClick={() => {
                 if (!isSphereVisible) {
-                  setIsSphereMounted(true);
                   runPressAction(() => setIsSphereVisible(true));
                 }
               }}

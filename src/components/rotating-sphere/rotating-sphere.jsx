@@ -32,8 +32,16 @@ export default function RotatingSphere({ width, height, active = true, className
     renderer.domElement.style.display = 'block';
     container.appendChild(renderer.domElement);
 
+    let disposed = false;
+
     const textureLoader = new THREE.TextureLoader();
-    const texture = textureLoader.load('/images/texture.jpg');
+    // Once the texture arrives, draw a frame even while paused so the sphere
+    // is already textured when it becomes visible.
+    const texture = textureLoader.load('/images/texture.jpg', () => {
+      if (!disposed && !running) {
+        renderer.render(scene, camera);
+      }
+    });
     texture.colorSpace = THREE.SRGBColorSpace;
 
     const geometry = new THREE.SphereGeometry(horizontalRadius, 64, 64);
@@ -113,6 +121,7 @@ export default function RotatingSphere({ width, height, active = true, className
     loopRef.current = { start, stop };
 
     return () => {
+      disposed = true;
       stop();
       loopRef.current = { start: () => {}, stop: () => {} };
       window.removeEventListener('mousemove', handleMouseMove);
