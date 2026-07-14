@@ -3,7 +3,6 @@ export default function sitemap() {
 
   const internalPosts = [
     '/posts/vuejs-evolution',
-    // '/posts/why-i-switched-to-nextjs',
   ];
 
   const posts = internalPosts.map((link) => ({
@@ -19,12 +18,6 @@ export default function sitemap() {
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 1,
-    },
-    {
-      url: `${baseUrl}/wordpress`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
     },
     {
       url: `${baseUrl}/posts`,

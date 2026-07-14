@@ -5,6 +5,7 @@ import TechMarquee from '@/components/tech-marquee/tech-marquee';
 import HeroIntro from '@/components/hero-intro/hero-intro';
 import Button from '@/components/button/button';
 import ReviewsSection from '@/components/reviews-section/reviews-section';
+import Carousel from '@/components/carousel/carousel';
 import { ChevronRight } from 'lucide-react';
 import { Separator } from "@/components/ui/separator";
 import { works } from '@/lib/data';
@@ -44,6 +45,12 @@ export default function Home() {
 
         {works.map((work, index) => (
           <React.Fragment key={work.title || index}>
+
+            {/* Hidden temporarily */}
+            {/* <div className="mb-14">
+              <Carousel />
+            </div> */}
+
             <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
               <div>
                 <h3 className="text-2xl font-bold mb-2">{formatTitle(work.title)}</h3>
@@ -99,6 +106,7 @@ export default function Home() {
             </div>
 
             <Separator className="my-10" />
+
           </React.Fragment>
         ))}
 
