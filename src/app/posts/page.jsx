@@ -69,7 +69,7 @@ export default function Posts(){
                   date="April 17, 2025"
                   link="https://webdevandstuff.hashnode.dev/mastering-productivity-1"
                   isExternal={true}
-                  thumbnail="/images/productivity-course.webp"
+                  thumbnail="/images/posts/productivity-course.webp"
                 />
             </div>
 

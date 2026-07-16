@@ -46,10 +46,7 @@ export default function Home() {
         {works.map((work, index) => (
           <React.Fragment key={work.title || index}>
 
-            {/* Hidden temporarily */}
-            {/* <div className="mb-14">
-              <Carousel />
-            </div> */}
+            <Carousel className="mb-14" />
 
             <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
               <div>
