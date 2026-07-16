@@ -1,9 +1,10 @@
 'use client';
 
-import Image from 'next/image';
 import useEmblaCarousel from 'embla-carousel-react';
 
-export default function Carousel() {
+import "./pics-carousel.css";
+
+export default function PicsCarousel() {
   const [emblaRef] = useEmblaCarousel({
     dragFree: true,
     containScroll: false,
@@ -12,11 +13,11 @@ export default function Carousel() {
   });
 
   return (
-    <div className="embla" ref={emblaRef}>
-      <div className="embla__container flex gap-10">
+    <div className="embla pics-carousel" ref={emblaRef}>
+      <div className="embla__container flex gap-4 sm:gap-8">
 
-        <div className="embla__slide flex-shrink-0">
-          <Image 
+        <div className="embla__slide pics-carousel-slide flex-shrink-0">
+          <img 
             src="/images/portfolio/funky-ramen-1.jpg"
             width={960}
             height={540}
@@ -25,8 +26,8 @@ export default function Carousel() {
           />
         </div>
 
-        <div className="embla__slide flex-shrink-0">
-          <Image 
+        <div className="embla__slide pics-carousel-slide flex-shrink-0">
+          <img 
             src="/images/portfolio/funky-ramen-2.jpg"
             width={960}
             height={540}
@@ -35,8 +36,8 @@ export default function Carousel() {
           />
         </div>
 
-        <div className="embla__slide flex-shrink-0">
-          <Image 
+        <div className="embla__slide pics-carousel-slide flex-shrink-0">
+          <img 
             src="/images/portfolio/funky-ramen-3.jpg"
             width={960}
             height={540}
@@ -45,8 +46,8 @@ export default function Carousel() {
           />
         </div>
 
-        <div className="embla__slide flex-shrink-0">
-          <Image 
+        <div className="embla__slide pics-carousel-slide flex-shrink-0">
+          <img 
             src="/images/portfolio/funky-ramen-4.jpg"
             width={258}
             height={540}

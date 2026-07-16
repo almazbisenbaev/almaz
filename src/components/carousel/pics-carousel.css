@@ -1,0 +1,28 @@
+.pics-carousel-slide {
+    
+}
+
+.pics-carousel-slide img {
+    display: block;
+    height: 280px;
+    width: auto;
+    margin: 0;
+}
+
+
+@media (min-width: 768px){
+
+    .pics-carousel-slide img {
+        height: 360px;
+    }
+
+}
+
+
+@media (min-width: 992px){
+
+    .pics-carousel-slide img {
+        height: 440px;
+    }
+
+}

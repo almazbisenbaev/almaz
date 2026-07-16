@@ -5,23 +5,9 @@ import TechMarquee from '@/components/tech-marquee/tech-marquee';
 import HeroIntro from '@/components/hero-intro/hero-intro';
 import Button from '@/components/button/button';
 import ReviewsSection from '@/components/reviews-section/reviews-section';
-import Carousel from '@/components/carousel/carousel';
+import PicsCarousel from '@/components/carousel/pics-carousel';
 import { ChevronRight } from 'lucide-react';
 import { Separator } from "@/components/ui/separator";
-import { works } from '@/lib/data';
-
-const nameMap = {
-  "funky-ramen.de": "Funky Ramen",
-  "prince-food.de": "Prince Food",
-  "factorysl.de": "Factory SL",
-  "autosl.de": "Auto SL",
-  "mjavedaslam.com": "M. Javed Aslam",
-  "silverskincoffee.ie": "Silverskin Coffee",
-  "muafaktur.de": "Muafaktur",
-  "monitask.com": "Monitask",
-};
-
-const formatTitle = (title) => nameMap[title] || title;
 
 export default function Home() {
 
@@ -43,70 +29,404 @@ export default function Home() {
 
         <Separator className="my-10" />
 
-        {works.map((work, index) => (
-          <React.Fragment key={work.title || index}>
+        <div>
 
-            <Carousel className="mb-14" />
+          <PicsCarousel className="mb-14" />
 
-            <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
-              <div>
-                <h3 className="text-2xl font-bold mb-2">{formatTitle(work.title)}</h3>
-                <div className="flex gap-2">
-                  <div className="text-xs">{work.year}</div>
-                  {work.client && (
-                    <>
-                      <div className="text-xs">•</div>
-                      <div className="text-xs">
-                        For{" "}
-                        {work.clientUrl ? (
-                          <a target="_blank" rel="noopener noreferrer" href={work.clientUrl} className="hover:underline">
-                            {work.client}
-                          </a>
-                        ) : (
-                          work.client
-                        )}
-                      </div>
-                    </>
-                  )}
-                </div>
-              </div>
-              <div className="col-span-1 md:col-span-2 pt-2">
-                <div className="text-sm mb-3">{work.description}</div>
-                <div className="flex flex-wrap gap-2 mb-2">
-                  {work.skills && work.skills.map((skill) => (
-                    <div key={skill} className="text-xs font-medium">
-                      {skill}
-                    </div>
-                  ))}
+          <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
+            <div>
+              <h3 className="text-2xl font-bold mb-2">Funky Ramen</h3>
+              <div className="flex gap-2">
+                <div className="text-xs">2026</div>
+                <div className="text-xs">•</div>
+                <div className="text-xs">
+                  For{" "}
+                  <a target="_blank" rel="noopener noreferrer" href="//mindlind.de" className="hover:underline">
+                    Mindlind
+                  </a>
                 </div>
               </div>
             </div>
-
-            <div className="-ml-1 mt-10">
-              <Button href={work.url}>
-                {work.buttonText || "Visit Website"}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <line x1="7" y1="17" x2="17" y2="7"></line>
-                  <polyline points="7 7 17 7 17 17"></polyline>
-                </svg>
-              </Button>
+            <div className="col-span-1 md:col-span-2 pt-2">
+              <div className="text-sm mb-3">A WordPress website for a café for anime lovers. WordPress.</div>
+              <div className="flex flex-wrap gap-2 mb-2">
+                <div className="text-xs font-medium">JavaScript</div>
+                <div className="text-xs font-medium">GSAP</div>
+                <div className="text-xs font-medium">WordPress</div>
+              </div>
             </div>
+          </div>
 
-            <Separator className="my-10" />
+          <div className="-ml-1 mt-10">
+            <Button href="https://funky-ramen.de">
+              Visit Website
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </Button>
+          </div>
 
-          </React.Fragment>
-        ))}
+          <Separator className="my-10" />
 
+        </div>
+
+        <div>
+
+          {/* <Carousel className="mb-14" /> */}
+
+          <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
+            <div>
+              <h3 className="text-2xl font-bold mb-2">Prince Food</h3>
+              <div className="flex gap-2">
+                <div className="text-xs">2025</div>
+                <div className="text-xs">•</div>
+                <div className="text-xs">
+                  For{" "}
+                  <a target="_blank" rel="noopener noreferrer" href="//mindlind.de" className="hover:underline">
+                    Mindlind
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="col-span-1 md:col-span-2 pt-2">
+              <div className="text-sm mb-3">B2B website that sells frozen fruits and vegetables. WordPress.</div>
+              <div className="flex flex-wrap gap-2 mb-2">
+                <div className="text-xs font-medium">JavaScript</div>
+                <div className="text-xs font-medium">GSAP</div>
+                <div className="text-xs font-medium">WordPress</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="-ml-1 mt-10">
+            <Button href="https://prince-food.de">
+              Visit Website
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </Button>
+          </div>
+
+          <Separator className="my-10" />
+
+        </div>
+
+        <div>
+
+          {/* <Carousel className="mb-14" /> */}
+
+          <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
+            <div>
+              <h3 className="text-2xl font-bold mb-2">Factory SL</h3>
+              <div className="flex gap-2">
+                <div className="text-xs">2025</div>
+                <div className="text-xs">•</div>
+                <div className="text-xs">
+                  For{" "}
+                  <a target="_blank" rel="noopener noreferrer" href="//mindlind.de" className="hover:underline">
+                    Mindlind
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="col-span-1 md:col-span-2 pt-2">
+              <div className="text-sm mb-3">An automotive workshop specializing in high-end vehicle detailing, maintenance, and performance tuning</div>
+              <div className="flex flex-wrap gap-2 mb-2">
+                <div className="text-xs font-medium">WordPress</div>
+                <div className="text-xs font-medium">Frontend</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="-ml-1 mt-10">
+            <Button href="https://factorysl.de/">
+              Visit Website
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </Button>
+          </div>
+
+          <Separator className="my-10" />
+
+        </div>
+
+        <div>
+
+          {/* <Carousel className="mb-14" /> */}
+
+          <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
+            <div>
+              <h3 className="text-2xl font-bold mb-2">Auto SL</h3>
+              <div className="flex gap-2">
+                <div className="text-xs">2024</div>
+                <div className="text-xs">•</div>
+                <div className="text-xs">
+                  For{" "}
+                  <a target="_blank" rel="noopener noreferrer" href="//mindlind.de" className="hover:underline">
+                    Mindlind
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="col-span-1 md:col-span-2 pt-2">
+              <div className="text-sm mb-3">A company that sells expensive cars. Wordpress, a custom plugin for API integration.</div>
+              <div className="flex flex-wrap gap-2 mb-2">
+                <div className="text-xs font-medium">WordPress</div>
+                <div className="text-xs font-medium">Custom Plugin</div>
+                <div className="text-xs font-medium">API Integration</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="-ml-1 mt-10">
+            <Button href="//autosl.de">
+              Visit Website
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </Button>
+          </div>
+
+          <Separator className="my-10" />
+
+        </div>
+
+        <div>
+
+          {/* <Carousel className="mb-14" /> */}
+
+          <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
+            <div>
+              <h3 className="text-2xl font-bold mb-2">M. Javed Aslam</h3>
+              <div className="flex gap-2">
+                <div className="text-xs">2025</div>
+              </div>
+            </div>
+            <div className="col-span-1 md:col-span-2 pt-2">
+              <div className="text-sm mb-3">A personal website for a freelance digital marketer and copywriter</div>
+              <div className="flex flex-wrap gap-2 mb-2">
+                <div className="text-xs font-medium">UX Design</div>
+                <div className="text-xs font-medium">WordPress</div>
+                <div className="text-xs font-medium">Frontend</div>
+                <div className="text-xs font-medium">Backend</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="-ml-1 mt-10">
+            <Button href="https://mjavedaslam.com">
+              Visit Website
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </Button>
+          </div>
+
+          <Separator className="my-10" />
+
+        </div>
+
+        <div>
+
+          {/* <Carousel className="mb-14" /> */}
+
+          <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
+            <div>
+              <h3 className="text-2xl font-bold mb-2">Silverskin Coffee</h3>
+              <div className="flex gap-2">
+                <div className="text-xs">2024</div>
+              </div>
+            </div>
+            <div className="col-span-1 md:col-span-2 pt-2">
+              <div className="text-sm mb-3">E-Commerce website that sells coffee beans. WordPress, Woocommerce.</div>
+              <div className="flex flex-wrap gap-2 mb-2">
+                <div className="text-xs font-medium">WordPress</div>
+                <div className="text-xs font-medium">WooCommerce</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="-ml-1 mt-10">
+            <Button href="/silverskin">
+              View Details
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </Button>
+          </div>
+
+          <Separator className="my-10" />
+
+        </div>
+
+        <div>
+
+          {/* <Carousel className="mb-14" /> */}
+
+          <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
+            <div>
+              <h3 className="text-2xl font-bold mb-2">Muafaktur</h3>
+              <div className="flex gap-2">
+                <div className="text-xs">2023</div>
+                <div className="text-xs">•</div>
+                <div className="text-xs">
+                  For{" "}
+                  <a target="_blank" rel="noopener noreferrer" href="//mindlind.de" className="hover:underline">
+                    Mindlind
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="col-span-1 md:col-span-2 pt-2">
+              <div className="text-sm mb-3">WooCommerce website for a company offering beauty products and training courses</div>
+              <div className="flex flex-wrap gap-2 mb-2">
+                <div className="text-xs font-medium">WooCommerce</div>
+                <div className="text-xs font-medium">UX Design</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="-ml-1 mt-10">
+            <Button href="//muafaktur.de">
+              Visit Website
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </Button>
+          </div>
+
+          <Separator className="my-10" />
+
+        </div>
+
+        <div>
+
+          {/* <Carousel className="mb-14" /> */}
+
+          <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
+            <div>
+              <h3 className="text-2xl font-bold mb-2">Monitask</h3>
+              <div className="flex gap-2">
+                <div className="text-xs">2021</div>
+                <div className="text-xs">•</div>
+                <div className="text-xs">
+                  For{" "}
+                  <a target="_blank" rel="noopener noreferrer" href="//mindlind.de" className="hover:underline">
+                    Mindlind
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="col-span-1 md:col-span-2 pt-2">
+              <div className="text-sm mb-3">Multilingual WordPress website with hundreds of pages all generated and updated automatically</div>
+              <div className="flex flex-wrap gap-2 mb-2">
+                <div className="text-xs font-medium">WordPress</div>
+                <div className="text-xs font-medium">Automation</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="-ml-1 mt-10">
+            <Button href="//monitask.com">
+              Visit Website
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </Button>
+          </div>
+
+          <Separator className="my-10" />
+
+        </div>
 
       </div>
 
