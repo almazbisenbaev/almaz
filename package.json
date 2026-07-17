@@ -33,6 +33,9 @@
     "tailwindcss": "^4"
   },
   "browserslist": [
-    "defaults and fully supports es6-module"
+    ">0.3%",
+    "not dead",
+    "not op_mini all",
+    "fully supports es6-module"
   ]
 }
