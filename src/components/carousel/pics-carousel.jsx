@@ -31,7 +31,7 @@ const LazyVideo = ({ src, width, height, className }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <div className="relative bg-gray-200 border border-black/10 rounded-lg overflow-hidden" style={{ width, height }}>
+    <div className="relative bg-gray-200 border border-black/10 rounded-lg overflow-hidden">
       {isLoading && (
         <div className="absolute inset-0 bg-gray-200 animate-pulse" />
       )}
@@ -41,7 +41,7 @@ const LazyVideo = ({ src, width, height, className }) => {
         muted
         loop
         playsInline
-        className={`w-full h-full object-cover transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'} ${className}`}
+        className={`object-cover transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'} ${className}`}
         onCanPlay={() => setIsLoading(false)}
       />
     </div>
