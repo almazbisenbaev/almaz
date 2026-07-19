@@ -133,10 +133,12 @@ export default function Home() {
 
         <div>
 
+
           <PicsCarousel 
             className="mb-14"
             images={[
-              { src: "/images/portfolio/prince-food-1.png", width: 960, height: 540 },
+              { src: "/portfolio/prince-food-1.mp4", width: 960, height: 540, type: 'video' },
+              // { src: "/images/portfolio/prince-food-1.png", width: 960, height: 540 },
               { src: "/images/portfolio/prince-food-2.png", width: 960, height: 540 },
             ]} 
           />
