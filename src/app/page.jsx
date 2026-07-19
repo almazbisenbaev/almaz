@@ -184,9 +184,7 @@ export default function Home() {
 
         </div>
 
-        <div>
-
-          {/* <Carousel className="mb-14" /> */}
+        {/* <div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
             <div>
@@ -234,7 +232,7 @@ export default function Home() {
 
           <Separator className="my-10" />
 
-        </div>
+        </div> */}
 
         <div>
 
