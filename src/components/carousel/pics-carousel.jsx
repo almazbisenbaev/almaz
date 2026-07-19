@@ -51,7 +51,7 @@ const LazyVideo = ({ src, width, height, className }) => {
 export default function PicsCarousel({ images }) {
   const [emblaRef] = useEmblaCarousel({
     dragFree: true,
-    containScroll: false,
+    containScroll: 'trimSnaps',
     slidesToScroll: 'auto',
     align: 'start',
   });
