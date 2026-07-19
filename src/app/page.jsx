@@ -9,6 +9,48 @@ import PicsCarousel from '@/components/carousel/pics-carousel';
 import { ChevronRight } from 'lucide-react';
 import { Separator } from "@/components/ui/separator";
 
+const princeFoodImages = [
+  { src: "/images/portfolio/funky-ramen-1.jpg", width: 960, height: 540 },
+  { src: "/images/portfolio/funky-ramen-2.jpg", width: 960, height: 540 },
+  { src: "/images/portfolio/funky-ramen-3.jpg", width: 960, height: 540 },
+  { src: "/images/portfolio/funky-ramen-4.jpg", width: 258, height: 540 },
+];
+
+const factorySLImages = [
+  { src: "/images/portfolio/funky-ramen-1.jpg", width: 960, height: 540 },
+  { src: "/images/portfolio/funky-ramen-2.jpg", width: 960, height: 540 },
+  { src: "/images/portfolio/funky-ramen-3.jpg", width: 960, height: 540 },
+  { src: "/images/portfolio/funky-ramen-4.jpg", width: 258, height: 540 },
+];
+
+const mjavedAslamImages = [
+  { src: "/images/portfolio/funky-ramen-1.jpg", width: 960, height: 540 },
+  { src: "/images/portfolio/funky-ramen-2.jpg", width: 960, height: 540 },
+  { src: "/images/portfolio/funky-ramen-3.jpg", width: 960, height: 540 },
+  { src: "/images/portfolio/funky-ramen-4.jpg", width: 258, height: 540 },
+];
+
+const silverskinCoffeeImages = [
+  { src: "/images/portfolio/funky-ramen-1.jpg", width: 960, height: 540 },
+  { src: "/images/portfolio/funky-ramen-2.jpg", width: 960, height: 540 },
+  { src: "/images/portfolio/funky-ramen-3.jpg", width: 960, height: 540 },
+  { src: "/images/portfolio/funky-ramen-4.jpg", width: 258, height: 540 },
+];
+
+const muafakturImages = [
+  { src: "/images/portfolio/funky-ramen-1.jpg", width: 960, height: 540 },
+  { src: "/images/portfolio/funky-ramen-2.jpg", width: 960, height: 540 },
+  { src: "/images/portfolio/funky-ramen-3.jpg", width: 960, height: 540 },
+  { src: "/images/portfolio/funky-ramen-4.jpg", width: 258, height: 540 },
+];
+
+const monitaskImages = [
+  { src: "/images/portfolio/funky-ramen-1.jpg", width: 960, height: 540 },
+  { src: "/images/portfolio/funky-ramen-2.jpg", width: 960, height: 540 },
+  { src: "/images/portfolio/funky-ramen-3.jpg", width: 960, height: 540 },
+  { src: "/images/portfolio/funky-ramen-4.jpg", width: 258, height: 540 },
+];
+
 export default function Home() {
 
   return (
@@ -31,7 +73,15 @@ export default function Home() {
 
         <div>
 
-          <PicsCarousel className="mb-14" />
+          <PicsCarousel 
+            className="mb-14"
+            images={[
+              { src: "/images/portfolio/funky-ramen-1.jpg", width: 960, height: 540 },
+              { src: "/images/portfolio/funky-ramen-2.jpg", width: 960, height: 540 },
+              { src: "/images/portfolio/funky-ramen-3.jpg", width: 960, height: 540 },
+              { src: "/images/portfolio/funky-ramen-4.jpg", width: 258, height: 540 },
+            ]} 
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
             <div>
@@ -83,7 +133,13 @@ export default function Home() {
 
         <div>
 
-          {/* <Carousel className="mb-14" /> */}
+          <PicsCarousel 
+            className="mb-14"
+            images={[
+              { src: "/images/portfolio/prince-food-1.png", width: 960, height: 540 },
+              { src: "/images/portfolio/prince-food-2.png", width: 960, height: 540 },
+            ]} 
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
             <div>
@@ -135,7 +191,7 @@ export default function Home() {
 
         <div>
 
-          {/* <Carousel className="mb-14" /> */}
+          {/* <PicsCarousel images={factorySLImages} className="mb-14" /> */}
 
           <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
             <div>
@@ -236,7 +292,7 @@ export default function Home() {
 
         <div>
 
-          {/* <Carousel className="mb-14" /> */}
+          {/* <PicsCarousel images={mjavedAslamImages} className="mb-14" /> */}
 
           <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
             <div>
@@ -282,7 +338,7 @@ export default function Home() {
 
         <div>
 
-          {/* <Carousel className="mb-14" /> */}
+          {/* <PicsCarousel images={silverskinCoffeeImages} className="mb-14" /> */}
 
           <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
             <div>
@@ -326,7 +382,7 @@ export default function Home() {
 
         <div>
 
-          {/* <Carousel className="mb-14" /> */}
+          <PicsCarousel images={muafakturImages} className="mb-14" />
 
           <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
             <div>
@@ -377,7 +433,7 @@ export default function Home() {
 
         <div>
 
-          {/* <Carousel className="mb-14" /> */}
+          {/* <PicsCarousel images={monitaskImages} className="mb-14" /> */}
 
           <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
             <div>
