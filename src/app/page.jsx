@@ -139,7 +139,7 @@ export default function Home() {
             images={[
               { src: "/portfolio/prince-food-1.mp4", width: 960, height: 540, type: 'video' },
               // { src: "/images/portfolio/prince-food-1.png", width: 960, height: 540 },
-              { src: "/images/portfolio/prince-food-2.png", width: 960, height: 540 },
+              // { src: "/images/portfolio/prince-food-2.png", width: 960, height: 540 },
             ]} 
           />
 
@@ -384,7 +384,7 @@ export default function Home() {
 
         <div>
 
-          <PicsCarousel images={muafakturImages} className="mb-14" />
+          {/* <PicsCarousel images={muafakturImages} className="mb-14" /> */}
 
           <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
             <div>
