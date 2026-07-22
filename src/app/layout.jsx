@@ -132,7 +132,7 @@ export default function RootLayout({ children }) {
 
         <Footer />
       
-        <GoogleAnalytics gaId="G-10DVM02K4H" />
+        <GoogleAnalytics gaId="G-10DVM02K4H" strategy="afterInteractive" />
       </body>
     </html>
   );
