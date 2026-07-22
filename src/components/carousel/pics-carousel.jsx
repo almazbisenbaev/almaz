@@ -10,9 +10,9 @@ const LazyImage = ({ src, width, height, className }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <div className="relative bg-gray-200 border border-black/10 rounded-lg overflow-hidden">
+    <div className="relative bg-[#EFEAE5] border border-black/10 rounded-lg overflow-hidden">
       {isLoading && (
-        <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+        <div className="absolute inset-0 bg-[#EFEAE5] animate-pulse" />
       )}
       <Image
         src={src}
@@ -54,9 +54,9 @@ const LazyVideo = ({ src, width, height, className }) => {
   }, []);
 
   return (
-    <div className="relative bg-gray-200 border border-black/10 rounded-lg overflow-hidden">
+    <div className="relative bg-[#EFEAE5] border border-black/10 rounded-lg overflow-hidden">
       {isLoading && (
-        <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+        <div className="absolute inset-0 bg-[#EFEAE5] animate-pulse" />
       )}
       <video
         ref={videoRef}
