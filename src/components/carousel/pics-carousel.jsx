@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import useEmblaCarousel from 'embla-carousel-react';
 
@@ -29,6 +29,29 @@ const LazyImage = ({ src, width, height, className }) => {
 
 const LazyVideo = ({ src, width, height, className }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    observer.observe(video);
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="relative bg-gray-200 border border-black/10 rounded-lg overflow-hidden">
@@ -36,8 +59,8 @@ const LazyVideo = ({ src, width, height, className }) => {
         <div className="absolute inset-0 bg-gray-200 animate-pulse" />
       )}
       <video
+        ref={videoRef}
         src={src}
-        autoPlay
         muted
         loop
         playsInline
