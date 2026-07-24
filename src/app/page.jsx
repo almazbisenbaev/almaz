@@ -9,27 +9,6 @@ import PicsCarousel from '@/components/carousel/pics-carousel';
 import { ChevronRight } from 'lucide-react';
 import { Separator } from "@/components/ui/separator";
 
-const princeFoodImages = [
-  { src: "/images/portfolio/funky-ramen-1.jpg", width: 960, height: 540 },
-  { src: "/images/portfolio/funky-ramen-2.jpg", width: 960, height: 540 },
-  { src: "/images/portfolio/funky-ramen-3.jpg", width: 960, height: 540 },
-  { src: "/images/portfolio/funky-ramen-4.jpg", width: 258, height: 540 },
-];
-
-const factorySLImages = [
-  { src: "/images/portfolio/funky-ramen-1.jpg", width: 960, height: 540 },
-  { src: "/images/portfolio/funky-ramen-2.jpg", width: 960, height: 540 },
-  { src: "/images/portfolio/funky-ramen-3.jpg", width: 960, height: 540 },
-  { src: "/images/portfolio/funky-ramen-4.jpg", width: 258, height: 540 },
-];
-
-const mjavedAslamImages = [
-  { src: "/images/portfolio/funky-ramen-1.jpg", width: 960, height: 540 },
-  { src: "/images/portfolio/funky-ramen-2.jpg", width: 960, height: 540 },
-  { src: "/images/portfolio/funky-ramen-3.jpg", width: 960, height: 540 },
-  { src: "/images/portfolio/funky-ramen-4.jpg", width: 258, height: 540 },
-];
-
 const silverskinCoffeeImages = [
   { src: "/images/portfolio/funky-ramen-1.jpg", width: 960, height: 540 },
   { src: "/images/portfolio/funky-ramen-2.jpg", width: 960, height: 540 },
@@ -299,51 +278,6 @@ export default function Home() {
 
         </div> */}
 
-        <div>
-
-          {/* <PicsCarousel images={mjavedAslamImages} className="mb-14" /> */}
-
-          <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
-            <div>
-              <h3 className="text-2xl font-bold mb-2">M. Javed Aslam</h3>
-              <div className="flex gap-2">
-                <div className="text-xs">2025</div>
-              </div>
-            </div>
-            <div className="col-span-1 md:col-span-2 pt-2">
-              <div className="text-sm mb-3">A personal website for a freelance digital marketer and copywriter</div>
-              <div className="flex flex-wrap gap-2 mb-2">
-                <div className="text-xs font-medium">UX Design</div>
-                <div className="text-xs font-medium">WordPress</div>
-                <div className="text-xs font-medium">Frontend</div>
-                <div className="text-xs font-medium">Backend</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="-ml-1 mt-10">
-            <Button href="https://mjavedaslam.com">
-              Visit Website
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
-            </Button>
-          </div>
-
-          <Separator className="my-10" />
-
-        </div>
 
         <div>
 
