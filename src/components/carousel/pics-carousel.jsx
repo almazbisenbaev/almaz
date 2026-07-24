@@ -72,6 +72,27 @@ const LazyVideo = ({ src, width, height, className }) => {
 };
 
 export default function PicsCarousel({ images }) {
+  if (images.length === 1) {
+    const item = images[0];
+    return (
+      <div className="pics-carousel pics-carousel--single">
+        {item.type === 'video' ? (
+          <LazyVideo
+            src={item.src}
+            width={item.width}
+            height={item.height}
+          />
+        ) : (
+          <LazyImage
+            src={item.src}
+            width={item.width}
+            height={item.height}
+          />
+        )}
+      </div>
+    );
+  }
+
   const [emblaRef] = useEmblaCarousel({
     dragFree: true,
     containScroll: 'trimSnaps',
