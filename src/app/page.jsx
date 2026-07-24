@@ -193,7 +193,14 @@ export default function Home() {
 
         <div>
 
-          {/* <PicsCarousel images={factorySLImages} className="mb-14" /> */}
+          <PicsCarousel 
+            className="mb-14"
+            images={[
+              { src: "/portfolio/factorysl-1.mp4", type: 'video' },
+              // { src: "/images/portfolio/prince-food-1.png", width: 960, height: 540 },
+              // { src: "/images/portfolio/prince-food-2.png", width: 960, height: 540 },
+            ]} 
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
             <div>
