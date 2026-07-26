@@ -19,6 +19,7 @@ export default function HeroIntro() {
   const toggleTimeoutRef = useRef(null);
   const [isSphereVisible, setIsSphereVisible] = useState(false);
   const [isSphereMounted, setIsSphereMounted] = useState(false);
+  const [isSphereReady, setIsSphereReady] = useState(false);
   const [isPressed, setIsPressed] = useState(false);
   const [sphereBounds, setSphereBounds] = useState({
     width: 150,
@@ -60,7 +61,14 @@ export default function HeroIntro() {
   // Mount the sphere (and its three.js chunk) once the browser is idle after
   // page load, so it is already rendered and textured before the first click.
   useEffect(() => {
-    const mountSphere = () => setIsSphereMounted(true);
+    const mountSphere = () => {
+      // Warm the browser cache for the texture in parallel with the three.js
+      // chunk download, so it is a cache hit by the time the loader requests it
+      // and the sphere is ready well before the first click.
+      const preload = new Image();
+      preload.src = '/images/texture.jpg';
+      setIsSphereMounted(true);
+    };
 
     if ('requestIdleCallback' in window) {
       const idleId = window.requestIdleCallback(mountSphere, { timeout: 3000 });
@@ -92,6 +100,9 @@ export default function HeroIntro() {
     };
   }, []);
 
+  // Shown only when the user asked to see it AND a textured frame is ready.
+  const isSphereShown = isSphereVisible && isSphereReady;
+
   return (
     <div className="intro-wrapper">
       <div className="container px-5">
@@ -108,6 +119,9 @@ export default function HeroIntro() {
               }}
               onClick={() => {
                 if (!isSphereVisible) {
+                  // In case the click beats the idle mount, mount now so the
+                  // texture starts loading immediately.
+                  setIsSphereMounted(true);
                   runPressAction(() => setIsSphereVisible(true));
                 }
               }}
@@ -128,10 +142,12 @@ export default function HeroIntro() {
                   height: `${sphereBounds.height}px`,
                   left: `${sphereBounds.left}px`,
                   top: `${sphereBounds.top}px`,
-                  opacity: isSphereVisible ? 1 : 0,
-                  transform: isSphereVisible ? 'scale(1)' : 'scale(0.5)',
+                  // Only reveal once the sphere has a real textured frame, so it
+                  // never flashes black while the texture is still loading.
+                  opacity: isSphereShown ? 1 : 0,
+                  transform: isSphereShown ? 'scale(1)' : 'scale(0.5)',
                   transition: 'opacity 300ms ease-out, transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.5)',
-                  pointerEvents: isSphereVisible ? 'auto' : 'none',
+                  pointerEvents: isSphereShown ? 'auto' : 'none',
                 }}
                 onClick={(event) => {
                   event.stopPropagation();
@@ -142,7 +158,8 @@ export default function HeroIntro() {
                   <RotatingSphere
                     width={sphereBounds.width}
                     height={sphereBounds.height}
-                    active={isSphereVisible}
+                    active={isSphereShown}
+                    onReady={() => setIsSphereReady(true)}
                   />
                 )}
               </div>

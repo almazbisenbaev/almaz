@@ -3,9 +3,14 @@
 import { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 
-export default function RotatingSphere({ width, height, active = true, className = '' }) {
+export default function RotatingSphere({ width, height, active = true, onReady, className = '' }) {
   const containerRef = useRef(null);
   const loopRef = useRef({ start: () => {}, stop: () => {} });
+  const onReadyRef = useRef(onReady);
+
+  useEffect(() => {
+    onReadyRef.current = onReady;
+  });
 
   useEffect(() => {
     const container = containerRef.current;
@@ -36,11 +41,14 @@ export default function RotatingSphere({ width, height, active = true, className
 
     const textureLoader = new THREE.TextureLoader();
     // Once the texture arrives, draw a frame even while paused so the sphere
-    // is already textured when it becomes visible.
+    // is already textured when it becomes visible, then signal readiness so the
+    // parent only reveals it after a real textured frame exists (never black).
     const texture = textureLoader.load('/images/texture.jpg', () => {
-      if (!disposed && !running) {
+      if (disposed) return;
+      if (!running) {
         renderer.render(scene, camera);
       }
+      onReadyRef.current?.();
     });
     texture.colorSpace = THREE.SRGBColorSpace;
 
