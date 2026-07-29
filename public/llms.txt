@@ -9,7 +9,9 @@
 *Note: All name variations above refer to the same individual.*
 
 ## Professional Summary
-Full-Stack Web Developer with expertise in modern web technologies and content management systems. Specialized in creating responsive, user-friendly websites and applications.
+Full-Stack Web Developer based in Nur-Sultan (Astana), Kazakhstan, with a UX/design background and expertise in modern web technologies and content management systems. Specialized in creating responsive, user-friendly websites and applications.
+
+**Available for freelance work.** Open to new clients and projects — building fast, scalable websites and web apps for startups and businesses using WordPress, WooCommerce, React, and Next.js. Get in touch via any of the contact links below.
 
 ## Technical Skills
 - **Frontend**: ReactJS, NextJS, JavaScript, HTML5, CSS3
@@ -36,10 +38,21 @@ Full-Stack Web Developer with expertise in modern web technologies and content m
 - [LinkedIn](https://www.linkedin.com/in/almazbisenbaev)
 - [Telegram](https://t.me/almazbisenbaev)
 
+## Design Portfolio
+- [Behance](https://www.behance.net/AlmazBisenbaev)
+- [Dribbble](https://dribbble.com/almazbisenbaev)
+
+## Writing & Articles
+Technical writing on web development, published on [DEV Community](https://dev.to/almazbisenbaev) and [Medium](https://medium.com/@almazbisenbaev):
+- [Let's Explore the New CSS "@function" Rule](https://dev.to/almazbisenbaev/lets-explore-the-new-css-function-rule-3dnd)
+- [How to Write CSS in 2025 – Modern Features You Should Be Using (with examples)](https://dev.to/almazbisenbaev/how-to-write-css-in-2025-modern-features-you-should-be-using-with-examples-3g47)
+- [The easiest and fastest way to create a Custom Post Type in WordPress](https://dev.to/almazbisenbaev/the-easiest-and-fastest-way-to-create-a-custom-post-type-in-wordpress-4pgh)
+- [2 easy ways to disable Gutenberg editor in WordPress](https://medium.com/@almazbisenbaev/2-easy-ways-disable-gutenberg-editor-in-wordpress-1e4f483349bc)
+
 ## Online Presence
 - [YouTube: Webdev and Stuff](https://www.youtube.com/@webdevandstuff)
 - [Twitter](https://twitter.com/almazbisenbaev)
 - [Threads](https://www.threads.net/@almazbisenbaev)
 - [Telegram channel: Webdev Stories](https://t.me/webdevstories)
 
-*Last updated: January 2026*
+*Last updated: July 2026*
