@@ -21,25 +21,25 @@ Full-Stack Web Developer with expertise in modern web technologies and content m
 ## Professional Experience
 
 ### Web Development Projects
-- **silverskincoffee.ie** - E-commerce platform for coffee products (WordPress, WooCommerce)
-- **autosl.de** - Premium automotive sales platform with custom API integration (WordPress, Custom Plugin)
-- **muafaktur.de** - E-commerce site for beauty products and training courses (WooCommerce)
-- **monitask.com** - Multilingual WordPress solution with automated page generation
+- [silverskincoffee.ie](https://silverskincoffee.ie) - E-commerce platform for coffee products (WordPress, WooCommerce)
+- [autosl.de](https://autosl.de) - Premium automotive sales platform with custom API integration (WordPress, Custom Plugin)
+- [muafaktur.de](https://muafaktur.de) - E-commerce site for beauty products and training courses (WooCommerce)
+- [monitask.com](https://monitask.com) - Multilingual WordPress solution with automated page generation
 
 ### Open Source Contributions
 - **WP Power Tools** - WordPress utility plugin for developers
 - **Glowy Icons** - Vector icon set for designers and developers
 
 ## Contact Information
-- **Website**: https://helloalmaz.com
-- **GitHub**: https://github.com/almazbisenbaev
-- **LinkedIn**: https://www.linkedin.com/in/almazbisenbaev
-- **Telegram**: @almazbisenbaev
+- [Website](https://helloalmaz.com)
+- [GitHub](https://github.com/almazbisenbaev)
+- [LinkedIn](https://www.linkedin.com/in/almazbisenbaev)
+- [Telegram](https://t.me/almazbisenbaev)
 
 ## Online Presence
-- **YouTube**: Webdev and Stuff (https://www.youtube.com/@webdevandstuff)
-- **Twitter**: @almazbisenbaev
-- **Threads**: @almazbisenbaev
-- **Telegram channel:** https://t.me/webdevstories
+- [YouTube: Webdev and Stuff](https://www.youtube.com/@webdevandstuff)
+- [Twitter](https://twitter.com/almazbisenbaev)
+- [Threads](https://www.threads.net/@almazbisenbaev)
+- [Telegram channel: Webdev Stories](https://t.me/webdevstories)
 
 *Last updated: January 2026*
