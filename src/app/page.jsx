@@ -50,6 +50,7 @@ export default function Home() {
 
         <Separator className="my-10" />
 
+        {/* Funky ramen */}
         <div>
 
           <PicsCarousel 
@@ -110,15 +111,13 @@ export default function Home() {
 
         </div>
 
+        {/* Prince food */}
         <div>
-
 
           <PicsCarousel 
             className="mb-14"
             images={[
               { src: "/portfolio/prince-food-1.mp4", width: 960, height: 540, type: 'video' },
-              // { src: "/images/portfolio/prince-food-1.png", width: 960, height: 540 },
-              // { src: "/images/portfolio/prince-food-2.png", width: 960, height: 540 },
             ]} 
           />
 
@@ -170,14 +169,13 @@ export default function Home() {
 
         </div>
 
+        {/* Factorysl */}
         <div>
 
           <PicsCarousel 
             className="mb-14"
             images={[
               { src: "/portfolio/factorysl-1.mp4", type: 'video' },
-              // { src: "/images/portfolio/prince-food-1.png", width: 960, height: 540 },
-              // { src: "/images/portfolio/prince-food-2.png", width: 960, height: 540 },
             ]} 
           />
 
@@ -281,7 +279,13 @@ export default function Home() {
 
         <div>
 
-          {/* <PicsCarousel images={silverskinCoffeeImages} className="mb-14" /> */}
+          <PicsCarousel 
+            className="mb-14"
+            images={[
+              { src: "/videos/silverskin-home.webm", type: 'video' },
+              { src: "/videos/silverskin-hamburger.webm", type: 'video' },
+            ]} 
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
             <div>

@@ -65,7 +65,7 @@ export default function HeroIntro() {
       // Warm the browser cache for the texture in parallel with the three.js
       // chunk download, so it is a cache hit by the time the loader requests it
       // and the sphere is ready well before the first click.
-      const preload = new Image();
+      const preload = new window.Image();
       preload.src = '/images/texture.jpg';
       setIsSphereMounted(true);
     };
