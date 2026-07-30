@@ -27,7 +27,10 @@ const LazyImage = ({ src, width, height, className }) => {
   );
 };
 
-const LazyVideo = ({ src, width, height, className }) => {
+// `poster` is optional but strongly recommended: it shows a still frame
+// instantly while the (deferred) video streams in. Videos passed without a
+// `poster` fall back to the grey pulse placeholder below.
+const LazyVideo = ({ src, width, height, className, poster }) => {
   const [isLoading, setIsLoading] = useState(true);
   const videoRef = useRef(null);
 
@@ -39,13 +42,16 @@ const LazyVideo = ({ src, width, height, className }) => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            // With preload="none" the download doesn't start until play() is
+            // called, so nothing is fetched until the slide nears the viewport.
             video.play().catch(() => {});
           } else {
             video.pause();
           }
         });
       },
-      { threshold: 0.5 }
+      // Start a little before the slide is on-screen so playback is ready.
+      { threshold: 0.25, rootMargin: "200px" }
     );
 
     observer.observe(video);
@@ -53,18 +59,24 @@ const LazyVideo = ({ src, width, height, className }) => {
     return () => observer.disconnect();
   }, []);
 
+  // Once a poster is present we don't need the pulse placeholder — the poster
+  // itself is the instant visual. Keep the pulse only as the no-poster fallback.
+  const showPulse = isLoading && !poster;
+
   return (
     <div className="relative bg-[#EFEAE5] border border-black/10 rounded-lg overflow-hidden">
-      {isLoading && (
+      {showPulse && (
         <div className="absolute inset-0 bg-[#EFEAE5] animate-pulse" />
       )}
       <video
         ref={videoRef}
         src={src}
+        poster={poster}
+        preload="none"
         muted
         loop
         playsInline
-        className={`object-cover transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'} ${className}`}
+        className={`object-cover transition-opacity duration-300 ${isLoading && !poster ? 'opacity-0' : 'opacity-100'} ${className}`}
         onCanPlay={() => setIsLoading(false)}
       />
     </div>
@@ -81,6 +93,7 @@ export default function PicsCarousel({ images }) {
             src={item.src}
             width={item.width}
             height={item.height}
+            poster={item.poster}
           />
         ) : (
           <LazyImage
@@ -110,6 +123,7 @@ export default function PicsCarousel({ images }) {
                 src={item.src}
                 width={item.width}
                 height={item.height}
+                poster={item.poster}
               />
             ) : (
               <LazyImage

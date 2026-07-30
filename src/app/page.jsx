@@ -117,6 +117,7 @@ export default function Home() {
           <PicsCarousel 
             className="mb-14"
             images={[
+              // TODO: add a `poster` (still frame, e.g. "/portfolio/prince-food-1.jpg") so a preview shows instantly while the video loads.
               { src: "/portfolio/prince-food-1.mp4", width: 960, height: 540, type: 'video' },
             ]} 
           />
@@ -175,6 +176,7 @@ export default function Home() {
           <PicsCarousel 
             className="mb-14"
             images={[
+              // TODO: add a `poster` (still frame, e.g. "/portfolio/factorysl-1.jpg") so a preview shows instantly while the video loads.
               { src: "/portfolio/factorysl-1.mp4", type: 'video' },
             ]} 
           />
@@ -282,7 +284,9 @@ export default function Home() {
           <PicsCarousel 
             className="mb-14"
             images={[
+              // TODO: add a `poster` (still frame, e.g. "/videos/silverskin-home.jpg") so a preview shows instantly while the video loads.
               { src: "/videos/silverskin-home.webm", type: 'video' },
+              // TODO: add a `poster` (still frame, e.g. "/videos/silverskin-hamburger.jpg") so a preview shows instantly while the video loads.
               { src: "/videos/silverskin-hamburger.webm", type: 'video' },
             ]} 
           />
