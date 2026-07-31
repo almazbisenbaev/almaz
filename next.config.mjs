@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   compress: true,
-  swcMinify: true,
   // Reduce legacy polyfills for modern browsers
   experimental: {
     optimizeCss: true,
@@ -49,6 +48,24 @@ const nextConfig = {
   },
   async headers() {
     return [
+      {
+        // Security headers applied to every route.
+        // NOTE: Content-Security-Policy is intentionally omitted — it needs to
+        // be tuned by hand to allow Google Analytics, the inline JSON-LD
+        // script, and three.js before it can be enabled without breaking the
+        // page. Add it (start in report-only mode) once those sources are known.
+        source: '/:path*',
+        headers: [
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'X-XSS-Protection', value: '1; mode=block' },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
+          },
+        ],
+      },
       {
         source: '/:all*(svg|jpg|jpeg|png|gif|webp|avif|ico)',
         locale: false,
