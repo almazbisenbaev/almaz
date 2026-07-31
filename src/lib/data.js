@@ -39,6 +39,7 @@ export const reviewsData = [
 
 export const works = [
   {
+    name: "Funky Ramen",
     title: "funky-ramen.de",
     url: "https://funky-ramen.de",
     buttonText: "Visit Website",
@@ -48,9 +49,16 @@ export const works = [
     client: "Mindlind",
     clientUrl: "//mindlind.de",
     skills: ["JavaScript", "GSAP", "WordPress"],
-    // image: "/images/project-glowy.jpg" 
+    homepage: true,
+    media: [
+      { src: "/images/portfolio/funky-ramen-1.jpg", width: 960, height: 540 },
+      { src: "/images/portfolio/funky-ramen-2.jpg", width: 960, height: 540 },
+      { src: "/images/portfolio/funky-ramen-3.jpg", width: 960, height: 540 },
+      { src: "/images/portfolio/funky-ramen-4.jpg", width: 258, height: 540 },
+    ],
   },
   {
+    name: "Prince Food",
     title: "prince-food.de",
     url: "https://prince-food.de",
     buttonText: "Visit Website",
@@ -60,9 +68,14 @@ export const works = [
     client: "Mindlind",
     clientUrl: "//mindlind.de",
     skills: ["JavaScript", "GSAP", "WordPress"],
-    // image: "/images/project-glowy.jpg" 
+    homepage: true,
+    // TODO: add a `poster` (still frame, e.g. "/portfolio/prince-food-1.jpg") so a preview shows instantly while the video loads.
+    media: [
+      { src: "/portfolio/prince-food-1.mp4", width: 960, height: 540, type: "video" },
+    ],
   },
   {
+    name: "Factory SL",
     title: "factorysl.de",
     url: "https://factorysl.de/",
     buttonText: "Visit Website",
@@ -72,9 +85,14 @@ export const works = [
     client: "Mindlind",
     clientUrl: "//mindlind.de",
     skills: ["WordPress", "Frontend"],
-    // image: "/images/project-glowy.jpg" 
+    homepage: true,
+    // TODO: add a `poster` (still frame, e.g. "/portfolio/factorysl-1.jpg") so a preview shows instantly while the video loads.
+    media: [
+      { src: "/portfolio/factorysl-1.mp4", type: "video" },
+    ],
   },
   {
+    name: "Auto SL",
     title: "autosl.de",
     url: "//autosl.de",
     buttonText: "Visit Website",
@@ -84,9 +102,9 @@ export const works = [
     client: "Mindlind",
     clientUrl: "//mindlind.de",
     skills: ["WordPress", "Custom Plugin", "API Integration"],
-    // image: "/images/project-glowy.jpg" 
   },
   {
+    name: "M Javed Aslam",
     title: "mjavedaslam.com",
     url: "https://mjavedaslam.com",
     buttonText: "Visit Website",
@@ -94,9 +112,9 @@ export const works = [
     description: "A personal website for a freelance digital marketer and copywriter",
     category: "UX Design, Frontend, Backend Development",
     skills: ["UX Design", "WordPress", "Frontend", "Backend"],
-    // image: "/images/project-glowy.jpg" 
   },
   {
+    name: "Silverskin Coffee",
     title: "silverskincoffee.ie",
     url: "/silverskin",
     buttonText: "View Details",
@@ -104,9 +122,15 @@ export const works = [
     description: "E-Commerce website that sells coffee beans. WordPress, Woocommerce.",
     category: "Development",
     skills: ["WordPress", "WooCommerce"],
-    // image: "/images/project-glowy.jpg" 
+    homepage: true,
+    // TODO: add a `poster` (still frame) so a preview shows instantly while the videos load.
+    media: [
+      { src: "/videos/silverskin-home.webm", type: "video" },
+      { src: "/videos/silverskin-hamburger.webm", type: "video" },
+    ],
   },
   {
+    name: "Muafaktur",
     title: "muafaktur.de",
     url: "//muafaktur.de",
     buttonText: "Visit Website",
@@ -116,9 +140,10 @@ export const works = [
     client: "Mindlind",
     clientUrl: "//mindlind.de",
     skills: ["WooCommerce", "UX Design"],
-    // image: "/images/project-glowy.jpg" 
+    homepage: true,
   },
   {
+    name: "Monitask",
     title: "monitask.com",
     url: "//monitask.com",
     buttonText: "Visit Website",
@@ -128,7 +153,7 @@ export const works = [
     client: "Mindlind",
     clientUrl: "//mindlind.de",
     skills: ["WordPress", "Automation"],
-    // image: "/images/project-glowy.jpg" 
+    homepage: true,
   },
 ];
 
