@@ -68,7 +68,7 @@ const services = [
 const stats = [
   { value: "6+", label: "Years with WordPress" },
   { value: "30+", label: "Sites shipped" },
-  { value: "100", label: "PageSpeed scores" },
+  { value: "99%", label: "PageSpeed scores" },
   { value: "5.0", label: "Upwork rating" },
 ];
 
