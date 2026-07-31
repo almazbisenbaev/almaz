@@ -758,6 +758,9 @@ a {
 .button-white { color: #000; background: #fff; }
 .button-white:hover, .button-white:focus { background: rgba(255, 255, 255, 0.8); }
 
+.button-outline-white { color: #fff; background: transparent; border-color: rgba(255, 255, 255, 0.4); }
+.button-outline-white:hover, .button-outline-white:focus { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.7); }
+
 
 /* ── tech-marquee ──────────────────────────────────────────── */
 .tech-marquee-wrapper {

@@ -20,6 +20,12 @@ export default function sitemap() {
       priority: 1,
     },
     {
+      url: `${baseUrl}/wordpress-developer`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/posts`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
