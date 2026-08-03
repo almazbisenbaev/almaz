@@ -141,6 +141,12 @@ export const works = [
     clientUrl: "//mindlind.de",
     skills: ["WooCommerce", "UX Design"],
     homepage: true,
+    media: [
+      { src: "/portfolio/mua-1.jpg", width: 1560, height: 800 },
+      { src: "/portfolio/mua-1-1.jpg", width: 828, height: 1792 },
+      { src: "/portfolio/mua-2.jpg", width: 1560, height: 1099 },
+      { src: "/portfolio/mua-3.jpg", width: 828, height: 1792 },
+    ],
   },
   {
     name: "Monitask",
