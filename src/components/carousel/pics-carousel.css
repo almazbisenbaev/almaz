@@ -1,38 +1,34 @@
 
-.pics-carousel-slide img, .pics-carousel-slide video {
-    display: block;
+/* The wrapper owns the fixed height; its inline `aspect-ratio` (set from the
+   media's real dimensions) then fixes the width, so the box is fully sized
+   from first paint. The img/video simply fill it. */
+.pics-carousel-slide .pics-media {
     height: 240px;
-    width: auto;
-    margin: 0;
 }
 
-/* .pics-carousel-slide {
-    height: 280px;
-} */
+.pics-media img,
+.pics-media video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0;
+}
 
 
 @media (min-width: 768px){
 
-    .pics-carousel-slide img, .pics-carousel-slide video {
+    .pics-carousel-slide .pics-media {
         height: 360px;
     }
-
-    /* .pics-carousel-slide {
-        height: 360px;
-    } */
 
 }
 
 
 @media (min-width: 992px){
 
-    .pics-carousel-slide img, .pics-carousel-slide video {
+    .pics-carousel-slide .pics-media {
         height: 440px;
     }
 
-    /* .pics-carousel-slide {
-        height: 440px;
-    } */
-
 }
-

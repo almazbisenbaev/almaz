@@ -71,7 +71,7 @@ export const works = [
     homepage: true,
     // TODO: add a `poster` (still frame, e.g. "/portfolio/prince-food-1.jpg") so a preview shows instantly while the video loads.
     media: [
-      { src: "/portfolio/prince-food-1.mp4", width: 960, height: 540, type: "video" },
+      { src: "/portfolio/prince-food-1.mp4", width: 2880, height: 1600, type: "video" },
     ],
   },
   {
@@ -88,7 +88,7 @@ export const works = [
     homepage: true,
     // TODO: add a `poster` (still frame, e.g. "/portfolio/factorysl-1.jpg") so a preview shows instantly while the video loads.
     media: [
-      { src: "/portfolio/factorysl-1.mp4", type: "video" },
+      { src: "/portfolio/factorysl-1.mp4", width: 2880, height: 1632, type: "video" },
     ],
   },
   {
@@ -125,8 +125,8 @@ export const works = [
     homepage: true,
     // TODO: add a `poster` (still frame) so a preview shows instantly while the videos load.
     media: [
-      { src: "/videos/silverskin-home.webm", type: "video" },
-      { src: "/videos/silverskin-hamburger.webm", type: "video" },
+      { src: "/videos/silverskin-home.webm", width: 1920, height: 1080, type: "video" },
+      { src: "/videos/silverskin-hamburger.webm", width: 3420, height: 1942, type: "video" },
     ],
   },
   {

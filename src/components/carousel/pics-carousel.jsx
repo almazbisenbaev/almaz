@@ -10,7 +10,13 @@ const LazyImage = ({ src, width, height, className }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <div className="relative bg-[#EFEAE5] border border-black/10 rounded-lg overflow-hidden">
+    // The wrapper reserves the media's exact box up front via `aspect-ratio`
+    // (paired with the fixed height in CSS), so the skeleton and the loaded
+    // image occupy an identical rectangle — no layout shift when it loads.
+    <div
+      className="pics-media relative bg-[#EFEAE5] border border-black/10 rounded-lg overflow-hidden"
+      style={{ aspectRatio: `${width} / ${height}` }}
+    >
       {isLoading && (
         <div className="absolute inset-0 bg-[#EFEAE5] animate-pulse" />
       )}
@@ -64,7 +70,13 @@ const LazyVideo = ({ src, width, height, className, poster }) => {
   const showPulse = isLoading && !poster;
 
   return (
-    <div className="relative bg-[#EFEAE5] border border-black/10 rounded-lg overflow-hidden">
+    // Same as LazyImage: `aspect-ratio` reserves the final box before the
+    // video's metadata (and intrinsic size) has streamed in, so neither the
+    // poster nor the pulse placeholder causes a reflow when playback starts.
+    <div
+      className="pics-media relative bg-[#EFEAE5] border border-black/10 rounded-lg overflow-hidden"
+      style={{ aspectRatio: `${width} / ${height}` }}
+    >
       {showPulse && (
         <div className="absolute inset-0 bg-[#EFEAE5] animate-pulse" />
       )}
