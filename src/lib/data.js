@@ -7,7 +7,7 @@ export const reviewsData = [
   },
   {
     id: 2,
-    name: "", 
+    name: "",
     review: "Almaz is very knowledgeable person, he know exactly what he is doing. He has vey deep knowledge of the job. This is a second time dealing with him, both times he delivered the job well.",
     upworkLink: "https://www.upwork.com/freelancers/~01fc6ec6fb228858ff"
   },
@@ -149,6 +149,7 @@ export const works = [
     ],
   },
   {
+    // 
     name: "Monitask",
     title: "monitask.com",
     url: "//monitask.com",
@@ -160,6 +161,9 @@ export const works = [
     clientUrl: "//mindlind.de",
     skills: ["WordPress", "Automation"],
     homepage: true,
+    media: [
+      { src: "/portfolio/monitask.jpg", width: 1560, height: 781 }
+    ],
   },
 ];
 

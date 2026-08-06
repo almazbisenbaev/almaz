@@ -26,7 +26,7 @@ export default function PortfolioSection({
         <div className="block-header-title">{title}</div>
       </div>
 
-      <Separator className="my-10" />
+      <Separator className="my-15" />
 
       {items.map((project) => (
         <div key={project.title}>
