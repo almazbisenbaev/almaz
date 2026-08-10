@@ -6,7 +6,26 @@ import useEmblaCarousel from 'embla-carousel-react';
 
 import "./pics-carousel.css";
 
-const LazyImage = ({ src, width, height, className }) => {
+// Slide media is height-constrained by CSS (see pics-carousel.css), so the
+// rendered width is simply that height × the image's aspect ratio. Spelling
+// that out in `sizes` stops next/image from defaulting to the full `width`
+// prop (and its 2x variant), which was shipping ~1200px files into ~120px
+// boxes. Purely a srcset-selection change — layout is unaffected.
+const SLIDE_HEIGHTS = [
+  { minWidth: 992, height: 440 },
+  { minWidth: 768, height: 360 },
+  { minWidth: 0, height: 240 },
+];
+
+const slideSizes = (width, height) => {
+  const ratio = width / height;
+  return SLIDE_HEIGHTS.map(({ minWidth, height: h }) => {
+    const rendered = `${Math.ceil(h * ratio)}px`;
+    return minWidth ? `(min-width: ${minWidth}px) ${rendered}` : rendered;
+  }).join(', ');
+};
+
+const LazyImage = ({ src, width, height, className, sizes }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
@@ -25,6 +44,7 @@ const LazyImage = ({ src, width, height, className }) => {
         alt=""
         width={width}
         height={height}
+        sizes={sizes}
         className={`transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'} ${className}`}
         loading="lazy"
         onLoad={() => setIsLoading(false)}
@@ -112,6 +132,8 @@ export default function PicsCarousel({ images }) {
             src={item.src}
             width={item.width}
             height={item.height}
+            // Single item is width-constrained by the page container, not height.
+            sizes="100vw"
           />
         )}
       </div>
@@ -142,6 +164,7 @@ export default function PicsCarousel({ images }) {
                 src={item.src}
                 width={item.width}
                 height={item.height}
+                sizes={slideSizes(item.width, item.height)}
               />
             )}
           </div>

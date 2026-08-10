@@ -28,7 +28,7 @@ export default function Home() {
         <div className="container px-5">
 
           <div className="block-header">
-            <div className="block-header-title">Personal projects</div>
+            <h2 className="block-header-title">Personal projects</h2>
           </div>
 
           <div className="grid grid-cols-1 gap-6 md:gap-10 md:grid-cols-3">
@@ -43,7 +43,7 @@ export default function Home() {
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
               <div className="p-8 md:p-12 pt-2 w-full">
-                <h4 className="font-semibold ff-display text-xl md:text-3xl">Glowy Icons</h4>
+                <h3 className="font-semibold ff-display text-xl md:text-3xl">Glowy Icons</h3>
                 <div className="text-lg font-medium text-slate-700 mt-2">Colorful and bright vector icons with slight shadows</div>
                 <div className="mt-8">
                   <Button
@@ -67,7 +67,7 @@ export default function Home() {
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
               <div className="p-8 md:p-12 pt-2 w-full">
-                <h4 className="font-semibold ff-display text-xl md:text-3xl">Polyglossa<sup className="text-gray-500 font-normal">β</sup></h4>
+                <h3 className="font-semibold ff-display text-xl md:text-3xl">Polyglossa<sup className="text-gray-500 font-normal">β</sup></h3>
                 <div className="text-lg font-medium text-slate-700 mt-2">A messaging app where you talk to AI-friends to practice a language</div>
                 <div className="mt-8">
                   <Button
@@ -95,7 +95,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="p-8 md:p-12 pt-2 w-full">
-                <h4 className="font-semibold ff-display text-xl md:text-3xl">Watch me on YouTube</h4>
+                <h3 className="font-semibold ff-display text-xl md:text-3xl">Watch me on YouTube</h3>
                 <div className="font-medium text-md mt-2">I talk about webdev & stuff</div>
                 <div className="mt-8">
                   <Button

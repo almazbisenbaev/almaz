@@ -10,7 +10,7 @@ const ReviewCard = ({ review, name, upworkLink }) => {
       </div>
       <div className="flex items-center justify-between border-t border-gray-200 pt-4">
         <div>
-          <h4 className="font-medium text-gray-900">{name}</h4>
+          <h3 className="font-medium text-gray-900">{name}</h3>
         </div>
         <a 
           href={upworkLink}
@@ -32,7 +32,7 @@ const ReviewsSection = () => {
       <div className="container px-5">
 
         <div className="block-header">
-          <div className="block-header-title">What people say</div>
+          <h2 className="block-header-title">What people say</h2>
         </div>
 
         {/* Masonry layout using CSS columns */}

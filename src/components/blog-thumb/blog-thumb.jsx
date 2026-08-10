@@ -25,7 +25,7 @@ export default function BlogThumbnail({ title, date, link, isExternal, thumbnail
       </div>
 
       <div className='blog-thumb-content'>
-        <h3 className="blog-thumb-title">{title}</h3>
+        <h2 className="blog-thumb-title">{title}</h2>
       </div>
 
       {/* {isExternal && (

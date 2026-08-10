@@ -43,7 +43,7 @@ const Header = () => {
                 className="flex flex-col gap-1"
               >
                 <div>Almaz Bissenbayev</div>
-                <div className='opacity-50'> Web Developer</div>
+                <div className='opacity-65'> Web Developer</div>
               </Link>           
           </div>
 

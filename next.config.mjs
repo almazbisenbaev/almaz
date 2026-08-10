@@ -1,10 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   compress: true,
-  // Reduce legacy polyfills for modern browsers
-  experimental: {
-    optimizeCss: true,
-  },
+  // NOTE: `experimental.optimizeCss` used to be set here. It is a no-op on this
+  // site: Next only runs its critical-CSS inliner from `server/post-process.js`,
+  // which is reachable solely from the Pages Router render path. This app is
+  // entirely App Router, so the flag inlined nothing while still printing an
+  // "✓ optimizeCss" line at build time. Removed to stop it reading as active.
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200],

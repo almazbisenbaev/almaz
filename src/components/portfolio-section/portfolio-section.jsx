@@ -23,7 +23,7 @@ export default function PortfolioSection({
     <div id={id} className="container px-5 py-20 scroll-mt-10">
 
       <div className="block-header">
-        <div className="block-header-title">{title}</div>
+        <h2 className="block-header-title">{title}</h2>
       </div>
 
       <Separator className="my-15" />

@@ -189,7 +189,7 @@ export default function WordPressDeveloperPage() {
 
           <div className="lg:col-span-4 lg:sticky lg:top-10 lg:self-start">
             <div className="block-header !mb-4">
-              <div className="block-header-title">What I can build for you</div>
+              <h2 className="block-header-title">What I can build for you</h2>
             </div>
             <p className="text-neutral-500 leading-snug max-w-sm">
               Everything a modern WordPress site needs — designed, coded, and
