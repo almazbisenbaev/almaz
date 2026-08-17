@@ -86,7 +86,7 @@ export default function WordPressDeveloperPage() {
   return (
     <div className="wordpress-developer-page">
 
-      {/* Hero — asymmetric: big statement on the left, spec rail on the right */}
+
       <div className="intro-wrapper">
         <div className="container px-5">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 pt-20 pb-12 md:pt-28 md:pb-20">
@@ -147,7 +147,7 @@ export default function WordPressDeveloperPage() {
         </div>
       </div>
 
-      {/* Stats band — horizontal rhythm with hairline dividers */}
+
       <div className="container px-5 py-10">
         <div className="grid grid-cols-3 md:grid-cols-3 border-y border-black/10">
           {stats.map((stat, index) => {
@@ -172,7 +172,7 @@ export default function WordPressDeveloperPage() {
         </div>
       </div>
 
-      {/* Services — numbered capabilities index */}
+
       <div className="container px-5 py-16 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
 
@@ -210,44 +210,84 @@ export default function WordPressDeveloperPage() {
         </div>
       </div>
 
-      {/* Work — shared portfolio section (same component as the home page) */}
+
       <PortfolioSection
         id="work"
         title="Recent WordPress projects"
         items={portfolioItems}
       />
 
-      {/* Reviews (shared component) */}
       <ReviewsSection />
 
-      {/* Final CTA — asymmetric */}
+
       <div className="container px-5 py-16 md:py-24">
-        <div className="section bg-black text-white px-8 py-16 md:p-20 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-end">
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">
-            Need a WordPress developer you can rely on?
-          </h2>
-          <div className="md:justify-self-end w-full md:max-w-sm">
-            <p className="text-lg text-white/70 mb-8">
-              Tell me about your project and I'll get back to you with the
-              fastest way to make it happen.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Button href="//t.me/almazbisenbaev" variant="white" className="h-12 px-6">
-                Message me on Telegram
-                <ExternalLink size={18} />
-              </Button>
-              <Button
-                href="https://www.upwork.com/freelancers/~01fc6ec6fb228858ff"
-                variant="outline-white"
-                className="h-12 px-6"
-              >
-                Hire me on Upwork
-                <ExternalLink size={18} />
-              </Button>
+        <div className="relative overflow-hidden rounded-[32px] md:rounded-[40px] bg-black text-white border border-white/10 p-8 sm:p-12 lg:p-20">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+
+            {/* Left Content Column */}
+            <div className="lg:col-span-7 flex flex-col justify-center">
+
+              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08] text-white">Need a WordPress developer you can rely on?</h2>
+
+              <p className="mt-6 text-base sm:text-xl text-neutral-300 leading-relaxed max-w-xl">
+                Whether you need a custom theme, WooCommerce store, speed optimization, or plugin fixes - tell me about your project and let's get it done right.
+              </p>
+
+              {/* Key Trust Highlights */}
+              {/* <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-sm text-neutral-300">
+                <div className="flex items-center gap-2.5">
+                  <div className="flex items-center justify-center w-5 h-5 rounded-full bg-white/10 text-white text-xs font-bold">✓</div>
+                  <span>Pixel-perfect custom code</span>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <div className="flex items-center justify-center w-5 h-5 rounded-full bg-white/10 text-white text-xs font-bold">✓</div>
+                  <span>99+ PageSpeed score target</span>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <div className="flex items-center justify-center w-5 h-5 rounded-full bg-white/10 text-white text-xs font-bold">✓</div>
+                  <span>Clear communication & support</span>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <div className="flex items-center justify-center w-5 h-5 rounded-full bg-white/10 text-white text-xs font-bold">✓</div>
+                  <span>Flexible freelance terms</span>
+                </div>
+              </div> */}
+
+              {/* Action Buttons */}
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <Button href="//t.me/almazbisenbaev" variant="white" className="h-12 px-6">
+                  Message me on Telegram
+                  <ExternalLink size={18} />
+                </Button>
+                <Button
+                  href="https://www.upwork.com/freelancers/~01fc6ec6fb228858ff"
+                  variant="outline-white"
+                  className="h-12 px-6"
+                >
+                  Hire me on Upwork
+                  <ExternalLink size={18} />
+                </Button>
+              </div>
             </div>
+
+            {/* Right Photo Column */}
+            <div className="lg:col-span-5 relative group">
+              <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/5] w-full rounded-2xl md:rounded-3xl overflow-hidden bg-neutral-900">
+                <Image
+                  src="/images/cta.jpg"
+                  alt="Almaz Bisenbaev - WordPress Developer Setup"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
+
 
     </div>
   );
