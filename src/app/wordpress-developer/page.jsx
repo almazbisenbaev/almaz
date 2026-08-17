@@ -75,7 +75,7 @@ const services = [
 const stats = [
   { value: "6+", label: "Years with WordPress" },
   { value: "30+", label: "Sites shipped" },
-  { value: "99%", label: "PageSpeed scores" },
+  // { value: "99%", label: "PageSpeed scores" },
   { value: "5.0", label: "Upwork rating" },
 ];
 
@@ -89,7 +89,7 @@ export default function WordPressDeveloperPage() {
       {/* Hero — asymmetric: big statement on the left, spec rail on the right */}
       <div className="intro-wrapper">
         <div className="container px-5">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 pt-20 pb-12 md:pt-28 md:pb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 pt-20 pb-12 md:pt-28 md:pb-20">
 
             <div className="lg:col-span-8">
               <div className="flex items-center gap-3 mb-8">
@@ -109,15 +109,12 @@ export default function WordPressDeveloperPage() {
                 </div>
               </div>
 
-              <h1 className="text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.98]">
-                Freelance <span className="text-[#00f]">WordPress</span> &amp;
-                WooCommerce developer.
+              <h1 className="text-5xl sm:text-7xl md:text-7xl font-extrabold tracking-tight leading-[0.98]">
+                Freelance <span className="text-[#30f]">WordPress</span> <br /> &amp; WooCommerce developer
               </h1>
 
               <p className="mt-8 text-lg md:text-2xl text-neutral-600 leading-snug max-w-2xl">
-                I'm Almaz — I build fast, custom WordPress & WooCommerce websites
-                for businesses. Custom themes, online stores, plugins, speed
-                optimization, and ongoing support.
+                I'm Almaz. I build custom WordPress sites and online stores that load fast and don't fall apart after launch. Themes, plugins, speed fixes, ongoing support, whatever keeps your site running.
               </p>
 
               <div className="mt-10 flex flex-wrap gap-4">
@@ -150,22 +147,14 @@ export default function WordPressDeveloperPage() {
         </div>
       </div>
 
-      <div className="pb-6 sm:py-16">
-        <TechMarquee />
-      </div>
-
       {/* Stats band — horizontal rhythm with hairline dividers */}
       <div className="container px-5 py-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 border-y border-black/10">
+        <div className="grid grid-cols-3 md:grid-cols-3 border-y border-black/10">
           {stats.map((stat, index) => {
-            // Per-cell edges: vertical dividers between columns (2-up on
-            // mobile, 4-up on desktop) plus a horizontal divider for the
-            // second mobile row only.
             const edges = [
               "",
               "border-l",
-              "md:border-l border-t md:border-t-0",
-              "border-l border-t md:border-t-0",
+              "border-l",
             ][index];
 
             return (
