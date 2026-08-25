@@ -4,9 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import useEmblaCarousel from 'embla-carousel-react';
 
-import "./pics-carousel.css";
-
-// Slide media is height-constrained by CSS (see pics-carousel.css), so the
+// Slide media is height-constrained by CSS (`.pics-media` in app/globals.css), so the
 // rendered width is simply that height × the image's aspect ratio. Spelling
 // that out in `sizes` stops next/image from defaulting to the full `width`
 // prop (and its 2x variant), which was shipping ~1200px files into ~120px

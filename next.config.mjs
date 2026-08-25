@@ -1,6 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   compress: true,
+  experimental: {
+    // Inlines the route's CSS as a <style> tag in the streamed HTML instead of
+    // linking it, which removes the last render-blocking request from the
+    // critical path. Unlike the `optimizeCss` flag noted below, this one is
+    // implemented in the App Router render path, so it actually applies here.
+    //
+    // The trade-off: ~9 KB (brotli) of CSS rides along in every HTML response
+    // rather than being fetched once and served from cache on later pages. That
+    // is the right side of the trade for this site — traffic is overwhelmingly
+    // single-page first visits, where the saved round trip beats the reuse.
+    inlineCss: true,
+  },
   // NOTE: `experimental.optimizeCss` used to be set here. It is a no-op on this
   // site: Next only runs its critical-CSS inliner from `server/post-process.js`,
   // which is reachable solely from the Pages Router render path. This app is

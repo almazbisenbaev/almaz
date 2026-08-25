@@ -1,6 +1,16 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+
+/* `shadcn/tailwind.css` and `tw-animate-css` used to be imported here. Between
+   them the site consumed exactly two things: the `data-horizontal` /
+   `data-vertical` variants below (see components/ui/separator.jsx) and
+   `animate-pulse` — which is core Tailwind, not tw-animate-css. Everything else
+   in those packages arrived as @property/@utility declarations that Tailwind
+   emits into every page whether or not a class references them. Inlining the
+   two variants drops both imports and their dead weight from the bundle.
+   The `:where()` wrapper keeps them at zero specificity, matching the
+   definitions they replace, so a `className` override still wins. */
+@custom-variant data-horizontal (&:where([data-orientation="horizontal"]));
+@custom-variant data-vertical (&:where([data-orientation="vertical"]));
 
 /* Custom Container */
 .container {
@@ -186,18 +196,6 @@ a {
   }
 }
 
-/* Portfolio section specific styles - no rounding and no wrapper padding on mobile */
-.section-portfolio {
-  border-radius: 0;
-  background: #fff;
-}
-
-@media (min-width: 768px) {
-  .section-portfolio {
-    border-radius: 40px;
-  }
-}
-
 @media (min-width: 576px){
 
   .section {
@@ -326,14 +324,6 @@ a {
 }
 
 
-.embla {
-  --slide-height: 19rem;
-  --slide-spacing: 2rem;
-  --slide-size: 100%;
-}
-
-.embla__viewport {
-}
 .embla__container {
   display: flex;
   touch-action: pan-y pinch-zoom;
@@ -343,16 +333,39 @@ a {
   flex: 0 0 auto;
   min-width: 0;
 }
-.embla__slide__number {
-  box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
-  border-radius: 1.8rem;
-  font-size: 4rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: var(--slide-height);
-  user-select: none;
+
+/* Was components/carousel/pics-carousel.css. Importing it from the client
+   component split it into its own 288-byte chunk, which the App Router then
+   emitted as a second render-blocking <link> on every page that renders a
+   carousel. Merged here so those pages block on one stylesheet, not two.
+
+   The wrapper owns the fixed height; its inline `aspect-ratio` (set from the
+   media's real dimensions) then fixes the width, so the box is fully sized
+   from first paint. The img/video simply fill it. Heights are mirrored in
+   SLIDE_HEIGHTS in pics-carousel.jsx — keep the two in sync. */
+.pics-carousel-slide .pics-media {
+  height: 240px;
+}
+
+.pics-media img,
+.pics-media video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .pics-carousel-slide .pics-media {
+    height: 360px;
+  }
+}
+
+@media (min-width: 992px) {
+  .pics-carousel-slide .pics-media {
+    height: 440px;
+  }
 }
 
 
@@ -534,40 +547,6 @@ a {
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
-}
-
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
 }
 
 @layer base {
