@@ -3,11 +3,14 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import ArrowUpRight from '@/components/icons/arrow-up-right';
+
 const Header = () => {
   const pathname = usePathname();
 
   const navItems = [
     { href: '/', label: 'About', isExternal: false },
+    // { href: '/wordpress-developer', label: 'WordPress', isExternal: false },
     { href: '/posts', label: 'Blog', isExternal: false },
     { href: 'https://docs.google.com/document/d/1ykZuyNLrrTx62nWshYpj2i4OUJUxrdfdQd9-yiiNKpM/edit?usp=sharing', label: 'CV', isExternal: true },
   ];
@@ -56,11 +59,12 @@ const Header = () => {
                   <a
                     key={`${item.href}-${item.label}`}
                     href={item.href}
-                    className={linkClassName(item.href)}
+                    className={`inline-flex items-center gap-1 ${linkClassName(item.href)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     {item.label}
+                    <ArrowUpRight className="h-[0.7em]" />
                   </a>
                 );
               }

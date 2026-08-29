@@ -23,6 +23,19 @@ export default function Home() {
 
       <PortfolioSection items={works.filter((work) => work.homepage)} />
 
+      <div className="container px-5">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8 border-y border-black/10 py-8">
+          <p className="text-lg font-medium leading-snug max-w-lg">
+            Most of the work above is WordPress &amp; WooCommerce — custom themes,
+            stores, plugins and speed fixes.
+          </p>
+          <Button href="/wordpress-developer" variant="black" className="shrink-0">
+            <span>Hire me for WordPress</span>
+            <ChevronRight color="white" size={18} />
+          </Button>
+        </div>
+      </div>
+
 
       <div className="section">
         <div className="container px-5">

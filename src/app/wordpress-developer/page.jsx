@@ -72,6 +72,48 @@ const services = [
   },
 ];
 
+const process = [
+  {
+    title: "Tell me about your project",
+    description:
+      "Send me your site and what you need — a rebuild, a store, a plugin, or just \"it's slow.\" I'll ask a few questions to pin down the scope.",
+  },
+  {
+    title: "A fixed quote, not an open meter",
+    description:
+      "You get the scope and a fixed price in writing before anything starts. Timelines depend on what's involved, so yours comes with the quote.",
+  },
+  {
+    title: "I build, you stay updated",
+    description:
+      "Regular progress updates without having to chase me, and you can see the site come together as I go.",
+  },
+  {
+    title: "Launch, then support",
+    description:
+      "I hand over the site with a maintenance guide so you can edit it yourself — and I'm still around afterwards if something breaks.",
+  },
+];
+
+// TODO (pricing): these are placeholders — replace every $X / $Y with your real
+// numbers before this goes live. A client will hold you to whatever is on this
+// page, so pick figures you're happy to honour as a starting point.
+const pricing = [
+  { service: "Custom theme", price: "$X–$Y" },
+  { service: "WooCommerce store", price: "$X–$Y" },
+  { service: "Speed optimization", price: "from $X" },
+  { service: "Plugin & API work", price: "from $X" },
+  { service: "Ongoing maintenance", price: "$X / month" },
+];
+
+// TODO (content): this page has no outcome evidence anywhere — every claim is a
+// deliverable ("I build themes"), never a result. The only two outcome claims
+// that existed are commented out: the "99% PageSpeed" stat below and the trust
+// highlights block in the CTA further down. That leaves "Speed & performance"
+// advertised as a service with zero speed evidence on the page, and "5.0" with
+// no review count behind it.
+// Worth revisiting: one real before/after PageSpeed number from a client, and
+// "5.0 · N reviews" instead of a bare 5.0.
 const stats = [
   { value: "6+", label: "Years with WordPress" },
   { value: "30+", label: "Sites shipped" },
@@ -205,6 +247,80 @@ export default function WordPressDeveloperPage() {
                 </p>
               </div>
             ))}
+          </div>
+
+        </div>
+      </div>
+
+
+      <div className="container px-5 py-16 md:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+
+          <div className="lg:col-span-4 lg:sticky lg:top-10 lg:self-start">
+            <div className="block-header !mb-4">
+              <h2 className="block-header-title">How it works</h2>
+            </div>
+            <p className="text-neutral-500 leading-snug max-w-sm">
+              No agency layers, no account manager, no ticket queue. You talk
+              directly to the person writing the code.
+            </p>
+          </div>
+
+          <div className="lg:col-span-8">
+            {process.map((step, index) => (
+              <div
+                key={step.title}
+                className="flex flex-col gap-2 md:grid md:grid-cols-12 md:gap-4 py-6 md:py-8 border-t border-black/10 last:border-b"
+              >
+                <div className="flex items-baseline gap-3 md:contents">
+                  <span className="text-sm text-[#30f] tabular-nums md:col-span-1 md:pt-1">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="text-xl font-bold tracking-tight md:col-span-4">
+                    {step.title}
+                  </h3>
+                </div>
+                <p className="text-neutral-600 leading-snug md:col-span-7">
+                  {step.description}
+                </p>
+              </div>
+            ))}
+
+            <div className="mt-12 md:mt-16 bg-white rounded-3xl p-8 md:p-10">
+              <h3 className="text-xl font-bold tracking-tight">
+                What it costs
+              </h3>
+              <p className="mt-2 text-neutral-500 leading-snug max-w-md">
+                Starting ranges so you can budget before we talk. Every project
+                gets its own fixed quote once I know the scope.
+              </p>
+
+              <dl className="mt-8 border-t border-black/10">
+                {pricing.map((item) => (
+                  <div
+                    key={item.service}
+                    className="flex items-baseline justify-between gap-4 py-4 border-b border-black/10"
+                  >
+                    <dt className="text-neutral-600">{item.service}</dt>
+                    <dd className="font-semibold tabular-nums text-right whitespace-nowrap">
+                      {item.price}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+
+              <p className="mt-6 text-sm text-neutral-500 leading-snug">
+                Not sure which one you need? Describe the problem and I'll tell
+                you — even if the answer is that you don't need me.
+              </p>
+
+              <div className="mt-8">
+                <Button href="//t.me/almazbisenbaev" variant="black" className="h-12 px-6">
+                  Get a quote
+                  <ExternalLink size={18} />
+                </Button>
+              </div>
+            </div>
           </div>
 
         </div>
