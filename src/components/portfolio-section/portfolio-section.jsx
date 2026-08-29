@@ -11,11 +11,13 @@ import { works } from "@/lib/data";
  *
  * @param {Object} props
  * @param {string} [props.title="Recent projects"] - Section heading.
+ * @param {string} [props.description] - Optional intro line under the heading.
  * @param {Array}  [props.items=works] - Projects to render.
  * @param {string} [props.id] - Optional id for in-page anchor links (e.g. "work").
  */
 export default function PortfolioSection({
   title = "Recent projects",
+  description,
   items = works,
   id,
 }) {
@@ -25,6 +27,12 @@ export default function PortfolioSection({
       <div className="block-header">
         <h2 className="block-header-title">{title}</h2>
       </div>
+
+      {description ? (
+        <p className="-mt-6 md:-mt-14 mb-2 text-lg md:text-xl text-neutral-600 leading-snug max-w-2xl">
+          {description}
+        </p>
+      ) : null}
 
       <Separator className="my-15" />
 

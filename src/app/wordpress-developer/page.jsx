@@ -95,6 +95,54 @@ const process = [
   },
 ];
 
+// TODO (content): entries marked `draft: true` still have placeholder answers —
+// rewrite them in your own words. Anything left as a draft is shown on the page
+// but deliberately kept OUT of the FAQPage structured data below, so Google
+// never indexes a placeholder. Drop the `draft` flag once an answer is real.
+// The answers that are already written are drawn from claims this page makes
+// elsewhere — check they still match how you actually work.
+const faqs = [
+  {
+    question: "Do you use page builders like Elementor or Divi?",
+    answer:
+      "No. I hand-code themes from your design, which is why the sites I build stay fast and don't collapse when a plugin updates. If you already have a builder-based site, I can still work on it — I'll just tell you honestly whether it's worth keeping.",
+  },
+  {
+    question: "Will I be able to edit the site myself after launch?",
+    answer:
+      "Yes. I build the editing experience around what you'll actually need to change, and I hand over a maintenance guide written for your site specifically, not a generic WordPress manual.",
+  },
+  {
+    question: "What happens if something breaks after launch?",
+    answer:
+      "Message me. I stay reachable after handover, and ongoing maintenance is available if you'd rather have someone on call than fix things one at a time.",
+  },
+  {
+    question: "Do you handle hosting and domains?",
+    draft: true,
+    answer:
+      "TODO: say whether you set hosting up, migrate to it, recommend hosts, or leave it entirely to the client.",
+  },
+  {
+    question: "Who owns the code and the design when the project is done?",
+    draft: true,
+    answer:
+      "TODO: state plainly who owns what on handover. Clients ask this more than you'd think, and a clear answer is a trust signal.",
+  },
+  {
+    question: "Can you work with my existing site, or do you rebuild from scratch?",
+    draft: true,
+    answer:
+      "TODO: describe when you'd fix what's there versus rebuild, and roughly how you decide between them.",
+  },
+  {
+    question: "What time zone are you in, and when are you reachable?",
+    draft: true,
+    answer:
+      "TODO: this is a top-three concern for anyone hiring remotely and the page never answers it. Give your time zone and your usual overlap with EU / US hours.",
+  },
+];
+
 // TODO (pricing): these are placeholders — replace every $X / $Y with your real
 // numbers before this goes live. A client will hold you to whatever is on this
 // page, so pick figures you're happy to honour as a starting point.
@@ -124,9 +172,79 @@ const stats = [
 // The curated set shown on the home page — all WordPress / WooCommerce work.
 const portfolioItems = works.filter((work) => work.homepage);
 
+const PAGE_URL = "https://helloalmaz.com/wordpress-developer";
+
+// Only FAQs with a real answer go into structured data — a placeholder must
+// never reach Google. Entries flagged `draft` are rendered on the page but
+// excluded here until they're written.
+const publishedFaqs = faqs.filter((faq) => !faq.draft);
+
+// NOTE: no `aggregateRating` here on purpose. The reviews are currently
+// unattributed and there's no verified review count behind the "5.0" stat, so
+// marking it up would be fabricated structured data — which Google penalises.
+// Add it once the reviews carry real names and you know the true count.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": `${PAGE_URL}#service`,
+      name: "Freelance WordPress & WooCommerce Development",
+      url: PAGE_URL,
+      description: metadata.description,
+      serviceType: "WordPress and WooCommerce development",
+      areaServed: { "@type": "Place", name: "Worldwide" },
+      provider: {
+        "@type": "Person",
+        name: "Almaz Bisenbaev",
+        url: "https://helloalmaz.com",
+        jobTitle: "Full-Stack Web Developer",
+      },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "WordPress services",
+        itemListElement: services.map((service) => ({
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: service.title,
+            description: service.description,
+          },
+        })),
+      },
+    },
+    ...(publishedFaqs.length
+      ? [
+          {
+            "@type": "FAQPage",
+            "@id": `${PAGE_URL}#faq`,
+            mainEntity: publishedFaqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: { "@type": "Answer", text: faq.answer },
+            })),
+          },
+        ]
+      : []),
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${PAGE_URL}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://helloalmaz.com" },
+        { "@type": "ListItem", position: 2, name: "WordPress Developer", item: PAGE_URL },
+      ],
+    },
+  ],
+};
+
 export default function WordPressDeveloperPage() {
   return (
     <div className="wordpress-developer-page">
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
 
       <div className="intro-wrapper">
@@ -330,10 +448,52 @@ export default function WordPressDeveloperPage() {
       <PortfolioSection
         id="work"
         title="Recent WordPress projects"
+        description="Several of these were built for Mindlind, an agency that brings me in as their WordPress developer — the rest were direct with the client. All of them are live; click through and judge for yourself."
         items={portfolioItems}
       />
 
       <ReviewsSection />
+
+
+      <div className="container px-5 py-16 md:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+
+          <div className="lg:col-span-4 lg:sticky lg:top-10 lg:self-start">
+            <div className="block-header !mb-4">
+              <h2 className="block-header-title">Questions people ask</h2>
+            </div>
+            <p className="text-neutral-500 leading-snug max-w-sm">
+              If yours isn't here, just ask — I'd rather answer it now than after
+              you've paid someone.
+            </p>
+          </div>
+
+          <div className="lg:col-span-8">
+            {faqs.map((faq) => (
+              <details
+                key={faq.question}
+                className="group border-t border-black/10 last:border-b"
+              >
+                <summary className="flex items-start justify-between gap-6 py-6 md:py-7 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                  <h3 className="text-lg md:text-xl font-bold tracking-tight">
+                    {faq.question}
+                  </h3>
+                  <span
+                    aria-hidden="true"
+                    className="mt-1 shrink-0 text-2xl leading-none text-neutral-400 transition-transform duration-200 group-open:rotate-45"
+                  >
+                    +
+                  </span>
+                </summary>
+                <p className="pb-6 md:pb-7 pr-10 text-neutral-600 leading-snug max-w-2xl">
+                  {faq.answer}
+                </p>
+              </details>
+            ))}
+          </div>
+
+        </div>
+      </div>
 
 
       <div className="container px-5 py-16 md:py-24">
