@@ -44,11 +44,18 @@ export default function Posts(){
 
             <div className="flex flex-col">
                 <BlogThumbnail 
+                  title="How AI Takeover Backfired on Greedy Companies"
+                  date="August 30, 2026"
+                  link="https://medium.com/@almazbisenbaev/how-ai-takeover-backfired-on-greedy-companies-4d569c940e05"
+                  isExternal={true}
+                  thumbnail="/blog/how-ai-takeover-back.webp"
+                />
+                <BlogThumbnail 
                   title="I created the same button component in 3 major versions of VueJS"
                   date="June 11, 2026"
                   link="/posts/vuejs-evolution"
                   isExternal={false}
-                  thumbnail="/images/article-vuejs-cover.jpg"
+                  thumbnail="/blog/article-vuejs-cover.jpg"
                 />
                 <BlogThumbnail 
                   title="How to make your Elementor website win PageSpeed"
