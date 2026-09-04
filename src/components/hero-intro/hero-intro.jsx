@@ -136,9 +136,9 @@ export default function HeroIntro() {
                 onLoad={updateSphereBounds}
               />
               <span className="intro-badge" aria-hidden="true">
-                <span className="intro-badge-dot" />
-                <span className="intro-badge-label">
-                  <span>Available</span>
+                <span className="intro-badge-pill">
+                  <span className="intro-badge-dot" />
+                  Available
                 </span>
               </span>
               <div
