@@ -135,7 +135,10 @@ export default function HeroIntro() {
                 priority
                 onLoad={updateSphereBounds}
               />
-              <span className="intro-badge" aria-hidden="true">
+              <span
+                className={`intro-badge${isSphereShown ? ' is-hidden' : ''}`}
+                aria-hidden="true"
+              >
                 <span className="intro-badge-pill">
                   <span className="intro-badge-dot" />
                   Available

@@ -244,6 +244,14 @@ a {
   position: relative;
 }
 
+/* inline-flex (not inline-block) so the wrapper box is exactly the picture,
+   with no line-box strut above/below it. The badge below is positioned in
+   percentages of this box, so it must match the photo to land on its corner. */
+.intro-me {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
 .intro-me-picture {
   border-radius: 99px;
   object-fit: cover;
@@ -269,8 +277,8 @@ a {
   --intro-badge-height: 30px;
 
   position: absolute;
-  top: 2%;
-  left: 60%;
+  top: 4%;
+  left: 58%;
   z-index: 20;
 
   /* drop-shadow on the wrapper, so the shadow follows the clipped circle
@@ -302,6 +310,17 @@ a {
   color: #111;
 
   animation: intro-badge-open 520ms cubic-bezier(0.22, 1, 0.36, 1) 1400ms both;
+
+  /* The fade lives on the pill, not the wrapper: the wrapper's pop animation
+     is fill-mode both, so its final opacity:1 would beat a transition there.
+     The wrapper's drop-shadow is computed from the pill, so it fades too. */
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+/* Hidden while the 3D head is on screen. */
+.intro-badge.is-hidden .intro-badge-pill {
+  opacity: 0;
+  transform: scale(0.9);
 }
 
 .intro-badge-dot {
@@ -357,11 +376,6 @@ a {
 }
 
 @media (max-width: 767px){
-
-  .intro-badge {
-    top: 0;
-    left: 56%;
-  }
 
 }
 
@@ -440,6 +454,14 @@ a {
   .intro-badge-pill,
   .intro-badge-dot::after {
     animation: none;
+  }
+
+  .intro-badge-pill {
+    transition-duration: 0ms;
+  }
+
+  .intro-badge.is-hidden .intro-badge-pill {
+    transform: none;
   }
 }
 
