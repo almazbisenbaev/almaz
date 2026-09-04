@@ -244,12 +244,16 @@ a {
   position: relative;
 }
 
-/* inline-flex (not inline-block) so the wrapper box is exactly the picture,
-   with no line-box strut above/below it. The badge below is positioned in
-   percentages of this box, so it must match the photo to land on its corner. */
+/* The badge is positioned in percentages of this wrapper, so the wrapper box
+   must equal the photo exactly -- otherwise the percentages measure the wrong
+   thing. Two ways it can drift, both handled here:
+   inline-flex (not inline-block) drops the line-box strut above/below, and the
+   picture's margins live on the wrapper rather than inside it. The photo is a
+   square, so a percentage means the same distance on both axes. */
 .intro-me {
   display: inline-flex;
   vertical-align: middle;
+  margin-left: 0.25em;
 }
 
 .intro-me-picture {
@@ -261,74 +265,94 @@ a {
 
   width: auto;
   height: 1.3em;
-  margin-left: 0.25em;
 
   /* position: absolute;
 
   transform: translate(15px, -15px); */
 }
 
-/* Availability badge pinned to the upper-right of the intro picture. It grows
-   out of the pulsing dot on load: the pill scales in clipped to a circle, then
-   the clip sweeps right to uncover the label. Clipping rather than animating
-   the width means the pill is always laid out at its natural size, so the text
-   can never end up truncated mid-animation. */
+/* Availability badge pinned to the upper-right of the intro picture. One
+   element, no wrapper: the badge *is* the pill. It starts as a real circle --
+   a box exactly as wide as it is tall -- and the open animation grows its
+   width to the full pill. Previously this was a full-width pill clipped to a
+   circular window: it only looked round, and the laid-out box never was. */
 .intro-badge {
   --intro-badge-height: 30px;
+  --intro-badge-dot: 10px;
+  /* Must exceed the padding left over beside the dot, or the label would
+     start inside the opening circle and show as a speck on its edge. */
+  --intro-badge-gap: 12px;
 
+  /* Sits on the circle's rim at 45deg, i.e. the true top-right of a round
+     photo. The dot -- not the badge's corner -- is what lands on the rim: the
+     side padding centres it, so it is exactly half the badge height in from
+     the left edge and half the height down, and both offsets back that out.
+     50% +- 35.36% is the 45deg point on a circle inscribed in this box. */
   position: absolute;
-  top: 4%;
-  left: 58%;
+  top: calc(14.64% - var(--intro-badge-height) / 2);
+  left: calc(85.36% - var(--intro-badge-height) / 2);
   z-index: 20;
 
-  /* drop-shadow on the wrapper, so the shadow follows the clipped circle
-     instead of being cut away by the pill's own clip-path. */
-  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.18));
-
-  pointer-events: none;
-  user-select: none;
-  transform-origin: left center;
-
-  animation: intro-badge-pop 340ms cubic-bezier(0.34, 1.56, 0.64, 1) 900ms both;
-}
-
-.intro-badge-pill {
-  display: inline-flex;
+  /* flex also keeps this box off the h1's 112px baseline; as an inline box it
+     would build a ~129px line box and sit far below where `top` puts it. */
+  display: flex;
   align-items: center;
+  column-gap: var(--intro-badge-gap);
   height: var(--intro-badge-height);
-  padding-left: 10px;
+  padding-left: calc((var(--intro-badge-height) - var(--intro-badge-dot)) / 2);
   padding-right: 13px;
+
+  /* The open animation needs a length to grow to, which CSS cannot derive
+     from the text; hero-intro.jsx measures it into --intro-badge-full.
+     max-content keeps the badge correct before that runs. */
+  width: var(--intro-badge-full, max-content);
+
+  /* Hides the label while the badge is still narrow. Clipping happens at the
+     padding box -- the full width -- so the dot itself is never cut. */
+  overflow: hidden;
 
   background: #fff;
   border-radius: 99px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
 
   font-size: 14px;
   font-weight: 500;
   line-height: 1;
   letter-spacing: -0.01em;
-  white-space: nowrap;
   color: #111;
 
-  animation: intro-badge-open 520ms cubic-bezier(0.22, 1, 0.36, 1) 1400ms both;
+  pointer-events: none;
+  user-select: none;
+  transform-origin: center;
 
-  /* The fade lives on the pill, not the wrapper: the wrapper's pop animation
-     is fill-mode both, so its final opacity:1 would beat a transition there.
-     The wrapper's drop-shadow is computed from the pill, so it fades too. */
+  /* pop is `backwards`, not `both`: it holds the badge hidden through its
+     delay, but must stop applying once it ends, or its final opacity:1 would
+     beat the is-hidden transition below. */
+  animation:
+    intro-badge-pop 340ms cubic-bezier(0.34, 1.56, 0.64, 1) 900ms backwards,
+    intro-badge-open 520ms cubic-bezier(0.22, 1, 0.36, 1) 1400ms both;
+
   transition: opacity 220ms ease, transform 220ms ease;
 }
 
 /* Hidden while the 3D head is on screen. */
-.intro-badge.is-hidden .intro-badge-pill {
+.intro-badge.is-hidden {
   opacity: 0;
   transform: scale(0.9);
+}
+
+/* Keeps its natural width even while the badge clips it, so it can be
+   measured exactly and can never wrap mid-animation. */
+.intro-badge-label {
+  flex: none;
+  white-space: nowrap;
 }
 
 .intro-badge-dot {
   position: relative;
   flex: none;
-  width: 10px;
-  height: 10px;
-  margin-right: 8px;
+  width: var(--intro-badge-dot);
+  height: var(--intro-badge-dot);
   border-radius: 50%;
   background: #22c55e;
 }
@@ -353,13 +377,13 @@ a {
   }
 }
 
-/* Starts as a square the width of the pill's height, rounded into a circle. */
+/* Square, which border-radius then rounds to a circle. */
 @keyframes intro-badge-open {
   from {
-    clip-path: inset(0 calc(100% - var(--intro-badge-height)) 0 0 round 99px);
+    width: var(--intro-badge-height);
   }
   to {
-    clip-path: inset(0 0 0 0 round 99px);
+    width: var(--intro-badge-full, max-content);
   }
 }
 
@@ -408,13 +432,15 @@ a {
 
   .intro-me {
     order: -1;
+
+    /* margins stay on the wrapper so its box remains exactly the photo */
+    margin-left: -2px;
+    margin-bottom: 48px;
   }
 
   .intro-me-picture {
     display: block;
     height: 120px;
-    margin-bottom: 48px;
-    margin-left: -2px;
     transform: initial;
 
     position: static;
@@ -451,16 +477,15 @@ a {
   }
 
   .intro-badge,
-  .intro-badge-pill,
   .intro-badge-dot::after {
     animation: none;
   }
 
-  .intro-badge-pill {
+  .intro-badge {
     transition-duration: 0ms;
   }
 
-  .intro-badge.is-hidden .intro-badge-pill {
+  .intro-badge.is-hidden {
     transform: none;
   }
 }

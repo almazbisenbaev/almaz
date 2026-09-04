@@ -15,6 +15,7 @@ export default function HeroIntro() {
   const sphereOverscan = 12;
   const skewRef = useScrollSkew({ maxSkew: 3, velocityDivisor: 500 });
   const containerRef = useRef(null);
+  const badgeRef = useRef(null);
   const pressTimeoutRef = useRef(null);
   const toggleTimeoutRef = useRef(null);
   const [isSphereVisible, setIsSphereVisible] = useState(false);
@@ -79,6 +80,29 @@ export default function HeroIntro() {
     return () => window.clearTimeout(timeoutId);
   }, []);
 
+  // The badge opens by growing its width from a circle to the full pill, and
+  // CSS cannot derive that end width from the text, so measure it into
+  // --intro-badge-full. Layout offsets, not rects: the badge is mid-pop at
+  // mount and a scale transform would skew every rect it reports.
+  useEffect(() => {
+    const measureBadge = () => {
+      const badge = badgeRef.current;
+      const label = badge?.querySelector('.intro-badge-label');
+      if (!badge || !label) return;
+
+      const paddingRight = parseFloat(getComputedStyle(badge).paddingRight);
+      const full = label.offsetLeft + label.offsetWidth + paddingRight;
+      badge.style.setProperty('--intro-badge-full', `${full}px`);
+    };
+
+    measureBadge();
+    window.addEventListener('resize', measureBadge);
+    // Webfont swap changes the label's width.
+    document.fonts?.ready.then(measureBadge);
+
+    return () => window.removeEventListener('resize', measureBadge);
+  }, []);
+
   useEffect(() => {
     updateSphereBounds();
     window.addEventListener('resize', updateSphereBounds);
@@ -111,7 +135,7 @@ export default function HeroIntro() {
             <span>Hi, I'm Almaz,</span>
             <div
               ref={containerRef}
-              className="relative inline-block cursor-pointer intro-me"
+              className="relative cursor-pointer intro-me"
               style={{
                 transform: isPressed ? 'scale(0.94)' : 'scale(1)',
                 transition: 'transform 170ms cubic-bezier(0.22, 1, 0.36, 1)',
@@ -136,13 +160,12 @@ export default function HeroIntro() {
                 onLoad={updateSphereBounds}
               />
               <span
+                ref={badgeRef}
                 className={`intro-badge${isSphereShown ? ' is-hidden' : ''}`}
                 aria-hidden="true"
               >
-                <span className="intro-badge-pill">
-                  <span className="intro-badge-dot" />
-                  Available
-                </span>
+                <span className="intro-badge-dot" />
+                <span className="intro-badge-label">Available</span>
               </span>
               <div
                 className="absolute z-10"
