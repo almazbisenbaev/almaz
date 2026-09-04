@@ -135,6 +135,12 @@ export default function HeroIntro() {
                 priority
                 onLoad={updateSphereBounds}
               />
+              <span className="intro-badge" aria-hidden="true">
+                <span className="intro-badge-dot" />
+                <span className="intro-badge-label">
+                  <span>Available</span>
+                </span>
+              </span>
               <div
                 className="absolute z-10"
                 style={{

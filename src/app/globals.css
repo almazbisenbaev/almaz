@@ -260,6 +260,119 @@ a {
   transform: translate(15px, -15px); */
 }
 
+/* Availability badge pinned to the lower-right of the intro picture. It grows
+   out of the pulsing dot on load: the pill scales in as a circle, then the
+   label track expands from 0fr to 1fr, pushing the pill open horizontally. */
+.intro-badge {
+  position: absolute;
+  top: 68%;
+  left: 62%;
+  z-index: 20;
+
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 6px;
+
+  background: #fff;
+  border-radius: 99px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: #111;
+
+  pointer-events: none;
+  transform-origin: left center;
+
+  animation: intro-badge-pop 320ms cubic-bezier(0.34, 1.56, 0.64, 1) 500ms both;
+}
+
+.intro-badge-dot {
+  position: relative;
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #22c55e;
+}
+
+.intro-badge-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: intro-badge-pulse 2s ease-out 1.4s infinite;
+}
+
+/* 0fr -> 1fr keeps the label track exactly as wide as the text, so the pill
+   stops growing the moment the word is fully revealed. */
+.intro-badge-label {
+  display: grid;
+  grid-template-columns: 0fr;
+  animation: intro-badge-open 420ms cubic-bezier(0.22, 1, 0.36, 1) 780ms both;
+}
+
+.intro-badge-label > span {
+  overflow: hidden;
+  white-space: nowrap;
+  min-width: 0;
+  padding-left: 6px;
+  padding-right: 2px;
+}
+
+@keyframes intro-badge-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes intro-badge-open {
+  from {
+    grid-template-columns: 0fr;
+  }
+  to {
+    grid-template-columns: 1fr;
+  }
+}
+
+@keyframes intro-badge-pulse {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(2.6);
+  }
+}
+
+@media (max-width: 767px){
+
+  .intro-badge {
+    top: auto;
+    bottom: 40px;
+    left: 58%;
+  }
+
+}
+
+@media (max-width: 575px){
+
+  .intro-badge {
+    font-size: 13px;
+  }
+
+}
+
 @media (max-width: 1199px){
 
   .intro-text {
@@ -320,6 +433,19 @@ a {
   .intro-scroll-skew {
     transform: none;
     transition: none;
+  }
+
+  .intro-badge,
+  .intro-badge-label {
+    animation: none;
+  }
+
+  .intro-badge-label {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-badge-dot::after {
+    animation: none;
   }
 }
 
