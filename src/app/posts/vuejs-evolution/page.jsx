@@ -140,10 +140,10 @@ export default async function PostVuejsEvolution() {
 
       <div className="container px-0 max-w-[1400px] mb-10 sm:mb-16">
         <Image 
-          src="/images/article-vuejs-cover.jpg"
+          src="/blog/article-vuejs-cover.jpg"
           width="1600"
           height="1200"
-          alt=""
+          alt="Cover illustration for the article on building the same button component in Vue 1, Vue 2 and Vue 3"
           className="w-full sm:rounded-xl"
         />
       </div>

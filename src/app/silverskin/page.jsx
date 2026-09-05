@@ -7,27 +7,27 @@ import LazyVideo from "@/components/lazy-video/lazy-video";
 const screenshots = [
   {
     src: "/images/silverskin-1.webp",
-    alt: "Screenshot",
+    alt: "Silverskin Coffee homepage with the hero banner and featured coffee beans",
   },
   {
     src: "/images/silverskin-2.webp",
-    alt: "Screenshot",
+    alt: "Silverskin Coffee WooCommerce shop page listing coffee bean products",
   },
   {
     src: "/images/silverskin-3.webp",
-    alt: "Screenshot",
+    alt: "Silverskin Coffee product detail page with grind and weight options",
   },
   {
     src: "/images/silverskin-4.webp",
-    alt: "Screenshot",
+    alt: "Silverskin Coffee cart and checkout step",
   },
   {
     src: "/images/silverskin-5.webp",
-    alt: "Screenshot",
+    alt: "Silverskin Coffee about page describing the roastery",
   },
   {
     src: "/images/silverskin-6.webp",
-    alt: "Screenshot",
+    alt: "Silverskin Coffee wholesale and contact section",
   },
 ];
 
@@ -44,6 +44,8 @@ export default function PageSilverskin() {
             muted 
             loop 
             playsInline 
+            role="img"
+            aria-label="Screen recording of the Silverskin Coffee homepage scrolling through its coffee bean shop"
             className="w-full h-auto block"
           />
         </div>
@@ -73,6 +75,7 @@ export default function PageSilverskin() {
             <div className="overflow-hidden border border-black/10 rounded-sm mb-24">
               <LazyVideo
                 src="/videos/silverskin-hamburger.webm"
+                label="Screen recording of the Silverskin Coffee full-screen navigation menu opening"
                 className="w-full h-auto block"
               />
             </div>

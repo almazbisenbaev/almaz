@@ -1,3 +1,44 @@
+/**
+ * Content-Security-Policy.
+ *
+ * Sources this site actually needs, and why each one is here:
+ *
+ *   script-src   'unsafe-inline' is unavoidable, not laziness. The App Router
+ *                streams its RSC payload as inline `self.__next_f.push(...)`
+ *                <script> tags, and the JSON-LD block in app/layout.jsx is
+ *                inline too. The nonce alternative requires reading the nonce
+ *                in middleware, which opts every route out of static
+ *                prerendering — a real cost for a site that is 100% static.
+ *                googletagmanager.com serves gtag.js (@next/third-parties).
+ *   style-src    Same shape: `experimental.inlineCss` emits the route CSS as an
+ *                inline <style>, and several components set `style={{...}}`.
+ *   img-src      data:/blob: cover next/image placeholders; the Google hosts
+ *                cover the analytics collection pixel.
+ *   connect-src  The GA4 beacon endpoints, including the regional
+ *                (region1.google-analytics.com) and server-side variants.
+ *   font-src     next/font self-hosts Inter, so 'self' is enough.
+ *   media-src    The portfolio .mp4/.webm clips, all served from /public.
+ *
+ * Even with 'unsafe-inline' on scripts this is worth enabling: it still blocks
+ * injected *external* scripts, plugin/object embeds, <base> hijacking, and form
+ * posts to attacker origins, and it pins framing to same-origin.
+ */
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "object-src 'none'",
+  "frame-ancestors 'self'",
+  "form-action 'self'",
+  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob: https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com",
+  "font-src 'self' data:",
+  "media-src 'self'",
+  "connect-src 'self' https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com",
+  "worker-src 'self' blob:",
+  "manifest-src 'self'",
+].join('; ');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   compress: true,
@@ -63,12 +104,9 @@ const nextConfig = {
     return [
       {
         // Security headers applied to every route.
-        // NOTE: Content-Security-Policy is intentionally omitted — it needs to
-        // be tuned by hand to allow Google Analytics, the inline JSON-LD
-        // script, and three.js before it can be enabled without breaking the
-        // page. Add it (start in report-only mode) once those sources are known.
         source: '/:path*',
         headers: [
+          { key: 'Content-Security-Policy', value: contentSecurityPolicy },
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },

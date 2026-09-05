@@ -18,6 +18,7 @@ export default function HeroIntro() {
   const badgeRef = useRef(null);
   const pressTimeoutRef = useRef(null);
   const toggleTimeoutRef = useRef(null);
+  const hasWarmedRef = useRef(false);
   const [isSphereVisible, setIsSphereVisible] = useState(false);
   const [isSphereMounted, setIsSphereMounted] = useState(false);
   const [isSphereReady, setIsSphereReady] = useState(false);
@@ -59,26 +60,25 @@ export default function HeroIntro() {
     }, 170);
   };
 
-  // Mount the sphere (and its three.js chunk) once the browser is idle after
-  // page load, so it is already rendered and textured before the first click.
-  useEffect(() => {
-    const mountSphere = () => {
-      // Warm the browser cache for the texture in parallel with the three.js
-      // chunk download, so it is a cache hit by the time the loader requests it
-      // and the sphere is ready well before the first click.
-      const preload = new window.Image();
-      preload.src = '/images/texture.jpg';
-      setIsSphereMounted(true);
-    };
+  // Mounting the sphere pulls in the three.js chunk (~780 KB uncompressed),
+  // spins up a WebGL context and builds a 64x64 displaced sphere geometry. That
+  // used to happen on requestIdleCallback for *every* visitor, which is a large
+  // main-thread bill for an easter egg most people never trigger.
+  //
+  // Instead, warm it on the first sign the visitor is heading for the avatar —
+  // hovering it, tabbing to it, or touching it. On desktop the pointer arrives
+  // well before the click, so the sphere is still ready in time; visitors who
+  // never reach for it never pay for it at all.
+  const warmSphere = () => {
+    if (hasWarmedRef.current) return;
+    hasWarmedRef.current = true;
 
-    if ('requestIdleCallback' in window) {
-      const idleId = window.requestIdleCallback(mountSphere, { timeout: 3000 });
-      return () => window.cancelIdleCallback(idleId);
-    }
-
-    const timeoutId = window.setTimeout(mountSphere, 1500);
-    return () => window.clearTimeout(timeoutId);
-  }, []);
+    // Fetch the texture alongside the chunk so it is a cache hit by the time
+    // the three.js TextureLoader asks for it.
+    const preload = new window.Image();
+    preload.src = '/images/texture.jpg';
+    setIsSphereMounted(true);
+  };
 
   // The badge opens by growing its width from a circle to the full pill, and
   // CSS cannot derive that end width from the text, so measure it into
@@ -136,18 +136,40 @@ export default function HeroIntro() {
             <div
               ref={containerRef}
               className="relative cursor-pointer intro-me"
+              // The avatar toggles the sphere, so it is a control and has to be
+              // reachable and operable without a mouse.
+              role="button"
+              tabIndex={0}
+              aria-pressed={isSphereShown}
+              aria-label={
+                isSphereShown
+                  ? 'Hide the rotating 3D version of the photo'
+                  : 'Show a rotating 3D version of the photo'
+              }
               style={{
                 transform: isPressed ? 'scale(0.94)' : 'scale(1)',
                 transition: 'transform 170ms cubic-bezier(0.22, 1, 0.36, 1)',
                 transformOrigin: 'center center',
               }}
+              // Intent signals: by the time a pointer has landed on the avatar
+              // (or a keyboard user has tabbed to it) the chunk has a head start.
+              onPointerEnter={warmSphere}
+              onTouchStart={warmSphere}
+              onFocus={warmSphere}
               onClick={() => {
                 if (!isSphereVisible) {
-                  // In case the click beats the idle mount, mount now so the
-                  // texture starts loading immediately.
-                  setIsSphereMounted(true);
+                  // A click can still beat the warm-up (fast tap, no hover), so
+                  // make sure the chunk and texture are requested either way.
+                  warmSphere();
                   runPressAction(() => setIsSphereVisible(true));
                 }
+              }}
+              onKeyDown={(event) => {
+                if (event.key !== 'Enter' && event.key !== ' ') return;
+                // Space would otherwise scroll the page.
+                event.preventDefault();
+                warmSphere();
+                runPressAction(() => setIsSphereVisible((visible) => !visible));
               }}
             >
               <Image

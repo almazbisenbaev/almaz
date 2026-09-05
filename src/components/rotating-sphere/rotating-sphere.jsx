@@ -89,6 +89,10 @@ export default function RotatingSphere({ width, height, active = true, onReady, 
     const maxRotation = Math.PI / 4; // Limit rotation to 45 degrees for subtler cursor tracking
 
     const handleMouseMove = (event) => {
+      // While the sphere is hidden or paused there is nothing to aim, so skip
+      // the per-move math rather than running it on every mouse move.
+      if (!running) return;
+
       const windowHalfX = window.innerWidth / 2;
       const windowHalfY = window.innerHeight / 2;
 

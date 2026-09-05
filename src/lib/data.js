@@ -51,10 +51,10 @@ export const works = [
     skills: ["JavaScript", "GSAP", "WordPress"],
     homepage: true,
     media: [
-      { src: "/images/portfolio/funky-ramen-1.jpg", width: 960, height: 540 },
-      { src: "/images/portfolio/funky-ramen-2.jpg", width: 960, height: 540 },
-      { src: "/images/portfolio/funky-ramen-3.jpg", width: 960, height: 540 },
-      { src: "/images/portfolio/funky-ramen-4.jpg", width: 258, height: 540 },
+      { src: "/images/portfolio/funky-ramen-1.jpg", width: 960, height: 540, alt: "Funky Ramen homepage hero with the restaurant's anime-styled artwork" },
+      { src: "/images/portfolio/funky-ramen-2.jpg", width: 960, height: 540, alt: "Funky Ramen menu section listing dishes with prices" },
+      { src: "/images/portfolio/funky-ramen-3.jpg", width: 960, height: 540, alt: "Funky Ramen about section describing the café" },
+      { src: "/images/portfolio/funky-ramen-4.jpg", width: 258, height: 540, alt: "Funky Ramen website shown on a mobile screen" },
     ],
   },
   {
@@ -71,7 +71,7 @@ export const works = [
     homepage: true,
     // TODO: add a `poster` (still frame, e.g. "/portfolio/prince-food-1.jpg") so a preview shows instantly while the video loads.
     media: [
-      { src: "/portfolio/prince-food-1.mp4", width: 2880, height: 1600, type: "video" },
+      { src: "/portfolio/prince-food-1.mp4", width: 2880, height: 1600, type: "video", alt: "Screen recording of the Prince Food B2B site scrolling through its frozen fruit and vegetable catalogue" },
     ],
   },
   {
@@ -88,7 +88,7 @@ export const works = [
     homepage: true,
     // TODO: add a `poster` (still frame, e.g. "/portfolio/factorysl-1.jpg") so a preview shows instantly while the video loads.
     media: [
-      { src: "/portfolio/factorysl-1.mp4", width: 2880, height: 1632, type: "video" },
+      { src: "/portfolio/factorysl-1.mp4", width: 2880, height: 1632, type: "video", alt: "Screen recording of the Factory SL site showing its vehicle detailing and tuning services" },
     ],
   },
   // {
@@ -126,8 +126,8 @@ export const works = [
     homepage: true,
     // TODO: add a `poster` (still frame) so a preview shows instantly while the videos load.
     media: [
-      { src: "/videos/silverskin-home.webm", width: 1920, height: 1080, type: "video" },
-      { src: "/videos/silverskin-hamburger.webm", width: 3420, height: 1942, type: "video" },
+      { src: "/videos/silverskin-home.webm", width: 1920, height: 1080, type: "video", alt: "Screen recording of the Silverskin Coffee homepage and its coffee bean shop" },
+      { src: "/videos/silverskin-hamburger.webm", width: 3420, height: 1942, type: "video", alt: "Screen recording of the Silverskin Coffee full-screen navigation menu opening" },
     ],
   },
   {
@@ -143,10 +143,10 @@ export const works = [
     skills: ["WooCommerce", "UX Design"],
     homepage: true,
     media: [
-      { src: "/portfolio/mua-1.jpg", width: 1560, height: 800 },
-      { src: "/portfolio/mua-1-1.jpg", width: 828, height: 1792 },
-      { src: "/portfolio/mua-2.jpg", width: 1560, height: 1099 },
-      { src: "/portfolio/mua-3.jpg", width: 828, height: 1792 },
+      { src: "/portfolio/mua-1.jpg", width: 1560, height: 800, alt: "Muafaktur storefront homepage with its beauty product range" },
+      { src: "/portfolio/mua-1-1.jpg", width: 828, height: 1792, alt: "Muafaktur homepage shown on a mobile screen" },
+      { src: "/portfolio/mua-2.jpg", width: 1560, height: 1099, alt: "Muafaktur WooCommerce product listing page" },
+      { src: "/portfolio/mua-3.jpg", width: 828, height: 1792, alt: "Muafaktur training course page shown on a mobile screen" },
     ],
   },
   {
@@ -163,7 +163,7 @@ export const works = [
     skills: ["WordPress", "Automation"],
     homepage: true,
     media: [
-      { src: "/portfolio/monitask.jpg", width: 1560, height: 781 }
+      { src: "/portfolio/monitask.jpg", width: 1560, height: 781, alt: "Monitask marketing site homepage, one of its hundreds of auto-generated multilingual pages" }
     ],
   },
 ];

@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 // Defers downloading the video until it approaches the viewport,
 // and pauses playback while it is scrolled out of view.
-export default function LazyVideo({ src, className }) {
+export default function LazyVideo({ src, className, label }) {
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -30,6 +30,10 @@ export default function LazyVideo({ src, className }) {
     <video
       ref={videoRef}
       src={src}
+      // Silent screen recordings carry meaning, so expose them to assistive
+      // tech the way an <img alt> would rather than as an unlabelled "video".
+      role={label ? "img" : undefined}
+      aria-label={label || undefined}
       preload="none"
       muted
       loop

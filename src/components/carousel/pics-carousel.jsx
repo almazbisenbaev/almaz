@@ -23,7 +23,7 @@ const slideSizes = (width, height) => {
   }).join(', ');
 };
 
-const LazyImage = ({ src, width, height, className, sizes }) => {
+const LazyImage = ({ src, alt = '', width, height, className, sizes }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
@@ -39,7 +39,7 @@ const LazyImage = ({ src, width, height, className, sizes }) => {
       )}
       <Image
         src={src}
-        alt=""
+        alt={alt}
         width={width}
         height={height}
         sizes={sizes}
@@ -54,7 +54,7 @@ const LazyImage = ({ src, width, height, className, sizes }) => {
 // `poster` is optional but strongly recommended: it shows a still frame
 // instantly while the (deferred) video streams in. Videos passed without a
 // `poster` fall back to the grey pulse placeholder below.
-const LazyVideo = ({ src, width, height, className, poster }) => {
+const LazyVideo = ({ src, alt, width, height, className, poster }) => {
   const [isLoading, setIsLoading] = useState(true);
   const videoRef = useRef(null);
 
@@ -102,6 +102,11 @@ const LazyVideo = ({ src, width, height, className, poster }) => {
         ref={videoRef}
         src={src}
         poster={poster}
+        // These clips are silent, decoration-free screen recordings of the
+        // project. Without a label a screen reader announces only "video", so
+        // give it the same descriptive text an <img alt> would carry.
+        aria-label={alt || undefined}
+        role={alt ? 'img' : undefined}
         preload="none"
         muted
         loop
@@ -114,30 +119,9 @@ const LazyVideo = ({ src, width, height, className, poster }) => {
 };
 
 export default function PicsCarousel({ images }) {
-  if (images.length === 1) {
-    const item = images[0];
-    return (
-      <div className="pics-carousel pics-carousel--single">
-        {item.type === 'video' ? (
-          <LazyVideo
-            src={item.src}
-            width={item.width}
-            height={item.height}
-            poster={item.poster}
-          />
-        ) : (
-          <LazyImage
-            src={item.src}
-            width={item.width}
-            height={item.height}
-            // Single item is width-constrained by the page container, not height.
-            sizes="100vw"
-          />
-        )}
-      </div>
-    );
-  }
-
+  // Hooks must run in the same order on every render, so the carousel hook is
+  // called unconditionally and its ref is simply left unattached in the
+  // single-item layout below (which is a plain block, not a scroller).
   const [emblaRef] = useEmblaCarousel({
     dragFree: true,
     containScroll: 'trimSnaps',
@@ -145,26 +129,40 @@ export default function PicsCarousel({ images }) {
     align: 'start',
   });
 
+  const renderItem = (item, sizes) =>
+    item.type === 'video' ? (
+      <LazyVideo
+        src={item.src}
+        alt={item.alt}
+        width={item.width}
+        height={item.height}
+        poster={item.poster}
+      />
+    ) : (
+      <LazyImage
+        src={item.src}
+        alt={item.alt}
+        width={item.width}
+        height={item.height}
+        sizes={sizes}
+      />
+    );
+
+  if (images.length === 1) {
+    return (
+      <div className="pics-carousel pics-carousel--single">
+        {/* Single item is width-constrained by the page container, not height. */}
+        {renderItem(images[0], '100vw')}
+      </div>
+    );
+  }
+
   return (
     <div className="embla pics-carousel" ref={emblaRef}>
       <div className="embla__container flex gap-4 sm:gap-8">
         {images.map((item, index) => (
           <div key={index} className="embla__slide pics-carousel-slide flex-shrink-0">
-            {item.type === 'video' ? (
-              <LazyVideo
-                src={item.src}
-                width={item.width}
-                height={item.height}
-                poster={item.poster}
-              />
-            ) : (
-              <LazyImage
-                src={item.src}
-                width={item.width}
-                height={item.height}
-                sizes={slideSizes(item.width, item.height)}
-              />
-            )}
+            {renderItem(item, slideSizes(item.width, item.height))}
           </div>
         ))}
       </div>

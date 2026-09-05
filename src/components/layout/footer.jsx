@@ -12,11 +12,11 @@ export default function Footer() {
                 <div>I also talk about web dev here:</div>
 
                 <div className="flex gap-3">
-                    <a target="_blank" href="https://www.threads.com/@almazbisenbaev" className="extlink">
+                    <a target="_blank" rel="noopener noreferrer" href="https://www.threads.com/@almazbisenbaev" className="extlink">
                     <ArrowUpRight />
                     Threads
                     </a>
-                    <a target="_blank" href="https://www.youtube.com/@webdevandstuff" className="extlink">
+                    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@webdevandstuff" className="extlink">
                     <ArrowUpRight />
                     YouTube
                     </a>
