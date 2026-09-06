@@ -22,19 +22,26 @@
  * Even with 'unsafe-inline' on scripts this is worth enabling: it still blocks
  * injected *external* scripts, plugin/object embeds, <base> hijacking, and form
  * posts to attacker origins, and it pins framing to same-origin.
+ *
+ * `next dev` needs two extra sources that must never reach production:
+ * React's development build calls eval() to rebuild callstacks across
+ * environments, and Turbopack pushes HMR updates over a websocket. Both are
+ * gated on NODE_ENV below, so the shipped policy stays eval-free.
  */
+const isDev = process.env.NODE_ENV === 'development';
+
 const contentSecurityPolicy = [
   "default-src 'self'",
   "base-uri 'self'",
   "object-src 'none'",
   "frame-ancestors 'self'",
   "form-action 'self'",
-  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval' blob:" : ''} https://www.googletagmanager.com https://www.google-analytics.com`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com",
   "font-src 'self' data:",
   "media-src 'self'",
-  "connect-src 'self' https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com",
+  `connect-src 'self'${isDev ? ' ws: wss:' : ''} https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com`,
   "worker-src 'self' blob:",
   "manifest-src 'self'",
 ].join('; ');
