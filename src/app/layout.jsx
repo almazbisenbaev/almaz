@@ -41,6 +41,8 @@ export const metadata = {
     'WordPress Developer',
     'React Developer',
     'Node.js Developer',
+    'Webflow Developer',
+    'Framer Developer',
     'Web Development',
     'UX Design'
   ],
@@ -104,6 +106,8 @@ export default function RootLayout({ children }) {
       "React",
       "Node.js",
       "JavaScript",
+      "Webflow",
+      "Framer",
       "UX Design"
     ]
   };
