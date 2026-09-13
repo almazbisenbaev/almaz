@@ -1,28 +1,32 @@
-import { ChevronRight } from 'lucide-react';
+import ArrowUpRight from '@/components/icons/arrow-up-right';
 import { reviewsData } from '@/lib/data';
 
-const ReviewCard = ({ review, name, upworkLink }) => {
+const ReviewCard = ({ review, upworkLink }) => {
   return (
-    <div className="review-card bg-white rounded-3xl p-8">
-      <div className="mb-5 review-card-quote">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="#000" viewBox="0 0 16 16"> <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388q0-.527.062-1.054.093-.558.31-.992t.559-.683q.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 9 7.558V11a1 1 0 0 0 1 1zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612q0-.527.062-1.054.094-.558.31-.992.217-.434.559-.683.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 3 7.558V11a1 1 0 0 0 1 1z"></path></svg>
-        <p className="text-gray-800 font-medium text-lg">{review}</p>
-      </div>
-      <div className="flex items-center justify-between border-t border-gray-200 pt-4">
-        <div>
-          <h3 className="font-medium text-gray-900">{name}</h3>
-        </div>
-        <a 
+    <figure className="review-card bg-white rounded-3xl">
+      <svg
+        className="review-card-mark"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 16 16"
+        aria-hidden="true"
+      >
+        <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388q0-.527.062-1.054.093-.558.31-.992t.559-.683q.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 9 7.558V11a1 1 0 0 0 1 1zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612q0-.527.062-1.054.094-.558.31-.992.217-.434.559-.683.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 3 7.558V11a1 1 0 0 0 1 1z" />
+      </svg>
+
+      <blockquote className="review-card-text">{review}</blockquote>
+
+      <figcaption className="review-card-footer">
+        <a
           href={upworkLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="extlink"
+          className="extlink review-card-link"
         >
+          <ArrowUpRight />
           View on Upwork
-          <ChevronRight size={14} />
         </a>
-      </div>
-    </div>
+      </figcaption>
+    </figure>
   );
 };
 
@@ -41,7 +45,6 @@ const ReviewsSection = () => {
             <ReviewCard
               key={review.id}
               review={review.review}
-              name={review.name}
               upworkLink={review.upworkLink}
             />
           ))}

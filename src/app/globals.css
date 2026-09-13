@@ -171,12 +171,45 @@ a {
 .review-card {
   break-inside: avoid;
   page-break-inside: avoid;
+
+  /* One vertical rhythm for the whole card: mark, quote, author. */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 28px;
 }
 
-.review-card-quote svg {
-  width: 36px;
-  margin-bottom: 12px;
-  margin-left: -4px;
+@media (min-width: 768px) {
+  .review-card {
+    padding: 32px;
+  }
+}
+
+/* Decorative, so it stays small and quiet instead of competing with the quote. */
+.review-card-mark {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  fill: rgba(0, 0, 0, 0.16);
+}
+
+.review-card-text {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  color: #3f3f46;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.review-card-footer {
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+/* Reuses .extlink (and its Upwork-green hover) at the card's smaller scale. */
+.review-card-link {
+  font-size: 0.875rem;
 }
 
 /* Ensure proper spacing in masonry layout */
