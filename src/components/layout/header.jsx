@@ -5,14 +5,15 @@ import { usePathname } from 'next/navigation';
 
 import ArrowUpRight from '@/components/icons/arrow-up-right';
 
-const Header = () => {
+const Header = ({ locale = 'en' }) => {
   const pathname = usePathname();
+  const isRussian = locale === 'ru-KZ';
 
   const navItems = [
-    { href: '/', label: 'About', isExternal: false },
+    { href: '/', label: isRussian ? 'Обо мне (EN)' : 'About', isExternal: false },
     // { href: '/wordpress-developer', label: 'WordPress', isExternal: false },
-    { href: '/posts', label: 'Blog', isExternal: false },
-    { href: 'https://docs.google.com/document/d/1ykZuyNLrrTx62nWshYpj2i4OUJUxrdfdQd9-yiiNKpM/edit?usp=sharing', label: 'CV', isExternal: true },
+    { href: '/posts', label: isRussian ? 'Блог (EN)' : 'Blog', isExternal: false },
+    { href: 'https://docs.google.com/document/d/1ykZuyNLrrTx62nWshYpj2i4OUJUxrdfdQd9-yiiNKpM/edit?usp=sharing', label: isRussian ? 'Резюме (EN)' : 'CV', isExternal: true },
   ];
 
   const normalizePath = (path) => {
@@ -45,12 +46,12 @@ const Header = () => {
                 href="/"
                 className="flex flex-col gap-1"
               >
-                <div>Almaz Bissenbayev</div>
-                <div className='opacity-65'> Web Developer</div>
+                <div>{isRussian ? 'Алмаз Бисенбаев' : 'Almaz Bissenbayev'}</div>
+                <div className='opacity-65'>{isRussian ? 'Веб-разработчик' : 'Web Developer'}</div>
               </Link>           
           </div>
 
-          <nav className="flex gap-4">
+          <nav aria-label={isRussian ? 'Основная навигация' : 'Main navigation'} className="flex flex-wrap gap-4">
             {navItems.map((item) => {
               const active = isActive(item.href);
 

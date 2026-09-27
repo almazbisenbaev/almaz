@@ -5,7 +5,7 @@
  *
  *   script-src   'unsafe-inline' is unavoidable, not laziness. The App Router
  *                streams its RSC payload as inline `self.__next_f.push(...)`
- *                <script> tags, and the JSON-LD block in app/layout.jsx is
+ *                <script> tags, and the JSON-LD block in site-document.jsx is
  *                inline too. The nonce alternative requires reading the nonce
  *                in middleware, which opts every route out of static
  *                prerendering — a real cost for a site that is 100% static.
@@ -50,6 +50,8 @@ const contentSecurityPolicy = [
 const nextConfig = {
   compress: true,
   experimental: {
+    // Preserve the site's custom 404 across the English and Russian roots.
+    globalNotFound: true,
     // Inlines the route's CSS as a <style> tag in the streamed HTML instead of
     // linking it, which removes the last render-blocking request from the
     // critical path. Unlike the `optimizeCss` flag noted below, this one is
@@ -106,6 +108,15 @@ const nextConfig = {
     fileLoaderRule.exclude = /\.svg$/i
 
     return config
+  },
+  async redirects() {
+    return [
+      {
+        source: '/ru',
+        destination: '/razrabotka-saitov-kazakhstan',
+        permanent: true,
+      },
+    ];
   },
   async headers() {
     return [

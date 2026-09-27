@@ -1,0 +1,66 @@
+.viewport {
+  --slide-size: 88%;
+  --slide-gap: 1rem;
+
+  /* Keep Embla's offset measurements relative to this viewport, including
+     when the promoted track becomes a containing block. */
+  position: relative;
+  overflow: hidden;
+  padding-block: 4px;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y pinch-zoom;
+}
+
+.viewport:active {
+  cursor: grabbing;
+}
+
+.viewport:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 4px;
+}
+
+.viewport a:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: -2px;
+}
+
+.track {
+  display: flex;
+  gap: var(--slide-gap);
+  touch-action: pan-y pinch-zoom;
+  /* Embla owns the transform and animation loop. A CSS transition here would
+     lag behind the pointer; React never updates state during a drag. */
+  will-change: transform;
+}
+
+.slide {
+  display: flex;
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+}
+
+.slide > * {
+  flex: 1;
+  min-width: 0;
+}
+
+.viewport img {
+  -webkit-user-drag: none;
+}
+
+@media (min-width: 640px) {
+  .viewport {
+    --slide-size: 60%;
+    --slide-gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .viewport {
+    --slide-size: 44%;
+    --slide-gap: 2rem;
+  }
+}

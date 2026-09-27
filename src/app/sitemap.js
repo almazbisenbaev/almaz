@@ -20,6 +20,13 @@ export default function sitemap() {
       priority: 1,
     },
     {
+      url: `${baseUrl}/razrabotka-saitov-kazakhstan`,
+      // Update when the landing page changes, not on every unrelated build.
+      lastModified: '2026-09-27',
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/wordpress-developer`,
       lastModified: new Date(),
       changeFrequency: 'monthly',

@@ -1,0 +1,9 @@
+/* Use the browser's default text scale for this landing page. The English
+   site's 18px root otherwise enlarges every rem-based gap and mobile heading. */
+html[lang="ru-KZ"] {
+  font-size: 100%;
+}
+
+html[lang="ru-KZ"] body {
+  font-size: 1rem;
+}

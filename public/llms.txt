@@ -15,6 +15,9 @@ Freelance Full-Stack Web Developer based in Astana, Kazakhstan, with a UX/design
 
 **Available for freelance work.** Open to new clients and projects — building fast, scalable websites and web apps for startups and businesses using WordPress, WooCommerce, React, Next.js, Webflow, Framer, and Supabase. Get in touch via any of the contact links below.
 
+## Service Pages
+- [Разработка сайтов в Казахстане](https://helloalmaz.com/razrabotka-saitov-kazakhstan) — Russian-language service page for clients in Kazakhstan: websites, WordPress, WooCommerce stores, React/Next.js applications, project examples, FAQs, and Telegram contact.
+
 ## Technical Skills
 - **Frontend**: ReactJS, NextJS, JavaScript, HTML5, CSS3
 - **Backend & Databases**: Node.js, PHP, Supabase
@@ -75,6 +78,8 @@ Technical writing on web development, published on [DEV Community](https://dev.t
 *Байланыс деректері, портфолио және сілтемелер жоғарыдағы бөлімдерде берілген — олар барлық тілдер үшін ортақ.*
 
 ## Русский (Russian)
+
+[Разработка сайтов для бизнеса в Казахстане](https://helloalmaz.com/razrabotka-saitov-kazakhstan) — услуги, примеры работ и ответы на вопросы на русском языке. Основная страница для клиентов из Казахстана.
 
 **Алмаз Бисенбаев** — веб-разработчик на фрилансе (full-stack), живёт и работает в Астане, Казахстан. Бэкграунд в UX/дизайне и опыт в современных веб-технологиях; специализируется на адаптивных и удобных сайтах и веб-приложениях.
 
