@@ -556,6 +556,91 @@ a {
   margin: 0;
 }
 
+.pics-carousel-viewport {
+  position: relative;
+  overflow: hidden;
+  touch-action: pan-y pinch-zoom;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.pics-carousel-viewport[data-scrollable="true"] { cursor: grab; }
+.pics-carousel-viewport[data-dragging="true"] { cursor: grabbing; }
+
+.pics-carousel-track {
+  /* Embla owns the track transform; never add a CSS transition here. */
+  will-change: transform;
+}
+
+.pics-carousel-viewport .pics-media {
+  transform: scale(1);
+  transition: transform 550ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pics-carousel-viewport[data-dragging="true"] .pics-media {
+  transform: scale(0.985);
+  transition-duration: 220ms;
+}
+
+.pics-carousel-viewport .pics-media img,
+.pics-carousel-viewport .pics-media video {
+  transform: translate3d(var(--pics-parallax, 0px), 0, 0) scale(1.025);
+  -webkit-user-drag: none;
+}
+
+.pics-carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.pics-carousel-controls[hidden] { display: none; }
+
+.pics-carousel-progress {
+  flex: 1;
+  height: 2px;
+  overflow: hidden;
+  background: #1815121a;
+  border-radius: 2px;
+}
+
+.pics-carousel-progress > span {
+  display: block;
+  height: 100%;
+  background: #181512;
+  border-radius: inherit;
+}
+
+.pics-carousel-count {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.pics-carousel-count > span { color: #66615c; }
+
+.pics-carousel-viewport:focus {
+  outline: none;
+}
+
+@media (max-width: 639px) {
+  .pics-carousel-slide .pics-media {
+    height: min(240px, calc((100vw - 5rem) / var(--pics-max-aspect, 2)));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pics-carousel-viewport .pics-media,
+  .pics-carousel-viewport .pics-media img,
+  .pics-carousel-viewport .pics-media video {
+    transform: none !important;
+    transition: none;
+  }
+
+  .pics-carousel .animate-pulse { animation: none; }
+}
+
 @media (min-width: 768px) {
   .pics-carousel-slide .pics-media {
     height: 360px;

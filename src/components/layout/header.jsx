@@ -5,15 +5,15 @@ import { usePathname } from 'next/navigation';
 
 import ArrowUpRight from '@/components/icons/arrow-up-right';
 
-const Header = ({ locale = 'en' }) => {
+const Header = () => {
   const pathname = usePathname();
-  const isRussian = locale === 'ru-KZ';
 
   const navItems = [
-    { href: '/', label: isRussian ? 'Обо мне (EN)' : 'About', isExternal: false },
+    { href: '/', label: 'About', isExternal: false },
     // { href: '/wordpress-developer', label: 'WordPress', isExternal: false },
-    { href: '/posts', label: isRussian ? 'Блог (EN)' : 'Blog', isExternal: false },
-    { href: 'https://docs.google.com/document/d/1ykZuyNLrrTx62nWshYpj2i4OUJUxrdfdQd9-yiiNKpM/edit?usp=sharing', label: isRussian ? 'Резюме (EN)' : 'CV', isExternal: true },
+    { href: '/posts', label: 'Blog', isExternal: false },
+    // { href: 'https://docs.google.com/document/d/1ykZuyNLrrTx62nWshYpj2i4OUJUxrdfdQd9-yiiNKpM/edit?usp=sharing', label: 'CV', isExternal: true },
+    { href: 'https://linkedin.com/in/almazbisenbaev', label: 'Hire me', isExternal: true },
   ];
 
   const normalizePath = (path) => {
@@ -42,16 +42,16 @@ const Header = ({ locale = 'en' }) => {
         <div className="hdr-row flex items-start flex-col sm:flex-row sm:items-end gap-5 justify-between font-medium text-sm leading-tight">
 
           <div className=''>
-              <Link 
-                href="/"
-                className="flex flex-col gap-1"
-              >
-                <div>{isRussian ? 'Алмаз Бисенбаев' : 'Almaz Bissenbayev'}</div>
-                <div className='opacity-65'>{isRussian ? 'Веб-разработчик' : 'Web Developer'}</div>
-              </Link>           
+            <Link
+              href="/"
+              className="flex flex-col gap-1"
+            >
+              <div>Almaz Bissenbayev</div>
+              <div className='opacity-65'>Web Developer</div>
+            </Link>
           </div>
 
-          <nav aria-label={isRussian ? 'Основная навигация' : 'Main navigation'} className="flex flex-wrap gap-4">
+          <nav aria-label="Main navigation" className="flex flex-wrap gap-4">
             {navItems.map((item) => {
               const active = isActive(item.href);
 

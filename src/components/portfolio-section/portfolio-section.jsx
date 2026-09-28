@@ -41,7 +41,7 @@ export default function PortfolioSection({
 
           {project.media?.length ? (
             <div className="mb-14">
-              <PicsCarousel images={project.media} />
+              <PicsCarousel images={project.media} label={project.name} />
             </div>
           ) : null}
 
