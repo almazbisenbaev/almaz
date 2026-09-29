@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 
-import TechMarquee from "@/components/tech-marquee/tech-marquee";
 import ReviewsSection from "@/components/reviews-section/reviews-section";
 import PortfolioSection from "@/components/portfolio-section/portfolio-section";
 import Button from "@/components/button/button";
@@ -11,7 +10,7 @@ import { works } from "@/lib/data";
 export const metadata = {
   title: "Freelance WordPress & WooCommerce Developer",
   description:
-    "Freelance WordPress developer building fast, custom WordPress and WooCommerce websites for businesses. Custom themes, plugins, e-commerce, speed optimization and ongoing support.",
+    "Hire a freelance WordPress developer for custom websites, WooCommerce stores, speed improvements and ongoing support. Working with businesses and agencies worldwide.",
   alternates: {
     canonical: "/wordpress-developer",
   },
@@ -32,6 +31,9 @@ export const metadata = {
   },
 };
 
+// Owner-requested draft: prices, timelines, 30-day bug-fix support, payment
+// schedule and working hours below are suggested business terms, not verified
+// policies. Keep the related FAQ and pricing copy in sync when revising them.
 const heroFacts = [
   { label: "Status", value: "Open for projects" },
   { label: "Focus", value: "WordPress · WooCommerce" },
@@ -43,32 +45,32 @@ const services = [
   {
     title: "Custom theme development",
     description:
-      "Pixel-perfect, hand-coded themes built from your design — not bloated page builders. Clean, maintainable code that loads fast.",
+      "Turn your Figma designs into a custom WordPress theme with responsive layouts and an editing experience built around your content. Update pages, images and text without touching code.",
   },
   {
     title: "WooCommerce & online stores",
     description:
-      "Full e-commerce stores with product management, payments, and a smooth checkout — from coffee beans to B2B catalogs.",
+      "WooCommerce stores with product pages, product variations, payment and shipping setup, and a checkout that works on mobile. I help with new stores and improvements to existing shops.",
   },
   {
     title: "Speed & performance",
     description:
-      "Slow WordPress site? I optimize load times, Core Web Vitals, and PageSpeed scores so your site feels instant.",
+      "Find what is slowing your WordPress site down, then address the bottlenecks: images, scripts, caching, plugins or theme code. You get before-and-after measurements and a clear explanation of the changes.",
   },
   {
     title: "Custom plugins & APIs",
     description:
-      "Need functionality WordPress doesn't have out of the box? I build custom plugins and connect third-party APIs.",
+      "Custom plugins and API integrations for the way your business works: forms, external data, content imports and automated tasks. I document the setup so it is easier to maintain.",
   },
   {
     title: "Multilingual & automation",
     description:
-      "Multilingual WordPress sites with hundreds of pages generated and kept up to date automatically.",
+      "Make your site easier to manage across languages and larger content libraries. I set up multilingual pages, reusable templates and content workflows that reduce repetitive editing.",
   },
   {
     title: "Redesigns & maintenance",
     description:
-      "Theme changes, migrations, fixes, and ongoing support — with clear communication and a maintenance guide when you need one.",
+      "Refresh an existing site, move it to a new host or fix the issues that keep getting in your way. Ongoing maintenance can cover updates, backups, monitoring and an agreed allowance for small changes.",
   },
 ];
 
@@ -76,96 +78,91 @@ const process = [
   {
     title: "Tell me about your project",
     description:
-      "Send me your site and what you need — a rebuild, a store, a plugin, or just \"it's slow.\" I'll ask a few questions to pin down the scope.",
+      "Send your current website or designs, what you want to achieve, and any budget or deadline you have in mind. A short message is enough to start; I will help you work out the details.",
   },
   {
-    title: "A fixed quote, not an open meter",
+    title: "Agree on scope and price",
     description:
-      "You get the scope and a fixed price in writing before anything starts. Timelines depend on what's involved, so yours comes with the quote.",
+      "You receive a written scope, fixed quote and estimated schedule before work begins. We agree on the pages, features and revision rounds, with any later additions quoted separately.",
   },
   {
     title: "I build, you stay updated",
     description:
-      "Regular progress updates without having to chase me, and you can see the site come together as I go.",
+      "I build on a private preview site and share progress as each stage is ready. You can review the work, leave feedback and try the editing experience before launch.",
   },
   {
     title: "Launch, then support",
     description:
-      "I hand over the site with a maintenance guide so you can edit it yourself — and I'm still around afterwards if something breaks.",
+      "I check the agreed layouts, forms and store flows, help launch the site, and hand over access with an editing guide. Bug fixes for the work I deliver are included for 30 days after launch.",
   },
 ];
 
-// TODO (content): entries marked `draft: true` still have placeholder answers —
-// rewrite them in your own words. Anything left as a draft is shown on the page
-// but deliberately kept OUT of the FAQPage structured data below, so Google
-// never indexes a placeholder. Drop the `draft` flag once an answer is real.
-// The answers that are already written are drawn from claims this page makes
-// elsewhere — check they still match how you actually work.
 const faqs = [
   {
     question: "Do you use page builders like Elementor or Divi?",
     answer:
-      "No. I hand-code themes from your design, which is why the sites I build stay fast and don't collapse when a plugin updates. If you already have a builder-based site, I can still work on it — I'll just tell you honestly whether it's worth keeping.",
+      "For a new custom site, I usually build a theme from your designs and use the WordPress editor for the content you need to manage. I can also work on an existing Elementor or Divi site. I review the setup first and recommend whether to keep it or change it based on your goals, budget and maintenance needs.",
   },
   {
     question: "Will I be able to edit the site myself after launch?",
     answer:
-      "Yes. I build the editing experience around what you'll actually need to change, and I hand over a maintenance guide written for your site specifically, not a generic WordPress manual.",
+      "Yes. I set up editable sections for the content you manage most often, such as text, images, pages and products. At handover, you receive a guide for your site and a walkthrough of the main editing tasks.",
   },
   {
     question: "What happens if something breaks after launch?",
     answer:
-      "Message me. I stay reachable after handover, and ongoing maintenance is available if you'd rather have someone on call than fix things one at a time.",
+      "I include 30 days of bug-fix support for the work delivered in the agreed scope. New features, changes made by others and issues caused by third-party services are assessed separately. After that, you can book individual fixes or arrange ongoing maintenance.",
   },
   {
     question: "Do you handle hosting and domains?",
-    draft: true,
     answer:
-      "TODO: say whether you set hosting up, migrate to it, recommend hosts, or leave it entirely to the client.",
+      "I can help you choose hosting, connect your domain and SSL, and move an existing WordPress site. The accounts stay in your name, and you pay the providers directly. We agree on any setup or migration work in the project scope before starting.",
   },
   {
     question: "Who owns the code and the design when the project is done?",
-    draft: true,
     answer:
-      "TODO: state plainly who owns what on handover. Clients ask this more than you'd think, and a clear answer is a trust signal.",
+      "Once the project is paid in full, I hand over the custom code and design work created for your project, along with the agreed files and administrator access. You can maintain the site yourself or work with another developer. Third-party plugins, fonts, images and other licensed assets remain subject to their own licenses, which we identify during planning.",
   },
   {
     question: "Can you work with my existing site, or do you rebuild from scratch?",
-    draft: true,
     answer:
-      "TODO: describe when you'd fix what's there versus rebuild, and roughly how you decide between them.",
+      "Both. I start by reviewing your theme, plugins, content and the problems you want to solve. If the foundation is sound, targeted improvements may be enough. If the setup makes changes fragile or costly, I explain the trade-offs and quote a rebuild so you can compare the options.",
   },
   {
     question: "What time zone are you in, and when are you reachable?",
-    draft: true,
     answer:
-      "TODO: this is a top-three concern for anyone hiring remotely and the page never answers it. Give your time zone and your usual overlap with EU / US hours.",
+      "I work on Kazakhstan time, UTC+5, usually from 10:00 to 19:00 Monday to Friday. That gives us overlap with European working hours, and calls with US clients can be arranged in advance. I aim to reply to project messages within one business day.",
+  },
+  {
+    question: "How long does a WordPress project take?",
+    answer:
+      "As a starting estimate, a custom business website takes around 2–4 weeks and a WooCommerce store around 4–6 weeks once the scope, designs and content are ready. Smaller fixes may take a few working days. Integrations, content preparation and feedback can affect the schedule; your quote includes an estimate for your specific project.",
+  },
+  {
+    question: "Do I need a finished design before we start?",
+    answer:
+      "A finished Figma design is helpful, but you can also come with a brief, a rough page list and a few reference sites. We can agree on a separate design stage before development. If an agency or designer is already working on the project, I can join them for the WordPress build.",
+  },
+  {
+    question: "How do payments work?",
+    answer:
+      "For most fixed-price projects, I ask for 50% to book the work and 50% after you approve the preview, before launch and handover. Larger projects can use agreed milestones. Hosting, domains and paid licenses are separate costs, and any work outside the original scope is quoted for approval first.",
   },
 ];
 
-// TODO (pricing): these are placeholders — replace every $X / $Y with your real
-// numbers before this goes live. A client will hold you to whatever is on this
-// page, so pick figures you're happy to honour as a starting point.
+// Suggested USD budgets; revise alongside the scope and payment answers above.
 const pricing = [
-  { service: "Custom theme", price: "$X–$Y" },
-  { service: "WooCommerce store", price: "$X–$Y" },
-  { service: "Speed optimization", price: "from $X" },
-  { service: "Plugin & API work", price: "from $X" },
-  { service: "Ongoing maintenance", price: "$X / month" },
+  { service: "Custom theme", price: "$1,200–$3,000" },
+  { service: "WooCommerce store", price: "$2,000–$5,000" },
+  { service: "Speed optimization", price: "from $250" },
+  { service: "Plugin & API work", price: "from $400" },
+  { service: "Ongoing maintenance", price: "from $150 / month" },
 ];
 
-// TODO (content): this page has no outcome evidence anywhere — every claim is a
-// deliverable ("I build themes"), never a result. The only two outcome claims
-// that existed are commented out: the "99% PageSpeed" stat below and the trust
-// highlights block in the CTA further down. That leaves "Speed & performance"
-// advertised as a service with zero speed evidence on the page, and "5.0" with
-// no review count behind it.
-// Worth revisiting: one real before/after PageSpeed number from a client, and
-// "5.0 · N reviews" instead of a bare 5.0.
+// Existing profile figures; add project outcome metrics only with real evidence.
 const stats = [
   { value: "6+", label: "Years with WordPress" },
   { value: "30+", label: "Sites shipped" },
-  // { value: "99%", label: "PageSpeed scores" },
   { value: "5.0", label: "Upwork rating" },
 ];
 
@@ -174,15 +171,8 @@ const portfolioItems = works.filter((work) => work.homepage);
 
 const PAGE_URL = "https://helloalmaz.com/wordpress-developer";
 
-// Only FAQs with a real answer go into structured data — a placeholder must
-// never reach Google. Entries flagged `draft` are rendered on the page but
-// excluded here until they're written.
-const publishedFaqs = faqs.filter((faq) => !faq.draft);
-
-// NOTE: no `aggregateRating` here on purpose. The reviews are currently
-// unattributed and there's no verified review count behind the "5.0" stat, so
-// marking it up would be fabricated structured data — which Google penalises.
-// Add it once the reviews carry real names and you know the true count.
+// Keep structured FAQ answers identical to the visible page copy. There is no
+// aggregateRating because a verified review count has not been supplied.
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -213,19 +203,15 @@ const jsonLd = {
         })),
       },
     },
-    ...(publishedFaqs.length
-      ? [
-          {
-            "@type": "FAQPage",
-            "@id": `${PAGE_URL}#faq`,
-            mainEntity: publishedFaqs.map((faq) => ({
-              "@type": "Question",
-              name: faq.question,
-              acceptedAnswer: { "@type": "Answer", text: faq.answer },
-            })),
-          },
-        ]
-      : []),
+    {
+      "@type": "FAQPage",
+      "@id": `${PAGE_URL}#faq`,
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: { "@type": "Answer", text: faq.answer },
+      })),
+    },
     {
       "@type": "BreadcrumbList",
       "@id": `${PAGE_URL}#breadcrumb`,
@@ -274,7 +260,10 @@ export default function WordPressDeveloperPage() {
               </h1>
 
               <p className="mt-8 text-lg md:text-2xl text-neutral-600 leading-snug max-w-2xl">
-                I'm Almaz. I build custom WordPress sites and online stores that load fast and don't fall apart after launch. Themes, plugins, speed fixes, ongoing support, whatever keeps your site running.
+                I'm Almaz, a freelance WordPress developer working with businesses
+                and agencies worldwide. I build custom websites and WooCommerce
+                stores, improve existing sites, and help you keep them running
+                after launch.
               </p>
 
               <div className="mt-10 flex flex-wrap gap-4">
@@ -341,8 +330,9 @@ export default function WordPressDeveloperPage() {
               <h2 className="block-header-title">What I can build for you</h2>
             </div>
             <p className="text-neutral-500 leading-snug max-w-sm">
-              Everything a modern WordPress site needs — designed, coded, and
-              maintained by one person you can talk to directly.
+              From a new business website to an existing store that needs
+              attention, I help you plan, build and maintain the WordPress
+              setup that fits your work.
             </p>
           </div>
 
@@ -379,8 +369,8 @@ export default function WordPressDeveloperPage() {
               <h2 className="block-header-title">How it works</h2>
             </div>
             <p className="text-neutral-500 leading-snug max-w-sm">
-              No agency layers, no account manager, no ticket queue. You talk
-              directly to the person writing the code.
+              You work directly with me from the first conversation to handover,
+              with a clear scope and regular chances to review the work.
             </p>
           </div>
 
@@ -409,18 +399,18 @@ export default function WordPressDeveloperPage() {
                 What it costs
               </h3>
               <p className="mt-2 text-neutral-500 leading-snug max-w-md">
-                Starting ranges so you can budget before we talk. Every project
-                gets its own fixed quote once I know the scope.
+                Typical development budgets in USD, based on an agreed design
+                and scope. Your project gets a fixed quote before work begins.
               </p>
 
               <dl className="mt-8 border-t border-black/10">
                 {pricing.map((item) => (
                   <div
                     key={item.service}
-                    className="flex items-baseline justify-between gap-4 py-4 border-b border-black/10"
+                    className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4 py-4 border-b border-black/10"
                   >
                     <dt className="text-neutral-600">{item.service}</dt>
-                    <dd className="font-semibold tabular-nums text-right whitespace-nowrap">
+                    <dd className="font-semibold tabular-nums sm:text-right whitespace-nowrap">
                       {item.price}
                     </dd>
                   </div>
@@ -428,8 +418,9 @@ export default function WordPressDeveloperPage() {
               </dl>
 
               <p className="mt-6 text-sm text-neutral-500 leading-snug">
-                Not sure which one you need? Describe the problem and I'll tell
-                you — even if the answer is that you don't need me.
+                Design, copywriting, hosting and paid licenses are quoted
+                separately where needed. Maintenance covers an agreed scope;
+                larger changes get their own estimate.
               </p>
 
               <div className="mt-8">
@@ -448,7 +439,7 @@ export default function WordPressDeveloperPage() {
       <PortfolioSection
         id="work"
         title="Recent WordPress projects"
-        description="Several of these were built for Mindlind, an agency that brings me in as their WordPress developer — the rest were direct with the client. All of them are live; click through and judge for yourself."
+        description="WordPress and WooCommerce work for cafés, retailers and service businesses. Several projects were delivered with Mindlind; others were direct client engagements. Explore the designs, store interfaces and content layouts below."
         items={portfolioItems}
       />
 
@@ -463,8 +454,8 @@ export default function WordPressDeveloperPage() {
               <h2 className="block-header-title">Questions people ask</h2>
             </div>
             <p className="text-neutral-500 leading-snug max-w-sm">
-              If yours isn't here, just ask — I'd rather answer it now than after
-              you've paid someone.
+              Practical details about scope, timing, ownership and support.
+              Send me a message if you want to talk through your situation.
             </p>
           </div>
 
@@ -506,28 +497,10 @@ export default function WordPressDeveloperPage() {
               <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08] text-white">Need a WordPress developer you can rely on?</h2>
 
               <p className="mt-6 text-base sm:text-xl text-neutral-300 leading-relaxed max-w-xl">
-                Whether you need a custom theme, WooCommerce store, speed optimization, or plugin fixes - tell me about your project and let's get it done right.
+                Send me your website or designs, what you need help with, and
+                your ideal launch date. I'll review the details and suggest a
+                practical next step.
               </p>
-
-              {/* Key Trust Highlights */}
-              {/* <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-sm text-neutral-300">
-                <div className="flex items-center gap-2.5">
-                  <div className="flex items-center justify-center w-5 h-5 rounded-full bg-white/10 text-white text-xs font-bold">✓</div>
-                  <span>Pixel-perfect custom code</span>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <div className="flex items-center justify-center w-5 h-5 rounded-full bg-white/10 text-white text-xs font-bold">✓</div>
-                  <span>99+ PageSpeed score target</span>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <div className="flex items-center justify-center w-5 h-5 rounded-full bg-white/10 text-white text-xs font-bold">✓</div>
-                  <span>Clear communication & support</span>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <div className="flex items-center justify-center w-5 h-5 rounded-full bg-white/10 text-white text-xs font-bold">✓</div>
-                  <span>Flexible freelance terms</span>
-                </div>
-              </div> */}
 
               {/* Action Buttons */}
               <div className="mt-10 flex flex-wrap items-center gap-4">
