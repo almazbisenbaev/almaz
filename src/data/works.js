@@ -1,42 +1,27 @@
-export const reviewsData = [
-  {
-    id: 1,
-    name: "Upwork client",
-    review: "Almaz did an excellent job developing my WordPress portfolio website. He handled the theme change and improvements with great skill and attention to detail. Communication was smooth, and he always kept me updated on progress. The site now looks more professional and works perfectly. I truly appreciate his hard work and would be happy to work with him again on future projects.",
-    upworkLink: "https://www.upwork.com/freelancers/~01fc6ec6fb228858ff"
-  },
-  {
-    id: 2,
-    name: "Upwork client",
-    review: "Almaz is very knowledgeable person, he know exactly what he is doing. He has vey deep knowledge of the job. This is a second time dealing with him, both times he delivered the job well.",
-    upworkLink: "https://www.upwork.com/freelancers/~01fc6ec6fb228858ff"
-  },
-  {
-    id: 3,
-    name: "Upwork client",
-    review: "Almaz did an exceptional work and he was very helpful. The job was time consuming but Almaz be able to navigate through and finish the job. He completed everything I requested. he is very patient and willing to listen. He even offered me a free no charge update if I needed one. Almaz is very professional and I highly recommended him for this type of job.",
-    upworkLink: "https://www.upwork.com/freelancers/~01fc6ec6fb228858ff"
-  },
-  {
-    id: 4,
-    name: "Upwork client",
-    review: "Almaz was so helpful in setting up my website! He completed everything that I needed but faster than I had expected and the finished results exceeded my expectations. I will definitely be using his work in the future for any additional projects. He was so communicative and even made me a guide on maintaining what he had completed to make sure I was able to utilize all of the things he set in place. Overall I highly recommend Almaz and I am so glad I found him!",
-    upworkLink: "https://www.upwork.com/freelancers/~01fc6ec6fb228858ff"
-  },
-  {
-    id: 5,
-    name: "Upwork client",
-    review: "Amazing, quality work, Almaz is smart, fast has great UX skills and is also business oriented so he will make sure to get you the results for your business!",
-    upworkLink: "https://www.upwork.com/freelancers/~01fc6ec6fb228858ff"
-  },
-  {
-    id: 6,
-    name: "Upwork client",
-    review: "Almaz was great at setting up our website and very responsive with communications. Highly recommend if you need Wordpress assistance.",
-    upworkLink: "https://www.upwork.com/freelancers/~01fc6ec6fb228858ff"
-  },
-];
-
+/**
+ * Client projects, rendered by `components/portfolio-section` (English pages)
+ * and by the Russian landing page, which looks entries up by `name`.
+ *
+ * Shape of an entry:
+ *   name        Project name shown as the heading.
+ *   title       Domain shown in the portfolio list; also the React key.
+ *   url         Where the CTA points: an external site, or an internal case
+ *               study such as `/silverskin`.
+ *   buttonText  CTA label, which differs for case studies vs. live sites.
+ *   year        Delivery year.
+ *   description One line under the heading.
+ *   category    Disciplines involved.
+ *   client      Agency the work was delivered through; absent for direct
+ *               clients, and the attribution line is then omitted.
+ *   clientUrl   The agency's site.
+ *   skills      Tags listed beside the description.
+ *   homepage    Include in the curated set on the home and WordPress pages.
+ *   media       Screenshots and screen recordings for the gallery. `width`
+ *               and `height` are the file's real pixel dimensions — they size
+ *               the slide and reserve its box, so they must stay accurate.
+ *               `type: "video"` marks a clip; a `poster` still frame is
+ *               optional but makes a clip appear instantly while it streams.
+ */
 export const works = [
   {
     name: "Funky Ramen",
@@ -69,7 +54,6 @@ export const works = [
     clientUrl: "//mindlind.de",
     skills: ["JavaScript", "GSAP", "WordPress"],
     homepage: true,
-    // TODO: add a `poster` (still frame, e.g. "/portfolio/prince-food-1.jpg") so a preview shows instantly while the video loads.
     media: [
       { src: "/portfolio/prince-food-1.mp4", width: 2880, height: 1600, type: "video", alt: "Screen recording of the Prince Food B2B site scrolling through its frozen fruit and vegetable catalogue" },
     ],
@@ -86,24 +70,10 @@ export const works = [
     clientUrl: "//mindlind.de",
     skills: ["WordPress", "Frontend"],
     homepage: true,
-    // TODO: add a `poster` (still frame, e.g. "/portfolio/factorysl-1.jpg") so a preview shows instantly while the video loads.
     media: [
       { src: "/portfolio/factorysl-1.mp4", width: 2880, height: 1632, type: "video", alt: "Screen recording of the Factory SL site showing its vehicle detailing and tuning services" },
     ],
   },
-  // {
-  //   name: "Auto SL",
-  //   title: "autosl.de",
-  //   url: "//autosl.de",
-  //   buttonText: "Visit Website",
-  //   year: "2024",
-  //   description: "A company that sells expensive cars. Wordpress, a custom plugin for API integration.",
-  //   category: "UX Design, Frontend, Backend Development",
-  //   client: "Mindlind",
-  //   clientUrl: "//mindlind.de",
-  //   skills: ["WordPress", "Custom Plugin", "API Integration"],
-  //   homepage: true,
-  // },
   {
     name: "M Javed Aslam",
     title: "mjavedaslam.com",
@@ -124,7 +94,6 @@ export const works = [
     category: "Development",
     skills: ["WordPress", "WooCommerce"],
     homepage: true,
-    // TODO: add a `poster` (still frame) so a preview shows instantly while the videos load.
     media: [
       { src: "/videos/silverskin-home.webm", width: 1920, height: 1080, type: "video", alt: "Screen recording of the Silverskin Coffee homepage and its coffee bean shop" },
       { src: "/videos/silverskin-hamburger.webm", width: 3420, height: 1942, type: "video", alt: "Screen recording of the Silverskin Coffee full-screen navigation menu opening" },
@@ -150,7 +119,6 @@ export const works = [
     ],
   },
   {
-    // 
     name: "Monitask",
     title: "monitask.com",
     url: "//monitask.com",
@@ -163,8 +131,13 @@ export const works = [
     skills: ["WordPress", "Automation"],
     homepage: true,
     media: [
-      { src: "/portfolio/monitask.jpg", width: 1560, height: 781, alt: "Monitask marketing site homepage, one of its hundreds of auto-generated multilingual pages" }
+      { src: "/portfolio/monitask.jpg", width: 1560, height: 781, alt: "Monitask marketing site homepage, one of its hundreds of auto-generated multilingual pages" },
     ],
   },
 ];
 
+/** The curated subset shown on the home page and the WordPress landing page. */
+export const homepageWorks = works.filter((work) => work.homepage);
+
+/** Look up a project by `name`, which is how localized pages reference them. */
+export const findWork = (name) => works.find((work) => work.name === name);

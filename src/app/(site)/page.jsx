@@ -1,16 +1,46 @@
-import React from "react";
 import Image from "next/image";
+import { ChevronRight } from 'lucide-react';
 
 import TechMarquee from '@/components/tech-marquee/tech-marquee';
 import HeroIntro from '@/components/hero-intro/hero-intro';
 import Button from '@/components/button/button';
 import ReviewsSection from '@/components/reviews-section/reviews-section';
 import PortfolioSection from '@/components/portfolio-section/portfolio-section';
-import { ChevronRight } from 'lucide-react';
-import { works } from "@/lib/data";
+import { homepageWorks } from "@/data/works";
+import { PROFILES } from "@/lib/site";
+
+/**
+ * One card in the "Personal projects" grid. The visual is passed in because it
+ * varies — two cards lead with a screenshot, the YouTube card with an avatar.
+ *
+ * @param {Object} props
+ * @param {React.ReactNode} props.visual - Media shown above the text block.
+ * @param {string} [props.className] - Card background and text colour.
+ * @param {'black' | 'white'} props.ctaVariant - Also picks the chevron colour.
+ */
+function ProjectCard({ visual, className = '', title, description, descriptionClassName, ctaLabel, ctaHref, ctaVariant }) {
+  return (
+    <div className={`flex flex-col justify-between rounded-4xl overflow-hidden ${className}`}>
+      {visual}
+      <div className="p-8 md:p-12 pt-2 w-full">
+        <h3 className="font-semibold text-xl md:text-3xl">{title}</h3>
+        <div className={descriptionClassName}>{description}</div>
+        <div className="mt-8">
+          <Button variant={ctaVariant} href={ctaHref}>
+            <span>{ctaLabel}</span>
+            <ChevronRight color={ctaVariant === 'white' ? 'black' : 'white'} size={18} />
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const ProjectScreenshot = ({ src, alt }) => (
+  <Image src={src} alt={alt} width={800} height={600} sizes="(max-width: 768px) 100vw, 33vw" />
+);
 
 export default function Home() {
-
   return (
     <div className="home-page">
 
@@ -20,8 +50,7 @@ export default function Home() {
         <TechMarquee />
       </div>
 
-
-      <PortfolioSection items={works.filter((work) => work.homepage)} />
+      <PortfolioSection items={homepageWorks} />
 
       <div className="container px-5">
         <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8 border-y border-black/10 py-8">
@@ -36,7 +65,6 @@ export default function Home() {
         </div>
       </div>
 
-
       <div className="section">
         <div className="container px-5">
 
@@ -46,86 +74,56 @@ export default function Home() {
 
           <div className="grid grid-cols-1 gap-6 md:gap-10 md:grid-cols-3">
 
-            <div className="flex flex-col justify-between bg-white rounded-4xl overflow-hidden">
-              <Image
-                className=""
-                src="/images/project-glowy.jpg"
-                alt="Glowy Icons"
-                width={800}
-                height={600}
-                sizes="(max-width: 768px) 100vw, 33vw"
-              />
-              <div className="p-8 md:p-12 pt-2 w-full">
-                <h3 className="font-semibold ff-display text-xl md:text-3xl">Glowy Icons</h3>
-                <div className="text-lg font-medium text-slate-700 mt-2">Colorful and bright vector icons with slight shadows</div>
-                <div className="mt-8">
-                  <Button
-                    variant="black"
-                    href="https://www.figma.com/community/file/1452663046127877131/glowy-icons-v1-0"
-                  >
-                    <span>Figma Link</span>
-                    <ChevronRight color="white" size={18} />
-                  </Button>
-                </div>
-              </div>
-            </div>
+            <ProjectCard
+              className="bg-white"
+              visual={<ProjectScreenshot src="/images/project-glowy.jpg" alt="Glowy Icons" />}
+              title="Glowy Icons"
+              description="Colorful and bright vector icons with slight shadows"
+              descriptionClassName="text-lg font-medium text-slate-700 mt-2"
+              ctaLabel="Figma Link"
+              ctaHref="https://www.figma.com/community/file/1452663046127877131/glowy-icons-v1-0"
+              ctaVariant="black"
+            />
 
-            <div className="flex flex-col justify-between bg-white rounded-4xl overflow-hidden">
-              <Image
-                className=""
-                src="/images/project-polyglossa.jpg"
-                alt="Polyglossa"
-                width={800}
-                height={600}
-                sizes="(max-width: 768px) 100vw, 33vw"
-              />
-              <div className="p-8 md:p-12 pt-2 w-full">
-                <h3 className="font-semibold ff-display text-xl md:text-3xl">Polyglossa<sup className="text-gray-500 font-normal">β</sup></h3>
-                <div className="text-lg font-medium text-slate-700 mt-2">A messaging app where you talk to AI-friends to practice a language</div>
-                <div className="mt-8">
-                  <Button
-                    variant="black"
-                    href="https://polyglossa-beta.vercel.app"
-                  >
-                    <span>Visit website</span>
-                    <ChevronRight color="white" size={18} />
-                  </Button>
-                </div>
-              </div>
-            </div>
+            <ProjectCard
+              className="bg-white"
+              visual={<ProjectScreenshot src="/images/project-polyglossa.jpg" alt="Polyglossa" />}
+              title={<>Polyglossa<sup className="text-gray-500 font-normal">β</sup></>}
+              description="A messaging app where you talk to AI-friends to practice a language"
+              descriptionClassName="text-lg font-medium text-slate-700 mt-2"
+              ctaLabel="Visit website"
+              ctaHref="https://polyglossa-beta.vercel.app"
+              ctaVariant="black"
+            />
 
-            <div className="flex flex-col justify-between bg-linear-to-b from-indigo-500 to-[#FF163B] text-white rounded-4xl overflow-hidden">
-              <div className="px-6 md:px-12 py-12 md:py-24 flex-1 flex items-center justify-center">
-                <div className="custom-rings relative youtube-banner-image">
-                  <Image
-                    className="rounded-full  "
-                    src="/me.jpg"
-                    width={150}
-                    height={150}
-                    alt=""
-                    sizes="150px"
-                  />
+            <ProjectCard
+              className="bg-linear-to-b from-indigo-500 to-[#FF163B] text-white"
+              visual={
+                <div className="px-6 md:px-12 py-12 md:py-24 flex-1 flex items-center justify-center">
+                  {/* `custom-rings` draws the two pulsing halos around the avatar. */}
+                  <div className="custom-rings relative youtube-banner-image">
+                    <Image
+                      className="rounded-full"
+                      src="/me.jpg"
+                      width={150}
+                      height={150}
+                      alt=""
+                      sizes="150px"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="p-8 md:p-12 pt-2 w-full">
-                <h3 className="font-semibold ff-display text-xl md:text-3xl">Watch me on YouTube</h3>
-                <div className="font-medium text-md mt-2">I talk about webdev & stuff</div>
-                <div className="mt-8">
-                  <Button
-                    variant="white"
-                    href="https://www.youtube.com/@webdevandstuff"
-                  >
-                    <span>YouTube Channel</span>
-                    <ChevronRight color="black" size={18} />
-                  </Button>
-                </div>
-              </div>
-            </div>
+              }
+              title="Watch me on YouTube"
+              description="I talk about webdev & stuff"
+              descriptionClassName="font-medium text-md mt-2"
+              ctaLabel="YouTube Channel"
+              ctaHref={PROFILES.youtube}
+              ctaVariant="white"
+            />
 
           </div>
         </div>
       </div>
-
 
       <ReviewsSection />
     </div>

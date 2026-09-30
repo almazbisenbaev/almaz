@@ -2,11 +2,37 @@
 
 import { Children, useId } from "react";
 import useEmblaCarousel from "embla-carousel-react";
+
 import styles from "./portfolio-carousel.module.css";
 
-export default function PortfolioCarousel({ children }) {
+/**
+ * Free-dragging horizontal rail of project cards.
+ *
+ * Every announced string is a prop because the only page using this is the
+ * Russian landing page; the defaults keep it usable from an English page too.
+ *
+ * @param {Object} props
+ * @param {string} props.labelledBy - id of the heading that names the rail.
+ * @param {Object} [props.labels] - Localized announcements: `instructions`,
+ *   the `carousel` and `slide` role descriptions, and `slideLabel`, whose
+ *   `{index}` and `{count}` placeholders are filled per slide. These cross the
+ *   server/client boundary, so they are plain strings rather than functions.
+ */
+const DEFAULT_LABELS = {
+  instructions:
+    "Drag the projects left or right. With a keyboard, use the left and right arrow keys, Home and End. Tab moves to the project links.",
+  carousel: "carousel",
+  slide: "slide",
+  slideLabel: "Project {index} of {count}",
+};
+
+const fillSlideLabel = (template, index, count) =>
+  template.replace("{index}", index).replace("{count}", count);
+
+export default function PortfolioCarousel({ children, labelledBy, labels }) {
   const instructionsId = useId();
   const count = Children.count(children);
+  const copy = { ...DEFAULT_LABELS, ...labels };
   const [viewportRef, carousel] = useEmblaCarousel({
     align: "start",
     containScroll: "trimSnaps",
@@ -20,37 +46,26 @@ export default function PortfolioCarousel({ children }) {
 
     const jump = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     switch (event.key) {
-      case "ArrowRight":
-        event.preventDefault();
-        carousel.scrollNext(jump);
-        break;
-      case "ArrowLeft":
-        event.preventDefault();
-        carousel.scrollPrev(jump);
-        break;
-      case "Home":
-        event.preventDefault();
-        carousel.scrollTo(0, jump);
-        break;
-      case "End":
-        event.preventDefault();
-        carousel.scrollTo(carousel.scrollSnapList().length - 1, jump);
-        break;
+      case "ArrowRight": carousel.scrollNext(jump); break;
+      case "ArrowLeft": carousel.scrollPrev(jump); break;
+      case "Home": carousel.scrollTo(0, jump); break;
+      case "End": carousel.scrollTo(carousel.scrollSnapList().length - 1, jump); break;
+      default: return;
     }
+    event.preventDefault();
   }
 
   return (
     <>
       <p id={instructionsId} className="sr-only">
-        Перетаскивайте проекты влево или вправо. С клавиатуры используйте
-        стрелки влево и вправо, Home и End. Tab переходит к ссылкам проектов.
+        {copy.instructions}
       </p>
       <div
         ref={viewportRef}
         className={styles.viewport}
         role="region"
-        aria-roledescription="карусель"
-        aria-labelledby="projects-title"
+        aria-roledescription={copy.carousel}
+        aria-labelledby={labelledBy}
         aria-describedby={instructionsId}
         tabIndex={0}
         onKeyDown={handleKeyDown}
@@ -60,8 +75,8 @@ export default function PortfolioCarousel({ children }) {
             <div
               className={styles.slide}
               role="group"
-              aria-roledescription="слайд"
-              aria-label={`Проект ${index + 1} из ${count}`}
+              aria-roledescription={copy.slide}
+              aria-label={fillSlideLabel(copy.slideLabel, index + 1, count)}
             >
               {child}
             </div>

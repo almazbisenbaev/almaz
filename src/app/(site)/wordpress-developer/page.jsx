@@ -1,18 +1,21 @@
-import React from "react";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 
 import ReviewsSection from "@/components/reviews-section/reviews-section";
 import PortfolioSection from "@/components/portfolio-section/portfolio-section";
 import Button from "@/components/button/button";
-import { works } from "@/lib/data";
+import { homepageWorks } from "@/data/works";
+import { AUTHOR_JOB_TITLE, AUTHOR_NAME, PROFILES, SITE_URL } from "@/lib/site";
+
+const PATH = "/wordpress-developer";
+const PAGE_URL = `${SITE_URL}${PATH}`;
 
 export const metadata = {
   title: "Freelance WordPress & WooCommerce Developer",
   description:
     "Hire a freelance WordPress developer for custom websites, WooCommerce stores, speed improvements and ongoing support. Working with businesses and agencies worldwide.",
   alternates: {
-    canonical: "/wordpress-developer",
+    canonical: PATH,
   },
   keywords: [
     "WordPress Developer",
@@ -27,7 +30,7 @@ export const metadata = {
     title: "Freelance WordPress & WooCommerce Developer | Almaz Bisenbaev",
     description:
       "Freelance WordPress developer building fast, custom WordPress and WooCommerce websites for businesses.",
-    url: "https://helloalmaz.com/wordpress-developer",
+    url: PAGE_URL,
   },
 };
 
@@ -166,11 +169,6 @@ const stats = [
   { value: "5.0", label: "Upwork rating" },
 ];
 
-// The curated set shown on the home page — all WordPress / WooCommerce work.
-const portfolioItems = works.filter((work) => work.homepage);
-
-const PAGE_URL = "https://helloalmaz.com/wordpress-developer";
-
 // Keep structured FAQ answers identical to the visible page copy. There is no
 // aggregateRating because a verified review count has not been supplied.
 const jsonLd = {
@@ -186,9 +184,9 @@ const jsonLd = {
       areaServed: { "@type": "Place", name: "Worldwide" },
       provider: {
         "@type": "Person",
-        name: "Almaz Bisenbaev",
-        url: "https://helloalmaz.com",
-        jobTitle: "Full-Stack Web Developer",
+        name: AUTHOR_NAME,
+        url: SITE_URL,
+        jobTitle: AUTHOR_JOB_TITLE,
       },
       hasOfferCatalog: {
         "@type": "OfferCatalog",
@@ -216,12 +214,37 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "@id": `${PAGE_URL}#breadcrumb`,
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://helloalmaz.com" },
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
         { "@type": "ListItem", position: 2, name: "WordPress Developer", item: PAGE_URL },
       ],
     },
   ],
 };
+
+/**
+ * The numbered rows used by both the services list and the process list. The
+ * two differ only in the colour of the step number.
+ *
+ * @param {Object} props
+ * @param {Array<{title: string, description: string}>} props.items
+ * @param {string} props.numberClassName - Colour of the 01/02/03 marker.
+ */
+function NumberedRows({ items, numberClassName }) {
+  return items.map((item, index) => (
+    <div
+      key={item.title}
+      className="flex flex-col gap-2 md:grid md:grid-cols-12 md:gap-4 py-6 md:py-8 border-t border-black/10 last:border-b"
+    >
+      <div className="flex items-baseline gap-3 md:contents">
+        <span className={`text-sm tabular-nums md:col-span-1 md:pt-1 ${numberClassName}`}>
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        <h3 className="text-xl font-bold tracking-tight md:col-span-4">{item.title}</h3>
+      </div>
+      <p className="text-neutral-600 leading-snug md:col-span-7">{item.description}</p>
+    </div>
+  ));
+}
 
 export default function WordPressDeveloperPage() {
   return (
@@ -267,7 +290,7 @@ export default function WordPressDeveloperPage() {
               </p>
 
               <div className="mt-10 flex flex-wrap gap-4">
-                <Button href="//t.me/almazbisenbaev" variant="black" className="h-12 px-6">
+                <Button href={PROFILES.telegram} variant="black" className="h-12 px-6">
                   Start a project
                   <ExternalLink size={18} />
                 </Button>
@@ -276,8 +299,6 @@ export default function WordPressDeveloperPage() {
                 </Button>
               </div>
             </div>
-
-            {/* Spec rail */}
             <div className="lg:col-span-4 lg:pt-4">
               <dl className="border-t border-black/10">
                 {heroFacts.map((fact) => (
@@ -298,26 +319,18 @@ export default function WordPressDeveloperPage() {
 
 
       <div className="container px-5 py-10">
-        <div className="grid grid-cols-3 md:grid-cols-3 border-y border-black/10">
-          {stats.map((stat, index) => {
-            const edges = [
-              "",
-              "border-l",
-              "border-l",
-            ][index];
-
-            return (
-              <div
-                key={stat.label}
-                className={`py-8 md:py-10 px-2 md:px-8 border-black/10 ${edges}`}
-              >
-                <div className="text-4xl md:text-6xl font-extrabold tracking-tight">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-neutral-500 mt-2">{stat.label}</div>
+        <div className="grid grid-cols-3 border-y border-black/10">
+          {stats.map((stat, index) => (
+            <div
+              key={stat.label}
+              className={`py-8 md:py-10 px-2 md:px-8 border-black/10 ${index > 0 ? "border-l" : ""}`}
+            >
+              <div className="text-4xl md:text-6xl font-extrabold tracking-tight">
+                {stat.value}
               </div>
-            );
-          })}
+              <div className="text-sm text-neutral-500 mt-2">{stat.label}</div>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -337,24 +350,7 @@ export default function WordPressDeveloperPage() {
           </div>
 
           <div className="lg:col-span-8">
-            {services.map((service, index) => (
-              <div
-                key={service.title}
-                className="flex flex-col gap-2 md:grid md:grid-cols-12 md:gap-4 py-6 md:py-8 border-t border-black/10 last:border-b"
-              >
-                <div className="flex items-baseline gap-3 md:contents">
-                  <span className="text-sm text-neutral-400 tabular-nums md:col-span-1 md:pt-1">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="text-xl font-bold tracking-tight md:col-span-4">
-                    {service.title}
-                  </h3>
-                </div>
-                <p className="text-neutral-600 leading-snug md:col-span-7">
-                  {service.description}
-                </p>
-              </div>
-            ))}
+            <NumberedRows items={services} numberClassName="text-neutral-400" />
           </div>
 
         </div>
@@ -375,24 +371,7 @@ export default function WordPressDeveloperPage() {
           </div>
 
           <div className="lg:col-span-8">
-            {process.map((step, index) => (
-              <div
-                key={step.title}
-                className="flex flex-col gap-2 md:grid md:grid-cols-12 md:gap-4 py-6 md:py-8 border-t border-black/10 last:border-b"
-              >
-                <div className="flex items-baseline gap-3 md:contents">
-                  <span className="text-sm text-[#30f] tabular-nums md:col-span-1 md:pt-1">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="text-xl font-bold tracking-tight md:col-span-4">
-                    {step.title}
-                  </h3>
-                </div>
-                <p className="text-neutral-600 leading-snug md:col-span-7">
-                  {step.description}
-                </p>
-              </div>
-            ))}
+            <NumberedRows items={process} numberClassName="text-[#30f]" />
 
             <div className="mt-12 md:mt-16 bg-white rounded-3xl p-8 md:p-10">
               <h3 className="text-xl font-bold tracking-tight">
@@ -424,7 +403,7 @@ export default function WordPressDeveloperPage() {
               </p>
 
               <div className="mt-8">
-                <Button href="//t.me/almazbisenbaev" variant="black" className="h-12 px-6">
+                <Button href={PROFILES.telegram} variant="black" className="h-12 px-6">
                   Get a quote
                   <ExternalLink size={18} />
                 </Button>
@@ -440,7 +419,7 @@ export default function WordPressDeveloperPage() {
         id="work"
         title="Recent WordPress projects"
         description="WordPress and WooCommerce work for cafés, retailers and service businesses. Several projects were delivered with Mindlind; others were direct client engagements. Explore the designs, store interfaces and content layouts below."
-        items={portfolioItems}
+        items={homepageWorks}
       />
 
       <ReviewsSection />
@@ -490,8 +469,6 @@ export default function WordPressDeveloperPage() {
       <div className="container px-5 py-16 md:py-24">
         <div className="relative overflow-hidden rounded-[32px] md:rounded-[40px] bg-black text-white border border-white/10 p-8 sm:p-12 lg:p-20">
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-
-            {/* Left Content Column */}
             <div className="lg:col-span-7 flex flex-col justify-center">
 
               <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08] text-white">Need a WordPress developer you can rely on?</h2>
@@ -501,15 +478,13 @@ export default function WordPressDeveloperPage() {
                 your ideal launch date. I'll review the details and suggest a
                 practical next step.
               </p>
-
-              {/* Action Buttons */}
               <div className="mt-10 flex flex-wrap items-center gap-4">
-                <Button href="//t.me/almazbisenbaev" variant="white" className="h-12 px-6">
+                <Button href={PROFILES.telegram} variant="white" className="h-12 px-6">
                   Message me on Telegram
                   <ExternalLink size={18} />
                 </Button>
                 <Button
-                  href="https://www.upwork.com/freelancers/~01fc6ec6fb228858ff"
+                  href={PROFILES.upwork}
                   variant="outline-white"
                   className="h-12 px-6"
                 >
@@ -518,8 +493,6 @@ export default function WordPressDeveloperPage() {
                 </Button>
               </div>
             </div>
-
-            {/* Right Photo Column */}
             <div className="lg:col-span-5 relative group">
               <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/5] w-full rounded-2xl md:rounded-3xl overflow-hidden bg-neutral-900">
                 <Image

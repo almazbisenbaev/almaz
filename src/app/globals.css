@@ -12,7 +12,10 @@
 @custom-variant data-horizontal (&:where([data-orientation="horizontal"]));
 @custom-variant data-vertical (&:where([data-orientation="vertical"]));
 
-/* Custom Container */
+/* The root font size is 18px (see `@layer base` below), which makes Tailwind's
+   own rem-based `container` breakpoints fire 12.5% early — `40rem` becomes
+   720px, not 640px. So the container is redefined here against px breakpoints.
+   `!important` is what wins against Tailwind's utility of the same name. */
 .container {
   width: 100% !important;
   margin-left: auto !important;
@@ -25,121 +28,27 @@
 @media (min-width: 1280px) { .container { max-width: 1280px !important; } }
 @media (min-width: 1536px) { .container { max-width: 1536px !important; } }
 
+/* The design tokens this site actually reads. The shadcn preset shipped a full
+   palette (card, popover, chart-*, sidebar-* and so on) that no rule or utility
+   here ever referenced, so it was deleted rather than emitted on every page.
+   `--radius` is the base the `--radius-*` scale in `@theme inline` derives from.
+   Anything added here needs a matching mapping in that block to be reachable
+   as a Tailwind utility. */
 :root {
-  --accent: oklch(0.97 0 0);
-
   --background: #FFFAF5;
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
+  --accent: oklch(0.97 0 0);
   --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
 }
 
+
 body {
-  background: #FFFAF5;
+  background: var(--background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: -0.01em;
   min-height: 100svh;
-}
-
-.site-preloader {
-  position: fixed;
-  inset: 0 0 auto;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100svh;
-  overflow: hidden;
-  background: #fff;
-  animation: site-preloader-collapse 1200ms cubic-bezier(0.76, 0, 0.24, 1) 1.8s forwards;
-  will-change: height, visibility;
-}
-
-.site-preloader__hello {
-  display: inline-block;
-  font-family: sans-serif;
-  font-size: clamp(2.5rem, 8vw, 5.75rem);
-  font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: -0.08em;
-  color: #111;
-  animation: site-preloader-hello 1s cubic-bezier(0.22, 1, 0.36, 1) 120ms both;
-  will-change: transform, opacity, filter, letter-spacing;
-}
-
-@keyframes site-preloader-hello {
-  0% {
-    opacity: 0;
-    transform: translateY(18px) scale(0.96);
-    filter: blur(10px);
-    letter-spacing: 0.08em;
-  }
-
-  65% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-    letter-spacing: -0.08em;
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-    letter-spacing: -0.08em;
-  }
-}
-
-@keyframes site-preloader-collapse {
-  0%,
-  35% {
-    height: 100svh;
-    visibility: visible;
-  }
-
-  100% {
-    height: 0;
-    visibility: hidden;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .site-preloader {
-    animation-duration: 450ms;
-    animation-delay: 1200ms;
-  }
-
-  .site-preloader__hello {
-    animation-duration: 300ms;
-  }
 }
 
 html.lenis,
@@ -298,10 +207,6 @@ a {
 
   width: auto;
   height: 1.3em;
-
-  /* position: absolute;
-
-  transform: translate(15px, -15px); */
 }
 
 /* Availability badge pinned to the upper-right of the intro picture. One
@@ -430,10 +335,6 @@ a {
     opacity: 0;
     transform: scale(2.6);
   }
-}
-
-@media (max-width: 767px){
-
 }
 
 @media (max-width: 575px){
@@ -742,10 +643,8 @@ a {
   }
 }
 
+/* Clips the hero's skew transform, which would otherwise widen the page. */
 .home-page {
-  --gray-rgb: 0, 0, 0;
-  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
-  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
   position: relative;
   overflow: hidden;
 }
@@ -782,48 +681,10 @@ a {
   transform: translateY(0.04em);
 }
 
-.block-header-white {
-  color: #fff;
-}
-
-.block-header-white .block-header-title::before {
-  background: #fff;
-}
-
 @theme inline {
-  --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
   --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --color-foreground: var(--foreground);
-  --color-background: var(--background);
+  --color-ring: var(--ring);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -833,21 +694,19 @@ a {
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
-    /* @apply bg-background text-foreground; */
-    font-size: 18px;  
+    font-size: 18px;
   }
   html {
     @apply font-sans;
-    font-size: 18px; 
+    font-size: 18px;
   }
 }
-
-
 
 
 .blog-thumb {
@@ -1106,7 +965,6 @@ a {
 }
 
 
-
 /* Blog post */
 
 .article {
@@ -1157,9 +1015,6 @@ a {
 }
 
 .article ul li {
-  /* display: flex; */
-  /* align-items: flex-start; */
-  /* gap: 16px; */
   margin-bottom: 0.5em;
   padding-left: 1.5em;
 

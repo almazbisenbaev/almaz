@@ -4,17 +4,30 @@ import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 
-import useScrollSkew from '@/lib/use-scroll-skew';
+import useScrollSkew from '@/hooks/use-scroll-skew';
 
 const RotatingSphere = dynamic(
   () => import('@/components/rotating-sphere/rotating-sphere'),
   { ssr: false }
 );
 
+/** Pixels the sphere extends past the photo on every side, so its displaced
+ *  geometry is never clipped at the edges. */
+const SPHERE_OVERSCAN = 12;
+
+/** Press feedback: the scale-down holds this long, and the sphere toggles
+ *  partway through so the two animations overlap instead of queueing. */
+const PRESS_RELEASE_MS = 170;
+const PRESS_TOGGLE_MS = 70;
+
+/** Matches the reveal transition below, so the sphere keeps rendering until
+ *  it has finished animating out. */
+const SPHERE_REVEAL = 'opacity 300ms ease-out, transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.5)';
+
 export default function HeroIntro() {
-  const sphereOverscan = 12;
   const skewRef = useScrollSkew({ maxSkew: 3, velocityDivisor: 500 });
   const containerRef = useRef(null);
+  const imageRef = useRef(null);
   const badgeRef = useRef(null);
   const pressTimeoutRef = useRef(null);
   const toggleTimeoutRef = useRef(null);
@@ -30,21 +43,23 @@ export default function HeroIntro() {
     top: 0,
   });
 
+  // The sphere is absolutely positioned inside the avatar wrapper, so it needs
+  // the photo's box in wrapper-relative coordinates. The photo is sized in `em`
+  // and changes with every breakpoint and font swap, hence the re-measuring.
   const updateSphereBounds = () => {
-    if (containerRef.current) {
-      const imgElement = containerRef.current.querySelector('img');
-      if (imgElement) {
-        const containerRect = containerRef.current.getBoundingClientRect();
-        const imageRect = imgElement.getBoundingClientRect();
+    const container = containerRef.current;
+    const image = imageRef.current;
+    if (!container || !image) return;
 
-        setSphereBounds({
-          width: imageRect.width + sphereOverscan * 2,
-          height: imageRect.height + sphereOverscan * 2,
-          left: imageRect.left - containerRect.left - sphereOverscan,
-          top: imageRect.top - containerRect.top - sphereOverscan,
-        });
-      }
-    }
+    const containerRect = container.getBoundingClientRect();
+    const imageRect = image.getBoundingClientRect();
+
+    setSphereBounds({
+      width: imageRect.width + SPHERE_OVERSCAN * 2,
+      height: imageRect.height + SPHERE_OVERSCAN * 2,
+      left: imageRect.left - containerRect.left - SPHERE_OVERSCAN,
+      top: imageRect.top - containerRect.top - SPHERE_OVERSCAN,
+    });
   };
 
   const runPressAction = (action) => {
@@ -52,12 +67,8 @@ export default function HeroIntro() {
     window.clearTimeout(toggleTimeoutRef.current);
 
     setIsPressed(true);
-    toggleTimeoutRef.current = window.setTimeout(() => {
-      action();
-    }, 70);
-    pressTimeoutRef.current = window.setTimeout(() => {
-      setIsPressed(false);
-    }, 170);
+    toggleTimeoutRef.current = window.setTimeout(action, PRESS_TOGGLE_MS);
+    pressTimeoutRef.current = window.setTimeout(() => setIsPressed(false), PRESS_RELEASE_MS);
   };
 
   // Mounting the sphere pulls in the three.js chunk (~780 KB uncompressed),
@@ -107,14 +118,12 @@ export default function HeroIntro() {
     updateSphereBounds();
     window.addEventListener('resize', updateSphereBounds);
 
-    let resizeObserver;
-    if (containerRef.current) {
-      const imgElement = containerRef.current.querySelector('img');
-      if (imgElement) {
-        resizeObserver = new ResizeObserver(updateSphereBounds);
-        resizeObserver.observe(imgElement);
-      }
-    }
+    // A resize listener alone misses the em-driven size changes that happen
+    // without the window resizing, such as a font swap.
+    const resizeObserver = imageRef.current
+      ? new ResizeObserver(updateSphereBounds)
+      : null;
+    resizeObserver?.observe(imageRef.current);
 
     return () => {
       window.removeEventListener('resize', updateSphereBounds);
@@ -148,7 +157,7 @@ export default function HeroIntro() {
               }
               style={{
                 transform: isPressed ? 'scale(0.94)' : 'scale(1)',
-                transition: 'transform 170ms cubic-bezier(0.22, 1, 0.36, 1)',
+                transition: `transform ${PRESS_RELEASE_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`,
                 transformOrigin: 'center center',
               }}
               // Intent signals: by the time a pointer has landed on the avatar
@@ -157,12 +166,11 @@ export default function HeroIntro() {
               onTouchStart={warmSphere}
               onFocus={warmSphere}
               onClick={() => {
-                if (!isSphereVisible) {
-                  // A click can still beat the warm-up (fast tap, no hover), so
-                  // make sure the chunk and texture are requested either way.
-                  warmSphere();
-                  runPressAction(() => setIsSphereVisible(true));
-                }
+                if (isSphereVisible) return;
+                // A click can still beat the warm-up (fast tap, no hover), so
+                // make sure the chunk and texture are requested either way.
+                warmSphere();
+                runPressAction(() => setIsSphereVisible(true));
               }}
               onKeyDown={(event) => {
                 if (event.key !== 'Enter' && event.key !== ' ') return;
@@ -173,6 +181,7 @@ export default function HeroIntro() {
               }}
             >
               <Image
+                ref={imageRef}
                 className="intro-me-picture"
                 src="/me.jpg"
                 width={150}
@@ -200,7 +209,7 @@ export default function HeroIntro() {
                   // never flashes black while the texture is still loading.
                   opacity: isSphereShown ? 1 : 0,
                   transform: isSphereShown ? 'scale(1)' : 'scale(0.5)',
-                  transition: 'opacity 300ms ease-out, transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.5)',
+                  transition: SPHERE_REVEAL,
                   pointerEvents: isSphereShown ? 'auto' : 'none',
                 }}
                 onClick={(event) => {

@@ -2,8 +2,16 @@
 
 import { useEffect, useRef } from "react";
 
-// Defers downloading the video until it approaches the viewport,
-// and pauses playback while it is scrolled out of view.
+/**
+ * A silent screen recording that downloads only as it approaches the viewport
+ * and pauses while scrolled out of view. `preload="none"` means nothing is
+ * fetched until `play()` is called.
+ *
+ * @param {Object} props
+ * @param {string} props.src
+ * @param {string} [props.label] - Describes the recording the way an `<img>`
+ *   `alt` would; without it a screen reader announces only "video".
+ */
 export default function LazyVideo({ src, className, label }) {
   const videoRef = useRef(null);
 
@@ -14,11 +22,13 @@ export default function LazyVideo({ src, className, label }) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          // Rejected when the browser blocks autoplay; nothing to recover from.
           video.play().catch(() => {});
         } else {
           video.pause();
         }
       },
+      // Start a little early so playback is running by the time it is on screen.
       { rootMargin: "200px" }
     );
 
@@ -30,8 +40,6 @@ export default function LazyVideo({ src, className, label }) {
     <video
       ref={videoRef}
       src={src}
-      // Silent screen recordings carry meaning, so expose them to assistive
-      // tech the way an <img alt> would rather than as an unlabelled "video".
       role={label ? "img" : undefined}
       aria-label={label || undefined}
       preload="none"

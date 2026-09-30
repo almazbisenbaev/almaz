@@ -3,6 +3,20 @@
 import { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 
+/**
+ * The 3D easter-egg version of the avatar photo: a sphere, squashed slightly
+ * head-shaped, textured with the photo and leaning toward the cursor.
+ *
+ * Rendering is paused whenever `active` is false, so an off-screen or hidden
+ * sphere costs nothing.
+ *
+ * @param {Object} props
+ * @param {number} props.width - CSS pixels; also drives the camera's aspect.
+ * @param {number} props.height
+ * @param {boolean} [props.active=true] - Runs the animation loop.
+ * @param {Function} [props.onReady] - Called once a real textured frame has
+ *   been rendered, so the parent can reveal it without flashing black.
+ */
 export default function RotatingSphere({ width, height, active = true, onReady, className = '' }) {
   const containerRef = useRef(null);
   const loopRef = useRef({ start: () => {}, stop: () => {} });
@@ -83,24 +97,24 @@ export default function RotatingSphere({ width, height, active = true, onReady, 
 
     let targetRotationX = initialRotationX;
     let targetRotationY = initialRotationY;
-    let mouseX = 0;
-    let mouseY = 0;
 
-    const maxRotation = Math.PI / 4; // Limit rotation to 45 degrees for subtler cursor tracking
+    // Caps cursor tracking at 45 degrees, so the sphere leans rather than spins.
+    const maxRotation = Math.PI / 4;
+
+    const clampRotation = (value, limit) => Math.max(-limit, Math.min(limit, value));
 
     const handleMouseMove = (event) => {
       // While the sphere is hidden or paused there is nothing to aim, so skip
       // the per-move math rather than running it on every mouse move.
       if (!running) return;
 
-      const windowHalfX = window.innerWidth / 2;
-      const windowHalfY = window.innerHeight / 2;
+      // Pointer position as -1..1 from the centre of the viewport.
+      const offsetX = (event.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
+      const offsetY = (event.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
 
-      mouseX = (event.clientX - windowHalfX) / windowHalfX;
-      mouseY = (event.clientY - windowHalfY) / windowHalfY;
-
-      targetRotationY = initialRotationY + Math.max(-maxRotation, Math.min(maxRotation, mouseX * maxRotation));
-      targetRotationX = initialRotationX + Math.max(-maxRotation / 2, Math.min(maxRotation / 2, mouseY * maxRotation / 2));
+      // Vertical lean is halved; a full range up and down reads as a wobble.
+      targetRotationY = initialRotationY + clampRotation(offsetX * maxRotation, maxRotation);
+      targetRotationX = initialRotationX + clampRotation(offsetY * maxRotation / 2, maxRotation / 2);
     };
 
     window.addEventListener('mousemove', handleMouseMove);

@@ -1,43 +1,44 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function BlogThumbnail({ title, date, link, isExternal, thumbnail }) {
-  const LinkComponent = isExternal ? 'a' : Link;
-  const linkProps = isExternal 
-    ? { href: link, target: "_blank", rel: "noopener noreferrer" } 
-    : { href: link };
+import { postDate, postPath } from '@/data/posts';
+
+/**
+ * One row in the `/posts` listing. Posts published elsewhere open in a new tab
+ * through a plain anchor; posts hosted here are client-side navigations.
+ *
+ * @param {Object} props
+ * @param {Object} props.post - An entry from `@/data/posts`.
+ */
+export default function BlogThumbnail({ post }) {
+  const isExternal = Boolean(post.href);
+  const Wrapper = isExternal ? 'a' : Link;
+  const wrapperProps = isExternal
+    ? { href: post.href, target: '_blank', rel: 'noopener noreferrer' }
+    : { href: postPath(post) };
+  const heading = post.cardTitle ?? post.title;
 
   return (
-    <LinkComponent {...linkProps} className="blog-thumb">
-      
-      <div className='blog-thumb-details'>
-        <div className="blog-thumb-date">{date}</div>
+    <Wrapper {...wrapperProps} className="blog-thumb">
+
+      <div className="blog-thumb-details">
+        <div className="blog-thumb-date">{postDate(post)}</div>
       </div>
 
       <div className="blog-thumb-pic">
         <Image
-          src={thumbnail}
-          alt={title}
+          src={post.thumbnail}
+          alt={heading}
           width={440}
           height={247}
           className="rounded-lg object-cover"
         />
       </div>
 
-      <div className='blog-thumb-content'>
-        <h2 className="blog-thumb-title">{title}</h2>
+      <div className="blog-thumb-content">
+        <h2 className="blog-thumb-title">{heading}</h2>
       </div>
 
-      {/* {isExternal && (
-        <div className="blog-thumb-external-icon-container">
-          <div className="blog-thumb-external-icon-wrapper">
-            <svg className="blog-thumb-external-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-          </div>
-        </div>
-      )} */}
-
-    </LinkComponent>
+    </Wrapper>
   );
 }

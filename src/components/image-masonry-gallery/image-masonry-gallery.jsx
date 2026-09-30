@@ -1,101 +1,99 @@
 "use client";
 
-import React, { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Eye, X } from "lucide-react";
 import { createPortal } from "react-dom";
 
-// Hydration guard: false during SSR/hydration, true once mounted on the client
+// The portal target only exists in the browser, so rendering it has to wait
+// until after hydration. This reads false during SSR and hydration, then true.
 const subscribeNoop = () => () => {};
-const useIsMounted = () =>
-  useSyncExternalStore(subscribeNoop, () => true, () => false);
+const useIsMounted = () => useSyncExternalStore(subscribeNoop, () => true, () => false);
+
+const SPRING = { type: "spring", stiffness: 420, damping: 32, mass: 0.2 };
+const EASE_OUT = [0.22, 1, 0.36, 1];
 
 function MasonryImageTile({ image, index, onOpen, onHoverChange }) {
-  const handlePointerEnter = (event) => {
-    if (event.pointerType !== "mouse") {
-      return;
-    }
-
+  // Touch and pen pointers have no hovering cursor to follow, and firing on
+  // them would leave the badge stranded after a tap.
+  const trackMouse = (event) => {
+    if (event.pointerType !== "mouse") return;
     onHoverChange({ isVisible: true, x: event.clientX, y: event.clientY });
   };
 
-  const handlePointerMove = (event) => {
-    if (event.pointerType !== "mouse") {
-      return;
-    }
-
-    onHoverChange({ isVisible: true, x: event.clientX, y: event.clientY });
-  };
-
-  const handlePointerLeave = () => {
-    onHoverChange((previousState) => ({ ...previousState, isVisible: false }));
+  const hideCursor = () => {
+    onHoverChange((previous) => ({ ...previous, isVisible: false }));
   };
 
   return (
     <button
       type="button"
       onClick={() => onOpen(index)}
-      onPointerEnter={handlePointerEnter}
-      onPointerMove={handlePointerMove}
-      onPointerLeave={handlePointerLeave}
-      onPointerCancel={handlePointerLeave}
+      onPointerEnter={trackMouse}
+      onPointerMove={trackMouse}
+      onPointerLeave={hideCursor}
+      onPointerCancel={hideCursor}
       className="mb-12 block w-full break-inside-avoid overflow-hidden rounded-sm border border-black/10 bg-white text-left cursor-none"
       aria-label={`Open ${image.alt}`}
     >
-      <img
-        src={image.src}
-        alt={image.alt}
-        loading="lazy"
-        decoding="async"
-        className="block h-auto w-full"
-      />
+      <img src={image.src} alt={image.alt} loading="lazy" decoding="async" className="block h-auto w-full" />
     </button>
   );
 }
 
+/**
+ * Masonry screenshot grid with a lightbox. The hover badge replaces the
+ * pointer (`cursor-none` on the tiles) and the lightbox is portalled to
+ * `<body>` so it escapes the page's transformed ancestors.
+ *
+ * @param {Object} props
+ * @param {Array<{src: string, alt: string}>} props.images
+ */
 export default function ImageMasonryGallery({ images }) {
   const prefersReducedMotion = useReducedMotion();
   const [activeIndex, setActiveIndex] = useState(null);
-  const isMounted = useIsMounted();
   const [hoverCursor, setHoverCursor] = useState({ isVisible: false, x: 0, y: 0 });
+  const isMounted = useIsMounted();
   const activeImage = activeIndex === null ? null : images[activeIndex];
 
-  const handleOpen = (index) => {
-    setHoverCursor((previousState) => ({ ...previousState, isVisible: false }));
+  const openLightbox = (index) => {
+    // The pointer is about to be over the lightbox, not a tile.
+    setHoverCursor((previous) => ({ ...previous, isVisible: false }));
     setActiveIndex(index);
   };
 
-  useEffect(() => {
-    if (!activeImage) {
-      return undefined;
-    }
+  const closeLightbox = () => setActiveIndex(null);
 
-    const rootElement = document.documentElement;
-    const previousOverflow = document.body.style.overflow;
-    const previousRootOverflow = rootElement.style.overflow;
-    const previousScrollLockState = rootElement.dataset.scrollLocked;
+  // While the lightbox is open the page behind it must not scroll. The
+  // `data-scroll-locked` flag is what tells Lenis to stop; the event wakes it
+  // up, since it cannot observe the attribute on its own.
+  useEffect(() => {
+    if (!activeImage) return undefined;
+
+    const root = document.documentElement;
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousRootOverflow = root.style.overflow;
+    const previousLockState = root.dataset.scrollLocked;
 
     const handleKeyDown = (event) => {
-      if (event.key === "Escape") {
-        setActiveIndex(null);
-      }
+      if (event.key === "Escape") closeLightbox();
     };
 
-    rootElement.dataset.scrollLocked = "true";
-    rootElement.style.overflow = "hidden";
+    root.dataset.scrollLocked = "true";
+    root.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
     window.dispatchEvent(new CustomEvent("app-scroll-lock-change"));
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      if (previousScrollLockState === undefined) {
-        delete rootElement.dataset.scrollLocked;
+      if (previousLockState === undefined) {
+        delete root.dataset.scrollLocked;
       } else {
-        rootElement.dataset.scrollLocked = previousScrollLockState;
+        root.dataset.scrollLocked = previousLockState;
       }
 
-      rootElement.style.overflow = previousRootOverflow;
-      document.body.style.overflow = previousOverflow;
+      root.style.overflow = previousRootOverflow;
+      document.body.style.overflow = previousBodyOverflow;
       window.dispatchEvent(new CustomEvent("app-scroll-lock-change"));
       window.removeEventListener("keydown", handleKeyDown);
     };
@@ -106,94 +104,93 @@ export default function ImageMasonryGallery({ images }) {
       <div className="columns-1 gap-12 md:columns-2">
         {images.map((image, index) => (
           <MasonryImageTile
-            key={image.src ?? index}
+            key={image.src}
             image={image}
             index={index}
-            onOpen={handleOpen}
+            onOpen={openLightbox}
             onHoverChange={setHoverCursor}
           />
         ))}
       </div>
 
-      {isMounted
-        ? createPortal(
-            <>
-              <motion.span
-                initial={false}
-                animate={{
-                  x: hoverCursor.x,
-                  y: hoverCursor.y,
-                  scale: hoverCursor.isVisible ? 1 : 0,
-                  opacity: hoverCursor.isVisible ? 1 : 0,
-                }}
-                transition={
-                  prefersReducedMotion
-                    ? { duration: 0 }
-                    : {
-                        x: { type: "spring", stiffness: 420, damping: 32, mass: 0.2 },
-                        y: { type: "spring", stiffness: 420, damping: 32, mass: 0.2 },
-                        scale: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
-                        opacity: { duration: 0.32 },
+      {isMounted &&
+        createPortal(
+          <>
+            <motion.span
+              initial={false}
+              animate={{
+                x: hoverCursor.x,
+                y: hoverCursor.y,
+                scale: hoverCursor.isVisible ? 1 : 0,
+                opacity: hoverCursor.isVisible ? 1 : 0,
+              }}
+              transition={
+                prefersReducedMotion
+                  ? { duration: 0 }
+                  : {
+                      x: SPRING,
+                      y: SPRING,
+                      scale: { duration: 0.45, ease: EASE_OUT },
+                      opacity: { duration: 0.32 },
+                    }
+              }
+              className="pointer-events-none fixed left-0 top-0 z-50 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black text-white"
+              aria-hidden="true"
+            >
+              <Eye size={18} strokeWidth={1.5} />
+            </motion.span>
+
+            <AnimatePresence>
+              {activeImage && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.24 }}
+                  // Lets the overlay scroll natively instead of through Lenis.
+                  data-lenis-prevent=""
+                  className="fixed inset-0 z-100 overflow-y-auto overscroll-contain bg-black/75 backdrop-blur-md"
+                  onClick={closeLightbox}
+                  role="dialog"
+                  aria-modal="true"
+                  aria-label={activeImage.alt}
+                >
+                  <div className="flex min-h-screen items-start justify-center p-4 sm:p-6 md:p-10">
+                    <motion.div
+                      initial={prefersReducedMotion ? false : { opacity: 0, y: 20, scale: 0.98 }}
+                      animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
+                      exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 16, scale: 0.98 }}
+                      transition={
+                        prefersReducedMotion ? { duration: 0 } : { duration: 0.35, ease: EASE_OUT }
                       }
-                }
-                className="pointer-events-none fixed left-0 top-0 z-50 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black text-white"
-                aria-hidden="true"
-              >
-                <Eye size={18} strokeWidth={1.5} />
-              </motion.span>
-
-              <AnimatePresence>
-                {activeImage ? (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.24 }}
-                    data-lenis-prevent=""
-                    className="fixed inset-0 z-100 overflow-y-auto overscroll-contain bg-black/75 backdrop-blur-md"
-                    onClick={() => setActiveIndex(null)}
-                    role="dialog"
-                    aria-modal="true"
-                    aria-label={activeImage.alt}
-                  >
-                    <div className="flex min-h-screen items-start justify-center p-4 sm:p-6 md:p-10">
-                      <motion.div
-                        initial={prefersReducedMotion ? false : { opacity: 0, y: 20, scale: 0.98 }}
-                        animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
-                        exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 16, scale: 0.98 }}
-                        transition={
-                          prefersReducedMotion
-                            ? { duration: 0 }
-                            : { duration: 0.35, ease: [0.22, 1, 0.36, 1] }
-                        }
-                        className="relative w-full max-w-[min(92vw,1500px)]"
-                        onClick={(event) => event.stopPropagation()}
+                      className="relative w-full max-w-[min(92vw,1500px)]"
+                      // Clicking the image must not reach the backdrop's close.
+                      onClick={(event) => event.stopPropagation()}
+                    >
+                      <button
+                        type="button"
+                        onClick={closeLightbox}
+                        className="absolute right-3 top-3 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full bg-black/60 text-white transition-colors duration-200 hover:bg-black/75"
+                        aria-label="Close lightbox"
                       >
-                        <button
-                          type="button"
-                          onClick={() => setActiveIndex(null)}
-                          className="absolute right-3 top-3 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full bg-black/60 text-white transition-colors duration-200 hover:bg-black/75"
-                          aria-label="Close lightbox"
-                        >
-                          <X size={20} />
-                        </button>
+                        <X size={20} />
+                      </button>
 
-                        <div className="overflow-hidden rounded-sm bg-white/5 shadow-2xl">
-                          <img
-                            src={activeImage.src}
-                            alt={activeImage.alt}
-                            className="block h-auto w-full max-w-full"
-                          />
-                        </div>
-                      </motion.div>
-                    </div>
-                  </motion.div>
-                ) : null}
-              </AnimatePresence>
-            </>,
-            document.body
-          )
-        : null}
+                      <div className="overflow-hidden rounded-sm bg-white/5 shadow-2xl">
+                        <img
+                          src={activeImage.src}
+                          alt={activeImage.alt}
+                          className="block h-auto w-full max-w-full"
+                        />
+                      </div>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </>,
+          document.body
+        )}
     </>
   );
 }

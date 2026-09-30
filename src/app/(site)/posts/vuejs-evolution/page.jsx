@@ -1,46 +1,43 @@
 import Link from 'next/link';
 import Image from 'next/image';
+
 import BlogJsonLd from '@/components/seo/blog-json-ld';
 import CodeBlock from '@/components/code-block/code-block';
+import { findPost, postDate, postPath } from '@/data/posts';
+import { SITE_URL, TWITTER_HANDLE } from '@/lib/site';
 
-const post = {
-  title: "The same button component in 3 major versions of VueJS",
-  date: "June 11, 2026",
-  link: "/posts/vuejs-evolution",
-  description: "I created the same button component in 3 major versions of VueJS to see how it changed"
-};
+const post = findPost('vuejs-evolution');
 
 export const metadata = {
-  title: 'The same button component in 3 major versions of VueJS',
-  description: 'I created the same button component in 3 major versions of VueJS to see how it changed',
-  alternates: {
-    canonical: '/posts/vuejs-evolution'
-  },
+  title: post.title,
+  description: post.description,
+  alternates: { canonical: postPath(post) },
   openGraph: {
     type: 'article',
     locale: 'en_US',
-    url: 'https://helloalmaz.com/posts/vuejs-evolution',
-    title: 'The same button component in 3 major versions of VueJS',
-    description: 'I created the same button component in 3 major versions of VueJS to see how it changed',
+    url: `${SITE_URL}${postPath(post)}`,
+    title: post.title,
+    description: post.description,
     siteName: 'Almaz Bisenbaev',
-    publishedTime: '2026-06-11T00:00:00Z',
+    // Open Graph expects a timestamp; the posts data stores the day.
+    publishedTime: `${post.publishedAt}T00:00:00Z`,
     images: [
       {
-        url: '/images/article-vuejs-cover.jpg',
+        url: post.thumbnail,
         width: 1600,
         height: 1200,
-        alt: 'The same button component in 3 major versions of VueJS',
+        alt: post.title,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'The same button component in 3 major versions of VueJS',
-    description: 'I created the same button component in 3 major versions of VueJS to see how it changed',
-    creator: '@almazbisenbaev',
-    images: ['/images/article-vuejs-cover.jpg'],
+    title: post.title,
+    description: post.description,
+    creator: TWITTER_HANDLE,
+    images: [post.thumbnail],
   },
-}
+};
 
 const vue1Code = `<html>
   <head>
@@ -115,7 +112,7 @@ const showAlert = () => {
 </template>`;
 
 
-export default async function PostVuejsEvolution() {
+export default function PostVuejsEvolution() {
   return (
     <article className="min-h-screen py-12 sm:py-24">
       <BlogJsonLd post={post} />
@@ -129,9 +126,9 @@ export default async function PostVuejsEvolution() {
           </Link>
 
           <header className="mb-10 sm:mb-16">
-            <h1 className="text-3xl sm:text-7xl font-bold mb-8 tracking-tight">The same button component in 3 major versions of VueJS</h1>
+            <h1 className="text-3xl sm:text-7xl font-bold mb-8 tracking-tight">{post.title}</h1>
             <div className="text-neutral-400 font-medium text-xs flex items-center space-x-1 mt-4">
-              <span>{post.date}</span>
+              <span>{postDate(post)}</span>
             </div>
           </header>
 
@@ -140,7 +137,7 @@ export default async function PostVuejsEvolution() {
 
       <div className="container px-0 max-w-[1400px] mb-10 sm:mb-16">
         <Image 
-          src="/blog/article-vuejs-cover.jpg"
+          src={post.thumbnail}
           width="1600"
           height="1200"
           alt="Cover illustration for the article on building the same button component in Vue 1, Vue 2 and Vue 3"
@@ -159,10 +156,10 @@ export default async function PostVuejsEvolution() {
             <p>Vue 1 introduced the core concepts that made it stand out: reactive data binding, a simple template syntax, and component-based architecture using <code>Vue.extend()</code> and global registration.</p>
             <p><b>Key characteristics of this era:</b></p>
             <ul>
-              <li><div>Heavy use of <code>Vue.extend()</code> for component definitions.</div></li>
-              <li><div>Templates were often strings or in the DOM.</div></li>
-              <li><div>Event handling with <code>v-on</code> (shorthand <code>@</code> came later but was similar).</div></li>
-              <li><div>Data was defined directly, with caveats around sharing objects.</div></li>
+              <li>Heavy use of <code>Vue.extend()</code> for component definitions.</li>
+              <li>Templates were often strings or in the DOM.</li>
+              <li>Event handling with <code>v-on</code> (shorthand <code>@</code> came later but was similar).</li>
+              <li>Data was defined directly, with caveats around sharing objects.</li>
             </ul>
             <p><b>Example with Vue 1</b></p>
             <CodeBlock code={vue1Code} lang="html" />
@@ -174,10 +171,10 @@ export default async function PostVuejsEvolution() {
             <p>Vue 2 refined the developer experience significantly. It popularized the Options API: organizing code into clear sections like <code>data</code>, <code>methods</code>, <code>computed</code>, and lifecycle hooks. This became the standard way most developers learned and used Vue for years. Global <code>Vue.component</code> was still common, but Single-File Components (.vue files) with webpack/Vue CLI became the norm.</p>
             <p><b>Key improvements:</b></p>
             <ul>
-              <li><span>More structured component options.</span></li>
-              <li><span>Better reactivity system.</span></li>
-              <li><span>Official CLI and excellent documentation.</span></li>
-              <li><span><code>v-on:click</code> shorthand <code>@click</code> widely used.</span></li>
+              <li>More structured component options.</li>
+              <li>Better reactivity system.</li>
+              <li>Official CLI and excellent documentation.</li>
+              <li><code>v-on:click</code> shorthand <code>@click</code> widely used.</li>
             </ul>
             <p><b>Example with Vue 2</b></p>
             <CodeBlock code={vue2Code} lang="html" />
@@ -203,9 +200,9 @@ export default async function PostVuejsEvolution() {
             <h2>Evolution Summary</h2>
 
             <ul>
-              <li><span><b>Vue 1</b>: Focused on simplicity and getting started quickly with minimal ceremony.</span></li>
-              <li><span><b>Vue 2</b>: Emphasized structure and scalability through the Options API.</span></li>
-              <li><span><b>Vue 3</b>: Prioritizes flexibility, performance, and composability. Logic can now be extracted into reusable composables (<code>useAlert.js</code>, etc.), making code more modular.</span></li>
+              <li><b>Vue 1</b>: Focused on simplicity and getting started quickly with minimal ceremony.</li>
+              <li><b>Vue 2</b>: Emphasized structure and scalability through the Options API.</li>
+              <li><b>Vue 3</b>: Prioritizes flexibility, performance, and composability. Logic can now be extracted into reusable composables (<code>useAlert.js</code>, etc.), making code more modular.</li>
             </ul>
             <p>The button itself didn't change much, what changed is how we organize that functionality, and it evolved dramatically for the better.</p>
             <p>In any case, it's impressive how the framework has stayed true to its roots: approachable, performant, and friendly to not-so-bright people like me.</p>

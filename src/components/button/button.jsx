@@ -1,57 +1,44 @@
-import React from 'react';
 import Link from 'next/link';
 
+import { cn } from '@/lib/utils';
+
 /**
- * Button component with multiple variants.
- * 
+ * Renders as a `<button>`, an internal `<Link>`, or an external `<a>`,
+ * depending on `href`. Variants are styled in `globals.css` as
+ * `.button-<variant>`.
+ *
  * @param {Object} props
- * @param {'primary' | 'secondary' | 'black' | 'white' | 'outline-white'} [props.variant='secondary'] - The button style variant
- * @param {string} [props.href] - If provided, renders an <a> or <Link> tag
- * @param {boolean} [props.external] - If true and href is provided, adds target="_blank" and rel="noopener noreferrer"
- * @param {React.ReactNode} props.children - Button content
- * @param {string} [props.className] - Additional CSS classes
- * @param {Object} [props.rest] - Other standard button or anchor props
+ * @param {'primary' | 'secondary' | 'black' | 'white' | 'outline-white'} [props.variant='secondary']
+ * @param {string} [props.href] - Omit for a real button.
+ * @param {boolean} [props.external] - Forces a new tab for hrefs that are not
+ *   recognisably absolute, such as a link to a subdomain.
+ * @param {string} [props.className] - Additional classes.
  */
-const Button = ({ 
-  variant = 'secondary', 
-  href, 
-  external, 
-  children, 
-  className = '', 
-  ...rest 
-}) => {
-  const baseClass = 'button';
-  const variantClass = `button-${variant}`;
-  const combinedClasses = `${baseClass} ${variantClass} ${className}`.trim();
+const Button = ({ variant = 'secondary', href, external, children, className, ...rest }) => {
+  const classes = cn('button', `button-${variant}`, className);
 
-  if (href) {
-    const isExternal = external || href.startsWith('http') || href.startsWith('//');
-    
-    if (isExternal) {
-      return (
-        <a 
-          href={href} 
-          className={combinedClasses}
-          target="_blank"
-          rel="noopener noreferrer"
-          {...rest}
-        >
-          {children}
-        </a>
-      );
-    }
-
+  if (!href) {
     return (
-      <Link href={href} className={combinedClasses} {...rest}>
+      <button className={classes} {...rest}>
         {children}
-      </Link>
+      </button>
+    );
+  }
+
+  const isExternal = external || href.startsWith('http') || href.startsWith('//');
+
+  if (isExternal) {
+    return (
+      <a href={href} className={classes} target="_blank" rel="noopener noreferrer" {...rest}>
+        {children}
+      </a>
     );
   }
 
   return (
-    <button className={combinedClasses} {...rest}>
+    <Link href={href} className={classes} {...rest}>
       {children}
-    </button>
+    </Link>
   );
 };
 

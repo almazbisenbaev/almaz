@@ -1,43 +1,47 @@
+import { internalPosts, postPath } from '@/data/posts';
+import { SITE_URL } from '@/lib/site';
+
+/**
+ * `lastModified` is the build date for pages whose content is generated from
+ * data in this repository. The Russian landing page is the exception: its copy
+ * is hand-written, so its date is pinned and updated deliberately with
+ * significant edits rather than refreshed on every unrelated build.
+ */
+const RUSSIAN_LANDING_LAST_MODIFIED = '2026-09-27';
+
 export default function sitemap() {
-  const baseUrl = 'https://helloalmaz.com';
-
-  const internalPosts = [
-    '/posts/vuejs-evolution',
-  ];
-
-  const posts = internalPosts.map((link) => ({
-    url: `${baseUrl}${link}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.7,
-  }));
+  const buildDate = new Date();
 
   return [
     {
-      url: baseUrl,
-      lastModified: new Date(),
+      url: SITE_URL,
+      lastModified: buildDate,
       changeFrequency: 'yearly',
       priority: 1,
     },
     {
-      url: `${baseUrl}/razrabotka-saitov-kazakhstan`,
-      // Update when the landing page changes, not on every unrelated build.
-      lastModified: '2026-09-27',
+      url: `${SITE_URL}/razrabotka-saitov-kazakhstan`,
+      lastModified: RUSSIAN_LANDING_LAST_MODIFIED,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/wordpress-developer`,
-      lastModified: new Date(),
+      url: `${SITE_URL}/wordpress-developer`,
+      lastModified: buildDate,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/posts`,
-      lastModified: new Date(),
+      url: `${SITE_URL}/posts`,
+      lastModified: buildDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
-    ...posts,
-  ]
+    ...internalPosts.map((post) => ({
+      url: `${SITE_URL}${postPath(post)}`,
+      lastModified: buildDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    })),
+  ];
 }

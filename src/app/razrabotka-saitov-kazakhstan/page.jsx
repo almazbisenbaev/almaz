@@ -3,23 +3,34 @@ import { ArrowDown, ArrowUpRight } from "lucide-react";
 import Button from "@/components/button/button";
 import FaqAccordion from "@/components/faq-accordion/faq-accordion";
 import PortfolioCarousel from "@/components/portfolio-carousel/portfolio-carousel";
-import { works } from "@/lib/data";
+import { findWork } from "@/data/works";
+import {
+  OPEN_GRAPH_IMAGE,
+  PERSON_ID,
+  PROFILES,
+  SITE_URL,
+  TWITTER_HANDLE,
+  TWITTER_IMAGE,
+} from "@/lib/site";
 
-const PAGE_URL = "https://helloalmaz.com/razrabotka-saitov-kazakhstan";
+const PATH = "/razrabotka-saitov-kazakhstan";
+const PAGE_URL = `${SITE_URL}${PATH}`;
 const TITLE = "Разработка сайтов в Казахстане — Алмаз Бисенбаев";
 const DESCRIPTION =
   "Создание сайтов для бизнеса в Казахстане: лендинги, сайты компаний и интернет-магазины на WordPress и WooCommerce. Разработчик Алмаз Бисенбаев. Обсудим ваш проект.";
-const TELEGRAM_URL = "https://t.me/almazbisenbaev";
+const TELEGRAM_URL = PROFILES.telegram;
 
+// This root has its own metadata rather than inheriting the English one, so
+// `metadataBase` has to be declared here too for the relative image paths.
 export const metadata = {
-  metadataBase: new URL("https://helloalmaz.com"),
+  metadataBase: new URL(SITE_URL),
   title: TITLE,
   description: DESCRIPTION,
   // This is a dedicated regional service page, not a translation of the home
   // page. Keep its own canonical rather than declaring unrelated hreflang pairs.
-  alternates: { canonical: "/razrabotka-saitov-kazakhstan" },
+  alternates: { canonical: PATH },
   robots: { index: true, follow: true },
-  authors: [{ name: "Алмаз Бисенбаев", url: "https://helloalmaz.com" }],
+  authors: [{ name: "Алмаз Бисенбаев", url: SITE_URL }],
   openGraph: {
     type: "website",
     locale: "ru_KZ",
@@ -27,19 +38,14 @@ export const metadata = {
     title: TITLE,
     description: DESCRIPTION,
     siteName: "Алмаз Бисенбаев — веб-разработчик",
-    images: [{
-      url: "/preview-opengraph.jpg",
-      width: 1200,
-      height: 630,
-      alt: "Алмаз Бисенбаев — веб-разработчик",
-    }],
+    images: [{ ...OPEN_GRAPH_IMAGE, alt: "Алмаз Бисенбаев — веб-разработчик" }],
   },
   twitter: {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
-    creator: "@almazbisenbaev",
-    images: ["/preview-twitter.jpg"],
+    creator: TWITTER_HANDLE,
+    images: [TWITTER_IMAGE],
   },
 };
 
@@ -95,10 +101,9 @@ const projectCopy = [
   },
 ];
 
-const projects = projectCopy.map((copy) => ({
-  ...works.find((work) => work.name === copy.name),
-  ...copy,
-}));
+// Russian copy layered over the shared project record, so links, images and
+// dates stay in one place while the descriptions are written per language.
+const projects = projectCopy.map((copy) => ({ ...findWork(copy.name), ...copy }));
 
 const process = [
   {
@@ -142,6 +147,15 @@ const faqs = [
   },
 ];
 
+const carouselLabels = {
+  instructions:
+    "Перетаскивайте проекты влево или вправо. С клавиатуры используйте " +
+    "стрелки влево и вправо, Home и End. Tab переходит к ссылкам проектов.",
+  carousel: "карусель",
+  slide: "слайд",
+  slideLabel: "Проект {index} из {count}",
+};
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -162,7 +176,7 @@ const jsonLd = {
       description: DESCRIPTION,
       url: PAGE_URL,
       areaServed: { "@type": "Country", name: "Казахстан", identifier: "KZ" },
-      provider: { "@id": "https://helloalmaz.com/#person" },
+      provider: { "@id": PERSON_ID },
       availableChannel: {
         "@type": "ServiceChannel",
         serviceUrl: TELEGRAM_URL,
@@ -239,15 +253,18 @@ export default function KazakhstanPage() {
             сайтов компаний, магазинов и сервисов предлагаю бизнесу в Казахстане.
           </p>
         </div>
-        <PortfolioCarousel>
-          {projects.map((project) => (
+        <PortfolioCarousel labelledBy="projects-title" labels={carouselLabels}>
+          {projects.map((project) => {
+            const [screenshot] = project.media;
+
+            return (
             <article key={project.name} className="min-w-0 flex flex-col">
               <a href={project.url} target="_blank" rel="noopener noreferrer" draggable={false} aria-label={`Открыть сайт ${project.name}`} className="block rounded-2xl overflow-hidden bg-white">
                 <Image
-                  src={project.media[0].src}
+                  src={screenshot.src}
                   alt={project.alt}
-                  width={project.media[0].width}
-                  height={project.media[0].height}
+                  width={screenshot.width}
+                  height={screenshot.height}
                   sizes="(max-width: 639px) calc(88vw - 28.16px), (max-width: 767px) 360px, (max-width: 1023px) 437px, (max-width: 1279px) 433px, (max-width: 1535px) 546px, 659px"
                   draggable={false}
                   className="w-full aspect-[16/10] object-cover object-top"
@@ -263,7 +280,8 @@ export default function KazakhstanPage() {
                 Посмотреть сайт <span className="sr-only">{project.name}</span> <ArrowUpRight size={16} aria-hidden="true" />
               </a>
             </article>
-          ))}
+            );
+          })}
         </PortfolioCarousel>
       </section>
 

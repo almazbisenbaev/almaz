@@ -4,8 +4,9 @@ import { useState, useRef, useEffect, useId } from 'react';
 import Image from 'next/image';
 import useEmblaCarousel from 'embla-carousel-react';
 
-// Keep these sizes in sync with `.pics-media` in globals.css. On phones the
-// widest image fits with a peek of its neighbor; portrait shots stay narrower.
+// Mirrors the `.pics-carousel-slide .pics-media` heights in globals.css — keep
+// the two in sync. On phones the widest image fits with a peek of its
+// neighbour; portrait shots stay narrower.
 const SLIDE_HEIGHTS = [
   { minWidth: 992, height: 440 },
   { minWidth: 768, height: 360 },
@@ -13,70 +14,81 @@ const SLIDE_HEIGHTS = [
   { minWidth: 0, height: 240 },
 ];
 
+/**
+ * A `sizes` attribute derived from the slide heights above: at each breakpoint
+ * the rendered width is the fixed height times the media's aspect ratio, so
+ * next/image can pick the right source instead of assuming full viewport width.
+ */
 const slideSizes = (width, height, maxAspect) => {
   const ratio = width / height;
-  return SLIDE_HEIGHTS.map(({ minWidth, height: h }) => {
-    const rendered = `${Math.ceil(h * ratio)}px`;
+  return SLIDE_HEIGHTS.map(({ minWidth, height: slideHeight }) => {
+    const rendered = `${Math.ceil(slideHeight * ratio)}px`;
     return minWidth
       ? `(min-width: ${minWidth}px) ${rendered}`
       : `min(${rendered}, calc((100vw - 5rem) * ${ratio / maxAspect}))`;
   }).join(', ');
 };
 
-const LazyImage = ({ src, alt = '', width, height, className = '', sizes }) => {
+/**
+ * Reserves the media's exact box up front: the inline `aspect-ratio` pairs with
+ * the fixed height in CSS, so the placeholder and the loaded media occupy an
+ * identical rectangle and nothing shifts when it arrives.
+ */
+const MediaFrame = ({ width, height, showPlaceholder, children }) => (
+  <div
+    className="pics-media relative bg-[#EFEAE5] border border-black/10 rounded-lg overflow-hidden"
+    style={{ aspectRatio: `${width} / ${height}` }}
+  >
+    {showPlaceholder && <div className="absolute inset-0 bg-[#EFEAE5] animate-pulse" />}
+    {children}
+  </div>
+);
+
+const LazyImage = ({ src, alt = '', width, height, sizes }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    // The wrapper reserves the media's exact box up front via `aspect-ratio`
-    // (paired with the fixed height in CSS), so the skeleton and the loaded
-    // image occupy an identical rectangle — no layout shift when it loads.
-    <div
-      className="pics-media relative bg-[#EFEAE5] border border-black/10 rounded-lg overflow-hidden"
-      style={{ aspectRatio: `${width} / ${height}` }}
-    >
-      {isLoading && (
-        <div className="absolute inset-0 bg-[#EFEAE5] animate-pulse" />
-      )}
+    <MediaFrame width={width} height={height} showPlaceholder={isLoading}>
       <Image
         src={src}
         alt={alt}
         width={width}
         height={height}
         sizes={sizes}
-        className={`transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'} ${className}`}
+        className={`transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
         loading="lazy"
         draggable={false}
         onLoad={() => setIsLoading(false)}
       />
-    </div>
+    </MediaFrame>
   );
 };
 
-// `poster` is optional but strongly recommended: it shows a still frame
-// instantly while the (deferred) video streams in. Videos passed without a
-// `poster` fall back to the grey pulse placeholder below.
-const LazyVideo = ({ src, alt, width, height, className = '', poster }) => {
+/**
+ * `poster` is optional but strongly recommended: it shows a still frame
+ * instantly while the deferred video streams in, and makes the pulse
+ * placeholder unnecessary. Clips without one fall back to the pulse.
+ */
+const LazyVideo = ({ src, alt, width, height, poster }) => {
   const [isLoading, setIsLoading] = useState(true);
   const videoRef = useRef(null);
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video) return undefined;
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // With preload="none" the download doesn't start until play() is
-            // called, so nothing is fetched until the slide nears the viewport.
-            video.play().catch(() => {});
-          } else {
-            video.pause();
-          }
-        });
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // With preload="none" the download doesn't start until play() is
+          // called, so nothing is fetched until the slide nears the viewport.
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
       },
       // Start a little before the slide is on-screen so playback is ready.
-      { threshold: 0.25, rootMargin: "200px" }
+      { threshold: 0.25, rootMargin: '200px' }
     );
 
     observer.observe(video);
@@ -84,21 +96,10 @@ const LazyVideo = ({ src, alt, width, height, className = '', poster }) => {
     return () => observer.disconnect();
   }, []);
 
-  // Once a poster is present we don't need the pulse placeholder — the poster
-  // itself is the instant visual. Keep the pulse only as the no-poster fallback.
-  const showPulse = isLoading && !poster;
+  const isHidden = isLoading && !poster;
 
   return (
-    // Same as LazyImage: `aspect-ratio` reserves the final box before the
-    // video's metadata (and intrinsic size) has streamed in, so neither the
-    // poster nor the pulse placeholder causes a reflow when playback starts.
-    <div
-      className="pics-media relative bg-[#EFEAE5] border border-black/10 rounded-lg overflow-hidden"
-      style={{ aspectRatio: `${width} / ${height}` }}
-    >
-      {showPulse && (
-        <div className="absolute inset-0 bg-[#EFEAE5] animate-pulse" />
-      )}
+    <MediaFrame width={width} height={height} showPlaceholder={isHidden}>
       <video
         ref={videoRef}
         src={src}
@@ -112,16 +113,43 @@ const LazyVideo = ({ src, alt, width, height, className = '', poster }) => {
         muted
         loop
         playsInline
-        className={`object-cover transition-opacity duration-300 ${isLoading && !poster ? 'opacity-0' : 'opacity-100'} ${className}`}
+        className={`object-cover transition-opacity duration-300 ${isHidden ? 'opacity-0' : 'opacity-100'}`}
         onCanPlay={() => setIsLoading(false)}
       />
-    </div>
+    </MediaFrame>
   );
 };
 
+const renderMedia = (item, sizes) =>
+  item.type === 'video' ? (
+    <LazyVideo
+      src={item.src}
+      alt={item.alt}
+      width={item.width}
+      height={item.height}
+      poster={item.poster}
+    />
+  ) : (
+    <LazyImage
+      src={item.src}
+      alt={item.alt}
+      width={item.width}
+      height={item.height}
+      sizes={sizes}
+    />
+  );
+
+/**
+ * Drag-and-keyboard gallery of a project's screenshots and screen recordings.
+ *
+ * @param {Object} props
+ * @param {Array} props.images - `media` entries from `@/data/works`.
+ * @param {string} [props.label="Project"] - Names the region for screen readers.
+ */
 export default function PicsCarousel({ images, label = 'Project' }) {
   const maxAspect = Math.max(1, ...images.map(({ width, height }) => width / height));
   const viewportId = useId();
+  const instructionsId = `${viewportId}-instructions`;
   const progressRef = useRef(null);
   const reducedMotionRef = useRef(false);
   const [navigation, setNavigation] = useState({ selected: 0, total: 0 });
@@ -140,7 +168,7 @@ export default function PicsCarousel({ images, label = 'Project' }) {
   });
 
   useEffect(() => {
-    if (!emblaApi) return;
+    if (!emblaApi) return undefined;
 
     const viewport = emblaApi.rootNode();
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -150,9 +178,7 @@ export default function PicsCarousel({ images, label = 'Project' }) {
     let thumbWidth = 100;
 
     const updateNavigation = () => {
-      const previous = emblaApi.canScrollPrev();
-      const next = emblaApi.canScrollNext();
-      viewport.dataset.scrollable = String(previous || next);
+      viewport.dataset.scrollable = String(emblaApi.canScrollPrev() || emblaApi.canScrollNext());
       setNavigation({
         selected: emblaApi.selectedScrollSnap(),
         total: emblaApi.scrollSnapList().length,
@@ -218,6 +244,8 @@ export default function PicsCarousel({ images, label = 'Project' }) {
     };
   }, [emblaApi]);
 
+  // Only when the viewport itself has focus: a focused link inside a slide
+  // keeps its own arrow-key behaviour.
   function handleKeyDown(event) {
     if (!emblaApi || event.target !== event.currentTarget) return;
     const jump = reducedMotionRef.current;
@@ -231,30 +259,11 @@ export default function PicsCarousel({ images, label = 'Project' }) {
     event.preventDefault();
   }
 
-  const renderItem = (item, sizes) =>
-    item.type === 'video' ? (
-      <LazyVideo
-        src={item.src}
-        alt={item.alt}
-        width={item.width}
-        height={item.height}
-        poster={item.poster}
-      />
-    ) : (
-      <LazyImage
-        src={item.src}
-        alt={item.alt}
-        width={item.width}
-        height={item.height}
-        sizes={sizes}
-      />
-    );
-
   if (images.length === 1) {
     return (
       <div className="pics-carousel pics-carousel--single">
         {/* Single item is width-constrained by the page container, not height. */}
-        {renderItem(images[0], '100vw')}
+        {renderMedia(images[0], '100vw')}
       </div>
     );
   }
@@ -267,7 +276,7 @@ export default function PicsCarousel({ images, label = 'Project' }) {
       aria-label={`${label} gallery`}
       style={{ '--pics-max-aspect': maxAspect }}
     >
-      <p id={`${viewportId}-instructions`} className="sr-only">
+      <p id={instructionsId} className="sr-only">
         When the gallery is focused, use the left and right arrow keys, Home, or End.
       </p>
       <div
@@ -276,7 +285,7 @@ export default function PicsCarousel({ images, label = 'Project' }) {
         ref={emblaRef}
         tabIndex={navigation.total > 1 ? 0 : -1}
         aria-label={`${label} images`}
-        aria-describedby={`${viewportId}-instructions`}
+        aria-describedby={instructionsId}
         onKeyDown={handleKeyDown}
       >
         <div className="embla__container pics-carousel-track flex gap-4 sm:gap-8">
@@ -288,7 +297,7 @@ export default function PicsCarousel({ images, label = 'Project' }) {
               aria-roledescription="slide"
               aria-label={`${index + 1} of ${images.length}`}
             >
-              {renderItem(item, slideSizes(item.width, item.height, maxAspect))}
+              {renderMedia(item, slideSizes(item.width, item.height, maxAspect))}
             </div>
           ))}
         </div>
