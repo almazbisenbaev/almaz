@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ChevronRight } from 'lucide-react';
+import { ArrowUpRight, ChevronRight } from 'lucide-react';
 
 import TechMarquee from '@/components/tech-marquee/tech-marquee';
 import HeroIntro from '@/components/hero-intro/hero-intro';
@@ -53,16 +53,24 @@ export default function Home() {
       <PortfolioSection items={homepageWorks} />
 
       <div className="container px-5">
-        <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8 border-y border-black/10 py-8">
-          <p className="text-lg font-medium leading-snug max-w-lg">
-            Most of the work above is WordPress &amp; WooCommerce — custom themes,
-            stores, plugins and speed fixes.
-          </p>
-          <Button href="/wordpress-developer" variant="black" className="shrink-0">
-            <span>Hire me for WordPress</span>
-            <ChevronRight color="white" size={18} />
+        <section
+          aria-labelledby="wordpress-cta-title"
+          className="flex flex-col items-start gap-8 rounded-4xl bg-white p-6 shadow-[0_12px_48px_-24px_rgba(0,0,0,0.16)] sm:p-10 lg:flex-row lg:items-center lg:justify-between lg:gap-12 lg:p-14"
+        >
+          <div className="max-w-2xl">
+            <h2 id="wordpress-cta-title" className="max-w-xl text-3xl font-bold leading-[1.08] tracking-[-0.04em] sm:text-4xl xl:text-5xl">
+              Let’s build your next website.
+            </h2>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-neutral-600">
+              A new WordPress site, a WooCommerce store, or a better version of
+              what you have. I can help.
+            </p>
+          </div>
+          <Button href="/wordpress-developer" variant="black" className="shrink-0 whitespace-nowrap max-sm:w-full max-sm:px-4!">
+            <span>Explore services</span>
+            <ArrowUpRight aria-hidden="true" size={20} className="shrink-0" />
           </Button>
-        </div>
+        </section>
       </div>
 
       <div className="section">
