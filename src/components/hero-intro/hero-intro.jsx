@@ -28,7 +28,6 @@ export default function HeroIntro() {
   const skewRef = useScrollSkew({ maxSkew: 3, velocityDivisor: 500 });
   const containerRef = useRef(null);
   const imageRef = useRef(null);
-  const badgeRef = useRef(null);
   const pressTimeoutRef = useRef(null);
   const toggleTimeoutRef = useRef(null);
   const hasWarmedRef = useRef(false);
@@ -90,29 +89,6 @@ export default function HeroIntro() {
     preload.src = '/images/texture.jpg';
     setIsSphereMounted(true);
   };
-
-  // The badge opens by growing its width from a circle to the full pill, and
-  // CSS cannot derive that end width from the text, so measure it into
-  // --intro-badge-full. Layout offsets, not rects: the badge is mid-pop at
-  // mount and a scale transform would skew every rect it reports.
-  useEffect(() => {
-    const measureBadge = () => {
-      const badge = badgeRef.current;
-      const label = badge?.querySelector('.intro-badge-label');
-      if (!badge || !label) return;
-
-      const paddingRight = parseFloat(getComputedStyle(badge).paddingRight);
-      const full = label.offsetLeft + label.offsetWidth + paddingRight;
-      badge.style.setProperty('--intro-badge-full', `${full}px`);
-    };
-
-    measureBadge();
-    window.addEventListener('resize', measureBadge);
-    // Webfont swap changes the label's width.
-    document.fonts?.ready.then(measureBadge);
-
-    return () => window.removeEventListener('resize', measureBadge);
-  }, []);
 
   useEffect(() => {
     updateSphereBounds();
@@ -192,7 +168,6 @@ export default function HeroIntro() {
                 onLoad={updateSphereBounds}
               />
               <span
-                ref={badgeRef}
                 className={`intro-badge${isSphereShown ? ' is-hidden' : ''}`}
                 aria-hidden="true"
               >

@@ -209,16 +209,11 @@ a {
   height: 1.3em;
 }
 
-/* Availability badge pinned to the upper-right of the intro picture. One
-   element, no wrapper: the badge *is* the pill. It starts as a real circle --
-   a box exactly as wide as it is tall -- and the open animation grows its
-   width to the full pill. Previously this was a full-width pill clipped to a
-   circular window: it only looked round, and the laid-out box never was. */
+/* Availability badge pinned to the upper-right of the intro picture,
+   visible at its full width from the first render. */
 .intro-badge {
   --intro-badge-height: 30px;
   --intro-badge-dot: 10px;
-  /* Must exceed the padding left over beside the dot, or the label would
-     start inside the opening circle and show as a speck on its edge. */
   --intro-badge-gap: 12px;
 
   /* Sits on the circle's rim at 45deg, i.e. the true top-right of a round
@@ -240,13 +235,7 @@ a {
   padding-left: calc((var(--intro-badge-height) - var(--intro-badge-dot)) / 2);
   padding-right: 13px;
 
-  /* The open animation needs a length to grow to, which CSS cannot derive
-     from the text; hero-intro.jsx measures it into --intro-badge-full.
-     max-content keeps the badge correct before that runs. */
-  width: var(--intro-badge-full, max-content);
-
-  /* Hides the label while the badge is still narrow. Clipping happens at the
-     padding box -- the full width -- so the dot itself is never cut. */
+  width: max-content;
   overflow: hidden;
 
   background: #fff;
@@ -263,13 +252,6 @@ a {
   user-select: none;
   transform-origin: center;
 
-  /* pop is `backwards`, not `both`: it holds the badge hidden through its
-     delay, but must stop applying once it ends, or its final opacity:1 would
-     beat the is-hidden transition below. */
-  animation:
-    intro-badge-pop 340ms cubic-bezier(0.34, 1.56, 0.64, 1) 900ms backwards,
-    intro-badge-open 520ms cubic-bezier(0.22, 1, 0.36, 1) 1400ms both;
-
   transition: opacity 220ms ease, transform 220ms ease;
 }
 
@@ -279,8 +261,6 @@ a {
   transform: scale(0.9);
 }
 
-/* Keeps its natural width even while the badge clips it, so it can be
-   measured exactly and can never wrap mid-animation. */
 .intro-badge-label {
   flex: none;
   white-space: nowrap;
@@ -302,27 +282,6 @@ a {
   border-radius: 50%;
   background: #22c55e;
   animation: intro-badge-pulse 2s ease-out 2.1s infinite;
-}
-
-@keyframes intro-badge-pop {
-  from {
-    opacity: 0;
-    transform: scale(0.2);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Square, which border-radius then rounds to a circle. */
-@keyframes intro-badge-open {
-  from {
-    width: var(--intro-badge-height);
-  }
-  to {
-    width: var(--intro-badge-full, max-content);
-  }
 }
 
 @keyframes intro-badge-pulse {
@@ -410,7 +369,6 @@ a {
     transition: none;
   }
 
-  .intro-badge,
   .intro-badge-dot::after {
     animation: none;
   }
