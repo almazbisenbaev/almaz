@@ -34,8 +34,9 @@ const slideSizes = (width, height, maxAspect) => {
  * the fixed height in CSS, so the placeholder and the loaded media occupy an
  * identical rectangle and nothing shifts when it arrives.
  */
-const MediaFrame = ({ width, height, showPlaceholder, children }) => (
+const MediaFrame = ({ width, height, showPlaceholder, children, frameRef }) => (
   <div
+    ref={frameRef}
     className="pics-media relative bg-[#EFEAE5] border border-black/10 rounded-lg overflow-hidden"
     style={{ aspectRatio: `${width} / ${height}` }}
   >
@@ -46,20 +47,40 @@ const MediaFrame = ({ width, height, showPlaceholder, children }) => (
 
 const LazyImage = ({ src, alt = '', width, height, sizes }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isNearViewport, setIsNearViewport] = useState(false);
+  const frameRef = useRef(null);
+
+  useEffect(() => {
+    // Native lazy loading can fetch whole galleries several screens away on
+    // mobile. Reserve the same box, but request each image as it approaches.
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      setIsNearViewport(true);
+      observer.disconnect();
+    }, { rootMargin: '600px' });
+
+    if (frameRef.current) observer.observe(frameRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const imageProps = {
+    src, width, height, sizes, draggable: false,
+  };
 
   return (
-    <MediaFrame width={width} height={height} showPlaceholder={isLoading}>
-      <Image
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        sizes={sizes}
-        className={`transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
-        loading="lazy"
-        draggable={false}
-        onLoad={() => setIsLoading(false)}
-      />
+    <MediaFrame frameRef={frameRef} width={width} height={height} showPlaceholder={isLoading}>
+      {isNearViewport && (
+        <Image
+          {...imageProps}
+          alt={alt}
+          className={`transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+          loading="eager"
+          onLoad={() => setIsLoading(false)}
+        />
+      )}
+      <noscript>
+        <Image {...imageProps} alt={alt} loading="lazy" className="relative" />
+      </noscript>
     </MediaFrame>
   );
 };

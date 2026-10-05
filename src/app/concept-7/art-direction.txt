@@ -1,0 +1,7 @@
+Elsewhere / Concept 07
+Original landscape generated with the built-in imagegen tool.
+Website asset: public/concepts/elsewhere-portal.webp
+The original image was converted to WebP for web delivery with Sharp.
+
+Prompt:
+Use case: stylized-concept. Asset type: wide cinematic background image for an original creative developer portfolio website, concept called Elsewhere. Create a breathtaking, photorealistic surreal architectural landscape in a wide 16:9 composition, 2560x1440 if possible. A monumental dark oxidized bronze rectangular portal, tall with a clean rounded arch opening, stands alone on pale rose sand beside a perfectly still shallow reflective pool. Through the opening is a distant soft peach sunrise and misty mountains. Fine grass tufts and subtle wind-raked sand in the foreground, a muted lavender and dusty pink dawn sky occupying the top half. The sculptural portal occupies the right third, giving the left half clear atmospheric negative space for large pale typography which will be added in code. Premium architectural photography, 35mm lens, tactile natural materials, diffuse cinematic light, beautiful dark reflections, restrained warm film grain, impossible but believable. Quietly spectacular, collectible art direction. No people, no lettering, no logos, no watermark, no UI, no typography in the image.

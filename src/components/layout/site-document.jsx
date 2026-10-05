@@ -16,7 +16,9 @@ import {
   SITE_URL,
 } from "@/lib/site";
 
-const inter = Inter({ subsets: ['latin', 'cyrillic'], variable: '--font-sans' });
+// Other scripts remain available through unicode-range without preloading
+// them on every English visit. The Russian root supplies its own preload.
+const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
 // Site-wide Person node. Page-level graphs reference it by `PERSON_ID` rather
 // than repeating the author's details.
@@ -57,10 +59,11 @@ const personJsonLd = {
  * @param {string} [props.lang="en"] - Document language, e.g. "en" or "ru-KZ".
  * @param {boolean} [props.showHeader=true] - The Russian landing page is a
  *   standalone entry point and deliberately renders without site navigation.
+ * @param {string} [props.fontVariable] - A locale-specific next/font variable.
  */
-export default function SiteDocument({ children, lang = "en", showHeader = true }) {
+export default function SiteDocument({ children, lang = "en", showHeader = true, fontVariable = inter.variable }) {
   return (
-    <html lang={lang} className={cn("font-sans", inter.variable)}>
+    <html lang={lang} className={cn("font-sans", fontVariable)}>
       <head>
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />

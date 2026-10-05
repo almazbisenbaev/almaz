@@ -40,7 +40,7 @@ const Header = () => {
       <div className="container px-5">
         <div className="hdr-row flex items-start flex-col sm:flex-row sm:items-end gap-5 justify-between font-medium text-sm leading-tight">
 
-          <Link href="/" className="flex flex-col gap-1">
+          <Link href="/" prefetch={pathname === '/' ? false : null} className="flex flex-col gap-1">
             <div>Almaz Bissenbayev</div>
             <div className='opacity-65'>Web Developer</div>
           </Link>
@@ -62,6 +62,7 @@ const Header = () => {
                 <Link
                   key={href}
                   href={href}
+                  prefetch={pathname === href ? false : null}
                   className={linkClassName(href)}
                   aria-current={isActive(href) ? 'page' : undefined}
                 >

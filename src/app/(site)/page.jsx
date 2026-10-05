@@ -66,8 +66,8 @@ export default function Home() {
               what you have. I can help.
             </p>
           </div>
-          <Button href="/wordpress-developer" variant="black" className="shrink-0 whitespace-nowrap max-sm:w-full max-sm:px-4!">
-            <span>Explore services</span>
+          <Button href={PROFILES.linkedin} variant="black" className="shrink-0 whitespace-nowrap max-sm:w-full max-sm:px-4!">
+            <span>Work with me</span>
             <ArrowUpRight aria-hidden="true" size={20} className="shrink-0" />
           </Button>
         </section>

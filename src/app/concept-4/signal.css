@@ -1,0 +1,130 @@
+.signal-body { margin: 0; background: #080b14; color: #eeeff8; font-family: var(--signal-sans), sans-serif; -webkit-font-smoothing: antialiased; }
+html:has(.signal-body) { scroll-behavior: smooth; scroll-padding-top: 30px; }
+.signal { --signal-accent: #77b6ff; --signal-glow: #256cf322; --signal-line: #a2b0d22a; --signal-pad: clamp(24px, 5vw, 90px); overflow: clip; }
+.signal-frequency-1 { --signal-accent: #c396ff; --signal-glow: #a958f222; }
+.signal-frequency-2 { --signal-accent: #ffad89; --signal-glow: #f07b2522; }
+.signal, .signal * { box-sizing: border-box; }
+.signal ::selection { background: var(--signal-accent); color: #080b14; }
+.signal a { color: inherit; text-decoration: none; }
+.signal h1, .signal h2, .signal h3, .signal p { margin: 0; }
+.signal button { font: inherit; color: inherit; cursor: pointer; }
+.signal a:focus-visible, .signal button:focus-visible, .signal [tabindex='0']:focus-visible { outline: 2px solid var(--signal-accent); outline-offset: 7px; }
+.signal-skip { position: fixed; top: -100px; left: 20px; z-index: 50; padding: 15px; background: #fff; color: #111 !important; }
+.signal-skip:focus { top: 10px; }
+.signal-header { position: absolute; top: 0; left: 0; right: 0; z-index: 3; display: flex; align-items: center; gap: 29px; margin: 0 var(--signal-pad); height: 108px; border-bottom: 1px solid var(--signal-line); }
+.signal-logo { font-family: var(--signal-display), sans-serif; font-size: 44px; font-weight: 700; letter-spacing: -5px; }
+.signal-logo span { color: var(--signal-accent); font-weight: 400; font-size: 32px; margin-left: 5px; }
+.signal-header-label { font: 8px/1.8 var(--signal-mono), monospace; color: #919cb6; letter-spacing: .06em; }
+.signal-header nav { display: flex; gap: 42px; margin-left: auto; font-size: 12px; }
+.signal-header nav a:hover { color: var(--signal-accent); }
+.signal-header nav a:last-child { display: flex; gap: 25px; }
+.signal-hero { min-height: 870px; min-height: max(870px, 100svh); position: relative; isolation: isolate; padding: 210px var(--signal-pad) 130px; display: flex; align-items: center; background: radial-gradient(ellipse at 72% 49%, #0e182a, #080b14 70%); }
+.signal-field { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
+.signal-hero-content { width: 100%; pointer-events: none; }
+.signal-hero-content a { pointer-events: auto; }
+.signal-eyebrow, .signal-hero-console, .signal-orbit-note, .signal-section-label, .signal-project-info > div > span, .signal-offering-panel > span, .signal-offering-panel small, .signal-manifesto > span:last-child, .signal-footer-bottom { font: 9px/1.6 var(--signal-mono), monospace; letter-spacing: .075em; }
+.signal-eyebrow { display: flex; align-items: center; gap: 12px; color: #b5c3df; }
+.signal-eyebrow i { display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--signal-accent); box-shadow: 0 0 16px var(--signal-accent); }
+.signal h1 { font: 700 clamp(74px, 8.5vw, 150px)/.98 var(--signal-display), sans-serif; letter-spacing: -.07em; margin: 42px 0 37px; max-width: 1100px; animation: signal-arrive 1.2s cubic-bezier(.2,.8,.2,1) both; }
+.signal h1 span { color: var(--signal-accent); text-shadow: 0 0 60px var(--signal-glow); }
+.signal-hero-content > p { font-size: 16px; line-height: 1.8; color: #b1bdd1; }
+.signal-cta { display: inline-flex; align-items: center; gap: 45px; font-size: 12px; padding: 15px 0; border-bottom: 1px solid #8d9db855; margin-top: 30px; transition: color .2s, gap .3s; }
+.signal-cta:hover { color: var(--signal-accent); gap: 60px; }
+.signal-cta span { font-size: 20px; }
+.signal-orbit-note { position: absolute; top: 47%; right: var(--signal-pad); color: #8997b4; font-size: 7px; display: flex; align-items: center; gap: 13px; writing-mode: vertical-rl; }
+.signal-orbit-note i { height: 60px; width: 1px; background: #8497ba55; }
+.signal-hero-console { position: absolute; bottom: 0; left: var(--signal-pad); right: var(--signal-pad); min-height: 87px; border-top: 1px solid var(--signal-line); display: flex; align-items: center; gap: 36px; color: #9ca9c2; font-size: 8px; }
+.signal-spectrum { margin-left: auto; display: flex; align-items: center; gap: 20px; }
+.signal-spectrum > span { color: #7e8aa3; }
+.signal-spectrum button { display: flex; align-items: center; gap: 10px; border: 1px solid #9aacd333; background: #0a1020aa; border-radius: 30px; padding: 12px 18px; font: 10px var(--signal-sans), sans-serif; min-width: 157px; }
+.signal-spectrum button > span { margin-left: auto; font-size: 16px; }
+.signal-spectrum button i { width: 6px; height: 6px; border-radius: 50%; background: var(--signal-accent); }
+.signal-motion { border: 0; background: transparent; padding: 12px 0; font-size: 9px !important; }
+.signal-hero-console > a { margin-left: auto; color: #c4ccdc; }
+.signal-section { padding: 110px var(--signal-pad); }
+.signal-section-label { display: flex; align-items: center; justify-content: space-between; color: #919fbc; }
+.signal-work { background: #0d111c; }
+.signal-work-heading { display: flex; justify-content: space-between; align-items: end; gap: 60px; margin: 54px 0 67px; }
+.signal h2 { font: 600 clamp(42px, 5.4vw, 90px)/1.03 var(--signal-display), sans-serif; letter-spacing: -.06em; }
+.signal h2 span { color: #75839f; }
+.signal-work-heading p { max-width: 280px; color: #a1adc1; line-height: 1.8; font-size: 13px; }
+.signal-projects { display: grid; grid-template-columns: 1.2fr 1fr; gap: 55px; align-items: start; }
+.signal-project { min-width: 0; display: block; }
+.signal-project-monitask { margin-top: 190px; }
+.signal-project-media { position: relative; aspect-ratio: 1.14; overflow: hidden; background: #19233b; }
+.signal-project-media::after { content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 100px #070b1533; pointer-events: none; }
+.signal-project-media img { object-fit: cover; object-position: top left; transform: scale(1.04); filter: saturate(.7); transition: transform 1s cubic-bezier(.2,.8,.2,1), filter .6s; }
+.signal-project-monitask .signal-project-media { aspect-ratio: .95; background: #132e39; }
+.signal-project-monitask .signal-project-media img { object-fit: contain; padding: 25px; transform: rotate(-8deg) scale(1.4); object-position: center; }
+.signal-project:hover .signal-project-media img { transform: scale(1); filter: saturate(1); }
+.signal-project-monitask:hover .signal-project-media img { transform: rotate(0) scale(1.25); }
+.signal-project-visit { position: absolute; z-index: 1; bottom: 22px; right: 22px; background: #edf1fa; color: #141a26; padding: 12px 18px; border-radius: 30px; font-size: 11px; }
+.signal-project-info { padding: 25px 0 18px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--signal-line); }
+.signal-project-info > div > span { font-size: 8px; color: #9daac0; }
+.signal-project-info h3 { font: 600 28px var(--signal-display), sans-serif; letter-spacing: -.04em; margin-top: 7px; }
+.signal-project-arrow { font-size: 27px; color: var(--signal-accent); }
+.signal-project > p { font-size: 12px; line-height: 1.8; color: #929fb8; margin-top: 15px; }
+.signal-practice { border-bottom: 1px solid var(--signal-line); }
+.signal-practice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; margin-top: 72px; }
+.signal-practice h2 { font-size: clamp(48px, 5vw, 85px); }
+.signal-practice h2 span { color: var(--signal-accent); }
+.signal-tabs { display: flex; gap: 28px; border-bottom: 1px solid var(--signal-line); }
+.signal-tabs button { background: transparent; border: 0; border-bottom: 2px solid transparent; padding: 0 0 17px; font-size: 12px; color: #919fba; }
+.signal-tabs button[aria-selected='true'] { border-color: var(--signal-accent); color: #fff; }
+.signal-offering-panel { padding-top: 34px; }
+.signal-offering-panel > span { color: var(--signal-accent); font-size: 8px; }
+.signal-offering-panel p { font-size: 22px; line-height: 1.55; letter-spacing: -.015em; margin: 20px 0 28px; min-height: 136px; }
+.signal-offering-panel small { color: #929fba; font-size: 9px; display: block; }
+.signal-offering-panel > a { display: inline-block; margin-top: 36px; font-size: 12px; border-bottom: 1px solid #a2b0d244; padding-bottom: 9px; }
+.signal-manifesto { display: flex; align-items: center; justify-content: space-between; gap: 50px; padding: 66px var(--signal-pad); }
+.signal-manifesto-star { font-size: 76px; color: var(--signal-accent); }
+.signal-manifesto p { font-size: 27px; line-height: 1.4; letter-spacing: -.03em; margin-right: auto; color: #8795ae; }
+.signal-manifesto strong { font-weight: 400; color: #dbe2f0; }
+.signal-manifesto > span:last-child { font-size: 8px; color: #8b99b3; }
+.signal-contact { background: radial-gradient(ellipse at 20% 120%, var(--signal-glow), #0d111c 80%); padding-bottom: 30px; }
+.signal-contact-main { font: 700 clamp(78px, 10.5vw, 175px)/.97 var(--signal-display), sans-serif; letter-spacing: -.065em; display: block; position: relative; margin: 64px 0 85px; }
+.signal-contact-main > span:first-child { color: var(--signal-accent); }
+.signal-contact-arrow { position: absolute; right: 4%; top: 12%; font-size: .85em; transition: transform .4s; }
+.signal-contact-main:hover .signal-contact-arrow { transform: translate(12px, -12px); }
+.signal-footer-bottom { border-top: 1px solid var(--signal-line); padding-top: 26px; display: flex; justify-content: space-between; gap: 25px; font-size: 8px; color: #a3afc4; }
+.signal-footer-bottom nav { display: flex; gap: 14px; }
+.signal-footer-bottom nav > span { color: #7e8ba5; margin-right: 8px; }
+@keyframes signal-arrive { from { opacity: 0; transform: translateY(25px); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
+@media (max-width: 1000px) { .signal-hero { min-height: 790px; padding-top: 160px; } .signal h1 { font-size: 10vw; } .signal-projects { gap: 30px; } .signal-practice-grid { gap: 50px; } .signal-tabs { gap: 20px; } .signal-footer-bottom nav > span { display: none; } }
+@media (max-width: 760px) {
+  .signal-header { height: 90px; gap: 17px; } .signal-logo { font-size: 38px; } .signal-header-label { font-size: 6px; } .signal-header nav { font-size: 11px; } .signal-header nav > a:first-child { display: none; } .signal-header nav a:last-child { gap: 12px; }
+  .signal-hero { min-height: 860px; min-height: max(860px, 100svh); padding-top: 195px; padding-bottom: 160px; align-items: flex-end; } .signal-field { opacity: .85; } .signal-eyebrow { font-size: 7px; } .signal h1 { font-size: clamp(50px, 10.6vw, 80px); margin: 30px 0 27px; } .signal-hero-content > p { font-size: 13px; } .signal-orbit-note { top: 17%; font-size: 6px; } .signal-hero-console { gap: 17px; min-height: 112px; flex-wrap: wrap; padding: 19px 0; font-size: 6px; justify-content: space-between; } .signal-hero-console > span { width: 100%; } .signal-spectrum { margin-left: 0; gap: 0; } .signal-spectrum > span { display: none; } .signal-spectrum button { min-width: 141px; padding: 9px 12px; font-size: 9px; } .signal-motion { font-size: 8px !important; } .signal-hero-console > a { display: none; }
+  .signal-section { padding: 66px var(--signal-pad); } .signal-section-label { font-size: 7px; gap: 25px; } .signal-section-label > span:last-child { display: none; } .signal-work-heading { display: block; margin: 38px 0 40px; } .signal h2 { font-size: clamp(42px, 8vw, 64px); } .signal-work-heading p { margin-top: 26px; font-size: 12px; } .signal-projects { grid-template-columns: 1fr; gap: 46px; } .signal-project-monitask { margin-top: 0; } .signal-project-media { aspect-ratio: 1.15; } .signal-project-monitask .signal-project-media { aspect-ratio: 1.2; } .signal-project-info h3 { font-size: 24px; } .signal-project-info > div > span { font-size: 7px; } .signal-project-visit { bottom: 15px; right: 15px; padding: 10px 15px; font-size: 10px; } .signal-practice-grid { grid-template-columns: 1fr; gap: 45px; margin-top: 40px; } .signal-practice h2 br:last-child { display: none; } .signal-tabs { gap: 25px; } .signal-tabs button { font-size: 11px; } .signal-offering-panel p { font-size: 21px; min-height: 145px; } .signal-manifesto { gap: 20px; padding: 40px var(--signal-pad); } .signal-manifesto-star { font-size: 45px; } .signal-manifesto p { font-size: 18px; } .signal-manifesto > span:last-child { display: none; } .signal-contact { padding-bottom: 26px; } .signal-contact-main { font-size: clamp(57px, 11vw, 90px); margin: 42px 0 58px; } .signal-contact-arrow { right: 0; top: 30%; font-size: .7em; } .signal-footer-bottom { flex-wrap: wrap; gap: 20px; font-size: 7px; } .signal-footer-bottom > span { width: 100%; } .signal-footer-bottom nav { margin-left: auto; gap: 11px; }
+}
+@media (max-width: 370px) { .signal-header-label { display: none; } .signal h1 { font-size: 11vw; } .signal-tabs { gap: 20px; } .signal-offering-panel small { font-size: 8px; } }
+@media (prefers-reduced-motion: reduce) { html:has(.signal-body) { scroll-behavior: auto; } .signal * { animation: none !important; transition: none !important; } }
+/* A native-scroll journey through dimensional project frames. */
+.signal-hero { min-height: max(900px, 100svh); }
+.signal h1 { font-size: clamp(90px, 10.4vw, 177px); line-height: .89; max-width: 1350px; }
+.signal h1 span { background: linear-gradient(120deg, #f1f6ff, var(--signal-accent) 48%, #747ff5); background-clip: text; -webkit-text-fill-color: transparent; }
+.signal-work { padding-bottom: 45px; }
+.signal-work .signal-projects { display: none; }
+.signal-work-heading { margin-bottom: 0; }
+.signal-flight { height: 280svh; background: #0b1020; }
+.signal-flight-stage { height: 100svh; min-height: 640px; position: sticky; top: 0; overflow: clip; isolation: isolate; }
+.signal-flight-grid { position: absolute; inset: -20%; z-index: -1; background-image: linear-gradient(#7a9ef21c 1px, transparent 1px), linear-gradient(90deg, #7a9ef21c 1px, transparent 1px); background-size: 70px 70px; transform: perspective(600px) rotateX(50deg) scale(1.5) translateY(calc(var(--flight, 0) * 160px)); mask-image: linear-gradient(transparent, #000 45%, transparent); }
+.signal-flight-stage::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse, transparent 30%, #080b14aa); pointer-events: none; z-index: -1; }
+.signal-flight-hud { position: absolute; top: 38px; left: var(--signal-pad); right: var(--signal-pad); display: flex; justify-content: space-between; font: 8px var(--signal-mono), monospace; color: #9cacce; letter-spacing: .1em; }
+.signal-flight-label { position: absolute; top: 28%; left: 3%; font: 8px var(--signal-mono), monospace; color: #8492b155; line-height: 2; }
+.signal-flight-label b { font: 700 24vw/.9 var(--signal-display), sans-serif; letter-spacing: -.1em; color: transparent; -webkit-text-stroke: 1px #8aacf222; }
+.signal-flight-world { position: absolute; inset: 12% 0 16%; perspective: 1400px; transform-style: preserve-3d; }
+.signal-flight-card { position: absolute; left: 20%; top: 0; width: 60%; height: 100%; border: 1px solid #8ab4ff66; background: #111a2c; border-radius: 10px; overflow: hidden; box-shadow: 0 20px 100px #0009, 0 0 50px #528cff0c; transform: translateX(calc(var(--slot) * 340px)) translateY(calc(var(--slot) * 25px)) translateZ(calc(var(--distance) * -720px)) rotateY(calc(var(--slot) * -29deg)) rotateZ(calc(var(--slot) * 4deg)); opacity: calc(1 - var(--distance) * .48); }
+.signal-flight-card-head { height: 43px; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; color: #9badce; font: 8px var(--signal-mono), monospace; }
+.signal-flight-image { position: absolute; inset: 43px 0 92px; background: #eaeaea; }
+.signal-flight-image img { object-fit: cover; object-position: top; }
+.signal-flight-card-foot { position: absolute; bottom: 0; left: 0; right: 0; height: 92px; padding: 18px 22px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.signal-flight-card-foot h3 { font: 600 27px var(--signal-display), sans-serif; letter-spacing: -.04em; }
+.signal-flight-card-foot p { margin-top: 5px; font-size: 10px; color: #93a5c7; }
+.signal-flight-card-foot > span { font-size: 11px; color: var(--signal-accent); }
+.signal-flight-nav { position: absolute; bottom: 34px; left: 0; right: 0; display: flex; justify-content: center; gap: 13px; }
+.signal-flight-nav button { padding: 12px 18px; border: 1px solid #87a7e43b; border-radius: 30px; background: #111b2bbb; display: flex; align-items: center; gap: 10px; font-size: 10px; color: #8d9ab3; }
+.signal-flight-nav button[aria-pressed='true'] { color: #08101a; background: var(--signal-accent); border-color: var(--signal-accent); }
+.signal-flight-nav button span { font: 8px var(--signal-mono), monospace; }
+.signal-flight-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--signal-accent); transform: scaleX(var(--flight, 0)); transform-origin: left; }
+@media (max-width: 760px) { .signal h1 { font-size: clamp(47px, 11.1vw, 84px); line-height: .96; } .signal-hero { min-height: 860px; } .signal-flight { height: 240svh; } .signal-flight-stage { min-height: 580px; } .signal-flight-world { inset: 17% 0 22%; } .signal-flight-card { left: 8%; width: 84%; transform: translateX(calc(var(--slot) * 155px)) translateY(calc(var(--slot) * 20px)) translateZ(calc(var(--distance) * -800px)) rotateY(calc(var(--slot) * -23deg)); } .signal-flight-card-head { padding: 0 13px; font-size: 6px; } .signal-flight-card-foot { padding: 14px; height: 94px; } .signal-flight-card-foot h3 { font-size: 22px; } .signal-flight-card-foot p { font-size: 9px; max-width: 145px; } .signal-flight-card-foot > span { font-size: 9px; } .signal-flight-nav { gap: 7px; bottom: 52px; padding: 0 15px; } .signal-flight-nav button { font-size: 8px; padding: 10px 12px; gap: 6px; } .signal-flight-nav button span { display: none; } .signal-flight-hud { font-size: 6px; } }
+@media (prefers-reduced-motion: reduce) { .signal-flight { height: auto; } .signal-flight-stage { height: auto; position: relative; padding: 90px var(--signal-pad) 40px; } .signal-flight-world { position: static; display: grid; gap: 28px; } .signal-flight-card { position: relative; inset: auto; width: 100%; height: 440px; transform: none !important; opacity: 1 !important; } .signal-flight-nav, .signal-flight-label, .signal-flight-progress { display: none; } }
