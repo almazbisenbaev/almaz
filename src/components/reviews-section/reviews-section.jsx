@@ -2,8 +2,8 @@ import ArrowUpRight from '@/components/icons/arrow-up-right';
 import { reviews } from '@/data/reviews';
 import { PROFILES } from '@/lib/site';
 
-const ReviewCard = ({ quote }) => (
-  <figure className="review-card bg-white rounded-3xl">
+export const ReviewCard = ({ quote, topic, ...rest }) => (
+  <figure className="review-card bg-white rounded-3xl" {...rest}>
     <svg
       className="review-card-mark"
       xmlns="http://www.w3.org/2000/svg"
@@ -16,6 +16,7 @@ const ReviewCard = ({ quote }) => (
     <blockquote className="review-card-text">{quote}</blockquote>
 
     <figcaption className="review-card-footer">
+      {topic && <strong className="mb-3 block text-sm font-semibold">{topic}</strong>}
       <a
         href={PROFILES.upwork}
         target="_blank"

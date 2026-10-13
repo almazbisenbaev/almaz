@@ -37,6 +37,12 @@ export default function sitemap() {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    {
+      url: `${SITE_URL}/silverskin`,
+      lastModified: buildDate,
+      changeFrequency: 'yearly',
+      priority: 0.8,
+    },
     ...internalPosts.map((post) => ({
       url: `${SITE_URL}${postPath(post)}`,
       lastModified: buildDate,

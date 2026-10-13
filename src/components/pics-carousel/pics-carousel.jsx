@@ -166,9 +166,12 @@ const renderMedia = (item, sizes) =>
  * @param {Object} props
  * @param {Array} props.images - `media` entries from `@/data/works`.
  * @param {string} [props.label="Project"] - Names the region for screen readers.
+ * @param {boolean} [props.compact=false] - Contain the gallery inside a project card.
  */
-export default function PicsCarousel({ images, label = 'Project' }) {
+export default function PicsCarousel({ images, label = 'Project', compact = false }) {
   const maxAspect = Math.max(1, ...images.map(({ width, height }) => width / height));
+  const classes = `pics-carousel${compact ? ' pics-carousel--compact' : ''}`;
+  const compactSizes = '(max-width: 767px) 100vw, 50vw';
   const viewportId = useId();
   const instructionsId = `${viewportId}-instructions`;
   const progressRef = useRef(null);
@@ -282,16 +285,16 @@ export default function PicsCarousel({ images, label = 'Project' }) {
 
   if (images.length === 1) {
     return (
-      <div className="pics-carousel pics-carousel--single">
+      <div className={`${classes} pics-carousel--single`}>
         {/* Single item is width-constrained by the page container, not height. */}
-        {renderMedia(images[0], '100vw')}
+        {renderMedia(images[0], compact ? compactSizes : '100vw')}
       </div>
     );
   }
 
   return (
     <div
-      className="pics-carousel"
+      className={classes}
       role="region"
       aria-roledescription="carousel"
       aria-label={`${label} gallery`}
@@ -318,7 +321,7 @@ export default function PicsCarousel({ images, label = 'Project' }) {
               aria-roledescription="slide"
               aria-label={`${index + 1} of ${images.length}`}
             >
-              {renderMedia(item, slideSizes(item.width, item.height, maxAspect))}
+              {renderMedia(item, compact ? compactSizes : slideSizes(item.width, item.height, maxAspect))}
             </div>
           ))}
         </div>

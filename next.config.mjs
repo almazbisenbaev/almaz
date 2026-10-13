@@ -112,6 +112,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/silverskin-v2',
+        destination: '/silverskin',
+        permanent: true,
+      },
+      {
         source: '/ru',
         destination: '/razrabotka-saitov-kazakhstan',
         permanent: true,

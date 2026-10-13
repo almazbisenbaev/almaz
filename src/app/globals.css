@@ -482,6 +482,11 @@ a {
   outline: none;
 }
 
+.pics-carousel-viewport:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 5px;
+}
+
 @media (max-width: 639px) {
   .pics-carousel-slide .pics-media {
     height: min(240px, calc((100vw - 5rem) / var(--pics-max-aspect, 2)));
@@ -509,6 +514,20 @@ a {
   .pics-carousel-slide .pics-media {
     height: 440px;
   }
+}
+
+/* Compact galleries use their card width, including in a two-column layout.
+   Leave a glimpse of the next slide without cropping the current screenshot. */
+.pics-carousel--compact {
+  container-type: inline-size;
+}
+
+.pics-carousel--compact .pics-carousel-viewport {
+  overflow: hidden;
+}
+
+.pics-carousel--compact .pics-carousel-slide .pics-media {
+  height: min(280px, calc((100cqw - 2rem) / var(--pics-max-aspect, 2)));
 }
 
 

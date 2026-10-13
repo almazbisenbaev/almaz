@@ -21,6 +21,48 @@ const ArrowOut = () => (
   </svg>
 );
 
+/** A shared project entry; compact entries keep the gallery and result together. */
+export function PortfolioProject({ project, compact = false, ...rest }) {
+  return (
+    <article className={compact ? "min-w-0 flex flex-col" : undefined} {...rest}>
+      {project.media?.length > 0 && (
+        <div className={compact ? "mb-6" : "mb-14"}>
+          <PicsCarousel images={project.media} label={project.name} compact={compact} />
+        </div>
+      )}
+
+      <div className={compact ? "grid gap-4" : "grid grid-cols-1 md:grid-cols-3 mt-8"}>
+        <div>
+          <h3 className="text-2xl font-bold mb-2">{project.name}</h3>
+          <div className="flex flex-wrap gap-2 text-xs">
+            <div>{project.year}</div>
+            {project.client && (
+              <>
+                <div>•</div>
+                <div>For <a target="_blank" rel="noopener noreferrer" href={project.clientUrl} className="hover:underline">{project.client}</a></div>
+              </>
+            )}
+          </div>
+        </div>
+        <div className={compact ? "text-base leading-relaxed text-neutral-600" : "col-span-1 md:col-span-2 pt-2"}>
+          <div className={compact ? "mb-3" : "text-sm mb-3"}>{project.result || project.description}</div>
+          {compact ? (
+            <div className="text-xs"><strong className="font-semibold">My role:</strong> {project.category}</div>
+          ) : (
+            <div className="flex flex-wrap gap-2 mb-2 text-xs font-medium">
+              {project.skills?.map((skill) => <div key={skill}>{skill}</div>)}
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className={compact ? "mt-auto pt-6" : "-ml-1 mt-10"}>
+        <Button href={project.url}>{project.buttonText}<ArrowOut /></Button>
+      </div>
+    </article>
+  );
+}
+
 /**
  * "Recent projects" list, shared between the home page and the WordPress
  * landing page. Entries come from `@/data/works`.
@@ -48,53 +90,7 @@ export default function PortfolioSection({ items, title = "Recent projects", des
 
       {items.map((project) => (
         <div key={project.title}>
-
-          {project.media?.length > 0 && (
-            <div className="mb-14">
-              <PicsCarousel images={project.media} label={project.name} />
-            </div>
-          )}
-
-          <div className="grid grid-cols-1 md:grid-cols-3 mt-8">
-            <div>
-              <h3 className="text-2xl font-bold mb-2">{project.name}</h3>
-              <div className="flex gap-2 text-xs">
-                <div>{project.year}</div>
-                {project.client && (
-                  <>
-                    <div>•</div>
-                    <div>
-                      For{" "}
-                      <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href={project.clientUrl}
-                        className="hover:underline"
-                      >
-                        {project.client}
-                      </a>
-                    </div>
-                  </>
-                )}
-              </div>
-            </div>
-            <div className="col-span-1 md:col-span-2 pt-2">
-              <div className="text-sm mb-3">{project.description}</div>
-              <div className="flex flex-wrap gap-2 mb-2 text-xs font-medium">
-                {project.skills?.map((skill) => (
-                  <div key={skill}>{skill}</div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="-ml-1 mt-10">
-            <Button href={project.url}>
-              {project.buttonText}
-              <ArrowOut />
-            </Button>
-          </div>
-
+          <PortfolioProject project={project} />
           <Separator className="my-10" />
 
         </div>

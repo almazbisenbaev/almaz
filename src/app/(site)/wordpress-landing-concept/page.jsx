@@ -1,402 +1,171 @@
+import Image from "next/image";
+import { ArrowDown, ArrowUpRight, Wrench, ShoppingBag, Blocks, PanelsTopLeft, Paintbrush, RefreshCw } from "lucide-react";
+import Button from "@/components/button/button";
+import FaqAccordion from "@/components/faq-accordion/faq-accordion";
+import { PortfolioProject } from "@/components/portfolio-section/portfolio-section";
+import { ReviewCard } from "@/components/reviews-section/reviews-section";
+import ExternalArrow from "@/components/icons/arrow-up-right";
+import { Separator } from "@/components/ui/separator";
 import { findWork } from "@/data/works";
-import { AUTHOR_NAME, PROFILES } from "@/lib/site";
+import { PROFILES } from "@/lib/site";
+import LandingMotion from "./landing-motion";
+import "./landing.css";
 
 export const metadata = {
-  title: "WordPress Landing Concept | Content Outline",
-  description: "A working content outline for Almaz's WordPress landing page.",
+  title: "WordPress & WooCommerce Developer | Fix, Improve, Build",
+  description: "I fix, improve, and build WordPress websites. WooCommerce, custom features, performance improvements, and ongoing development with Almaz Bisenbaev.",
   alternates: { canonical: "/wordpress-landing-concept" },
-  robots: {
-    index: false,
-    follow: true,
-    googleBot: { index: false, follow: true },
-  },
+  robots: { index: false, follow: true, googleBot: { index: false, follow: true } },
 };
 
-// These describe delivered functionality documented in the existing portfolio,
-// not unverified changes to a client's revenue, traffic, or conversion rate.
-const selectedWork = [
-  {
-    name: "Silverskin Coffee",
-    id: "work-silverskin-coffee",
-    result:
-      "A WooCommerce store for selling coffee beans, with product options, a cart, and checkout.",
-  },
-  {
-    name: "Monitask",
-    id: "work-monitask",
-    result:
-      "A multilingual WordPress site with hundreds of pages generated and updated automatically.",
-  },
-  {
-    name: "Muafaktur",
-    id: "work-muafaktur",
-    result:
-      "A WooCommerce website presenting beauty products and training courses in one place.",
-  },
-  {
-    name: "Funky Ramen",
-    id: "work-funky-ramen",
-    result:
-      "A WordPress website where visitors can explore the café, read its menu, and view it on mobile.",
-  },
-];
-
+// Client-facing concept. Prices, availability, response SLAs, and a fixed support
+// window have not been confirmed, so the copy explains how terms are agreed.
 const services = [
-  {
-    title: "New WordPress websites",
-    detail:
-      "Turn your design or agreed brief into a WordPress website with pages your team can edit. Help visitors find your services, understand your business, and take the next step.",
-    proof: {
-      href: "#work-funky-ramen",
-      name: "Funky Ramen",
-      detail: "a café website with a menu, business information, and mobile layouts",
-    },
-  },
-  {
-    title: "WooCommerce stores & checkout",
-    detail:
-      "Build or extend a store, fix checkout problems, and improve product, payment, and shipping functionality.",
-    proof: {
-      href: "#work-silverskin-coffee",
-      name: "Silverskin Coffee",
-      detail: "a coffee store with product options, a cart, and checkout",
-    },
-  },
-  {
-    title: "Website improvements & redesigns",
-    detail:
-      "Update existing pages, work with Elementor, and fix mobile layouts so visitors can use the site comfortably.",
-  },
-  {
-    title: "Custom functionality & integrations",
-    detail:
-      "Connect external services, build features beyond standard plugins, and automate multilingual content workflows.",
-    proof: {
-      href: "#work-monitask",
-      name: "Monitask",
-      detail: "hundreds of multilingual pages generated and updated automatically",
-    },
-  },
-  {
-    title: "WordPress fixes & performance",
-    detail:
-      "Diagnose bugs and plugin conflicts, address slow loading, and explain what changed with before-and-after checks.",
-  },
-  {
-    title: "Ongoing development, maintenance & migrations",
-    detail:
-      "Continue improving an existing site, maintain its agreed setup, or move it to a new host. [Confirm the maintenance tasks and support terms offered.]",
-  },
+  { icon: Wrench, title: "WordPress fixes & speed", description: "Fix slow pages, broken forms, and plugin conflicts. I find the cause, make the fix, and test it." },
+  { icon: ShoppingBag, title: "WooCommerce & checkout", description: "Fix checkout errors, add product options or payments, or build a complete WooCommerce store." },
+  { icon: Blocks, title: "Custom features & integrations", description: "Connect tools, import data, and automate multilingual content updates when existing plugins aren't enough." },
+  { icon: PanelsTopLeft, title: "New WordPress websites", description: "Turn Figma designs or a brief into a mobile-friendly site with text and images you can edit." },
+  { icon: Paintbrush, title: "Elementor & site improvements", description: "Rework pages, fix mobile layouts, or implement a new design in Elementor without a full rebuild." },
+  { icon: RefreshCw, title: "Maintenance & ongoing work", description: "Keep WordPress updated, add features, migrate hosts, or take over an unfinished project." },
 ];
 
-// Verbatim excerpts from src/data/reviews.js. Names are not supplied there.
-const testimonialCandidates = [
-  {
-    focus: "WordPress improvements",
-    quote:
-      "Almaz did an excellent job developing my WordPress portfolio website. He handled the theme change and improvements with great skill and attention to detail.",
-  },
-  {
-    focus: "Communication",
-    quote:
-      "Almaz was great at setting up our website and very responsive with communications. Highly recommend if you need Wordpress assistance.",
-  },
-  {
-    focus: "Handover",
-    quote:
-      "He was so communicative and even made me a guide on maintaining what he had completed to make sure I was able to utilize all of the things he set in place.",
-  },
+const projects = [
+  { ...findWork("Silverskin Coffee"), id: "work-silverskin", result: "Choose coffee by grind and weight, then buy through a WooCommerce cart and checkout." },
+  { ...findWork("Monitask"), id: "work-monitask", result: "Hundreds of multilingual WordPress pages, generated and updated automatically." },
+  { ...findWork("Funky Ramen"), id: "work-funky", result: "A café's menu and story in a custom WordPress site that works on mobile." },
+  { ...findWork("Muafaktur"), id: "work-muafaktur", result: "Beauty products and training courses in one WooCommerce site, with dedicated product and course pages." },
+];
+
+// Verbatim excerpts from src/data/reviews.js. No client names were supplied.
+const testimonials = [
+  { topic: "Progress updates & results", quote: "Communication was smooth, and he always kept me updated on progress. The site now looks more professional and works perfectly." },
+  { topic: "A repeat client", quote: "This is a second time dealing with him, both times he delivered the job well." },
+  { topic: "A helpful handover", quote: "He was so communicative and even made me a guide on maintaining what he had completed to make sure I was able to utilize all of the things he set in place." },
+];
+
+const steps = [
+  { title: "Describe the job.", text: "Send your site or designs and what you need to change." },
+  { title: "Agree on scope & price.", text: "You'll know what's included, how we'll test it, and the cost and timing before work starts." },
+  { title: "Review a preview.", text: "Try the pages or features and give feedback before they go live." },
+  { title: "Launch & hand over.", text: "We test the relevant layouts, forms, or checkout. You get the agreed access and guidance for using the site." },
 ];
 
 const faqs = [
-  {
-    question: "Can you improve my existing site or take over an unfinished project?",
-    direction: "Explain the initial review and how we decide between fixes and a rebuild.",
-  },
-  {
-    question: "Can you work with my designer, developer, or agency?",
-    direction: "Cover Figma handoffs and collaboration. [Confirm white-label arrangements and availability.]",
-  },
-  {
-    question: "What do you need before we start?",
-    direction: "Start with your website URL or project idea, what needs to change, and a screenshot or example if useful. Include a budget or deadline if known. A finished brief is not required for the first message; arrange secure access after agreeing on the next step.",
-  },
-  {
-    question: "Where are you based, and when can we talk?",
-    direction: "Kazakhstan, UTC+5. [Confirm working hours, overlap, and response time.]",
-  },
-  {
-    question: "Do you use contracts, and can you sign an NDA?",
-    direction: "[Confirm contract and NDA process before writing the answer.]",
-  },
-  {
-    question: "How do international payments and invoices work?",
-    direction: "[Confirm currencies, payment methods, invoicing, deposit, and milestones.]",
-  },
-  {
-    question: "Who owns the code, accounts, and finished website?",
-    direction: "[Confirm handover and ownership terms; distinguish custom work from third-party licenses.]",
-  },
-  {
-    question: "How long will the project take?",
-    direction: "Explain scope, content readiness, integrations, and feedback dependencies. [Add realistic ranges once agreed.]",
-  },
-  {
-    question: "How do revisions and requests outside the scope work?",
-    direction: "[Confirm included review rounds and how extra work is estimated and approved.]",
-  },
-  {
-    question: "Will I be able to edit the site, and do you help with hosting?",
-    direction: "Describe editable content, handover guidance, hosting setup, migrations, and separate provider costs. [Confirm responsibilities.]",
-  },
-  {
-    question: "What happens if something breaks after launch?",
-    direction: "[Define the bug-fix window, what it covers, and how to request help.]",
-  },
-  {
-    question: "Can we keep working together after launch?",
-    direction: "Explain ongoing improvements and maintenance. [Confirm packages, availability, and response commitments.]",
-  },
+  { question: "Do I need finished designs?", answer: "No. A brief and a few examples are enough to start. Design and planning can be included if needed." },
+  { question: "What's your time zone?", answer: "Kazakhstan, UTC+5. I work remotely; we agree on overlap hours and calls for your project." },
+  { question: "How do payments, contracts, and NDAs work?", answer: "We agree on payment method, currency, milestones, and contract or NDA requirements before starting. Mention any requirements in your first message." },
+  { question: "Can I edit the site myself?", answer: "For new builds, we plan the text, images, and products you'll manage. For existing sites, I check what your theme or builder supports." },
+  { question: "Who owns the code and files?", answer: "We agree on ownership, files, and account access before starting. Third-party themes, plugins, and other assets keep their own license terms." },
+  { question: "What if something breaks after launch?", answer: "Send the affected page and what happened. The project scope defines the support period and covered fixes; other work is quoted separately." },
 ];
+
+function Arrow({ className = "", size = 21 }) {
+  return <ArrowUpRight size={size} strokeWidth={1.7} aria-hidden="true" className={className} />;
+}
+
+function Label({ children }) {
+  return <p className="block-header-title wp-label">{children}</p>;
+}
+
+function Asterisk({ className = "" }) {
+  return <svg className={className} viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M50 5v90M11 27.5l78 45M11 72.5l78-45" stroke="currentColor" strokeWidth="16" /></svg>;
+}
 
 export default function WordPressLandingConceptPage() {
   return (
-    <div className="container px-5 py-12 sm:py-20">
-      <div className="article max-w-3xl mx-auto [&_a]:underline [&_a]:underline-offset-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol>li]:mb-3 [&_dl>div]:mb-4 [&_blockquote]:pl-5">
-      <header>
-        <h1 className="text-3xl sm:text-5xl mt-0! leading-tight">WordPress landing page: content outline</h1>
-        <p>Working draft for content review. Section order, sample copy, and open decisions.</p>
-        <ul>
-          <li><strong>Focus:</strong> WordPress and WooCommerce.</li>
-          <li><strong>Primary audience:</strong> WordPress site owners and teams planning a new website or store.</li>
-          <li><strong>Secondary audience:</strong> agencies looking for a development partner.</li>
-          <li><strong>Conversion:</strong> start a conversation about a specific project.</li>
-        </ul>
-        <p>
-          These are proposed positioning choices. Text in [square brackets] needs
-          confirmation. Examples below draw on the existing website; business
-          terms are still open for review.
-        </p>
-      </header>
-
-      <section aria-labelledby="hero">
-        <h2 id="hero">1. Hero</h2>
-        <ul>
-          <li><strong>Headline:</strong> I fix, improve, and build WordPress websites.</li>
-          <li><strong>Supporting line:</strong> I troubleshoot bugs, fix slow pages and WooCommerce checkout issues, and build the features your site is missing.</li>
-          <li><strong>Working together:</strong> You work directly with me, from the first discussion through development and handover.</li>
-          <li><strong>Availability:</strong> [Add current availability or next start date.]</li>
-          <li><strong>Primary CTA:</strong> <a href="#contact">Start a project</a></li>
-        </ul>
-      </section>
-
-      <section aria-labelledby="credibility">
-        <h2 id="credibility">2. Credibility bar</h2>
-        <p>Place directly below the hero, within the first screen in the future design.</p>
-        <ul>
-          <li>Existing site figures: 6+ years with WordPress · 30+ sites shipped · 5.0 Upwork rating. [Reconfirm before publishing.]</li>
-          <li>Project names available from the portfolio: Silverskin Coffee, Monitask, Muafaktur.</li>
-          <li>Agency relationship: projects delivered with Mindlind. Preserve that attribution.</li>
-        </ul>
-      </section>
-
-      <section aria-labelledby="fit">
-        <h2 id="fit">3. Who this is for</h2>
-        <p><strong>Does any of this sound familiar?</strong></p>
-        <ul>
-          <li>Your WordPress site works, but every small change turns into a bigger problem.</li>
-          <li>Your WooCommerce checkout needs fixing, or your store needs functionality the current plugins cannot provide.</li>
-          <li>Your team copies information between systems or repeats the same content updates by hand.</li>
-          <li>You have a design ready and need someone to build it properly in WordPress, for your business or an agency client.</li>
-          <li>You need someone to take over an existing site and keep improving it after the initial work is done.</li>
-        </ul>
-        <p>
-          <strong>Suggested boundaries:</strong> projects that need an immediate
-          launch without time for testing, or unlimited revisions without an
-          agreed scope, are probably not a fit. [Confirm these boundaries and
-          whether to state a minimum budget.]
-        </p>
-      </section>
-
-      <section aria-labelledby="services">
-        <h2 id="services">4. What I do</h2>
-        <p>Six service groups, with relevant project examples where available.</p>
-        <ul>
-          {services.map((service) => (
-            <li key={service.title}>
-              <strong>{service.title}:</strong> {service.detail}
-              {service.proof && (
-                <p>
-                  <strong>Related work:</strong>{" "}
-                  <a href={service.proof.href}>{service.proof.name}</a>,{" "}
-                  {service.proof.detail}.
-                </p>
-              )}
-            </li>
-          ))}
-        </ul>
-        <h3>Ways to work together</h3>
-        <ul>
-          <li><strong>A specific fix or improvement:</strong> resolve a defined issue, improve a page, or add a feature. Start by sharing the problem and your website.</li>
-          <li><strong>A complete build or larger update:</strong> agree on the deliverables, milestones, and review stages for a new website, store, or substantial redesign.</li>
-          <li><strong>Ongoing development:</strong> continue improving the site as your needs change. [Confirm how time is booked, how work is billed, and what maintenance includes.]</li>
-        </ul>
-      </section>
-
-      <section aria-labelledby="work">
-        <h2 id="work">5. Selected work</h2>
-        <p>
-          Start with these four projects. Each future entry needs the client's
-          problem, my contribution, a result, and one relevant image or link.
-          These result lines describe delivered functionality; add business
-          metrics only where there is evidence.
-        </p>
-        {selectedWork.map(({ name, id, result }) => {
-          const project = findWork(name);
-
-          return (
-            <article key={name} id={id}>
-              <h3><a href={project.url}>{name}</a></h3>
-              <ul>
-                <li><strong>Contribution:</strong> {project.category}{project.client ? `, delivered with ${project.client}` : ""}.</li>
-                <li><strong>Result:</strong> {result}</li>
-                <li><strong>To add:</strong> [Original problem, exact scope, and any verified outcome or client feedback.]</li>
-              </ul>
-            </article>
-          );
-        })}
-      </section>
-
-      <section aria-labelledby="testimonials">
-        <h2 id="testimonials">6. Client feedback</h2>
-        <p>
-          Three existing testimonial excerpts, immediately after the work.
-          Source: reviews already on the website, attributed there to the{" "}
-          <a href={PROFILES.upwork}>Upwork profile</a>.
-        </p>
-        {testimonialCandidates.map((testimonial) => (
-          <article key={testimonial.focus}>
-            <h3>{testimonial.focus}</h3>
-            <blockquote><p>“{testimonial.quote}”</p></blockquote>
-            <p>[Client name · role/company · confirm attribution and permission.]</p>
-          </article>
-        ))}
-        <p>Keep only quotes that can be properly attributed; do not invent names.</p>
-      </section>
-
-      <section aria-labelledby="process">
-        <h2 id="process">7. How it works</h2>
-        <p>Proposed process copy:</p>
-        <ol>
-          <li><strong>Tell me what you need.</strong> Share your website or designs, what you want to build or fix, and your budget and timing.</li>
-          <li><strong>Agree on the scope.</strong> I review the setup, ask questions, and outline the work, price, and schedule before we start.</li>
-          <li><strong>Build and review.</strong> I develop in agreed stages, share progress, and collect your feedback on a preview.</li>
-          <li><strong>Launch and continue.</strong> Test the agreed functionality, launch, and hand over access and guidance. [Define included post-launch support and options for ongoing work.]</li>
-        </ol>
-        <h3>What's included</h3>
-        <p>Proposed commitments to confirm and adapt to the agreed scope:</p>
-        <ul>
-          <li><strong>Responsive layouts:</strong> check the pages I build or change on desktop and mobile.</li>
-          <li><strong>Functional testing:</strong> test the agreed forms, navigation, and store flows before delivery.</li>
-          <li><strong>Editable content:</strong> set up the text, images, pages, or products your team needs to manage.</li>
-          <li><strong>Handover:</strong> provide the agreed files and access, plus guidance for using what I deliver. [Confirm documentation and walkthrough format.]</li>
-          <li><strong>Post-launch support:</strong> a defined window for issues with the delivered work. [Confirm duration, coverage, and response expectations.]</li>
-        </ul>
-      </section>
-
-      <section aria-labelledby="pricing">
-        <h2 id="pricing">8. What it costs</h2>
-        <p>
-          Proposed format: starting prices or typical ranges for improvements,
-          WooCommerce work, custom functionality, and a full website.
-          [Set amounts, currency, and minimum engagement; add the billing model
-          for ongoing development.]
-        </p>
-        <p><strong>Until prices are agreed, explain how the quote is built:</strong></p>
-        <ul>
-          <li>Scope: pages, features, integrations, and what already exists.</li>
-          <li>Preparation: whether designs, content, and translations are ready.</li>
-          <li>Delivery: testing, migration, deadline, and support requirements.</li>
-          <li>Separate costs: hosting, domains, paid plugins, and other licenses.</li>
-        </ul>
-        <p>
-          <strong>Sample copy:</strong> Send me your website or brief and the changes
-          you need. After reviewing the scope, I'll send a written estimate with
-          deliverables, timing, and costs before work begins. [Confirm whether
-          initial investigation is free or paid.]
-        </p>
-      </section>
-
-      <section aria-labelledby="about">
-        <h2 id="about">9. Who you'll be working with</h2>
-        <p>
-          <strong>Sample copy:</strong> I'm {AUTHOR_NAME}, a web developer working
-          with WordPress, WooCommerce, and modern frontend development. My
-          portfolio includes online stores, business websites, and multilingual
-          content automation, with projects for direct clients and through Mindlind.
-        </p>
-        <ul>
-          <li>Photo: [Use the existing portrait when we move to design.]</li>
-          <li>Reasons to work together: direct communication with the developer, frontend experience, and custom development beyond standard site setup.</li>
-          <li>Keep this to a short introduction supported by the work and feedback above.</li>
-        </ul>
-      </section>
-
-      <section aria-labelledby="faq">
-        <h2 id="faq">10. FAQ</h2>
-        <p>Questions to answer, with notes for the next writing pass:</p>
-        <dl>
-          {faqs.map((faq) => (
-            <div key={faq.question}>
-              <dt><strong>{faq.question}</strong></dt>
-              <dd>{faq.direction}</dd>
+    <LandingMotion>
+      <div className="container px-5">
+        <section className="wp-hero" id="hero" aria-labelledby="wp-hero-title">
+          <div className="wp-hero-intro" data-hero-intro>
+            <span className="wp-eyebrow">WordPress & WooCommerce development</span>
+            <span className="wp-hero-location">Based in Kazakhstan. Working worldwide.</span>
+          </div>
+          <div className="wp-hero-copy">
+            <h1 id="wp-hero-title"><span data-hero-line>I fix, improve, and build </span><span className="wp-blue" data-hero-line>WordPress websites.</span></h1>
+            <p className="wp-hero-description" data-hero-intro>I troubleshoot bugs, fix slow pages and WooCommerce checkout issues, and build the features your site is missing.</p>
+            <div className="wp-hero-actions" data-hero-intro>
+              <Button variant="black" href="#contact" className="max-sm:w-full max-sm:px-4!">Tell me what you need <Arrow /></Button>
+              <Button variant="secondary" href="#work" className="max-sm:w-full max-sm:px-4!">Explore my work <ArrowDown size={18} aria-hidden="true" /></Button>
             </div>
-          ))}
-        </dl>
-      </section>
+            <div className="wp-person" data-hero-intro>
+              <Image src="/me.jpg" alt="" width={44} height={44} sizes="44px" />
+              <p><strong>Hi, I'm Almaz.</strong><span>You'll work directly with me.</span></p>
+            </div>
+          </div>
+        </section>
 
-      <section aria-labelledby="contact">
-        <h2 id="contact">11. Closing CTA / Contact</h2>
-        <p><strong>Headline:</strong> What do you need to build, fix, or improve?</p>
-        <p>
-          <strong>Sample copy:</strong> Send me your website and what you want to
-          build, fix, or improve. I'll review it, ask any missing questions, and
-          explain the next step. If you don't have a website yet, a short
-          description of the project is enough to start.
-        </p>
-        <p>
-          <strong>Helpful to include:</strong> a link, screenshot, or example of
-          the problem, plus any budget or deadline you already have in mind.
-          You don't need a finished brief to send the first message.
-        </p>
-        <ul>
-          <li><strong>Primary CTA:</strong> <a href={PROFILES.telegram}>Start a project on Telegram</a>.</li>
-          <li><strong>Prefer email?</strong> [Add your preferred project enquiry email address.]</li>
-          <li><strong>Other existing options:</strong> <a href={PROFILES.upwork}>Upwork</a> or <a href={PROFILES.linkedin}>LinkedIn</a>.</li>
-          <li><strong>Optional brief form:</strong> name, email, website URL if available, and what you need help with. Budget and deadline can be optional.</li>
-          <li><strong>What you receive next:</strong> questions to clarify the scope, followed by a written estimate of deliverables, timing, and cost. If the site needs investigation first, agree on that step and any cost before it begins.</li>
-          <li><strong>Set expectations:</strong> [Reply within X business days; estimate within Y days after the scope is clear.]</li>
-        </ul>
-      </section>
+        <Separator />
 
-      <aside aria-labelledby="optional">
-        <h2 id="optional">Optional content to consider</h2>
-        <p>Planning notes, outside the core eleven-section outline:</p>
-        <ul>
-          <li><strong>Writing and videos:</strong> an optional small link block near the end for <a href={PROFILES.youtube}>YouTube</a> and <a href={PROFILES.threads}>Threads</a>.</li>
-          <li><strong>Technical compatibility:</strong> WordPress, WooCommerce, JavaScript, React, and Next.js are represented on the existing site. Include a compact list only if agencies or technical buyers need it.</li>
-          <li><strong>Current capacity:</strong> use the hero availability line; add a specific slot count only if it is accurate.</li>
-          <li><strong>Free audit:</strong> leave out unless you want to offer it and can define its limits.</li>
-          <li><strong>Freelancer / agency comparison:</strong> leave out for now; revisit only with a clear positioning and price comparison.</li>
-        </ul>
-        <p>
-          <strong>For review:</strong> confirm the audience, service priorities,
-          project outcomes, testimonial attribution, pricing approach, included
-          work, support terms, enquiry email, and response time before turning
-          this outline into final copy and design.
-        </p>
-      </aside>
+        <section className="wp-services wp-section" id="services" aria-labelledby="wp-services-title">
+          <div className="wp-section-heading" data-reveal>
+            <div><Label>What you can hire me for</Label><h2 id="wp-services-title">Fix a problem. <br />Add a feature. <br /><span className="wp-muted-heading">Build a website.</span></h2></div>
+            <p>For site owners, online stores, and agencies. Bring one issue or a full build.</p>
+          </div>
+          <div className="wp-services-grid">
+            {services.map(({ icon: Icon, title, description }, index) => (
+              <article className="wp-service" key={title} data-reveal>
+                <div className="wp-service-top"><Icon size={27} strokeWidth={1.5} aria-hidden="true" /><span>0{index + 1}</span></div>
+                <h3>{title}</h3><p>{description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="wp-work wp-section" id="work" aria-labelledby="wp-work-title">
+          <div className="wp-section-heading" data-reveal><div><Label>Portfolio</Label><h2 id="wp-work-title">What I've built.</h2></div></div>
+          <div className="wp-projects">
+            {projects.map((project) => (
+              <PortfolioProject key={project.name} project={project} compact id={project.id} data-reveal />
+            ))}
+          </div>
+        </section>
+
+        <section className="wp-feedback" aria-labelledby="wp-feedback-title">
+          <div className="wp-feedback-heading" data-reveal><Label>Client feedback</Label><h2 id="wp-feedback-title">Updates during the work. <br />Guidance after handover.</h2></div>
+          <div className="wp-quotes">
+            {testimonials.map((review) => <ReviewCard key={review.topic} quote={review.quote} topic={review.topic} data-reveal />)}
+          </div>
+        </section>
+
+        <section className="wp-process wp-section" id="process" aria-labelledby="wp-process-title">
+          <div className="wp-process-intro" data-reveal><Label>How we'll work</Label><h2 id="wp-process-title">Know what <br />happens next.</h2><Asterisk className="wp-process-star" /></div>
+          <div className="wp-steps"><div className="wp-process-track" aria-hidden="true"><span data-process-line /></div>{steps.map((step, index) => <article className="wp-step" key={step.title} data-reveal><span className="wp-step-number">0{index + 1}</span><div><h3>{step.title}</h3><p>{step.text}</p></div></article>)}</div>
+        </section>
+
+        <section className="wp-pricing wp-section" id="pricing" aria-labelledby="wp-pricing-title">
+          <div className="wp-section-heading" data-reveal><div><Label>Scope & pricing</Label><h2 id="wp-pricing-title">How I price <br /><span className="wp-blue">your project.</span></h2></div><p>Cost depends on the work and your existing setup. Every quote includes the scope and estimated schedule.</p></div>
+          <div className="wp-engagements">
+            <article data-reveal><h3>Fix or add</h3><p>Quoted per task. Any paid investigation is agreed before it starts.</p></article>
+            <article data-reveal><h3>Build or redesign</h3><p>Quoted by pages, features, integrations, and any design or content work needed.</p></article>
+            <article data-reveal><h3>Ongoing help</h3><p>Priced by the development or maintenance time you need.</p></article>
+          </div>
+          <p className="wp-pricing-note">Hosting, domains, and paid licenses cost extra. Scope changes are priced for your approval before they're added.</p>
+        </section>
+
+        <section className="wp-about wp-section" aria-labelledby="wp-about-title">
+          <div className="wp-about-photo" data-reveal><Image src="/me.jpg" alt="Almaz Bisenbaev" width={600} height={600} sizes="(max-width: 767px) 80vw, 380px" /><span>Almaz / your developer</span></div>
+          <div className="wp-about-copy" data-reveal>
+            <Label>Why work with me</Label>
+            <h2 id="wp-about-title">Hi, I'm Almaz. <br />You'll work <br /><span className="wp-blue">directly with me.</span></h2>
+            <ul className="wp-reasons">
+              <li><strong>Custom development experience.</strong> WooCommerce product options and hundreds of automatically updated multilingual pages.</li>
+              <li><strong>Direct collaboration.</strong> I handle the work and your feedback, with experience alongside agency teams such as Mindlind.</li>
+              <li><strong>Useful handover.</strong> Clients highlight progress updates and maintenance guidance in their reviews.</li>
+            </ul>
+            <div className="wp-about-links"><a className="extlink" href={PROFILES.linkedin}><ExternalArrow />More about me</a><a className="extlink" href={PROFILES.youtube}><ExternalArrow />Web dev on YouTube</a></div>
+          </div>
+        </section>
+
+        <section className="wp-faq wp-section" id="faq" aria-labelledby="wp-faq-title">
+          <div data-reveal><Label>A few useful answers</Label><h2 id="wp-faq-title">Before you <br />say hello.</h2><p className="wp-muted">Something else on your mind? <br /><a className="extlink" href={PROFILES.telegram}><ExternalArrow />Just ask me</a></p></div>
+          <FaqAccordion items={faqs} />
+        </section>
+
+        <section className="wp-contact" id="contact" aria-labelledby="wp-contact-title">
+          <div className="wp-contact-copy" data-reveal><Label>Tell me about the job</Label><h2 id="wp-contact-title">What needs fixing <br />or building?</h2><p>Send your site or idea, what needs to change, and any budget or deadline.</p><Button variant="white" href={PROFILES.telegram} className="max-sm:w-full max-sm:px-4!">Message me on Telegram <Arrow /></Button><div className="wp-contact-alternatives">Or use <a className="extlink" href={PROFILES.upwork}><ExternalArrow />Upwork</a><span aria-hidden="true">/</span><a className="extlink" href={PROFILES.linkedin}><ExternalArrow />LinkedIn</a></div></div>
+          <div className="wp-contact-next" data-reveal><Asterisk className="wp-contact-star" /><h3>What happens next?</h3><p>I'll confirm whether I can help, ask for missing details, then estimate the work once the scope is clear.</p></div>
+        </section>
       </div>
-    </div>
+    </LandingMotion>
   );
 }
