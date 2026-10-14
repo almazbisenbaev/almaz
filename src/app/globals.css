@@ -935,6 +935,10 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .tech-marquee__group {
+    animation-play-state: paused;
+  }
+
   .tech-marquee-skew {
     transform: none;
     transition: none;

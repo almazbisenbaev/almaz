@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useRef } from 'react';
+
 import IconFigma from '@/assets/images/icon-figma.svg';
 import IconFramer from '@/assets/images/icon-framer.svg';
 import IconJs from '@/assets/images/icon-js.svg';
@@ -43,13 +45,85 @@ const MarqueeGroup = ({ isDuplicate = false }) => (
 
 export default function TechMarquee() {
   const skewRef = useScrollSkew({ maxSkew: 2.25, velocityDivisor: 540 });
+  const marqueeRef = useRef(null);
+
+  useEffect(() => {
+    const marquee = marqueeRef.current;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let frameId;
+    let playbackRate = 1;
+    let isHovered = window.matchMedia('(hover: hover)').matches && marquee.matches(':hover');
+
+    const changeSpeed = () => {
+      window.cancelAnimationFrame(frameId);
+
+      const animations = marquee.getAnimations({ subtree: true })
+        .filter((animation) => animation.animationName === 'tech-scroll-x');
+      const targetRate = isHovered && !reducedMotion.matches ? 0.2 : 1;
+
+      // Adjust both groups together without changing their position in the loop.
+      const setRate = (rate) => {
+        playbackRate = rate;
+        animations.forEach((animation) => animation.updatePlaybackRate(rate));
+      };
+
+      if (reducedMotion.matches) {
+        setRate(1);
+        return;
+      }
+
+      const initialRate = playbackRate;
+      const startedAt = performance.now();
+      const duration = isHovered ? 650 : 900;
+
+      const tick = (timestamp) => {
+        const progress = Math.min((timestamp - startedAt) / duration, 1);
+        const eased = 1 - (1 - progress) ** 3;
+        setRate(initialRate + (targetRate - initialRate) * eased);
+
+        if (progress < 1) {
+          frameId = window.requestAnimationFrame(tick);
+        }
+      };
+
+      frameId = window.requestAnimationFrame(tick);
+    };
+
+    const handlePointerEnter = (event) => {
+      if (event.pointerType === 'touch') return;
+      isHovered = true;
+      changeSpeed();
+    };
+
+    const handlePointerLeave = () => {
+      isHovered = false;
+      changeSpeed();
+    };
+
+    marquee.addEventListener('pointerenter', handlePointerEnter);
+    marquee.addEventListener('pointerleave', handlePointerLeave);
+    marquee.addEventListener('pointercancel', handlePointerLeave);
+    reducedMotion.addEventListener('change', changeSpeed);
+    if (isHovered) changeSpeed();
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      marquee.removeEventListener('pointerenter', handlePointerEnter);
+      marquee.removeEventListener('pointerleave', handlePointerLeave);
+      marquee.removeEventListener('pointercancel', handlePointerLeave);
+      reducedMotion.removeEventListener('change', changeSpeed);
+      marquee.getAnimations({ subtree: true })
+        .filter((animation) => animation.animationName === 'tech-scroll-x')
+        .forEach((animation) => animation.updatePlaybackRate(1));
+    };
+  }, []);
 
   return (
     <div ref={skewRef} className="tech-marquee-wrapper tech-marquee-skew">
       {/* Two identical groups scroll as one loop: when the first has travelled
           its full width the second sits exactly where it started, so the strip
           repeats without a visible seam. Only the first is announced. */}
-      <div className="tech-marquee">
+      <div ref={marqueeRef} className="tech-marquee">
         <MarqueeGroup />
         <MarqueeGroup isDuplicate />
       </div>
