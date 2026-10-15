@@ -2,7 +2,7 @@ import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 
 import ReviewsSection from "@/components/reviews-section/reviews-section";
-import PortfolioSection from "@/components/portfolio-section/portfolio-section";
+import PortfolioSpotlight from "@/components/portfolio-spotlight/portfolio-spotlight";
 import Button from "@/components/button/button";
 import { homepageWorks } from "@/data/works";
 import { AUTHOR_JOB_TITLE, AUTHOR_NAME, PROFILES, SITE_URL } from "@/lib/site";
@@ -415,7 +415,7 @@ export default function WordPressDeveloperPage() {
       </div>
 
 
-      <PortfolioSection
+      <PortfolioSpotlight
         id="work"
         title="Recent WordPress projects"
         description="WordPress and WooCommerce work for cafés, retailers and service businesses. Several projects were delivered with Mindlind; others were direct client engagements. Explore the designs, store interfaces and content layouts below."

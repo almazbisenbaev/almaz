@@ -2,7 +2,7 @@ import Image from "next/image";
 import { ArrowDown, ArrowUpRight, Wrench, ShoppingBag, Blocks, PanelsTopLeft, Paintbrush, RefreshCw } from "lucide-react";
 import Button from "@/components/button/button";
 import FaqAccordion from "@/components/faq-accordion/faq-accordion";
-import { PortfolioProject } from "@/components/portfolio-section/portfolio-section";
+import PortfolioSpotlight from "@/components/portfolio-spotlight/portfolio-spotlight";
 import { ReviewCard } from "@/components/reviews-section/reviews-section";
 import ExternalArrow from "@/components/icons/arrow-up-right";
 import { Separator } from "@/components/ui/separator";
@@ -113,10 +113,8 @@ export default function WordPressLandingConceptPage() {
 
         <section className="wp-work wp-section" id="work" aria-labelledby="wp-work-title">
           <div className="wp-section-heading" data-reveal><div><Label>Portfolio</Label><h2 id="wp-work-title">What I've built.</h2></div></div>
-          <div className="wp-projects">
-            {projects.map((project) => (
-              <PortfolioProject key={project.name} project={project} compact id={project.id} data-reveal />
-            ))}
+          <div data-reveal>
+            <PortfolioSpotlight items={projects} embedded labelledBy="wp-work-title" />
           </div>
         </section>
 

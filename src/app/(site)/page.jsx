@@ -5,7 +5,7 @@ import TechMarquee from '@/components/tech-marquee/tech-marquee';
 import HeroIntro from '@/components/hero-intro/hero-intro';
 import Button from '@/components/button/button';
 import ReviewsSection from '@/components/reviews-section/reviews-section';
-import PortfolioSection from '@/components/portfolio-section/portfolio-section';
+import PortfolioSpotlight from '@/components/portfolio-spotlight/portfolio-spotlight';
 import { homepageWorks } from "@/data/works";
 import { PROFILES } from "@/lib/site";
 
@@ -50,7 +50,7 @@ export default function Home() {
         <TechMarquee />
       </div>
 
-      <PortfolioSection items={homepageWorks} />
+      <PortfolioSpotlight items={homepageWorks} />
 
       <div className="container px-5">
         <section
