@@ -1,9 +1,7 @@
 .page {
   --case-ink: #262622;
   --case-muted: #716f68;
-  width: min(960px, calc(100% - 48px));
-  margin: 0 auto;
-  padding: 52px 0 32px;
+  padding-block: 52px 32px;
   color: var(--case-ink);
   font-size: 16px;
   line-height: 1.65;
@@ -71,15 +69,14 @@
 .lightboxToolbar button:hover { background: #ffffff15; }
 .lightboxToolbar button:focus-visible { outline-color: white; outline-offset: -3px; }
 
-@media (max-width: 850px) {
+@media (max-width: 1023px) {
   .page { padding-top: 40px; }
   .overview { max-width: 560px; margin-inline: auto; }
   .overview h2 { position: static; margin-bottom: 10px; }
 }
 
 @media (max-width: 600px) {
-  .page { width: calc(100% - 32px); padding-top: 22px; font-size: 15px; }
-  .intro, .overview, .story, .projectFooter { padding-inline: 6px; }
+  .page { padding-top: 22px; font-size: 15px; }
   .intro { margin-bottom: 28px; }
   .eyebrow { font-size: 10px; letter-spacing: 0.04em; }
   .eyebrow span { margin-inline: 2px; }

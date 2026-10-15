@@ -74,7 +74,7 @@ export function PortfolioProject({ project, compact = false, ...rest }) {
  */
 export default function PortfolioSection({ items, title = "Recent projects", description, id }) {
   return (
-    <div id={id} className="container px-5 py-20 scroll-mt-10">
+    <div id={id} className="site-container py-20 scroll-mt-10">
 
       <div className="block-header">
         <h2 className="block-header-title">{title}</h2>

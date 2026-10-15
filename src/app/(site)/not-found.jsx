@@ -1,6 +1,6 @@
 export default function NotFound() {
   return (
-    <div className="min-h-[70vh] container flex flex-col items-start justify-center">
+    <div className="min-h-[70vh] site-container flex flex-col items-start justify-center">
       <h2 className="text-[120px] sm:text-[160px] leading-[1em] font-bold tracking-title rotate-180">
         C'est la vie
       </h2>

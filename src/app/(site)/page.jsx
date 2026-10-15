@@ -52,7 +52,7 @@ export default function Home() {
 
       <PortfolioSpotlight items={homepageWorks} />
 
-      <div className="container px-5">
+      <div className="site-container">
         <section
           aria-labelledby="wordpress-cta-title"
           className="flex flex-col items-start gap-8 rounded-4xl bg-white p-6 shadow-[0_12px_48px_-24px_rgba(0,0,0,0.16)] sm:p-10 lg:flex-row lg:items-center lg:justify-between lg:gap-12 lg:p-14"
@@ -74,7 +74,7 @@ export default function Home() {
       </div>
 
       <div className="section">
-        <div className="container px-5">
+        <div className="site-container">
 
           <div className="block-header">
             <h2 className="block-header-title">Personal projects</h2>

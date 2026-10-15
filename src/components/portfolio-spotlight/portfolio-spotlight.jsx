@@ -105,8 +105,8 @@ export default function PortfolioSpotlight({
   const Wrapper = embedded ? 'div' : 'section';
   if (!projects.length) return null;
   return (
-    <Wrapper id={id} className={`${s.root} ${embedded ? s.embedded : s.section}`} aria-labelledby={titleId}>
-      <div className={s.container}>
+    <Wrapper id={id} className={`${s.root} ${embedded ? '' : s.section}`} aria-labelledby={titleId}>
+      <div className={embedded ? undefined : 'site-container'}>
         {!embedded && (
           <header className={s.header}>
             <div>

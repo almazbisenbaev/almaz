@@ -37,7 +37,7 @@ const Header = ({ showNavigation = true }) => {
 
   return (
     <header className='py-5'>
-      <div className="container px-5">
+      <div className="site-container">
         <div className="hdr-row flex items-start flex-col sm:flex-row sm:items-end gap-5 justify-between font-medium text-sm leading-tight">
 
           <Link href="/" prefetch={pathname === '/' ? false : null} className="flex flex-col gap-1">

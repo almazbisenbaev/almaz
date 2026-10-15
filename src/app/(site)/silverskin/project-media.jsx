@@ -5,6 +5,9 @@ import { useEffect, useRef, useState } from "react";
 import { Expand, Pause, Play, X } from "lucide-react";
 import styles from "./case-study.module.css";
 
+// Match the shared container's content width, including its page gutters.
+const MEDIA_SIZES = "(max-width: 639px) calc(100vw - 40px), (max-width: 767px) 592px, (max-width: 1023px) 720px, (max-width: 1279px) 976px, (max-width: 1535px) 1232px, 1488px";
+
 export function ProjectImage({ src, alt, width, height, caption, variant }) {
   const dialogRef = useRef(null);
   const [open, setOpen] = useState(false);
@@ -45,7 +48,7 @@ export function ProjectImage({ src, alt, width, height, caption, variant }) {
         aria-label={`Enlarge: ${alt}`}
         aria-haspopup="dialog"
       >
-        <Image src={src} alt={alt} width={width} height={height} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 960px" />
+        <Image src={src} alt={alt} width={width} height={height} sizes={MEDIA_SIZES} />
         <span className={styles.expand} aria-hidden="true"><Expand size={15} /> View full page</span>
       </a>
       <figcaption>{caption}</figcaption>
@@ -119,7 +122,7 @@ export function ProjectVideo({ src, poster, label, caption, width, height, prior
   return (
     <figure className={styles.figure}>
       <div className={styles.videoFrame} style={{ aspectRatio: `${width} / ${height}` }}>
-        {!started && <Image src={poster} alt="Silverskin Coffee homepage preview" fill sizes="(max-width: 1024px) 94vw, 960px" preload={priority} className={styles.videoPoster} />}
+        {!started && <Image src={poster} alt="Silverskin Coffee homepage preview" fill sizes={MEDIA_SIZES} preload={priority} className={styles.videoPoster} />}
         <video
           ref={videoRef}
           src={src}

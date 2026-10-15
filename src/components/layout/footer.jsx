@@ -29,7 +29,7 @@ export default function Footer({ locale = "en" }) {
 
   return (
     <div className={isRussian ? "pt-16 pb-8 sm:pt-24 sm:pb-10" : "pt-40 pb-10"}>
-      <div className={`container relative ${isRussian ? "px-4 sm:px-5" : "px-5"}`}>
+      <div className="site-container relative">
 
         <Separator className="mb-10 bg-blue-700/10" />
 

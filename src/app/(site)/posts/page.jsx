@@ -29,7 +29,7 @@ export const metadata = {
 
 export default function Posts() {
   return (
-    <div className="container px-5 py-16">
+    <div className="site-container py-16">
 
       <div className="mb-16">
         <h1 className="font-bold text-5xl mb-4 tracking-title text-neutral-900">Blog</h1>

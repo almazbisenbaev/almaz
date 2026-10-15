@@ -114,7 +114,7 @@ export default function HeroIntro() {
 
   return (
     <div className="intro-wrapper">
-      <div className="container px-5">
+      <div className="site-container">
         <div ref={skewRef} className="intro intro-scroll-skew">
           <h1 className="intro-text relative">
             <span>Hi, I'm Almaz,</span>

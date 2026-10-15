@@ -191,7 +191,7 @@ export default function KazakhstanPage() {
     <div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
 
-      <section className="container px-4 pt-8 pb-10 sm:px-5 sm:pt-20 sm:pb-16 lg:pt-24 lg:pb-20">
+      <section className="site-container pt-8 pb-10 sm:pt-20 sm:pb-16 lg:pt-24 lg:pb-20">
         <div className="flex items-center gap-3 mb-7 sm:gap-4 sm:mb-12">
           <Image src="/me.jpg" alt="Алмаз Бисенбаев" width={64} height={64} sizes="(max-width: 639px) 48px, 64px" className="size-12 shrink-0 rounded-full sm:size-16" />
           <p className="text-sm text-neutral-600 leading-relaxed">
@@ -229,7 +229,7 @@ export default function KazakhstanPage() {
         </div>
       </section>
 
-      <section className="container px-4 pb-12 sm:px-5 sm:pb-20 lg:pb-24" aria-labelledby="services-title">
+      <section className="site-container pb-12 sm:pb-20 lg:pb-24" aria-labelledby="services-title">
         <div className="block-header">
           <h2 id="services-title" className="block-header-title">Чем могу помочь</h2>
         </div>
@@ -245,7 +245,7 @@ export default function KazakhstanPage() {
         </div>
       </section>
 
-      <section id="projects" className="container px-4 py-8 sm:px-5 sm:py-16 scroll-mt-6" aria-labelledby="projects-title">
+      <section id="projects" className="site-container py-8 sm:py-16 scroll-mt-6" aria-labelledby="projects-title">
         <div className="block-header">
           <h2 id="projects-title" className="block-header-title">Несколько моих работ</h2>
           <p className="max-w-2xl mt-4 sm:mt-6 text-neutral-600 text-base sm:text-lg leading-relaxed">
@@ -285,7 +285,7 @@ export default function KazakhstanPage() {
         </PortfolioCarousel>
       </section>
 
-      <section className="container px-4 py-12 sm:px-5 sm:py-20 lg:py-24" aria-labelledby="process-title">
+      <section className="site-container py-12 sm:py-20 lg:py-24" aria-labelledby="process-title">
         <div className="block-header">
           <h2 id="process-title" className="block-header-title">Как строится работа</h2>
         </div>
@@ -300,14 +300,14 @@ export default function KazakhstanPage() {
         </ol>
       </section>
 
-      <section className="container px-4 py-8 sm:px-5 sm:py-12" aria-labelledby="faq-title">
+      <section className="site-container py-8 sm:py-12" aria-labelledby="faq-title">
         <div className="grid lg:grid-cols-[1fr_2fr] gap-6 sm:gap-8 lg:gap-16">
           <h2 id="faq-title" className="block-header-title self-start">Частые вопросы</h2>
           <FaqAccordion items={faqs} />
         </div>
       </section>
 
-      <section className="container px-4 pt-12 sm:px-5 sm:pt-20 lg:pt-24" aria-labelledby="contact-title">
+      <section className="site-container pt-12 sm:pt-20 lg:pt-24" aria-labelledby="contact-title">
         <div className="rounded-3xl sm:rounded-[2.5rem] bg-neutral-950 text-white p-6 sm:p-12 lg:p-20">
           <p className="text-sm text-white/60 mb-5 sm:mb-6">Есть задача для сайта?</p>
           <h2 id="contact-title" className="text-[clamp(1.875rem,8vw,2.75rem)] sm:text-5xl lg:text-6xl font-bold tracking-title leading-[1.1] max-w-3xl">Давайте обсудим{" "}<br className="hidden sm:block" />ваш проект.</h2>

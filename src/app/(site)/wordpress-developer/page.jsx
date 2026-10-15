@@ -257,7 +257,7 @@ export default function WordPressDeveloperPage() {
 
 
       <div className="intro-wrapper">
-        <div className="container px-5">
+        <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 pt-20 pb-12 md:pt-28 md:pb-20">
 
             <div className="lg:col-span-8">
@@ -318,7 +318,7 @@ export default function WordPressDeveloperPage() {
       </div>
 
 
-      <div className="container px-5 py-10">
+      <div className="site-container py-10">
         <div className="grid grid-cols-3 border-y border-black/10">
           {stats.map((stat, index) => (
             <div
@@ -335,7 +335,7 @@ export default function WordPressDeveloperPage() {
       </div>
 
 
-      <div className="container px-5 py-16 md:py-24">
+      <div className="site-container py-16 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
 
           <div className="lg:col-span-4 lg:sticky lg:top-10 lg:self-start">
@@ -357,7 +357,7 @@ export default function WordPressDeveloperPage() {
       </div>
 
 
-      <div className="container px-5 py-16 md:py-24">
+      <div className="site-container py-16 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
 
           <div className="lg:col-span-4 lg:sticky lg:top-10 lg:self-start">
@@ -425,7 +425,7 @@ export default function WordPressDeveloperPage() {
       <ReviewsSection />
 
 
-      <div className="container px-5 py-16 md:py-24">
+      <div className="site-container py-16 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
 
           <div className="lg:col-span-4 lg:sticky lg:top-10 lg:self-start">
@@ -466,7 +466,7 @@ export default function WordPressDeveloperPage() {
       </div>
 
 
-      <div className="container px-5 py-16 md:py-24">
+      <div className="site-container py-16 md:py-24">
         <div className="relative overflow-hidden rounded-[32px] md:rounded-[40px] bg-black text-white border border-white/10 p-8 sm:p-12 lg:p-20">
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
             <div className="lg:col-span-7 flex flex-col justify-center">

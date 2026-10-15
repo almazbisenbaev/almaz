@@ -36,7 +36,7 @@ function Story({ id, title, children }) {
 
 export default function PageSilverskin() {
   return (
-    <article className={styles.page} aria-labelledby="project-title">
+    <article className={`site-container ${styles.page}`} aria-labelledby="project-title">
       <header className={styles.intro}>
         <p className={styles.eyebrow}>{project.year} <span>·</span> E-commerce <span>·</span> Development</p>
         <h1 id="project-title">Silverskin Coffee Roasters</h1>

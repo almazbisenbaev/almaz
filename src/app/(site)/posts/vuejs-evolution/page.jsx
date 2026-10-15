@@ -117,7 +117,7 @@ export default function PostVuejsEvolution() {
     <article className="min-h-screen py-12 sm:py-24">
       <BlogJsonLd post={post} />
 
-      <div className="container px-5">
+      <div className="site-container">
         <div className="max-w-3xl mx-auto">
 
           <Link href="/posts" className="inline-flex items-center text-neutral-400 hover:text-neutral-900 mb-12 transition-colors text-xs font-medium uppercase tracking-widest">
@@ -135,7 +135,7 @@ export default function PostVuejsEvolution() {
         </div>
       </div>
 
-      <div className="container px-0 max-w-[1400px] mb-10 sm:mb-16">
+      <div className="site-container mb-10 sm:mb-16">
         <Image 
           src={post.thumbnail}
           width="1600"
@@ -145,7 +145,7 @@ export default function PostVuejsEvolution() {
         />
       </div>
       
-      <div className="container px-5">
+      <div className="site-container">
         <div className="max-w-3xl mx-auto">
 
           <div className="article">

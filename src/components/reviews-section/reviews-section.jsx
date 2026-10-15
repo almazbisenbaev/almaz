@@ -53,7 +53,7 @@ export default function ReviewsSection({ marquee = false }) {
 
   return (
     <div className="section">
-      <div className="container px-5">
+      <div className="site-container">
 
         <div className="block-header">
           <h2 className="block-header-title">What people say</h2>

@@ -74,7 +74,7 @@ function Asterisk({ className = "" }) {
 export default function WordPressLandingConceptPage() {
   return (
     <LandingMotion>
-      <div className="container px-5">
+      <div className="site-container">
         <section className="wp-hero" id="hero" aria-labelledby="wp-hero-title">
           <div className="wp-hero-intro" data-hero-intro>
             <span className="wp-eyebrow">WordPress & WooCommerce development</span>

@@ -12,21 +12,24 @@
 @custom-variant data-horizontal (&:where([data-orientation="horizontal"]));
 @custom-variant data-vertical (&:where([data-orientation="vertical"]));
 
-/* The root font size is 18px (see `@layer base` below), which makes Tailwind's
-   own rem-based `container` breakpoints fire 12.5% early — `40rem` becomes
-   720px, not 640px. So the container is redefined here against px breakpoints.
-   `!important` is what wins against Tailwind's utility of the same name. */
-.container {
-  width: 100% !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+/* Shared outer layout for every page and section. Keep widths and gutters in
+   pixels so English (18px root) and Russian (16px root) align identically.
+   Reading columns may be narrower inside this container; full-bleed ribbons
+   sit outside it. A distinct name avoids Tailwind's `container` utility. */
+.site-container {
+  box-sizing: border-box;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 20px;
 }
 
-@media (min-width: 640px) { .container { max-width: 640px !important; } }
-@media (min-width: 768px) { .container { max-width: 768px !important; } }
-@media (min-width: 1024px) { .container { max-width: 1024px !important; } }
-@media (min-width: 1280px) { .container { max-width: 1280px !important; } }
-@media (min-width: 1536px) { .container { max-width: 1536px !important; } }
+@media (min-width: 640px) {
+  .site-container { max-width: 640px; padding-inline: 24px; }
+}
+@media (min-width: 768px) { .site-container { max-width: 768px; } }
+@media (min-width: 1024px) { .site-container { max-width: 1024px; } }
+@media (min-width: 1280px) { .site-container { max-width: 1280px; } }
+@media (min-width: 1536px) { .site-container { max-width: 1536px; } }
 
 /* The design tokens this site actually reads. The shadcn preset shipped a full
    palette (card, popover, chart-*, sidebar-* and so on) that no rule or utility

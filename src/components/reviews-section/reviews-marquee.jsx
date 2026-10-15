@@ -128,7 +128,7 @@ export default function ReviewsMarquee({ children, sourceUrl }) {
 
   return (
     <section ref={sectionRef} className="section reviews-section" aria-labelledby="reviews-title">
-      <div className="container px-5">
+      <div className="site-container">
         <div className="block-header reviews-header">
           <h2 id="reviews-title" className="block-header-title">What people say</h2>
           <a className="reviews-source-link" href={sourceUrl} target="_blank" rel="noopener noreferrer">

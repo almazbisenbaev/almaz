@@ -98,9 +98,6 @@
 .wp-contact-next h3 { font-size: 21px; margin-bottom: 18px; }
 .wp-contact-next > p { margin-top: 22px; font-size: 13px; color: #e0d7ff; }
 
-@media (min-width: 1536px) {
-  .wp-landing > .container { max-width: 1360px !important; }
-}
 @media (max-width: 1023px) {
   .wp-hero h1 { font-size: 62px; }
   .wp-hero-actions { gap: 18px; }
