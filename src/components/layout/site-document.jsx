@@ -57,11 +57,20 @@ const personJsonLd = {
  *
  * @param {Object} props
  * @param {string} [props.lang="en"] - Document language, e.g. "en" or "ru-KZ".
- * @param {boolean} [props.showHeader=true] - The Russian landing page is a
- *   standalone entry point and deliberately renders without site navigation.
+ * @param {boolean} [props.showHeader=true] - Whether to render the site header.
+ * @param {boolean} [props.showHeaderNavigation=true] - Whether to show the
+ *   navigation alongside the name and role.
+ * @param {boolean} [props.showFooter=true] - Whether to render the site footer.
  * @param {string} [props.fontVariable] - A locale-specific next/font variable.
  */
-export default function SiteDocument({ children, lang = "en", showHeader = true, fontVariable = inter.variable }) {
+export default function SiteDocument({
+  children,
+  lang = "en",
+  showHeader = true,
+  showHeaderNavigation = true,
+  showFooter = true,
+  fontVariable = inter.variable,
+}) {
   return (
     <html lang={lang} className={cn("font-sans", fontVariable)}>
       <head>
@@ -77,11 +86,11 @@ export default function SiteDocument({ children, lang = "en", showHeader = true,
       <body className="antialiased overflow-x-hidden relative min-h-screen">
         <SmoothScroll />
 
-        {showHeader && <Header />}
+        {showHeader && <Header showNavigation={showHeaderNavigation} />}
 
         <main>{children}</main>
 
-        <Footer locale={lang} />
+        {showFooter && <Footer locale={lang} />}
 
         <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} strategy="afterInteractive" />
       </body>

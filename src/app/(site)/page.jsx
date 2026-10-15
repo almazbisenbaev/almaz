@@ -23,7 +23,7 @@ function ProjectCard({ visual, className = '', title, description, descriptionCl
     <div className={`flex flex-col justify-between rounded-4xl overflow-hidden ${className}`}>
       {visual}
       <div className="p-8 md:p-12 pt-2 w-full">
-        <h3 className="font-semibold text-xl md:text-3xl">{title}</h3>
+        <h3 className="font-semibold text-xl md:text-3xl tracking-title">{title}</h3>
         <div className={descriptionClassName}>{description}</div>
         <div className="mt-8">
           <Button variant={ctaVariant} href={ctaHref}>
@@ -58,7 +58,7 @@ export default function Home() {
           className="flex flex-col items-start gap-8 rounded-4xl bg-white p-6 shadow-[0_12px_48px_-24px_rgba(0,0,0,0.16)] sm:p-10 lg:flex-row lg:items-center lg:justify-between lg:gap-12 lg:p-14"
         >
           <div className="max-w-2xl">
-            <h2 id="wordpress-cta-title" className="max-w-xl text-3xl font-bold leading-[1.08] tracking-[-0.04em] sm:text-4xl xl:text-5xl">
+            <h2 id="wordpress-cta-title" className="max-w-xl text-3xl font-bold leading-[1.08] tracking-title sm:text-4xl xl:text-5xl">
               Let’s build your next website.
             </h2>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-neutral-600">
@@ -133,7 +133,7 @@ export default function Home() {
         </div>
       </div>
 
-      <ReviewsSection />
+      <ReviewsSection marquee />
     </div>
   );
 }

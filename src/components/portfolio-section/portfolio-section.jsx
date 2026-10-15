@@ -33,7 +33,7 @@ export function PortfolioProject({ project, compact = false, ...rest }) {
 
       <div className={compact ? "grid gap-4" : "grid grid-cols-1 md:grid-cols-3 mt-8"}>
         <div>
-          <h3 className="text-2xl font-bold mb-2">{project.name}</h3>
+          <h3 className="text-2xl font-bold tracking-title mb-2">{project.name}</h3>
           <div className="flex flex-wrap gap-2 text-xs">
             <div>{project.year}</div>
             {project.client && (

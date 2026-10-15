@@ -15,7 +15,7 @@ const NAV_ITEMS = [
 /** Trailing slashes are equivalent for matching, but "/" must stay itself. */
 const normalizePath = (path) => (path === '/' ? '/' : path.replace(/\/+$/, ''));
 
-const Header = () => {
+const Header = ({ showNavigation = true }) => {
   const pathname = usePathname();
 
   // "/" only matches itself; every other item also matches its sub-pages, so
@@ -45,7 +45,7 @@ const Header = () => {
             <div className='opacity-65'>Web Developer</div>
           </Link>
 
-          <nav aria-label="Main navigation" className="flex flex-wrap gap-4">
+          {showNavigation && <nav aria-label="Main navigation" className="flex flex-wrap gap-4">
             {NAV_ITEMS.map(({ href, label, isExternal }) =>
               isExternal ? (
                 <a
@@ -70,7 +70,7 @@ const Header = () => {
                 </Link>
               )
             )}
-          </nav>
+          </nav>}
 
         </div>
       </div>

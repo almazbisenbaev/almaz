@@ -200,7 +200,7 @@ export default function KazakhstanPage() {
           </p>
         </div>
 
-        <h1 className="max-w-6xl text-[clamp(2rem,8.6vw,3.5rem)] sm:text-6xl lg:text-[5rem] font-extrabold tracking-[-0.045em] leading-[1.08]">
+        <h1 className="max-w-6xl text-[clamp(2rem,8.6vw,3.5rem)] sm:text-6xl lg:text-[5rem] font-extrabold tracking-title leading-[1.08]">
           <span className="block">Создаю сайты,</span>{" "}
           <span className="block">которые работают</span>{" "}
           <span className="block text-blue-600">на ваш бизнес.</span>
@@ -237,7 +237,7 @@ export default function KazakhstanPage() {
           {services.map((service) => (
             <article key={service.number} className="min-w-0 rounded-3xl bg-white p-6 sm:p-8 lg:p-10 flex flex-col">
               <span className="text-sm text-neutral-500 mb-5 sm:mb-8">{service.number}</span>
-              <h3 className="text-2xl lg:text-3xl font-semibold tracking-tight leading-tight">{service.title}</h3>
+              <h3 className="text-2xl lg:text-3xl font-semibold tracking-title leading-tight">{service.title}</h3>
               <p className="text-base text-neutral-600 leading-relaxed mt-4 mb-6 sm:mt-5 sm:mb-8">{service.description}</p>
               <p className="text-xs font-medium text-neutral-500 mt-auto">{service.detail}</p>
             </article>
@@ -271,7 +271,7 @@ export default function KazakhstanPage() {
                 />
               </a>
               <p className="mt-6 text-xs text-neutral-500">{project.type}</p>
-              <h3 className="mt-2 text-2xl font-semibold tracking-tight">{project.name}</h3>
+              <h3 className="mt-2 text-2xl font-semibold tracking-title">{project.name}</h3>
               <p className="text-base text-neutral-600 leading-relaxed mt-3 mb-5">{project.description}</p>
               <p className="text-xs text-neutral-500 mt-auto">
                 {project.year} · Для <a href={project.clientUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center underline underline-offset-4">{project.client}</a>
@@ -293,7 +293,7 @@ export default function KazakhstanPage() {
           {process.map((step, index) => (
             <li key={step.title} className="min-w-0 border-t border-black/15 pt-5 sm:pt-6">
               <span className="text-sm text-blue-600 font-semibold">0{index + 1}</span>
-              <h3 className="text-2xl font-semibold tracking-tight mt-4 sm:mt-6 mb-3 sm:mb-4">{step.title}</h3>
+              <h3 className="text-2xl font-semibold tracking-title mt-4 sm:mt-6 mb-3 sm:mb-4">{step.title}</h3>
               <p className="max-w-2xl text-base text-neutral-600 leading-relaxed">{step.description}</p>
             </li>
           ))}
@@ -310,7 +310,7 @@ export default function KazakhstanPage() {
       <section className="container px-4 pt-12 sm:px-5 sm:pt-20 lg:pt-24" aria-labelledby="contact-title">
         <div className="rounded-3xl sm:rounded-[2.5rem] bg-neutral-950 text-white p-6 sm:p-12 lg:p-20">
           <p className="text-sm text-white/60 mb-5 sm:mb-6">Есть задача для сайта?</p>
-          <h2 id="contact-title" className="text-[clamp(1.875rem,8vw,2.75rem)] sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] max-w-3xl">Давайте обсудим{" "}<br className="hidden sm:block" />ваш проект.</h2>
+          <h2 id="contact-title" className="text-[clamp(1.875rem,8vw,2.75rem)] sm:text-5xl lg:text-6xl font-bold tracking-title leading-[1.1] max-w-3xl">Давайте обсудим{" "}<br className="hidden sm:block" />ваш проект.</h2>
           <p className="max-w-xl mt-5 mb-6 sm:mt-6 sm:mb-8 text-base sm:text-lg text-white/70 leading-relaxed">
             Напишите, чем занимается ваш бизнес и какой сайт вам нужен.
             Если сайт уже есть — отправьте ссылку и расскажите, что хотите улучшить.

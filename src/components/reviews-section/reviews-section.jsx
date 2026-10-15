@@ -1,9 +1,10 @@
 import ArrowUpRight from '@/components/icons/arrow-up-right';
 import { reviews } from '@/data/reviews';
 import { PROFILES } from '@/lib/site';
+import ReviewsMarquee from './reviews-marquee';
 
-export const ReviewCard = ({ quote, topic, ...rest }) => (
-  <figure className="review-card bg-white rounded-3xl" {...rest}>
+export const ReviewCard = ({ quote, topic, marquee = false, linkTabIndex, ...rest }) => (
+  <figure className={`review-card bg-white rounded-3xl${marquee ? ' review-card--marquee' : ''}`} {...rest}>
     <svg
       className="review-card-mark"
       xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +22,7 @@ export const ReviewCard = ({ quote, topic, ...rest }) => (
         href={PROFILES.upwork}
         target="_blank"
         rel="noopener noreferrer"
+        tabIndex={linkTabIndex}
         className="extlink review-card-link"
       >
         <ArrowUpRight />
@@ -30,7 +32,25 @@ export const ReviewCard = ({ quote, topic, ...rest }) => (
   </figure>
 );
 
-export default function ReviewsSection() {
+export default function ReviewsSection({ marquee = false }) {
+  if (marquee) {
+    return (
+      <ReviewsMarquee sourceUrl={PROFILES.upwork}>
+        {[false, true].map((isDuplicate) => (
+          <div
+            key={String(isDuplicate)}
+            className="reviews-marquee-group"
+            aria-hidden={isDuplicate || undefined}
+          >
+            {reviews.map((review) => (
+              <ReviewCard key={review.id} quote={review.quote} marquee linkTabIndex={isDuplicate ? -1 : undefined} />
+            ))}
+          </div>
+        ))}
+      </ReviewsMarquee>
+    );
+  }
+
   return (
     <div className="section">
       <div className="container px-5">

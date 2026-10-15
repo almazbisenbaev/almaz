@@ -126,7 +126,7 @@ export default function PostVuejsEvolution() {
           </Link>
 
           <header className="mb-10 sm:mb-16">
-            <h1 className="text-3xl sm:text-7xl font-bold mb-8 tracking-tight">{post.title}</h1>
+            <h1 className="text-3xl sm:text-7xl font-bold mb-8 tracking-title">{post.title}</h1>
             <div className="text-neutral-400 font-medium text-xs flex items-center space-x-1 mt-4">
               <span>{postDate(post)}</span>
             </div>

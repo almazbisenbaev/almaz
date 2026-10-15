@@ -5,8 +5,8 @@ import { PROFILES } from "@/lib/site";
 const TELEGRAM_HANDLE = "@almazbisenbaev";
 
 /**
- * The Russian landing page runs without a header and at the browser's default
- * text scale, so its footer is tighter and its tap targets are sized for
+ * The Russian footer variant uses the browser's default text scale,
+ * so its spacing is tighter and its tap targets are sized for
  * mobile (`min-h-11`). Both locales otherwise share this markup.
  */
 const COPY = {
@@ -58,11 +58,11 @@ export default function Footer({ locale = "en" }) {
         </div>
 
         <div className="flex flex-col gap-3 sm:gap-6">
-          <div className={`font-bold tracking-tight opacity-50 ${handleSize}`}>Telegram:</div>
+          <div className={`font-bold tracking-title opacity-50 ${handleSize}`}>Telegram:</div>
           <div>
             <a
               href={PROFILES.telegram}
-              className={`font-bold tracking-tight hover:text-[#00f] transition-colors ${
+              className={`font-bold tracking-title hover:text-[#00f] transition-colors ${
                 isRussian ? `inline-flex min-h-11 items-center ${handleSize}` : handleSize
               }`}
             >

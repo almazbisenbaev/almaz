@@ -278,7 +278,7 @@ export default function WordPressDeveloperPage() {
                 </div>
               </div>
 
-              <h1 className="text-5xl sm:text-7xl md:text-7xl font-extrabold tracking-tight leading-[0.98]">
+              <h1 className="text-[clamp(2rem,11vw,3rem)] sm:text-7xl md:text-7xl font-extrabold tracking-title leading-[0.98]">
                 Freelance <span className="text-[#30f]">WordPress</span> <br /> &amp; WooCommerce developer
               </h1>
 
@@ -325,7 +325,7 @@ export default function WordPressDeveloperPage() {
               key={stat.label}
               className={`py-8 md:py-10 px-2 md:px-8 border-black/10 ${index > 0 ? "border-l" : ""}`}
             >
-              <div className="text-4xl md:text-6xl font-extrabold tracking-tight">
+              <div className="text-4xl md:text-6xl font-extrabold tracking-title">
                 {stat.value}
               </div>
               <div className="text-sm text-neutral-500 mt-2">{stat.label}</div>
@@ -471,7 +471,7 @@ export default function WordPressDeveloperPage() {
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
             <div className="lg:col-span-7 flex flex-col justify-center">
 
-              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08] text-white">Need a WordPress developer you can rely on?</h2>
+              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-title leading-[1.08] text-white">Need a WordPress developer you can rely on?</h2>
 
               <p className="mt-6 text-base sm:text-xl text-neutral-300 leading-relaxed max-w-xl">
                 Send me your website or designs, what you need help with, and
