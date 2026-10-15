@@ -34,26 +34,6 @@ Tailwind v4 is configured in CSS. There is no `tailwind.config.ts`: the theme
 is the `@theme inline` block in `src/app/globals.css`, and the tokens it maps
 are defined in `:root` directly above it.
 
-## Homepage concepts
-
-The independent design explorations live at `/concept-2` through `/concept-10`.
-Each has its own root layout, fonts, and styles, with `noindex, follow` metadata.
-The original homepage is separate from these routes.
-
-The latest three directions are:
-
-- `/concept-8` — **Redline:** red typographic posters, a GSAP-pinned horizontal
-  portfolio on desktop, and a vertical gallery on smaller screens.
-- `/concept-9` — **Common Ground:** a green editorial layout, generated contour
-  artwork with three variations, parallax project images, and a process accordion.
-- `/concept-10` — **Offscreen:** a lavender desktop with draggable windows,
-  working project selectors, an app dock, and a stacking portfolio on scroll.
-
-The new concepts share project data and animation lifecycle helpers in
-`src/components/concepts/`. Motion respects the operating system's reduced-motion
-preference and can also be paused in each page. Offscreen's window title bars
-support arrow keys to move and Home to reset; windows flow normally on mobile.
-
 ## Russian landing page
 
 `/razrabotka-saitov-kazakhstan` is a standalone service page for
