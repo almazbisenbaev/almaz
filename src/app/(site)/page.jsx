@@ -1,6 +1,9 @@
-import Image from "next/image";
-import { ArrowUpRight, ChevronRight } from 'lucide-react';
+// Original grid dependencies, preserved for reuse:
+// import Image from "next/image";
+// import { ChevronRight } from "lucide-react";
+import { ArrowUpRight } from 'lucide-react';
 
+import SideProjects from '@/components/side-projects/side-projects';
 import TechMarquee from '@/components/tech-marquee/tech-marquee';
 import HeroIntro from '@/components/hero-intro/hero-intro';
 import Button from '@/components/button/button';
@@ -18,6 +21,7 @@ import { PROFILES } from "@/lib/site";
  * @param {string} [props.className] - Card background and text colour.
  * @param {'black' | 'white'} props.ctaVariant - Also picks the chevron colour.
  */
+/* Original grid helpers, preserved for reuse.
 function ProjectCard({ visual, className = '', title, description, descriptionClassName, ctaLabel, ctaHref, ctaVariant }) {
   return (
     <div className={`flex flex-col justify-between rounded-4xl overflow-hidden ${className}`}>
@@ -39,6 +43,8 @@ function ProjectCard({ visual, className = '', title, description, descriptionCl
 const ProjectScreenshot = ({ src, alt }) => (
   <Image src={src} alt={alt} width={800} height={600} sizes="(max-width: 768px) 100vw, 33vw" />
 );
+
+*/
 
 export default function Home() {
   return (
@@ -73,6 +79,9 @@ export default function Home() {
         </section>
       </div>
 
+      <SideProjects />
+
+      {/* Original personal-project grid, preserved for reuse.
       <div className="section">
         <div className="site-container">
 
@@ -108,7 +117,8 @@ export default function Home() {
               className="bg-linear-to-b from-indigo-500 to-[#FF163B] text-white"
               visual={
                 <div className="px-6 md:px-12 py-12 md:py-24 flex-1 flex items-center justify-center">
-                  {/* `custom-rings` draws the two pulsing halos around the avatar. */}
+                  {// `custom-rings` draws the two pulsing halos around the avatar.
+                  }
                   <div className="custom-rings relative youtube-banner-image">
                     <Image
                       className="rounded-full"
@@ -132,6 +142,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      */}
 
       <ReviewsSection marquee />
     </div>

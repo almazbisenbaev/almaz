@@ -1,6 +1,6 @@
 import { PROFILES } from '@/lib/site';
 
-// The current homepage projects. Every concept reads the same collection.
+// Add future personal projects here. The homepage carousel reads this collection.
 export const projects = [
   {
     id: 'glowy',
@@ -41,9 +41,3 @@ export const projects = [
   },
 ];
 
-// Deliberately fictional slots to preview a larger collection, not real projects.
-export const sampleProjects = [
-  { id: 'next-04', title: 'The next idea', shortTitle: 'Next idea', category: 'Sample project · 04', description: 'A little room for whatever comes next. This is a placeholder to try a larger collection.', color: '#e8eee3', accent: '#56754b', sample: true, shape: 'flower' },
-  { id: 'next-05', title: 'A small experiment', shortTitle: 'Experiment', category: 'Sample project · 05', description: 'Something made out of curiosity. This is a placeholder to try a larger collection.', color: '#e9edf8', accent: '#5574bf', sample: true, shape: 'steps' },
-  { id: 'next-06', title: 'Just for the fun of it', shortTitle: 'Just for fun', category: 'Sample project · 06', description: 'An open space for a future project. This is a placeholder to try a larger collection.', color: '#f8edce', accent: '#a47b2a', sample: true, shape: 'rings' },
-];
