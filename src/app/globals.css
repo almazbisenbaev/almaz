@@ -12,6 +12,12 @@
 @custom-variant data-horizontal (&:where([data-orientation="horizontal"]));
 @custom-variant data-vertical (&:where([data-orientation="vertical"]));
 
+/* Site-wide focus styling: override browser and component outlines. */
+:focus,
+:focus-visible {
+  outline: none !important;
+}
+
 /* Shared outer layout for every page and section. Keep widths and gutters in
    pixels so English (18px root) and Russian (16px root) align identically.
    Reading columns may be narrower inside this container; full-bleed ribbons

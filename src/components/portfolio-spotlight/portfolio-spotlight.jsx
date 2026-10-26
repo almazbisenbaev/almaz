@@ -37,7 +37,7 @@ function ProjectLink({ project, className = '', children }) {
 }
 
 function Credit({ project }) {
-  return project.client ? <p className={s.credit}>In collaboration with <a href={project.clientUrl} target="_blank" rel="noopener noreferrer">{project.client}<span className={s.srOnly}> (opens in a new tab)</span></a></p> : null;
+  return <p className={s.credit}>{project.client && <>For <a href={project.clientUrl} target="_blank" rel="noopener noreferrer">{project.client}<span className={s.srOnly}> (opens in a new tab)</span></a> · </>}{project.year}</p>;
 }
 
 function Arrows({ previous, next, canPrevious = true, canNext = true, label }) {
@@ -125,10 +125,9 @@ export default function PortfolioSpotlight({
                 aria-label={`${index + 1} of ${projects.length}: ${project.name}`} aria-hidden={index !== carousel.selected}
                 inert={index !== carousel.selected}>
                 <div className={s.spotlightCopy}>
-                  <span className={s.smallLabel}>{project.label} / {project.year}</span>
                   <h3>{project.name}</h3>
-                  <p>{project.note}</p>
-                  <div className={s.spotlightDetails}><p>{project.result || project.description}</p><Credit project={project} /></div>
+                  <p>{project.result || project.description}</p>
+                  <div className={s.spotlightDetails}><Credit project={project} /></div>
                   <ProjectLink project={project} />
                 </div>
                 <ProjectImage project={project} className={s.spotlightImage} />

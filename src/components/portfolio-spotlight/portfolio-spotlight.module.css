@@ -20,7 +20,6 @@
 .root .header h2 { margin-top: 18px; font-size: clamp(64px, 7.6vw, 112px); line-height: .95; }
 .headerAside { display: flex; align-items: center; gap: 40px; padding-bottom: 5px; }
 .headerAside > p { max-width: 180px; font-size: 12px; color: var(--muted); line-height: 1.5; }
-.smallLabel { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
 .image { position: relative; overflow: hidden; aspect-ratio: 16 / 9; border-radius: 28px; background: var(--project-tone, #eee); }
 .image img { object-fit: cover; object-position: center; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
 .projectLink { display: inline-flex; align-items: center; justify-content: center; gap: 16px; width: fit-content; padding: 16px 24px; border-radius: 99px; background: #000; color: #fff; font-size: 14px; font-weight: 600; line-height: 1.2; transition: background .25s, transform .25s; }
@@ -28,7 +27,7 @@
 .projectLink:hover { background: #262626; }
 .projectLink:hover > svg { transform: translate(2px, -2px); }
 .projectLink:active { transform: scale(.98); }
-.credit { color: var(--muted); font-size: 10px; line-height: 1.6; }
+.credit { color: var(--muted); font-size: 14px; line-height: 1.6; }
 .root .credit a { text-decoration: underline; text-underline-offset: 3px; }
 .arrows { display: flex; gap: 8px; }
 .arrows button { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: #000; color: #fff; transition: transform .3s, background .3s; }
@@ -43,15 +42,14 @@
 .spotlightTrack { display: flex; touch-action: pan-y pinch-zoom; }
 .spotlightSlide { display: grid; grid-template-columns: 43% minmax(0, 57%); flex: 0 0 100%; min-width: 0; padding: 14px; background: #fff; }
 .spotlightCopy { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; padding: 34px 30px 34px 34px; }
-.spotlightCopy > .smallLabel { color: var(--muted); }
-.spotlightCopy h3 { max-width: 100%; font-size: clamp(52px, 6.1vw, 88px); line-height: .96; margin-block: 38px 22px; text-wrap: balance; }
+.spotlightCopy h3 { max-width: 100%; font-size: clamp(40px, 4.6vw, 66px); line-height: 1.05; margin-block: 0 22px; text-wrap: balance; }
 .spotlightCopy > p { font-size: 16px; line-height: 1.4; max-width: 260px; }
 .spotlightDetails { margin-block: 30px; font-size: 12px; line-height: 1.6; color: var(--muted); }
 .spotlightDetails > p { max-width: 300px; }
 .spotlightDetails .credit { margin-top: 12px; }
 .spotlightCopy > .projectLink { margin-top: auto; }
 .spotlightImage { aspect-ratio: auto; min-height: 530px; }
-.spotlightImage img { object-fit: contain; padding: 32px; }
+.spotlightImage img { object-fit: contain; }
 .carouselFooter { display: flex; justify-content: space-between; align-items: center; margin-top: 24px; gap: 20px; padding-inline: 16px; }
 .dots { display: flex; align-items: center; }
 .dots button { display: grid; place-items: center; width: 30px; height: 44px; padding: 0; background: transparent; }
@@ -66,8 +64,7 @@
 }
 @media (max-width: 1050px) {
   .spotlightCopy { padding: 26px 22px; }
-  .spotlightCopy h3 { font-size: clamp(46px, 6.2vw, 65px); }
-  .spotlightImage img { padding: 24px; }
+  .spotlightCopy h3 { font-size: clamp(36px, 4.7vw, 49px); }
   .spotlightImage { min-height: 490px; }
 }
 @media (max-width: 767px) {
@@ -82,10 +79,8 @@
   .image { border-radius: 20px; }
   .spotlightSlide { display: flex; flex-direction: column; padding: 10px; }
   .spotlightImage { order: -1; min-height: 0; aspect-ratio: 1.35; }
-  .spotlightImage img { padding: 22px 16px; }
   .spotlightCopy { flex: 1; padding: 24px 16px 18px; }
-  .spotlightCopy > .smallLabel { font-size: 9px; }
-  .spotlightCopy h3 { font-size: clamp(42px, 12vw, 72px); margin-block: 24px 16px; }
+  .spotlightCopy h3 { font-size: clamp(32px, 9vw, 54px); margin-bottom: 16px; }
   .spotlightCopy > p { font-size: 14px; max-width: 240px; }
   .spotlightDetails { margin-block: 22px; font-size: 11px; }
   .spotlightDetails > p { max-width: none; }
