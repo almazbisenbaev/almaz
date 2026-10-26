@@ -124,7 +124,7 @@ export default function PortfolioSpotlight({
   embedded = false,
   labelledBy,
 }) {
-  const carousel = useCarousel(true);
+  const carousel = useCarousel(false);
   const instanceId = useId();
   const titleId = labelledBy || `${instanceId}-title`;
   const instructionsId = `${instanceId}-instructions`;

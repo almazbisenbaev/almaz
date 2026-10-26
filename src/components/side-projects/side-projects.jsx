@@ -26,16 +26,22 @@ function Artwork({ project }) {
   </div>;
 }
 
-/** The approved Glide: centered inertia, image parallax, and unclipped slides. */
+/** Left-aligned project cards with image parallax and unclipped slides. */
 export default function SideProjects() {
   const reduced = useSyncExternalStore(subscribeMotion, () => window.matchMedia(motionQuery).matches, () => true);
-  const [viewport, api] = useEmblaCarousel({ loop: true, align: 'center', duration: reduced ? 0 : 50 });
+  const [viewport, api] = useEmblaCarousel({ loop: false, align: 'start', containScroll: false, duration: reduced ? 0 : 50 });
   const [selected, setSelected] = useState(0);
+  const [canPrevious, setCanPrevious] = useState(false);
+  const [canNext, setCanNext] = useState(false);
   const visuals = useRef([]);
 
   useEffect(() => {
     if (!api) return;
-    const select = () => setSelected(api.selectedScrollSnap());
+    const select = () => {
+      setSelected(api.selectedScrollSnap());
+      setCanPrevious(api.canScrollPrev());
+      setCanNext(api.canScrollNext());
+    };
     const paint = () => {
       const engine = api.internalEngine();
       const progress = api.scrollProgress();
@@ -85,8 +91,8 @@ export default function SideProjects() {
       <div className={s.controls}>
         <div className={s.dots} aria-label="Choose a personal project">{projects.map((project, index) => <button type="button" key={project.id} aria-label={`Show ${project.title}`} aria-current={selected === index ? 'true' : undefined} onClick={() => go(index)}><span /></button>)}</div>
         <div className={s.arrows}>
-          <button type="button" onClick={previous} aria-label="Previous personal project"><ArrowLeft size={19} aria-hidden="true" /></button>
-          <button type="button" onClick={next} aria-label="Next personal project"><ArrowRight size={19} aria-hidden="true" /></button>
+          <button type="button" onClick={previous} disabled={!canPrevious} aria-label="Previous personal project"><ArrowLeft size={19} aria-hidden="true" /></button>
+          <button type="button" onClick={next} disabled={!canNext} aria-label="Next personal project"><ArrowRight size={19} aria-hidden="true" /></button>
         </div>
       </div>
     </div>
