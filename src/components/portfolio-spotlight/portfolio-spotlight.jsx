@@ -6,7 +6,6 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 import s from './portfolio-spotlight.module.css';
 
-const pad = (value) => String(value).padStart(2, '0');
 const motionQuery = '(prefers-reduced-motion: reduce)';
 function subscribeMotion(callback) {
   const query = window.matchMedia(motionQuery);
@@ -49,7 +48,7 @@ function Arrows({ previous, next, canPrevious = true, canNext = true, label }) {
 
 function useCarousel(loop = false) {
   const reducedMotion = useReducedMotion();
-  const [ref, api] = useEmblaCarousel({ loop, align: 'start', containScroll: 'trimSnaps', duration: reducedMotion ? 0 : 42 });
+  const [ref, api] = useEmblaCarousel({ loop, align: 'start', containScroll: 'trimSnaps', duration: reducedMotion ? 0 : 48 });
   const [selected, setSelected] = useState(0);
   const [canPrevious, setCanPrevious] = useState(loop);
   const [canNext, setCanNext] = useState(true);
@@ -64,6 +63,38 @@ function useCarousel(loop = false) {
     api.on('select', update).on('reInit', update);
     return () => { api.off('select', update).off('reInit', update); };
   }, [api]);
+  useEffect(() => {
+    if (!api) return;
+    let slides = api.slideNodes();
+    const animate = () => {
+      const engine = api.internalEngine();
+      const width = engine.containerRect.width || 1;
+      // Use Embla's cached geometry and rendered location, including loop
+      // offsets. No layout reads or React renders in the animation loop.
+      slides.forEach((slide, index) => {
+        const loopPoint = engine.slideLooper.loopPoints.find((point) => point.index === index);
+        const offset = engine.slideRects[index].left - engine.containerRect.left
+          + engine.offsetLocation.get() + (loopPoint?.target() || 0);
+        const progress = reducedMotion ? 0 : Math.max(-1, Math.min(1, offset / width));
+        const distance = Math.abs(progress);
+        slide.style.setProperty('--card-scale', String(1 - distance * 0.035));
+        slide.style.setProperty('--image-shift', `${progress * -18}px`);
+        slide.style.setProperty('--image-scale', String(1 - distance * 0.035));
+      });
+    };
+    const reset = () => { slides = api.slideNodes(); animate(); };
+    const release = () => {
+      if (reducedMotion) api.scrollTo(api.selectedScrollSnap(), true);
+    };
+    animate();
+    api.on('scroll', animate).on('reInit', reset).on('settle', animate).on('pointerUp', release);
+    return () => {
+      api.off('scroll', animate).off('reInit', reset).off('settle', animate).off('pointerUp', release);
+      slides.forEach((slide) => {
+        ['--card-scale', '--image-shift', '--image-scale'].forEach((name) => slide.style.removeProperty(name));
+      });
+    };
+  }, [api, reducedMotion]);
   const go = useCallback((index) => api?.scrollTo(index, reducedMotion), [api, reducedMotion]);
   const previous = () => api?.scrollPrev(reducedMotion);
   const next = () => api?.scrollNext(reducedMotion);
@@ -124,6 +155,7 @@ export default function PortfolioSpotlight({
               <article className={s.spotlightSlide} key={project.name} id={project.id} aria-roledescription="slide"
                 aria-label={`${index + 1} of ${projects.length}: ${project.name}`} aria-hidden={index !== carousel.selected}
                 inert={index !== carousel.selected}>
+                <div className={s.spotlightCard}>
                 <div className={s.spotlightCopy}>
                   <h3>{project.name}</h3>
                   <p>{project.result || project.description}</p>
@@ -131,6 +163,7 @@ export default function PortfolioSpotlight({
                   <ProjectLink project={project} />
                 </div>
                 <ProjectImage project={project} className={s.spotlightImage} />
+                </div>
               </article>
             ))}
           </div>
@@ -140,8 +173,8 @@ export default function PortfolioSpotlight({
             {projects.map((project, index) => <button key={project.name} type="button" aria-label={`Show ${project.name} in Spotlight`}
               aria-current={carousel.selected === index ? 'true' : undefined} onClick={() => carousel.go(index)}><span /></button>)}
           </div>
-          <p id={instructionsId} className={s.carouselHint}>Drag to explore <span aria-hidden="true">↔</span><span className={s.srOnly}> or use the left and right arrow keys when the carousel is focused.</span></p>
-          <div className={s.controlGroup}><span className={s.counter} aria-live="polite">{pad(carousel.selected + 1)} <span>/ {pad(projects.length)}</span></span><Arrows {...carousel} label="Spotlight" /></div>
+          <p id={instructionsId} className={s.srOnly}>Drag to explore or use the left and right arrow keys when the carousel is focused.</p>
+          <Arrows {...carousel} label="Spotlight" />
         </div>}
       </div>
     </Wrapper>
