@@ -10,7 +10,7 @@ export const projects = [
     description: 'A little color goes a long way. Bright vector icons with soft shadows and a playful side.',
     image: '/images/project-glowy.jpg',
     alt: 'Colorful Glowy vector icons, including a heart, star, and chat bubble',
-    color: '#fff0e8',
+    color: '#fff',
     accent: '#ec674b',
     link: 'https://www.figma.com/community/file/1452663046127877131/glowy-icons-v1-0',
     cta: 'Explore the icons',

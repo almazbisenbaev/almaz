@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import useEmblaCarousel from 'embla-carousel-react';
-import { ArrowLeft, ArrowRight, ArrowUpRight, MoveHorizontal, Play } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, Play } from 'lucide-react';
 import { projects } from '@/data/side-projects';
 import s from './side-projects.module.css';
 
@@ -13,7 +13,6 @@ const subscribeMotion = (callback) => {
   media.addEventListener('change', callback);
   return () => media.removeEventListener('change', callback);
 };
-const pad = (value) => String(value).padStart(2, '0');
 
 function Artwork({ project }) {
   return <div className={s.artwork} style={{ '--tone': project.color }}>
@@ -85,9 +84,7 @@ export default function SideProjects() {
       <p className={s.srOnly} id="side-projects-instructions">Drag or swipe to explore, or use the project buttons. With the carousel focused, use the left and right arrow keys. Home and End jump to the first and last projects.</p>
       <div className={s.controls}>
         <div className={s.dots} aria-label="Choose a personal project">{projects.map((project, index) => <button type="button" key={project.id} aria-label={`Show ${project.title}`} aria-current={selected === index ? 'true' : undefined} onClick={() => go(index)}><span /></button>)}</div>
-        <p className={s.dragHint}><MoveHorizontal size={17} aria-hidden="true" />Drag to explore</p>
         <div className={s.arrows}>
-          <span className={s.counter} aria-live="polite" aria-atomic="true"><span className={s.srOnly}>{projects[selected].title}, project </span>{pad(selected + 1)}<span> / {pad(projects.length)}</span></span>
           <button type="button" onClick={previous} aria-label="Previous personal project"><ArrowLeft size={19} aria-hidden="true" /></button>
           <button type="button" onClick={next} aria-label="Next personal project"><ArrowRight size={19} aria-hidden="true" /></button>
         </div>
