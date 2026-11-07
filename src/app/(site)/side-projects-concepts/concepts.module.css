@@ -1,0 +1,60 @@
+/* Match the homepage's personal-project typography and shared site container. */
+.page { padding-block: 30px 100px; color: #171715; font-size: 16px; line-height: 1.5; }
+.page *, .page *::before, .page *::after { box-sizing: border-box; }
+.page :is(h1,h3,p) { margin: 0; }
+.page :is(h1,h3) { letter-spacing: var(--title-tracking); }
+.page :is(button,a):focus-visible { outline: 2px solid #6d5bf0 !important; outline-offset: 5px; }
+.page button { font: inherit; cursor: pointer; }
+.previewTools { display: flex; justify-content: space-between; gap: 20px; padding-bottom: 32px; font-size: 11px; color: #77716a; }
+/* No panel behind the collection: the site's warm background shows in every gap. */
+.section, .heading, .bento { background: transparent; border: 0; border-radius: 0; box-shadow: none; }
+.heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-block: 30px 40px; }
+.heading p, .category { text-transform: uppercase; letter-spacing: .11em; font-size: 9px; font-weight: 500; color: #77736e; }
+.heading h1 { margin-top: 17px; font-size: clamp(40px, 5vw, 66px); font-weight: 700; line-height: 1; }
+.countToggle { display: inline-flex; align-items: center; gap: 8px; border: 1px solid #e5ded5; border-radius: 22px; background: transparent; padding: 10px 16px; min-height: 44px; font-size: 11px !important; color: #77716a; }
+.bento { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; }
+/* White belongs only to individual project articles. */
+.card { min-width: 0; overflow: hidden; border: 0; border-radius: 23px; background: #fff; display: flex; flex-direction: column; padding: 10px; }
+.art { position: relative; height: 170px; overflow: hidden; display: grid; place-items: center; border-radius: 17px; }
+.art > img { object-fit: contain; padding: 22px; }
+.cardCopy { padding: 24px 24px 12px; display: flex; flex-direction: column; flex: 1; align-items: start; }
+.card h3 { font-size: clamp(24px, 2.6vw, 37px); font-weight: 650; line-height: 1.1; margin-block: 9px 13px; }
+.description { max-width: 390px; color: #77716a; font-size: 13px; line-height: 1.65; }
+.projectButton { margin-top: 20px; max-width: 100%; }
+.placeholder { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; color: #77716a; margin-top: 12px; min-height: 44px; }
+.featured { grid-column: span 2; grid-row: span 2; }
+.featured .art { flex: 1; min-height: 340px; }
+.featured .art > img { padding: 32px; }
+.featured .cardCopy { flex: 0; }
+.featured .videoArt img { width: 200px; height: 200px; }
+.featured .videoArt > span { top: 155px; right: 4px; padding: 12px; border-width: 5px; }
+.featured .videoArt p { font-size: 12px; margin-top: 20px !important; }
+.bento > .card:not(.featured) .art { height: 140px; }
+.bento > .card:not(.featured) .description { display: none; }
+.bento > .card:nth-child(n+4) .art { height: 170px; }
+.glyph { color: var(--ink); font-size: 86px; line-height: 1; }
+.videoArt { display: grid; place-items: center; position: relative; }
+.videoArt img { width: 80px; height: 80px; object-fit: cover; border-radius: 50%; }
+.videoArt > span { position: absolute; top: 54px; right: 28%; background: #c64f68; color: white; border: 3px solid #fff; border-radius: 50%; padding: 6px; }
+.videoArt p { margin-top: 12px !important; color: #77716a; font-size: 9px; }
+.previewNote { margin-top: 24px !important; font-size: 11px; color: #77716a; }
+.srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media(max-width: 1000px) {
+  .bento { gap: 20px; }
+  .cardCopy { padding: 22px 14px 10px; }
+}
+@media(max-width: 767px) {
+  .page { padding-block: 20px 60px; }
+  .previewTools { font-size: 10px; padding-bottom: 20px; }
+  .heading { align-items: start; flex-direction: column; gap: 24px; margin-block: 20px 28px; }
+  .heading p, .category { font-size: 8px; }
+  .heading h1 { font-size: 37px; margin-top: 14px; }
+  .bento { grid-template-columns: 1fr; gap: 24px; }
+  .featured { grid-column: auto; grid-row: auto; }
+  .featured .art { min-height: 230px; }
+  .card h3 { font-size: 27px; }
+  .description { font-size: 12px; }
+  .bento > .card:not(.featured) .art, .bento > .card:nth-child(n+4) .art { height: 200px; }
+  .bento > .card:not(.featured) .description { display: block; }
+}
+@media(prefers-reduced-motion: reduce) { .projectButton { transition: none; } }
