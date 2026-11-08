@@ -4,7 +4,7 @@ import { PROFILES } from '@/lib/site';
 import ReviewsMarquee from './reviews-marquee';
 
 export const ReviewCard = ({ quote, topic, marquee = false, linkTabIndex, ...rest }) => (
-  <figure className={`review-card bg-white rounded-3xl${marquee ? ' review-card--marquee' : ''}`} {...rest}>
+  <figure className={`review-card bg-white rounded-3xl${marquee ? ' review-card--marquee' : ''}${marquee && quote.trim().length <= 200 ? ' review-card--short' : ''}`} {...rest}>
     <svg
       className="review-card-mark"
       xmlns="http://www.w3.org/2000/svg"

@@ -1,100 +1,28 @@
-'use client';
-
-import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import Image from 'next/image';
-import useEmblaCarousel from 'embla-carousel-react';
-import { ArrowLeft, ArrowRight, ArrowUpRight, Play } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
+import Button from '@/components/button/button';
 import { projects } from '@/data/side-projects';
 import s from './side-projects.module.css';
 
-const motionQuery = '(prefers-reduced-motion: reduce)';
-const subscribeMotion = (callback) => {
-  const media = window.matchMedia(motionQuery);
-  media.addEventListener('change', callback);
-  return () => media.removeEventListener('change', callback);
-};
-
-function Artwork({ project }) {
-  return <div className={s.artwork} style={{ '--tone': project.color }}>
-    {project.image ? <Image src={project.image} alt={project.alt} fill draggable={false}
-      sizes="(max-width: 767px) 85vw, (max-width: 1100px) 56vw, (max-width: 1535px) 680px, 810px" /> :
-      <div className={s.youtubeArt}>
-        <span className={s.orbitRing} /><span className={s.orbitRing} /><span className={s.orbitRing} />
-        <div className={s.avatar}><Image src="/me.jpg" alt="Almaz" fill sizes="180px" draggable={false} /><span><Play size={19} fill="currentColor" aria-hidden="true" /></span></div>
-        <span className={s.youtubeLabel}>a little webdev. a little everything.</span>
-      </div>}
+function Art({ project }) {
+  return <div className={`${s.art} ${project.image ? s.imageArt : ''}`} style={{ '--ink': project.accent }}>
+    {project.image ? <Image src={project.image} alt={project.alt} fill sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1279px) 45vw, (max-width: 1535px) 596px, 724px" /> : <div className={s.videoArt}><Image src="/me.jpg" alt="Almaz" width={240} height={240} /><span className={s.youtubeBadge}><svg className={s.youtubeIcon} viewBox="0 0 24 24" role="img" aria-label="Play"><path d="M6 6.7C6 4.9 7.6 4 9.1 4.9L18.7 10.5C20.2 11.4 20.2 12.6 18.7 13.5L9.1 19.1C7.6 20 6 19.1 6 17.3Z" fill="#ff0000" /></svg></span></div>}
   </div>;
 }
+function ProjectLink({ project }) {
+  return <Button variant="black" className={s.projectButton} href={project.link}>{project.cta}<ChevronRight size={18} aria-hidden="true" /><span className={s.srOnly}> (opens in a new tab)</span></Button>;
+}
+function Card({ project }) {
+  return <article className={`${s.card} ${project.image ? s.imageCard : ''}`}><Art project={project} /><div className={s.cardCopy}><h3>{project.title}</h3><p className={s.description}>{project.description}</p><ProjectLink project={project} /></div></article>;
+}
 
-/** Left-aligned project cards with image parallax and unclipped slides. */
 export default function SideProjects() {
-  const reduced = useSyncExternalStore(subscribeMotion, () => window.matchMedia(motionQuery).matches, () => true);
-  const [viewport, api] = useEmblaCarousel({ loop: false, align: 'start', containScroll: false, duration: reduced ? 0 : 50 });
-  const [selected, setSelected] = useState(0);
-  const [canPrevious, setCanPrevious] = useState(false);
-  const [canNext, setCanNext] = useState(false);
-  const visuals = useRef([]);
-
-  useEffect(() => {
-    if (!api) return;
-    const select = () => {
-      setSelected(api.selectedScrollSnap());
-      setCanPrevious(api.canScrollPrev());
-      setCanNext(api.canScrollNext());
-    };
-    const paint = () => {
-      const engine = api.internalEngine();
-      const progress = api.scrollProgress();
-      api.scrollSnapList().forEach((snap, index) => {
-        let distance = snap - progress;
-        if (engine.options.loop) engine.slideLooper.loopPoints.forEach((point) => {
-          if (point.index === index && point.target() !== 0) distance = snap + Math.sign(point.target()) - progress;
-        });
-        const offset = Math.max(-1.5, Math.min(1.5, distance * projects.length));
-        if (visuals.current[index]) visuals.current[index].style.transform = reduced ? 'none' : `translate3d(${offset * -9}px, 0, 0) scale(1.045)`;
-      });
-    };
-    const initialize = () => { select(); paint(); };
-    initialize();
-    api.on('select', select).on('scroll', paint).on('reInit', initialize);
-    return () => { api.off('select', select).off('scroll', paint).off('reInit', initialize); };
-  }, [api, reduced]);
-
-  const go = (index) => api?.scrollTo(index, reduced);
-  const previous = () => api?.scrollPrev(reduced);
-  const next = () => api?.scrollNext(reduced);
-  const handleKeys = (event) => {
-    if (event.target !== event.currentTarget) return;
-    const action = { ArrowLeft: previous, ArrowRight: next, Home: () => go(0), End: () => go(projects.length - 1) }[event.key];
-    if (action) { event.preventDefault(); action(); }
-  };
-
   return <section id="side-projects" className={`section ${s.section}`} aria-labelledby="side-projects-title">
     <div className="site-container">
-      <header className={s.heading}><p>A few things I’ve made</p><h2 id="side-projects-title">Personal projects.</h2></header>
-      <div ref={viewport} className={s.viewport} role="region" aria-roledescription="carousel" aria-label="Personal projects"
-        tabIndex={0} aria-describedby="side-projects-instructions" onKeyDown={handleKeys}>
-        <div className={s.track}>
-          {projects.map((project, index) => <div key={project.id} className={s.slide} role="group" aria-roledescription="slide"
-            aria-label={`${index + 1} of ${projects.length}: ${project.title}`} aria-hidden={selected !== index} inert={selected !== index}>
-            <article className={s.card}>
-              <div className={s.artWindow}><div className={s.artMotion} ref={(node) => { visuals.current[index] = node; }}><Artwork project={project} /></div></div>
-              <div className={s.copy}>
-                <p className={s.category}>{project.category}</p><h3>{project.title}</h3><p className={s.description}>{project.description}</p>
-                <a className={s.projectLink} href={project.link} target="_blank" rel="noopener noreferrer" draggable={false}>{project.cta}<ArrowUpRight size={18} aria-hidden="true" /><span className={s.srOnly}> (opens in a new tab)</span></a>
-              </div>
-            </article>
-          </div>)}
-        </div>
-      </div>
-      <p className={s.srOnly} id="side-projects-instructions">Drag or swipe to explore, or use the project buttons. With the carousel focused, use the left and right arrow keys. Home and End jump to the first and last projects.</p>
-      <div className={s.controls}>
-        <div className={s.dots} aria-label="Choose a personal project">{projects.map((project, index) => <button type="button" key={project.id} aria-label={`Show ${project.title}`} aria-current={selected === index ? 'true' : undefined} onClick={() => go(index)}><span /></button>)}</div>
-        <div className={s.arrows}>
-          <button type="button" onClick={previous} disabled={!canPrevious} aria-label="Previous personal project"><ArrowLeft size={19} aria-hidden="true" /></button>
-          <button type="button" onClick={next} disabled={!canNext} aria-label="Next personal project"><ArrowRight size={19} aria-hidden="true" /></button>
-        </div>
-      </div>
+      <header className={s.heading}>
+        <div><p>A few things I’ve made</p><h2 id="side-projects-title">Personal projects.</h2></div>
+      </header>
+      <div className={s.bento}>{projects.map(project => <Card key={project.id} project={project} />)}</div>
     </div>
   </section>;
 }

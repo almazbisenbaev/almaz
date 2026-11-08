@@ -50,8 +50,8 @@
 .spotlightDetails > p { max-width: 300px; }
 .spotlightDetails .credit { margin-top: 12px; }
 .spotlightCopy > .projectLink { margin-top: auto; }
-.spotlightImage { aspect-ratio: auto; min-height: 530px; }
-.spotlightImage img { object-fit: contain; }
+.spotlightImage { aspect-ratio: auto; align-self: center; width: 100%; min-width: 0; }
+.spotlightImage img { display: block; width: 100%; height: auto; }
 .spotlightImage img { transform: translate3d(var(--image-shift, 0px), 0, 0) scale(var(--image-scale, 1)); transition: none; }
 .carouselFooter { display: flex; justify-content: space-between; align-items: center; margin-top: 24px; gap: 20px; padding-inline: 16px; }
 .dots { display: flex; align-items: center; }
@@ -60,13 +60,9 @@
 .dots button[aria-current] span { width: 22px; background: #000; }
 
 
-@media (min-width: 1500px) {
-  .spotlightImage { min-height: 600px; }
-}
 @media (max-width: 1050px) {
   .spotlightCopy { padding: 26px 22px; }
   .spotlightCopy h3 { font-size: clamp(36px, 4.7vw, 49px); }
-  .spotlightImage { min-height: 490px; }
 }
 @media (max-width: 767px) {
   .root { --card-radius: 28px; }
@@ -79,7 +75,7 @@
   .arrows button { width: 44px; height: 44px; }
   .image { border-radius: 20px; }
   .spotlightCard { display: flex; flex-direction: column; padding: 10px; }
-  .spotlightImage { order: -1; min-height: 0; aspect-ratio: 1.35; }
+  .spotlightImage { order: -1; }
   .spotlightCopy { flex: 1; padding: 24px 16px 18px; }
   .spotlightCopy h3 { font-size: clamp(32px, 9vw, 54px); margin-bottom: 16px; }
   .spotlightCopy > p { font-size: 14px; max-width: 240px; }

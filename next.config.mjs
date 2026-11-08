@@ -146,17 +146,19 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: isDev ? 'no-store' : 'public, max-age=31536000, immutable',
           },
         ],
       },
       {
+        // Dev chunk URLs are reused as code changes. Caching them as immutable
+        // mixes stale browser modules with fresh server output and breaks hydration.
         source: '/:all*(js|css)',
         locale: false,
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: isDev ? 'no-store' : 'public, max-age=31536000, immutable',
           },
         ],
       },

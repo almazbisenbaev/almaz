@@ -36,7 +36,7 @@ export const works = [
     clientUrl: "//mindlind.de",
     skills: ["JavaScript", "GSAP", "WordPress"],
     homepage: true,
-    spotlight: { image: '/images/portfolio/funky-ramen-1.jpg', tone: '#e5c6f0', label: 'Hospitality', note: 'A little anime. A lot of character.' },
+    spotlight: { image: '/images/portfolio/funky-ramen-1.jpg', width: 3840, height: 2160, tone: '#e5c6f0', label: 'Hospitality', note: 'A little anime. A lot of character.' },
     media: [
       { src: "/images/portfolio/funky-ramen-1.jpg", width: 960, height: 540, alt: "Funky Ramen homepage hero with the restaurant's anime-styled artwork" },
       { src: "/images/portfolio/funky-ramen-2.jpg", width: 960, height: 540, alt: "Funky Ramen menu section listing dishes with prices" },
@@ -56,7 +56,7 @@ export const works = [
     clientUrl: "//mindlind.de",
     skills: ["JavaScript", "GSAP", "WordPress"],
     homepage: true,
-    spotlight: { image: '/images/portfolio/prince-food-cover.jpg', tone: '#cad9b5', label: 'Food & beverage', note: 'Fresh thinking for frozen food.' },
+    spotlight: { image: '/images/portfolio/prince-food-cover.jpg', width: 1440, height: 800, tone: '#cad9b5', label: 'Food & beverage', note: 'Fresh thinking for frozen food.' },
     media: [
       { src: "/portfolio/prince-food-1.mp4", width: 2880, height: 1600, type: "video", alt: "Screen recording of the Prince Food B2B site scrolling through its frozen fruit and vegetable catalogue" },
     ],
@@ -73,7 +73,7 @@ export const works = [
     clientUrl: "//mindlind.de",
     skills: ["WordPress", "Frontend"],
     homepage: true,
-    spotlight: { image: '/images/portfolio/factory-sl-cover.jpg', tone: '#cbd2da', label: 'Automotive', note: 'Precision, down to the last detail.' },
+    spotlight: { image: '/images/portfolio/factory-sl-cover.jpg', width: 1440, height: 816, tone: '#cbd2da', label: 'Automotive', note: 'Precision, down to the last detail.' },
     media: [
       { src: "/portfolio/factorysl-1.mp4", width: 2880, height: 1632, type: "video", alt: "Screen recording of the Factory SL site showing its vehicle detailing and tuning services" },
     ],
@@ -98,7 +98,7 @@ export const works = [
     category: "Development",
     skills: ["WordPress", "WooCommerce"],
     homepage: true,
-    spotlight: { image: '/images/portfolio/silverskin-cover.jpg', tone: '#ddd9ce', label: 'E-commerce', note: 'Dublin-born. Beautifully brewed.' },
+    spotlight: { image: '/images/portfolio/silverskin-cover.jpg', width: 1440, height: 810, tone: '#ddd9ce', label: 'E-commerce', note: 'Dublin-born. Beautifully brewed.' },
     media: [
       { src: "/videos/silverskin-home.webm", width: 1920, height: 1080, type: "video", alt: "Screen recording of the Silverskin Coffee homepage and its coffee bean shop" },
       { src: "/videos/silverskin-hamburger.webm", width: 3420, height: 1942, type: "video", alt: "Screen recording of the Silverskin Coffee full-screen navigation menu opening" },
@@ -116,7 +116,7 @@ export const works = [
     clientUrl: "//mindlind.de",
     skills: ["WooCommerce", "UX Design"],
     homepage: true,
-    spotlight: { image: '/portfolio/mua-1.jpg', tone: '#e7c8c0', label: 'Beauty & education', note: 'A considered space for beauty.' },
+    spotlight: { image: '/portfolio/mua-1.jpg', width: 1560, height: 800, tone: '#e7c8c0', label: 'Beauty & education', note: 'A considered space for beauty.' },
     media: [
       { src: "/portfolio/mua-1.jpg", width: 1560, height: 800, alt: "Muafaktur storefront homepage with its beauty product range" },
       { src: "/portfolio/mua-1-1.jpg", width: 828, height: 1792, alt: "Muafaktur homepage shown on a mobile screen" },
@@ -136,7 +136,7 @@ export const works = [
     clientUrl: "//mindlind.de",
     skills: ["WordPress", "Automation"],
     homepage: true,
-    spotlight: { image: '/portfolio/monitask.jpg', tone: '#cddbea', label: 'Software', note: 'One system. Hundreds of pages.' },
+    spotlight: { image: '/portfolio/monitask.jpg', width: 1560, height: 781, tone: '#cddbea', label: 'Software', note: 'One system. Hundreds of pages.' },
     media: [
       { src: "/portfolio/monitask.jpg", width: 1560, height: 781, alt: "Monitask marketing site homepage, one of its hundreds of auto-generated multilingual pages" },
     ],

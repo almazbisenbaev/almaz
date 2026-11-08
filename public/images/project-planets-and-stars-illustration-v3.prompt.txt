@@ -1,0 +1,3 @@
+Edited with the built-in image_gen tool using illustration-v2.png as the reference.
+
+Edit this portfolio illustration. Preserve the realistic mature rendering, exact three planetary subjects (Saturn with rings, Jupiter, Earth), their relative sizes, diagonal arrangement, natural muted colors and lighting. Change only framing and scale: make the entire group about 70% of its current size, centered within a landscape 4:3 canvas, with generous pure white empty margins on ALL four sides (approximately 15% clear border). Keep all Saturn rings comfortably inside that margin. Seamless pure white background. Do not add any objects, text, stars, decorations, borders, or shadows on a floor. Maintain crisp detailed textures. The result is a spacious 4:3 website card illustration.

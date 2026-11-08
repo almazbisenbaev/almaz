@@ -19,7 +19,7 @@ function useReducedMotion() {
 function ProjectImage({ project, className = '' }) {
   return (
     <div className={`${s.image} ${className}`} style={{ '--project-tone': project.tone }}>
-      <Image src={project.image} alt={project.imageAlt} fill sizes="(max-width: 700px) 90vw, (max-width: 1500px) 55vw, 800px" draggable={false} />
+      <Image src={project.image} alt={project.imageAlt} width={project.width} height={project.height} sizes="(max-width: 700px) 90vw, (max-width: 1500px) 55vw, 800px" draggable={false} />
     </div>
   );
 }

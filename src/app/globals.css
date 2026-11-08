@@ -141,7 +141,7 @@ a {
 .reviews-section {
   --review-gap: 20px;
   --review-width: 420px;
-  --review-duration: 80s;
+  --review-duration: 50s;
 }
 
 .reviews-header {
@@ -204,7 +204,7 @@ a {
   width: var(--review-width);
   min-height: 320px;
   margin: 0;
-  padding: 30px;
+  padding: 40px;
   gap: 22px;
   border: 1px solid #e9e5e0;
   border-radius: 24px;
@@ -230,8 +230,14 @@ a {
   color: #363431;
 }
 
+/* Exactly two quote sizes: short quotes (up to 200 characters) and normal. */
+.review-card--marquee.review-card--short .review-card-text {
+  font-size: 26px;
+  line-height: 1.4;
+}
+
 .review-card--marquee .review-card-link {
-  font-size: 19px;
+  font-size: 18px;
 }
 
 .review-card--marquee .review-card-footer {
@@ -274,15 +280,22 @@ a {
   .reviews-section {
     --review-gap: 14px;
     --review-width: min(360px, calc(100vw - 56px));
-    --review-duration: 68s;
+    --review-duration: 42s;
   }
 
   .reviews-header { gap: 16px; margin-bottom: 20px; }
   .reviews-header .block-header-title { font-size: 18px; }
   .reviews-source-link { gap: 6px; font-size: 12px; }
-  .review-card--marquee { padding: 24px; min-height: 300px; }
+  .review-card--marquee { padding: 32px; min-height: 300px; }
   .review-card--marquee .review-card-text { font-size: 16px; line-height: 1.65; }
-  .review-card--marquee .review-card-link { font-size: 18px; }
+  .review-card--marquee.review-card--short .review-card-text { font-size: 24px; line-height: 1.4; }
+  /* Exactly two quote sizes: short quotes (up to 200 characters) and normal. */
+.review-card--marquee.review-card--short .review-card-text {
+  font-size: 26px;
+  line-height: 1.4;
+}
+
+.review-card--marquee .review-card-link { font-size: 17px; }
 }
 
 @media (max-width: 359px) {
