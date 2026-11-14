@@ -28,7 +28,8 @@ export default function Footer({ locale = "en" }) {
     : "text-3xl sm:text-6xl";
 
   return (
-    <div className={isRussian ? "pt-16 pb-8 sm:pt-24 sm:pb-10" : "pt-40 pb-10"}>
+    <footer className={`site-footer ${isRussian ? "pt-16 pb-8 sm:pt-24 sm:pb-10" : "pt-40 pb-10"}`}>
+      <div className="site-footer-background" aria-hidden="true" />
       <div className="site-container relative">
 
         <Separator className="mb-10 bg-blue-700/10" />
@@ -72,6 +73,6 @@ export default function Footer({ locale = "en" }) {
         </div>
 
       </div>
-    </div>
+    </footer>
   );
 }

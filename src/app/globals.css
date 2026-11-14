@@ -62,6 +62,62 @@ body {
   min-height: 100svh;
 }
 
+/* Bright, grainy color washes fade into the page's cream background. */
+.site-footer {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--background);
+}
+
+.site-footer-background {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  mask-image: linear-gradient(to bottom, transparent, #000 65%);
+}
+
+.site-footer-background::before,
+.site-footer-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.site-footer-background::before {
+  /* Overscan keeps the moving color field behind the fixed, seamless fade. */
+  inset: -18%;
+  background:
+    radial-gradient(ellipse at 8% 95%, #ffb574 0%, transparent 50%),
+    radial-gradient(ellipse at 35% 100%, #ff9fb6 0%, transparent 50%),
+    radial-gradient(ellipse at 68% 90%, #b9a0ff 0%, transparent 55%),
+    radial-gradient(ellipse at 100% 80%, #9bf2d7 0%, transparent 50%),
+    radial-gradient(ellipse at 35% 45%, #ffe49a 0%, transparent 60%),
+    linear-gradient(to bottom, var(--background), #fff2e4);
+}
+
+.site-footer-background::after {
+  /* Slightly coarser, stronger grain stays still as the colors drift beneath. */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath fill='%23000' filter='url(%23grain)' d='M0 0h180v180H0z'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  mix-blend-mode: overlay;
+  opacity: 0.45;
+}
+
+@keyframes footer-color-drift {
+  from { transform: translate3d(-5%, 2%, 0) rotate(-3deg) scale(1.04); }
+  to { transform: translate3d(5%, -4%, 0) rotate(3deg) scale(1.08); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .site-footer-background::before {
+    animation: footer-color-drift 18s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+}
+
 html.lenis,
 html.lenis body {
   height: auto;

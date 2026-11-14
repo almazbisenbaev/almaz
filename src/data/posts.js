@@ -16,6 +16,14 @@
  */
 export const posts = [
   {
+    slug: "zero-dollar-production-stack",
+    title: "A $0 Stack for a Small Web App",
+    description:
+      "Logins, saved data, and a $0 bill. Here's what I'd use for a small web app, where free stops being free, and which tools I'd leave out.",
+    publishedAt: "2026-11-14",
+    thumbnail: "/blog/zero-dollar-production-stack-cover.jpg",
+  },
+  {
     slug: "ai-takeover-backfired",
     title: "How AI Takeover Backfired on Greedy Companies",
     publishedAt: "2026-08-30",

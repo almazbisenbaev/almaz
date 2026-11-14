@@ -162,6 +162,17 @@ const nextConfig = {
           },
         ],
       },
+      // Favicon URLs stay stable for search crawlers, but their artwork can
+      // change. Override the immutable asset policy so updates can revalidate.
+      ...[
+        '/favicon.ico',
+        '/favicon-16x16.png',
+        '/favicon-32x32.png',
+        '/favicon-96x96.png',
+      ].map((source) => ({
+        source,
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=0, must-revalidate' }],
+      })),
     ];
   },
 };

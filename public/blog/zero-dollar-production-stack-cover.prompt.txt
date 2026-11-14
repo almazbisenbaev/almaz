@@ -1,0 +1,13 @@
+Generated with the built-in image generation tool.
+
+Use case: stylized-concept
+Asset type: wide editorial cover image for a developer's personal blog, about running a small web application on free cloud tiers.
+Primary request: Create a polished, memorable conceptual still life: a compact stack of three real-looking miniature server units with a paper price tag attached, printed with exactly "$0". This is a fresh cover, not a diagram.
+Scene/backdrop: seamless warm off-white studio surface and background, calm and spacious.
+Subject: three compact charcoal-black and brushed-aluminum server units stacked neatly, fine machined ventilation slots, one subtle green status LED per unit. A large ivory paper price tag on a short string lies against the stack in the foreground; "$0" is big and very legible. Small tangible details and convincing material textures.
+Style/medium: high-end editorial 3D still life, photographed like a beautifully designed physical object, tactile surfaces, slightly playful scale, restrained realism.
+Composition/framing: landscape approximately 1.9:1, one strong centered composition occupying the middle 65% of the frame; keep the entire stack and tag inside a safe central crop. Three-quarter view from slightly above, enough breathing space on all sides. The subject must read clearly at blog thumbnail size.
+Lighting/mood: large softbox lighting, elegant gentle shadows, crisp edges, natural reflections, understated rather than futuristic.
+Text (verbatim): "$0" only, on the physical price tag.
+Constraints: no headline, no website address, no vendor logos, no diagrams, no UI cards, no grids, no floating icons, no neon, no purple gradients, no cartoon faces, no watermark. Opaque background.
+
