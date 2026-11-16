@@ -16,6 +16,14 @@
  */
 export const posts = [
   {
+    slug: "weirdest-programming-languages",
+    title: "Hello World Shouldn’t Be This Hard",
+    description:
+      "Brainfuck, Malbolge, and INTERCAL: eight commands, self-modifying misery, and a compiler that checks your manners. Hello, what the hell?",
+    publishedAt: "2026-11-17",
+    thumbnail: "/blog/hello-world-shouldnt-be-this-hard-cover-v2.jpg",
+  },
+  {
     slug: "zero-dollar-production-stack",
     title: "A $0 Stack for a Small Web App",
     description:

@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import Image from 'next/image';
 
+import PostBreadcrumbs from '@/components/post-breadcrumbs/post-breadcrumbs';
 import BlogJsonLd from '@/components/seo/blog-json-ld';
 import { findPost, postDate, postPath } from '@/data/posts';
 import { AUTHOR_NAME, SITE_URL, TWITTER_HANDLE } from '@/lib/site';
@@ -39,17 +39,12 @@ export const metadata = {
 
 export default function PostZeroDollarProductionStack() {
   return (
-    <article className="min-h-screen py-12 sm:py-24">
+    <article className="min-h-screen pt-12 sm:pt-24">
       <BlogJsonLd post={post} />
 
       <div className="site-container">
         <div className="max-w-3xl mx-auto">
-          <Link href="/posts" className="inline-flex items-center text-neutral-400 hover:text-neutral-900 mb-12 transition-colors text-xs font-medium uppercase tracking-widest">
-            <svg aria-hidden="true" className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-            Back to Blog
-          </Link>
+          <PostBreadcrumbs title={post.title} />
 
           <header className="mb-10 sm:mb-16">
             <h1 className="text-3xl sm:text-7xl font-bold mb-8 tracking-title">{post.title}</h1>

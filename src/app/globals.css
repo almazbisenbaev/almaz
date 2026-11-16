@@ -1191,6 +1191,19 @@ a {
   line-height: 1.5;
 }
 
+/* Narrow article images and their wrappers share the text's left edge. */
+.article :is(figure, img, picture, a:has(> img, > picture)) {
+  margin-inline: 0 auto;
+}
+
+.article :is(img, picture, a:has(> img, > picture)) {
+  display: block;
+}
+
+.article figcaption {
+  text-align: left;
+}
+
 @media (min-width: 576px){
 
   .article {
