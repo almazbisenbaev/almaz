@@ -63,7 +63,7 @@ export default function Footer({ locale = "en" }) {
           <div>
             <a
               href={PROFILES.telegram}
-              className={`font-bold tracking-title hover:text-[#00f] transition-colors ${
+              className={`font-bold tracking-title hover:text-[crimson] transition-colors ${
                 isRussian ? `inline-flex min-h-11 items-center ${handleSize}` : handleSize
               }`}
             >

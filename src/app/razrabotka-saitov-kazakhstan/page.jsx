@@ -276,7 +276,7 @@ export default function KazakhstanPage() {
               <p className="text-xs text-neutral-500 mt-auto">
                 {project.year} · Для <a href={project.clientUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center underline underline-offset-4">{project.client}</a>
               </p>
-              <a href={project.url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 self-start items-center gap-2 mt-2 sm:mt-4 text-sm font-semibold hover:text-blue-600 transition-colors">
+              <a href={project.url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 self-start items-center gap-2 mt-2 sm:mt-4 text-sm font-semibold hover:text-[crimson] transition-colors">
                 Посмотреть сайт <span className="sr-only">{project.name}</span> <ArrowUpRight size={16} aria-hidden="true" />
               </a>
             </article>

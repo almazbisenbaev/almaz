@@ -781,7 +781,7 @@ a {
 
 .extlink:hover, .extlink:focus {
   opacity: 1;
-  color: blue;
+  color: crimson;
 }
 
 /* Special styling for Upwork links */
