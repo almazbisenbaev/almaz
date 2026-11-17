@@ -101,7 +101,7 @@ export default function PostWeirdestProgrammingLanguages() {
 
             <p>There's a whole category called <b>esoteric programming languages</b>, or esolangs. People make them to explore strange ideas, test the limits of language design, or commit a joke so thoroughly that somebody has to write a compiler for it.</p>
 
-            <p>Here are three of the weirdest. A small tasting menu of “why the fuck would you do this?”</p>
+            <p>Here are three of the weirdest. A small tasting menu of "why the fuck would you do this?"</p>
 
             <h2>1. Brainfuck (BF)</h2>
 
@@ -117,10 +117,10 @@ export default function PostWeirdestProgrammingLanguages() {
               height={1000}
               alt="Brainfuck Hello World source code made entirely of arrows, plus and minus signs, brackets, and dots"
             >
-              “Hello World!” in Brainfuck. A lot of punctuation just to start a conversation.
+              "Hello World!" in Brainfuck. A lot of punctuation just to start a conversation.
             </CodeScreenshot>
 
-            <p>I do like the tiny instruction set. You can learn every command in a few minutes, then spend the rest of the evening wondering which cell you were in. Small language. Spacious confusion. BF, as in “briefly functional,” which is also how I'd describe myself after debugging it.</p>
+            <p>I do like the tiny instruction set. You can learn every command in a few minutes, then spend the rest of the evening wondering which cell you were in. Small language. Spacious confusion. BF, as in "briefly functional," which is also how I'd describe myself after debugging it.</p>
 
             <h2>2. Malbolge</h2>
 
@@ -136,14 +136,14 @@ export default function PostWeirdestProgrammingLanguages() {
               height={154}
               alt="Malbolge cat program source code, a dense mixture of letters, numbers, and punctuation"
             >
-              A Malbolge “cat” program: it copies input to output. No actual cats were compiled.
+              A Malbolge "cat" program: it copies input to output. No actual cats were compiled.
             </CodeScreenshot>
 
             <p>This program reads the text you enter and outputs the same text. It's a simple task, but Malbolge's unusual rules make the code difficult to write and understand.</p>
 
             <h2>3. INTERCAL</h2>
 
-            <p>Don Woods and James Lyon created INTERCAL in 1972 as a parody of programming languages. Its full name is <a href="https://www.catb.org/~esr/intercal/ick.htm">“Compiler Language With No Pronounceable Acronym”</a>. The name INTERCAL doesn't follow the initials of that phrase.</p>
+            <p>Don Woods and James Lyon created INTERCAL in 1972 as a parody of programming languages. Its full name is <a href="https://www.catb.org/~esr/intercal/ick.htm">"Compiler Language With No Pronounceable Acronym"</a>. The name INTERCAL doesn't follow the initials of that phrase.</p>
 
             <p>INTERCAL makes even simple arithmetic awkward, with unusual operations that interleave or select bits. But my favorite part is <code>PLEASE</code>. In C-INTERCAL, use it too little and the compiler rejects your program for being insufficiently polite. Use it too much and you're overly polite. Your code now needs both logic and social skills.</p>
 
@@ -153,7 +153,7 @@ export default function PostWeirdestProgrammingLanguages() {
               height={1054}
               alt="INTERCAL Hello World source code with DO, PLEASE, READ OUT, and GIVE UP statements"
             >
-              “Hello, world!” in INTERCAL. Even the computer needs to be asked nicely.
+              "Hello, world!" in INTERCAL. Even the computer needs to be asked nicely.
             </CodeScreenshot>
 
             <p>There's also <code>GIVE UP</code>, which ends the program. Finally, a command I can use without checking the documentation. I've been mentally executing it during meetings for years.</p>

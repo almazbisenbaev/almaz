@@ -69,7 +69,7 @@ export default function PostZeroDollarProductionStack() {
 
       <div className="site-container">
         <div className="max-w-3xl mx-auto article [&_a]:underline [&_a]:decoration-neutral-400 [&_a]:underline-offset-4 [&_a:hover]:decoration-neutral-900">
-          <p>Let's say you're building a bookmark manager. People sign in, save links, and find them again on another device. Maybe they add a title and a few tags. “Read later” is a very optimistic way to say “collect forever,” but let's build it anyway.</p>
+          <p>Let's say you're building a bookmark manager. People sign in, save links, and find them again on another device. Maybe they add a title and a few tags. "Read later" is a very optimistic way to say "collect forever," but let's build it anyway.</p>
 
           <p>That's a real app. It needs hosting, authentication, a database, and access rules. It doesn't automatically need Redis, a separate search service, or an object-storage bucket.</p>
 
@@ -103,13 +103,13 @@ export default function PostZeroDollarProductionStack() {
 
           <p>Firestore's <a href="https://firebase.google.com/docs/firestore/quotas">free quota</a> currently includes one free database per project, 1 GiB of stored data, 50,000 document reads a day, 20,000 writes a day, and 10 GiB of outbound transfer a month. Managed backups and point-in-time recovery require billing.</p>
 
-          <p>Those numbers count operations. Reading a list of 100 documents isn't one document read. Reloads and live updates count too, so I'd paginate lists and keep an eye on usage. I can't turn “50,000 reads” into “thousands of users” without knowing what those users are doing.</p>
+          <p>Those numbers count operations. Reading a list of 100 documents isn't one document read. Reloads and live updates count too, so I'd paginate lists and keep an eye on usage. I can't turn "50,000 reads" into "thousands of users" without knowing what those users are doing.</p>
 
           <p>Custom server work changes the plan too. <a href="https://firebase.google.com/pricing">Cloud Functions and Firebase App Hosting require Blaze</a>. Firebase Hosting and Firebase App Hosting are different products. Helpfully unhelpful naming. This example uses a static frontend and no Cloud Functions.</p>
 
           <p>File uploads are another boundary. <a href="https://firebase.google.com/docs/storage/faqs-storage-changes-announced-sept-2024">Cloud Storage for Firebase also requires Blaze</a>, even though some usage can still be free. Saving a text document in Firestore and uploading a photo to a storage bucket are different features.</p>
 
-          <p>That's the scope: logins and saved text data. If the first feature on your list is “upload a video,” I'd pick a different setup before writing any code.</p>
+          <p>That's the scope: logins and saved text data. If the first feature on your list is "upload a video," I'd pick a different setup before writing any code.</p>
 
           <h2>When I'd choose something else</h2>
 
