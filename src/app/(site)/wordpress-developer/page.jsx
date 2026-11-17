@@ -267,6 +267,7 @@ export default function WordPressDeveloperPage() {
                   width={48}
                   height={48}
                   alt="Almaz Bisenbaev"
+                  loading="eager"
                   className="rounded-full h-12 w-12 object-cover"
                 />
                 <div className="leading-tight">

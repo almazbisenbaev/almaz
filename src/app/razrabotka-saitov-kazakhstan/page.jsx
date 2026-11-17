@@ -12,9 +12,9 @@ import {
   TWITTER_HANDLE,
   TWITTER_IMAGE,
 } from "@/lib/site";
+import { servicePath } from "./routing.mjs";
 
-const PATH = "/razrabotka-saitov-kazakhstan";
-const PAGE_URL = `${SITE_URL}${PATH}`;
+const PAGE_URL = `${SITE_URL}${servicePath}`;
 const TITLE = "Разработка сайтов в Казахстане — Алмаз Бисенбаев";
 const DESCRIPTION =
   "Создание сайтов для бизнеса в Казахстане: лендинги, сайты компаний и интернет-магазины на WordPress и WooCommerce. Разработчик Алмаз Бисенбаев. Обсудим ваш проект.";
@@ -28,7 +28,7 @@ export const metadata = {
   description: DESCRIPTION,
   // This is a dedicated regional service page, not a translation of the home
   // page. Keep its own canonical rather than declaring unrelated hreflang pairs.
-  alternates: { canonical: PATH },
+  alternates: { canonical: servicePath },
   robots: { index: true, follow: true },
   authors: [{ name: "Алмаз Бисенбаев", url: SITE_URL }],
   openGraph: {
@@ -101,8 +101,7 @@ const projectCopy = [
   },
 ];
 
-// Russian copy layered over the shared project record, so links, images and
-// dates stay in one place while the descriptions are written per language.
+// Keep project links, images and dates in the shared portfolio records.
 const projects = projectCopy.map((copy) => ({ ...findWork(copy.name), ...copy }));
 
 const process = [
@@ -193,7 +192,7 @@ export default function KazakhstanPage() {
 
       <section className="site-container pt-8 pb-10 sm:pt-20 sm:pb-16 lg:pt-24 lg:pb-20">
         <div className="flex items-center gap-3 mb-7 sm:gap-4 sm:mb-12">
-          <Image src="/me.jpg" alt="Алмаз Бисенбаев" width={64} height={64} sizes="(max-width: 639px) 48px, 64px" className="size-12 shrink-0 rounded-full sm:size-16" />
+          <Image src="/me.jpg" alt="Алмаз Бисенбаев" width={64} height={64} sizes="(max-width: 639px) 48px, 64px" loading="eager" className="size-12 shrink-0 rounded-full sm:size-16" />
           <p className="text-sm text-neutral-600 leading-relaxed">
             Привет, я Алмаз.<br />
             Разрабатываю сайты для бизнеса в Казахстане.

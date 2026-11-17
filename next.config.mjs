@@ -1,3 +1,5 @@
+import { legacyRedirect } from './src/app/razrabotka-saitov-kazakhstan/routing.mjs';
+
 /**
  * Content-Security-Policy.
  *
@@ -50,7 +52,7 @@ const contentSecurityPolicy = [
 const nextConfig = {
   compress: true,
   experimental: {
-    // Preserve the site's custom 404 across the English and Russian roots.
+    // Use the custom 404 across root layouts.
     globalNotFound: true,
     // Inlines the route's CSS as a <style> tag in the streamed HTML instead of
     // linking it, which removes the last render-blocking request from the
@@ -116,11 +118,7 @@ const nextConfig = {
         destination: '/silverskin',
         permanent: true,
       },
-      {
-        source: '/ru',
-        destination: '/razrabotka-saitov-kazakhstan',
-        permanent: true,
-      },
+      legacyRedirect,
     ];
   },
   async headers() {

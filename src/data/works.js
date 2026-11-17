@@ -1,6 +1,5 @@
 /**
- * Client projects, rendered by `components/portfolio-spotlight` (English pages)
- * and by the Russian landing page, which looks entries up by `name`.
+ * Client projects for the portfolio and service pages.
  *
  * Shape of an entry:
  *   name        Project name shown as the heading.

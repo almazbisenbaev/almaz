@@ -164,7 +164,8 @@ export default function HeroIntro() {
                 height={150}
                 sizes="(max-width: 767px) 120px, (max-width: 1199px) 125px, 146px"
                 alt="Almaz Bisenbaev"
-                priority
+                loading="eager"
+                fetchPriority="high"
                 onLoad={updateSphereBounds}
               />
               <span

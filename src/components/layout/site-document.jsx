@@ -16,8 +16,6 @@ import {
   SITE_URL,
 } from "@/lib/site";
 
-// Other scripts remain available through unicode-range without preloading
-// them on every English visit. The Russian root supplies its own preload.
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
 // Site-wide Person node. Page-level graphs reference it by `PERSON_ID` rather
@@ -50,13 +48,10 @@ const personJsonLd = {
 };
 
 /**
- * The <html> document shared by the English and Russian roots: one place for
- * fonts, analytics, structured data and the localized header/footer. Separate
- * roots exist so each language's document language is in the initial HTML and
- * both stay statically rendered.
+ * Shared document shell for fonts, analytics, structured data, header and footer.
  *
  * @param {Object} props
- * @param {string} [props.lang="en"] - Document language, e.g. "en" or "ru-KZ".
+ * @param {string} [props.lang="en"] - Document language.
  * @param {boolean} [props.showHeader=true] - Whether to render the site header.
  * @param {boolean} [props.showHeaderNavigation=true] - Whether to show the
  *   navigation alongside the name and role.
@@ -91,7 +86,7 @@ export default function SiteDocument({
 
         <main>{children}</main>
 
-        {showFooter && <Footer locale={lang} />}
+        {showFooter && <Footer />}
 
         <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} strategy="afterInteractive" />
       </body>

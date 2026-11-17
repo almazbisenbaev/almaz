@@ -4,42 +4,21 @@ import { PROFILES } from "@/lib/site";
 
 const TELEGRAM_HANDLE = "@almazbisenbaev";
 
-/**
- * The Russian footer variant uses the browser's default text scale,
- * so its spacing is tighter and its tap targets are sized for
- * mobile (`min-h-11`). Both locales otherwise share this markup.
- */
-const COPY = {
-  en: { socialsLabel: "I also talk about web dev here:" },
-  "ru-KZ": { socialsLabel: "Ещё о веб-разработке:" },
-};
-
 const SOCIALS = [
   { href: PROFILES.threads, label: "Threads" },
   { href: PROFILES.youtube, label: "YouTube" },
 ];
 
-export default function Footer({ locale = "en" }) {
-  const isRussian = locale === "ru-KZ";
-  const { socialsLabel } = COPY[locale] ?? COPY.en;
-
-  const handleSize = isRussian
-    ? "text-[clamp(1.5rem,7vw,3.75rem)]"
-    : "text-3xl sm:text-6xl";
-
+export default function Footer() {
   return (
-    <footer className={`site-footer ${isRussian ? "pt-16 pb-8 sm:pt-24 sm:pb-10" : "pt-40 pb-10"}`}>
+    <footer className="site-footer pt-20 sm:pt-40 pb-10">
       <div className="site-footer-background" aria-hidden="true" />
       <div className="site-container relative">
 
         <Separator className="mb-10 bg-blue-700/10" />
 
-        <div
-          className={`font-medium flex flex-col sm:flex-row gap-3 ${
-            isRussian ? "text-base sm:text-lg mb-10 sm:mb-18" : "text-lg mb-18"
-          }`}
-        >
-          <div>{socialsLabel}</div>
+        <div className="font-medium flex flex-col sm:flex-row gap-3 text-lg mb-18">
+          <div>I also talk about web dev here:</div>
 
           <div className="flex gap-3">
             {SOCIALS.map(({ href, label }) => (
@@ -48,7 +27,7 @@ export default function Footer({ locale = "en" }) {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`extlink ${isRussian ? "min-h-11" : ""}`}
+                className="extlink"
               >
                 <ArrowUpRight />
                 {label}
@@ -59,13 +38,11 @@ export default function Footer({ locale = "en" }) {
         </div>
 
         <div className="flex flex-col gap-3 sm:gap-6">
-          <div className={`font-bold tracking-title opacity-50 ${handleSize}`}>Telegram:</div>
+          <div className="font-bold tracking-title opacity-50 text-3xl sm:text-6xl">Telegram:</div>
           <div>
             <a
               href={PROFILES.telegram}
-              className={`font-bold tracking-title hover:text-[crimson] transition-colors ${
-                isRussian ? `inline-flex min-h-11 items-center ${handleSize}` : handleSize
-              }`}
+              className="font-bold tracking-title hover:text-[crimson] transition-colors text-3xl sm:text-6xl"
             >
               {TELEGRAM_HANDLE}
             </a>

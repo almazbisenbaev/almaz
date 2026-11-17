@@ -88,7 +88,7 @@ export default function WordPressLandingConceptPage() {
               <Button variant="secondary" href="#work" className="max-sm:w-full max-sm:px-4!">Explore my work <ArrowDown size={18} aria-hidden="true" /></Button>
             </div>
             <div className="wp-person" data-hero-intro>
-              <Image src="/me.jpg" alt="" width={44} height={44} sizes="44px" />
+              <Image src="/me.jpg" alt="" width={44} height={44} loading="eager" />
               <p><strong>Hi, I'm Almaz.</strong><span>You'll work directly with me.</span></p>
             </div>
           </div>

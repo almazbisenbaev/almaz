@@ -1,13 +1,6 @@
 import { internalPosts, postPath } from '@/data/posts';
 import { SITE_URL } from '@/lib/site';
-
-/**
- * `lastModified` is the build date for pages whose content is generated from
- * data in this repository. The Russian landing page is the exception: its copy
- * is hand-written, so its date is pinned and updated deliberately with
- * significant edits rather than refreshed on every unrelated build.
- */
-const RUSSIAN_LANDING_LAST_MODIFIED = '2026-09-27';
+import { servicePath, lastModified } from './razrabotka-saitov-kazakhstan/routing.mjs';
 
 export default function sitemap() {
   const buildDate = new Date();
@@ -20,8 +13,8 @@ export default function sitemap() {
       priority: 1,
     },
     {
-      url: `${SITE_URL}/razrabotka-saitov-kazakhstan`,
-      lastModified: RUSSIAN_LANDING_LAST_MODIFIED,
+      url: `${SITE_URL}${servicePath}`,
+      lastModified,
       changeFrequency: 'monthly',
       priority: 0.9,
     },

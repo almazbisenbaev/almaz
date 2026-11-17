@@ -19,7 +19,7 @@
 }
 
 /* Shared outer layout for every page and section. Keep widths and gutters in
-   pixels so English (18px root) and Russian (16px root) align identically.
+   pixels so they stay aligned across different root font sizes.
    Reading columns may be narrower inside this container; full-bleed ribbons
    sit outside it. A distinct name avoids Tailwind's `container` utility. */
 .site-container {

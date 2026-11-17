@@ -8,9 +8,6 @@ import styles from "./portfolio-carousel.module.css";
 /**
  * Free-dragging horizontal rail of project cards.
  *
- * Every announced string is a prop because the only page using this is the
- * Russian landing page; the defaults keep it usable from an English page too.
- *
  * @param {Object} props
  * @param {string} props.labelledBy - id of the heading that names the rail.
  * @param {Object} [props.labels] - Localized announcements: `instructions`,

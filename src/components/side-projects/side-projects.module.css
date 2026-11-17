@@ -17,22 +17,38 @@
 .art > img { object-fit: contain; padding: 22px; }
 .cardCopy { padding: 40px; display: flex; flex-direction: column; flex: 0 0 auto; align-items: start; margin-top: auto; }
 .card h3 { font-size: clamp(22px, 2.3vw, 32px); font-weight: 650; line-height: 1.1; margin-block: 9px 13px; }
+.comingSoon { grid-column: 1 / -1; min-height: 280px; display: grid; place-items: center; padding: 32px; color: #77716a; }
+.card.comingSoon h3 { margin: 0; font-size: 16px; font-weight: 500; line-height: 1.5; letter-spacing: 0; }
 .description { max-width: 390px; color: #77716a; font-size: 13px; line-height: 1.65; }
 .projectButton { margin-top: 20px; max-width: 100%; }
 .videoArt { display: grid; place-items: center; position: relative; }
 .srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media(min-width: 1024px) {
+  .bento { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .card { grid-column: span 2; }
+  .card:nth-child(-n + 2) { grid-column: span 3; }
+}
 @media(max-width: 1000px) {
   .bento { gap: 32px; }
   .cardCopy { padding: 32px; }
 }
 @media(max-width: 767px) {
+  /* Keep snap positions in the site container and clip slides at the screen edges. */
+  .section { overflow-x: clip; }
   .heading { align-items: start; flex-direction: column; gap: 24px; margin-block: 0 28px; }
   .heading p { font-size: 8px; }
   .heading h2 { font-size: 37px; margin-top: 14px; }
-  .bento { grid-template-columns: 1fr; gap: 32px; }
+  .viewport { position: relative; padding-block: 6px; cursor: grab; touch-action: pan-y pinch-zoom; }
+  .viewport:active { cursor: grabbing; }
+  .viewport:focus-visible { outline: 2px solid #6d5bf0 !important; outline-offset: 4px; }
+  .bento { display: flex; gap: 16px; touch-action: pan-y pinch-zoom; }
+  .card { flex: 0 0 86%; user-select: none; -webkit-user-select: none; }
+  .card img { -webkit-user-drag: none; }
+  .card .videoArt > img { width: 180px; height: 180px; }
   .cardCopy { padding: 28px; }
   .card h3 { font-size: 24px; }
   .description { font-size: 12px; }
+  .projectButton { padding-inline: 20px; font-size: 14px; gap: 8px; }
 }
 @media(prefers-reduced-motion: reduce) { .projectButton { transition: none; } }
 
