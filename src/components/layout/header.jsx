@@ -12,6 +12,8 @@ const NAV_ITEMS = [
   { href: PROFILES.linkedin, label: 'Hire me', isExternal: true },
 ];
 
+const navLinkClassName = 'opacity-75 transition-opacity aria-[current=page]:opacity-100 hover:opacity-100 focus-visible:opacity-100';
+
 /** Trailing slashes are equivalent for matching, but "/" must stay itself. */
 const normalizePath = (path) => (path === '/' ? '/' : path.replace(/\/+$/, ''));
 
@@ -30,13 +32,8 @@ const Header = ({ showNavigation = true }) => {
     return current === target || current.startsWith(`${target}/`);
   };
 
-  const linkClassName = (href) =>
-    isActive(href)
-      ? '!text-black transition-colors'
-      : '!text-zinc-500 hover:!text-black transition-colors';
-
   return (
-    <header className='py-5'>
+    <header className="py-5 text-[#dc143c]">
       <div className="site-container">
         <div className="hdr-row flex items-start flex-col sm:flex-row sm:items-end gap-5 justify-between font-medium text-sm leading-tight">
 
@@ -51,7 +48,7 @@ const Header = ({ showNavigation = true }) => {
                 <a
                   key={href}
                   href={href}
-                  className={`inline-flex items-center gap-1 ${linkClassName(href)}`}
+                  className={`inline-flex items-center gap-1 ${navLinkClassName}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -63,7 +60,7 @@ const Header = ({ showNavigation = true }) => {
                   key={href}
                   href={href}
                   prefetch={pathname === href ? false : null}
-                  className={linkClassName(href)}
+                  className={navLinkClassName}
                   aria-current={isActive(href) ? 'page' : undefined}
                 >
                   {label}
