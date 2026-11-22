@@ -80,6 +80,16 @@
   font-size: 13px;
 }
 
+.metadata a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 180ms ease;
+}
+
+.metadata a:is(:hover, :focus-visible) { text-decoration-color: currentColor; }
+
 .name {
   margin: 0;
   font-size: clamp(20px, 1.7vw, 26px);

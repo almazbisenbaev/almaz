@@ -80,7 +80,6 @@ function Cover({ project, active, setActive }) {
         <p className={styles.stack}>{project.skills.join(' · ')}</p>
         <div className={styles.metadata}>
           <ProjectCredit project={project} />
-          <span aria-hidden="true">·</span>
           <time dateTime={project.year}>{project.year}</time>
         </div>
       </div>

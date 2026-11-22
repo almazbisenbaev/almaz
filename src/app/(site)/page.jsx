@@ -64,11 +64,8 @@ export default function Home() {
         <CoverWall projects={portfolioProjects} />
       </section>
 
-      <div className="site-container">
-        <section
-          aria-labelledby="wordpress-cta-title"
-          className="flex flex-col items-start gap-8 rounded-4xl bg-white p-6 shadow-[0_12px_48px_-24px_rgba(0,0,0,0.16)] sm:p-10 lg:flex-row lg:items-center lg:justify-between lg:gap-12 lg:p-14"
-        >
+      <section aria-labelledby="wordpress-cta-title" className="flex min-h-96 items-center bg-white py-20 lg:min-h-[30rem] lg:py-28">
+        <div className="site-container flex flex-col items-start gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
           <div className="max-w-2xl">
             <h2 id="wordpress-cta-title" className="max-w-xl text-3xl font-bold leading-[1.08] tracking-title sm:text-4xl xl:text-5xl">
               Let’s build your next website.
@@ -82,8 +79,8 @@ export default function Home() {
             <span>Work with me</span>
             <ArrowUpRight aria-hidden="true" size={20} className="shrink-0" />
           </Button>
-        </section>
-      </div>
+        </div>
+      </section>
 
       <SideProjects />
 

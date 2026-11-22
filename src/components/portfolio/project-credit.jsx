@@ -1,11 +1,14 @@
 export default function ProjectCredit({ project }) {
-  const name = project.client || project.name;
+  if (!project.client) return null;
 
   return (
-    <span>
-      For {project.clientUrl
-        ? <a className="underline underline-offset-2" href={project.clientUrl} target="_blank" rel="noopener noreferrer">{name}</a>
-        : name}
-    </span>
+    <>
+      <span>
+        For {project.clientUrl
+          ? <a href={project.clientUrl} target="_blank" rel="noopener noreferrer">{project.client}</a>
+          : project.client}
+      </span>
+      <span aria-hidden="true">·</span>
+    </>
   );
 }
