@@ -47,7 +47,7 @@ export default function PostZeroDollarProductionStack() {
           <PostBreadcrumbs title={post.title} />
 
           <header className="mb-10 sm:mb-16">
-            <h1 className="text-3xl sm:text-7xl font-bold mb-8 tracking-title">{post.title}</h1>
+            <h1 className="text-4xl/none sm:text-7xl/none font-bold mb-8 tracking-title">{post.title}</h1>
             <div className="text-neutral-400 font-medium text-xs mt-4">
               <time dateTime={post.publishedAt}>{postDate(post)}</time>
             </div>
@@ -55,13 +55,13 @@ export default function PostZeroDollarProductionStack() {
         </div>
       </div>
 
-      <div className="site-container mb-10 sm:mb-16">
+      <div className="site-container post-cover mb-10 sm:mb-16">
         <Image
           src={post.thumbnail}
           width={1200}
           height={630}
           loading="eager"
-          sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 767px) 592px, (max-width: 1023px) 720px, (max-width: 1279px) 976px, (max-width: 1535px) 1232px, 1488px"
+          sizes="(max-width: 639px) 100vw, (max-width: 767px) 592px, (max-width: 1023px) 720px, (max-width: 1279px) 976px, (max-width: 1535px) 1232px, 1488px"
           alt="Three compact servers stacked together with a paper price tag marked $0"
           className="w-full h-auto sm:rounded-xl"
         />

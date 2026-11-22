@@ -123,7 +123,7 @@ export default function PostVuejsEvolution() {
           <PostBreadcrumbs title={post.title} />
 
           <header className="mb-10 sm:mb-16">
-            <h1 className="text-3xl sm:text-7xl font-bold mb-8 tracking-title">{post.title}</h1>
+            <h1 className="text-4xl/none sm:text-7xl/none font-bold mb-8 tracking-title">{post.title}</h1>
             <div className="text-neutral-400 font-medium text-xs flex items-center space-x-1 mt-4">
               <span>{postDate(post)}</span>
             </div>
@@ -132,11 +132,12 @@ export default function PostVuejsEvolution() {
         </div>
       </div>
 
-      <div className="site-container mb-10 sm:mb-16">
+      <div className="site-container post-cover mb-10 sm:mb-16">
         <Image 
           src={post.thumbnail}
           width="1600"
           height="1200"
+          sizes="(max-width: 639px) 100vw, (max-width: 767px) 592px, (max-width: 1023px) 720px, (max-width: 1279px) 976px, (max-width: 1535px) 1232px, 1488px"
           alt="Cover illustration for the article on building the same button component in Vue 1, Vue 2 and Vue 3"
           className="w-full sm:rounded-xl"
         />
