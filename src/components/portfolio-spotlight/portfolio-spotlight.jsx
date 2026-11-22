@@ -1,20 +1,11 @@
 'use client';
 
-import { useCallback, useEffect, useId, useState, useSyncExternalStore } from 'react';
+import { useCallback, useEffect, useId, useState } from 'react';
 import Image from 'next/image';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
+import useReducedMotion from '@/hooks/use-reduced-motion';
 import s from './portfolio-spotlight.module.css';
-
-const motionQuery = '(prefers-reduced-motion: reduce)';
-function subscribeMotion(callback) {
-  const query = window.matchMedia(motionQuery);
-  query.addEventListener('change', callback);
-  return () => query.removeEventListener('change', callback);
-}
-function useReducedMotion() {
-  return useSyncExternalStore(subscribeMotion, () => window.matchMedia(motionQuery).matches, () => true);
-}
 
 function ProjectImage({ project, className = '' }) {
   return (

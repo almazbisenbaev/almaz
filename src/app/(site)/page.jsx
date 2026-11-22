@@ -8,8 +8,8 @@ import TechMarquee from '@/components/tech-marquee/tech-marquee';
 import HeroIntro from '@/components/hero-intro/hero-intro';
 import Button from '@/components/button/button';
 import ReviewsSection from '@/components/reviews-section/reviews-section';
-import PortfolioSpotlight from '@/components/portfolio-spotlight/portfolio-spotlight';
-import { homepageWorks } from "@/data/works";
+import CoverWall from '@/components/portfolio/cover-wall';
+import { portfolioProjects } from "@/data/works";
 import { PROFILES } from "@/lib/site";
 
 /**
@@ -56,7 +56,13 @@ export default function Home() {
         <TechMarquee />
       </div>
 
-      <PortfolioSpotlight items={homepageWorks} />
+      <section id="portfolio" aria-labelledby="portfolio-title" className="site-container py-12 md:pt-20 md:pb-24">
+        <header>
+          <p className="text-[10px] uppercase tracking-[.08em] text-neutral-500">Portfolio</p>
+          <h2 id="portfolio-title" className="mt-4 text-[clamp(48px,7.6vw,112px)] font-extrabold leading-[.95] tracking-title">Recent projects</h2>
+        </header>
+        <CoverWall projects={portfolioProjects} />
+      </section>
 
       <div className="site-container">
         <section

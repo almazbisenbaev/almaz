@@ -29,7 +29,7 @@ export const works = [
     url: "https://funky-ramen.de",
     buttonText: "Visit Website",
     year: "2026",
-    description: "A WordPress website for a café for anime lovers. WordPress.",
+    description: "A WordPress website for an anime café.",
     category: "Development",
     client: "Mindlind",
     clientUrl: "//mindlind.de",
@@ -144,6 +144,20 @@ export const works = [
 
 /** The curated subset shown on the home page and the WordPress landing page. */
 export const homepageWorks = works.filter((work) => work.homepage);
+
+export const portfolioProjects = homepageWorks.filter((work) => work.spotlight).map((work) => ({
+  name: work.name,
+  url: work.url,
+  buttonText: work.buttonText,
+  year: work.year,
+  client: work.client,
+  clientUrl: work.clientUrl,
+  skills: work.skills,
+  media: work.media,
+  image: work.spotlight.image,
+  width: work.spotlight.width,
+  height: work.spotlight.height,
+}));
 
 /** Look up a project by `name`, which is how localized pages reference them. */
 export const findWork = (name) => works.find((work) => work.name === name);
